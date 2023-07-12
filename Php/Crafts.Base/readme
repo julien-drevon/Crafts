@@ -1,0 +1,31 @@
+This solutionuse composer.
+
+
+For install dependencies open console in current directory:
+
+
+`
+php composer.phar install 
+
+`
+
+or
+
+`
+npm run config
+`
+
+
+
+For running tu 
+
+`
+php composer.phar tu
+
+`
+
+or
+
+`
+npm test
+`
