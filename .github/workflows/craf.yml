@@ -2,13 +2,11 @@ name: PHP Composer
 
 on:
   push:
-    branches: [ "main" ]
-    path:
-      - 'Php/**'     
+    branches: [ "main" ]    
   pull_request:
     branches: [ "main" ]
-    path:
-      - 'Php/**'
+  paths:
+    - 'Php/**'
 
 permissions:
   contents: read
