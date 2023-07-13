@@ -20,8 +20,8 @@ npm run config
 For running tu 
 
 `
-php composer.phar tu
 
+php composer.phar tu
 `
 
 or

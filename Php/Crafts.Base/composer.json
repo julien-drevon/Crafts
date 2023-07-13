@@ -1,6 +1,6 @@
 {
     "scripts": {
-        "tu": "vendor\\bin\\phpunit src\\tests"
+        "tu": "vendor/bin/phpunit src/tests"
     },
     "autoload": {
         "classmap": [

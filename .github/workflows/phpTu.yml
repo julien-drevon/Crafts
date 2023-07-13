@@ -1,0 +1,52 @@
+name: PHP TU
+
+on:
+  push:
+    branches: [ "main" ] 
+    # paths:
+    #   - 'Php/**' 
+  pull_request:
+    branches: [ "main" ]
+    # paths:
+    #   - 'Php/**'
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    # - name: Validate composer.json and composer.lock
+    #   run: cd Php/Crafts.Base && composer validate --strict
+
+
+    - name: Cache Composer packages
+      id: composer-cache
+      uses: actions/cache@v3
+      with:
+        path: Php/Crafts.Base/vendor
+        key: ${{ runner.os }}-php-${{ hashFiles('**/composer.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-php-
+
+    - name: Install dependencies
+      run: cd Php/Crafts.Base && composer install --prefer-dist --no-progress
+
+    - name: Run test suite
+      run: cd Php/Crafts.Base && composer run-script tu
+    # - name: Install dependencies
+    #   run: cd Php/Crafts.Base && php composer.phar install 
+    
+    # - name: Run tests
+    #    run: cd Php/Crafts.Base && php composer.phar tu
+
+    # Add a test script to composer.json, for instance: "test": "vendor/bin/phpunit"
+    # Docs: https://getcomposer.org/doc/articles/scripts.md
+
+    # - name: Run test suite
+    #   run: composer run-script test
