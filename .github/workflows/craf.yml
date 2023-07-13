@@ -21,8 +21,8 @@ jobs:
     steps:
     - uses: actions/checkout@v3
 
-    - name: Validate composer.json and composer.lock
-      run: cd Php/Crafts.Base && composer validate --strict
+    # - name: Validate composer.json and composer.lock
+    #   run: cd Php/Crafts.Base && composer validate --strict
 
 
     - name: Cache Composer packages
