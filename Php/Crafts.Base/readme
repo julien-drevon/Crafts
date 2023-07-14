@@ -19,3 +19,11 @@ php composer.phar tu
 `
 
 
+
+
+Run docker image manually
+
+docker build -t phpcrafts .
+docker run -dit --name crafts_app -p 8080:80 phpcrafts
+
+http://localhost:8080 is enable
