@@ -24,8 +24,13 @@ php composer.phar tu
 Run docker image manually
 
 in Crafts/Php dir :
-
+`
 docker build -t phpcrafts .
 docker run -dit --name crafts_app -p 8080:80 phpcrafts
+
 docker stop crafts_app
+docker rm crafts_app
+`
+
+
 http://localhost:8080 is enable
