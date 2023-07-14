@@ -11,7 +11,7 @@ class ClassiqueHexaSampleChicagoStyleTest extends TestCase
         $attempt=  $givenExemplePort->callMe($myRequest);
         
         
-        $this->assertEquals(true, (new PrimaryPortResponse(true))->getIsOk());
+        $this->assertEquals($attempt->getIsOk(), (new PrimaryPortResponse(true))->getIsOk());
     }
 }
 
@@ -30,9 +30,9 @@ class PrimaryPortResponse
     
     protected bool $isOk;
 
-    public function __construct(bool $isOk = false)
+    public function __construct(bool $ok = false)
     {
-        $this->isOk = $isOk;
+        $this->isOk = $ok;
     }
 
     public function getIsOk(): bool
