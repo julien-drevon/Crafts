@@ -3,12 +3,12 @@ name: PHP TU
 on:
   push:
     branches: [ "main" ] 
-    # paths:
-    #   - 'Php/**' 
+    paths:
+      - 'Php/**' 
   pull_request:
     branches: [ "main" ]
-    # paths:
-    #   - 'Php/**'
+    paths:
+      - 'Php/**'
 
 permissions:
   contents: read
