@@ -21,8 +21,9 @@
     "noUnusedLocals": false,
     "noUnusedParameters": false,
     "paths": {
-      "@src/*": [ "./src/*" ],
-      "@domain/*": ["./src/Domain/*"]
+      "@src/*": ["./src/*"],
+      "@domain/*": ["./src/Domain/*"],
+      "@clean/*": ["./src/CleanArchi/*"]
     }
   }
 }

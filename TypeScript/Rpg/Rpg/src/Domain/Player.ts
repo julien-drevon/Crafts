@@ -1,6 +1,6 @@
 ﻿export class Player {
-  constructor(private name: string) {}
+  constructor(private _Name: string) {}
   get Name(): string {
-    return this.name;
+    return this._Name;
   }
 }
