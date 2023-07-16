@@ -13,5 +13,6 @@ describe('StartNewGame', () => {
     });
 
     expect(newGame.Player).toEqual(givenPlayer);
+    expect(newGame.World).not.toBeNull();
   });
 });
