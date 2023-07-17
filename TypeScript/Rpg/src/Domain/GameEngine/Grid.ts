@@ -1,4 +1,5 @@
-import { Sprite, ISprite } from './Sprite';
+import { Sprite } from './Sprite';
+import { ISprite } from './ISprite';
 
 export class Grid {
   constructor() {

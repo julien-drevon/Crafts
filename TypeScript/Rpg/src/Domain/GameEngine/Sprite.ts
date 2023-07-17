@@ -1,13 +1,8 @@
 import { ISize } from './ISize';
+import { ISprite } from './ISprite';
 import { IPoint } from './Point';
 import { RealPoint } from './RealPoint';
 import { RealSize } from './RealSize';
-
-export interface ISprite {
-  get Size(): ISize;
-  get Origine(): IPoint;
-  get Position(): IPoint;
-}
 
 export class Sprite implements ISprite {
   private _Size: RealSize;
