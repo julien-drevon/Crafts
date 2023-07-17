@@ -1,7 +1,7 @@
-import { Player } from './Player';
-import { World } from './GameEngine/World';
+import { Player } from '../Player';
+import { World } from './World';
 import { UUID } from 'crypto';
-import { Sprite } from './GameEngine/Sprite';
+import { Sprite } from './Sprite';
 export class Game {
   _World: World;
   Id: UUID;

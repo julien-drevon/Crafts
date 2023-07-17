@@ -1,5 +1,5 @@
-import { Game } from 'Domain/Game';
-import { GameAdapter } from '../../src/Domain/GameAdapter';
+import { Game } from 'Domain/GameEngine/Game';
+import { GameAdapter } from '../../src/Domain/PrimaryDomainAdapter/GameAdapter';
 import { Player } from '../../src/Domain/Player';
 import { SimplePresenter } from '../../src/CleanArchi/SimplePresenter';
 

@@ -1,5 +1,5 @@
-import { Game } from 'Domain/Game';
-import { GameAdapter } from '../../src/Domain/GameAdapter';
+import { Game } from 'Domain/GameEngine/Game';
+import { GameAdapter } from '../../src/Domain/PrimaryDomainAdapter/GameAdapter';
 import { Player } from '../../src/Domain/Player';
 import { SimplePresenter } from '../../src/CleanArchi/SimplePresenter';
 
@@ -17,11 +17,9 @@ describe('MoveInTheWorld', () => {
       Player: new Player('me')
     });
 
-    expect(givenGame.World.Me.Position).toEqual({ X: 0, Y: 0 });
     expect(givenGame.World.Me.Size.Largeur).toEqual(1);
     expect(givenGame.World.Me.Size.Longueur).toEqual(1);
+    expect(givenGame.World.Me.Position).toEqual({ X: 0, Y: 0 });
     expect(givenGame.World.Me.Origine).toEqual({ X: 0, Y: 0 });
-
-    expect(newGame.World).not.toBeNull();
   });
 });

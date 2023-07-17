@@ -1,4 +1,4 @@
-﻿import { Game } from './Game';
+﻿import { Game } from './GameEngine/Game';
 import { Player } from './Player';
 
 export class GameBuilder {

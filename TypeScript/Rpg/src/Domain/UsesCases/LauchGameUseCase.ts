@@ -1,12 +1,12 @@
 import { IMUseCase } from 'CleanArchi/IMUseCase';
 import { Game } from '../GameEngine/Game';
-import { GameBuilder } from '../GameBuilder';
-import { NewGameRequest } from '../PrimaryPortRequest/NewGameRequest';
+import { LauchGameRequest } from '../PrimaryPortRequest/LauchGameRequest';
 import { IMInPresenter } from 'CleanArchi/IMInPresenter';
+import { GameBuilder } from '../GameBuilder';
 
-export class CreateGameUseCase implements IMUseCase<NewGameRequest, Game> {
+export class LauchGameUseCase implements IMUseCase<LauchGameRequest, Game> {
   async Execute(
-    query: NewGameRequest,
+    query: LauchGameRequest,
     presenter: IMInPresenter<Game>
   ): Promise<void> {
     presenter.Present(new GameBuilder().AddPlayer(query.Player).Build());
