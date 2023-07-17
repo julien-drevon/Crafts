@@ -3,7 +3,7 @@ import { GameAdapter } from '../../src/Domain/PrimaryDomainAdapter/GameAdapter';
 import { Player } from '../../src/Domain/Player';
 import { SimplePresenter } from '../../src/CleanArchi/SimplePresenter';
 
-describe('AddAndMoveInTheWorld', () => {
+describe('AddAndMoveInTheWorld..', () => {
   it('GivenNewPlayer_AndIWantStartGame_ShoulAppearInTheWorld', async () => {
     const givenPlayer = new Player('moi');
     const gameAdapter = new GameAdapter(new SimplePresenter<Game>());
