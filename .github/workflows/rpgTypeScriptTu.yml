@@ -29,7 +29,7 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
-          cache: "TypeScript/Rpg/package-lock.json"
+          #cache: "TypeScript/Rpg/package-lock.json"
       - run: cd TypeScript/Rpg
       - run: npm ci
       - run: npm test
