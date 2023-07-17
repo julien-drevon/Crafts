@@ -2,7 +2,10 @@ import { Game } from 'Domain/GameEngine/Game';
 import { IProvideGame } from 'Domain/SecondaryPorts/IProvideGame';
 
 export class MoveInWorldGameProviderFake implements IProvideGame {
-  async Get(playerId: string): Promise<Game[]> {
+  async GetByGameId(gameId: string): Promise<Game> {
+    return this._Game;
+  }
+  async GetByPlayerId(playerId: string): Promise<Game[]> {
     return [this._Game];
   }
   _Game: Game;

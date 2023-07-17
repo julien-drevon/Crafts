@@ -9,6 +9,10 @@ export class Sprite implements ISprite {
   private _Origine: RealPoint;
   private _Position: RealPoint;
 
+  TranslateTo(x: number) {
+    this._Position.AddOnX(1);
+  }
+
   get Size(): ISize {
     return { Longueur: this._Size.Longueur, Largeur: this._Size.Largeur };
   }

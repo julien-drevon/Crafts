@@ -7,8 +7,15 @@ import { IMPresenter } from 'CleanArchi/IMPresenter';
 import { CreateGameUseCase } from '../UsesCases/CreateGameUseCase';
 import { LauchGameUseCase } from '../UsesCases/LauchGameUseCase';
 import { IProvideGame } from '../SecondaryPorts/IProvideGame';
+import { UUID } from 'crypto';
 
 export class GameAdapter<TOut> {
+  async ExecuteCommand(gameId: UUID, command: string): Promise<TOut> {
+    const game = await this._GameProvide.GetByGameId(gameId);
+    game.World.ExecuteCommand(command);
+    this._GamePresenter.Present(game);
+    return await this._GamePresenter.View();
+  }
   constructor(
     private _GamePresenter: IMPresenter<Game, TOut>,
     private _GameProvide: IProvideGame
