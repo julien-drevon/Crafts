@@ -4,8 +4,8 @@ on:
   push:
     branches: ["features/*", "main"]
     paths:
-      #- "TypeScript/Rpg/**"
-      - "**"
+      - "TypeScript/Rpg/**"
+      #- "**"
   pull_request:
     branches: ["main"]
     paths:
