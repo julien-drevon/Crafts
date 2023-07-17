@@ -1,4 +1,4 @@
 export interface ISize {
-  get Longeur(): number;
+  get Longueur(): number;
   get Largeur(): number;
 }

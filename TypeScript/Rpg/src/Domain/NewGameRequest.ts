@@ -1,5 +1,10 @@
-﻿import { Player } from './Player';
+﻿import { UUID } from 'crypto';
+import { Player } from './Player';
 
 export class NewGameRequest {
+  public Player: Player;
+}
+export class LauchGameRequest {
+  public GameId: UUID;
   public Player: Player;
 }
