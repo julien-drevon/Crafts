@@ -2,7 +2,7 @@ name: RPG TypeScript PU
 
 on:
   push:
-    branches: ["main"]
+    branches: ["*"]
     paths:
       - "TypeScript/**"
   pull_request:
