@@ -30,8 +30,7 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           #cache: "TypeScript/Rpg/package-lock.json"
-      - run: cd TypeScript/Rpg
-      - run: npm ci
-      - run: npm test
+      - run: cd TypeScript/Rpg && npm ci
+      - run: cd TypeScript/Rpg && npm test
       #- run: npm run build --if-present
       #- run: npm test
