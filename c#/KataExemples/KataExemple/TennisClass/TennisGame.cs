@@ -33,7 +33,7 @@ public class TennisGame
 
     private string ComputeScore()
     {
-        if (_PlayersPoints.All(x => x >= 40))
+        if (_PlayersPoints.All(point => point >= 40))
         {
             return ComputeScoreFinSet();
         }
