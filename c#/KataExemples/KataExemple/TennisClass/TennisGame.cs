@@ -10,10 +10,10 @@ public class TennisGame
 
     public object Points { get => ComputeScore(); }
 
-    internal void SetPoint(JoueurNumber wichPlayer)
+    internal void SetPoint(JoueurNumber whichPlayer)
     {
-        var increment = _PlayersPoints[(int)wichPlayer] < 30 ? 15 : 10;
-        _PlayersPoints[(int)wichPlayer] += increment;
+        var increment = _PlayersPoints[(int)whichPlayer] < 30 ? 15 : 10;
+        _PlayersPoints[(int)whichPlayer] += increment;
     }
 
     private static string AffichageEgalite()
