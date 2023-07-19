@@ -21,6 +21,11 @@ public class TennisGame
         return "EGALITE";
     }
 
+    private static string AffichageSeparator()
+    {
+        return " ";
+    }
+
     private string AffichageJ1OrJ2FunctionTheBest()
     {
         return $"{(_PlayersPoints[0] > _PlayersPoints[1] ? "J1" : "J2")}";
@@ -28,12 +33,12 @@ public class TennisGame
 
     private string AfficheGagnantOuAvantage()
     {
-        return $"{(Math.Abs(_PlayersPoints[0] - _PlayersPoints[1]) > 10 ? "GAGNANT " : "AVANTAGE ")}";
+        return $"{(Math.Abs(_PlayersPoints[0] - _PlayersPoints[1]) > 10 ? "GAGNANT" : "AVANTAGE")}";
     }
 
     private string ComputeScore()
     {
-        if (_PlayersPoints.All(x => x >= 40))
+        if (_PlayersPoints.All(point => point >= 40))
         {
             return ComputeScoreFinSet();
         }
@@ -50,7 +55,7 @@ public class TennisGame
         if (IsEgalite())
             return AffichageEgalite();
 
-        return AfficheGagnantOuAvantage() + AffichageJ1OrJ2FunctionTheBest();
+        return AfficheGagnantOuAvantage() + AffichageSeparator() + AffichageJ1OrJ2FunctionTheBest();
     }
 
     private bool IsEgalite()
