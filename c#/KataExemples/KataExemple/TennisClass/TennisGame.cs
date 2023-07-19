@@ -4,11 +4,7 @@ public class TennisGame
 {
     private int[] _PlayersPoints = new int[2];
 
-    public TennisGame()
-    {
-    }
-
-    public object Points { get => ComputeScore(); }
+    public string ScoreString { get => ComputeScore(); }
 
     internal void SetPoint(JoueurNumber whichPlayer)
     {
@@ -47,7 +43,7 @@ public class TennisGame
 
     private string ComputeScoreDebutGame()
     {
-        return $"{_PlayersPoints[0]} {_PlayersPoints[1].ToString()}";
+        return $"{_PlayersPoints[0]} {_PlayersPoints[1]}";
     }
 
     private string ComputeScoreFinSet()
