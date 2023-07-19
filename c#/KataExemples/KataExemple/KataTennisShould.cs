@@ -18,7 +18,7 @@ public class KataTennisShould
         givenGame.SetPoint(JoueurNumber.J2);
         givenGame.SetPoint(JoueurNumber.J1);
 
-        givenGame.Points.Should().BeEquivalentTo("AVANTAGE J1");
+        givenGame.ScoreString.Should().BeEquivalentTo("AVANTAGE J1");
     }
 
     [Fact]
@@ -34,7 +34,7 @@ public class KataTennisShould
         givenGame.SetPoint(JoueurNumber.J2);
         givenGame.SetPoint(JoueurNumber.J2);
 
-        givenGame.Points.Should().BeEquivalentTo("AVANTAGE J2");
+        givenGame.ScoreString.Should().BeEquivalentTo("AVANTAGE J2");
     }
 
     [Fact]
@@ -51,7 +51,7 @@ public class KataTennisShould
         givenGame.SetPoint(JoueurNumber.J2);
         givenGame.SetPoint(JoueurNumber.J1);
 
-        givenGame.Points.Should().BeEquivalentTo("EGALITE");
+        givenGame.ScoreString.Should().BeEquivalentTo("EGALITE");
     }
 
     [Fact]
@@ -59,7 +59,7 @@ public class KataTennisShould
     {
         var givenGame = new TennisGame();
         givenGame.SetPoint(JoueurNumber.J1);
-        givenGame.Points.Should().BeEquivalentTo("15 0");
+        givenGame.ScoreString.Should().BeEquivalentTo("15 0");
     }
 
     [Fact]
@@ -72,7 +72,7 @@ public class KataTennisShould
         givenGame.SetPoint(JoueurNumber.J1);
         givenGame.SetPoint(JoueurNumber.J1);
 
-        givenGame.Points.Should().Be("40 15");
+        givenGame.ScoreString.Should().Be("40 15");
     }
 
     [Fact]
@@ -87,7 +87,7 @@ public class KataTennisShould
         givenGame.SetPoint(JoueurNumber.J2);
         givenGame.SetPoint(JoueurNumber.J2);
 
-        givenGame.Points.Should().BeEquivalentTo("EGALITE");
+        givenGame.ScoreString.Should().BeEquivalentTo("EGALITE");
     }
 
     [Fact]
@@ -96,14 +96,14 @@ public class KataTennisShould
         var givenGame = new TennisGame();
         givenGame.SetPoint(JoueurNumber.J1);
         givenGame.SetPoint(JoueurNumber.J2);
-        givenGame.Points.Should().BeEquivalentTo("15 15");
+        givenGame.ScoreString.Should().BeEquivalentTo("15 15");
     }
 
     [Fact]
     public void StartGame_0_0()
     {
         var givenGame = new TennisGame();
-        givenGame.Points.Should().BeEquivalentTo("0 0");
+        givenGame.ScoreString.Should().BeEquivalentTo("0 0");
     }
 
     [Fact]
@@ -115,7 +115,7 @@ public class KataTennisShould
         givenGame.SetPoint(JoueurNumber.J2);
         givenGame.SetPoint(JoueurNumber.J1);
 
-        givenGame.Points.Should().BeEquivalentTo("30 15");
+        givenGame.ScoreString.Should().BeEquivalentTo("30 15");
     }
 
     [Fact]
@@ -132,7 +132,7 @@ public class KataTennisShould
         givenGame.SetPoint(JoueurNumber.J1);
         givenGame.SetPoint(JoueurNumber.J1);
 
-        givenGame.Points.Should().BeEquivalentTo("GAGNANT J1");
+        givenGame.ScoreString.Should().BeEquivalentTo("GAGNANT J1");
     }
 
     [Fact]
@@ -149,6 +149,6 @@ public class KataTennisShould
         givenGame.SetPoint(JoueurNumber.J2);
         givenGame.SetPoint(JoueurNumber.J2);
 
-        givenGame.Points.Should().BeEquivalentTo("GAGNANT J2");
+        givenGame.ScoreString.Should().BeEquivalentTo("GAGNANT J2");
     }
 }

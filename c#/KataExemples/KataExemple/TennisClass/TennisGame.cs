@@ -4,21 +4,22 @@ public class TennisGame
 {
     private int[] _PlayersPoints = new int[2];
 
-    public TennisGame()
-    {
-    }
+    public string ScoreString { get => ComputeScore(); }
 
-    public object Points { get => ComputeScore(); }
-
-    internal void SetPoint(JoueurNumber wichPlayer)
+    public void SetPoint(JoueurNumber whichPlayer)
     {
-        var increment = _PlayersPoints[(int)wichPlayer] < 30 ? 15 : 10;
-        _PlayersPoints[(int)wichPlayer] += increment;
+        var increment = _PlayersPoints[(int)whichPlayer] < 30 ? 15 : 10;
+        _PlayersPoints[(int)whichPlayer] += increment;
     }
 
     private static string AffichageEgalite()
     {
         return "EGALITE";
+    }
+
+    private static string AffichageSeparator()
+    {
+        return " ";
     }
 
     private string AffichageJ1OrJ2FunctionTheBest()
@@ -28,12 +29,12 @@ public class TennisGame
 
     private string AfficheGagnantOuAvantage()
     {
-        return $"{(Math.Abs(_PlayersPoints[0] - _PlayersPoints[1]) > 10 ? "GAGNANT " : "AVANTAGE ")}";
+        return $"{(Math.Abs(_PlayersPoints[0] - _PlayersPoints[1]) > 10 ? "GAGNANT" : "AVANTAGE")}";
     }
 
     private string ComputeScore()
     {
-        if (_PlayersPoints.All(x => x >= 40))
+        if (_PlayersPoints.All(point => point >= 40))
         {
             return ComputeScoreFinSet();
         }
@@ -42,7 +43,7 @@ public class TennisGame
 
     private string ComputeScoreDebutGame()
     {
-        return $"{_PlayersPoints[0]} {_PlayersPoints[1].ToString()}";
+        return $"{_PlayersPoints[0]} {_PlayersPoints[1]}";
     }
 
     private string ComputeScoreFinSet()
@@ -50,7 +51,7 @@ public class TennisGame
         if (IsEgalite())
             return AffichageEgalite();
 
-        return AfficheGagnantOuAvantage() + AffichageJ1OrJ2FunctionTheBest();
+        return AfficheGagnantOuAvantage() + AffichageSeparator() + AffichageJ1OrJ2FunctionTheBest();
     }
 
     private bool IsEgalite()
