@@ -5,9 +5,10 @@ namespace KataExemples;
 
 public class KataTennisShould
 {
+    #region Baby steps regroupés
 
     [Fact]
-    public void BabyStepsRegroupéExemple()
+    public void PlayAGame_Exemple()
     {
         var givenGame = new TennisGame();
         givenGame.ScoreString.Should().BeEquivalentTo("0 0");
@@ -32,6 +33,9 @@ public class KataTennisShould
         givenGame.ScoreString.Should().BeEquivalentTo("GAGNANT J1");
     }
 
+    #endregion Baby steps regroupés
+
+    #region Baby steps éclatés
 
     [Fact]
     public void StartGame_0_0()
@@ -180,6 +184,5 @@ public class KataTennisShould
         givenGame.ScoreString.Should().BeEquivalentTo("GAGNANT J2");
     }
 
-
-
+    #endregion Baby steps éclatés
 }
