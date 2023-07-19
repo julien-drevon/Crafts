@@ -8,7 +8,7 @@ public class KataTennisShould
     #region Baby steps regroupés
 
     [Fact]
-    public void PlayAGame_Exemple()
+    public void PlayAGame_Design()
     {
         var givenGame = new TennisGame();
         givenGame.ScoreString.Should().BeEquivalentTo("0 0");
