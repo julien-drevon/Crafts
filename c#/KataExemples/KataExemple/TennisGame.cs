@@ -24,12 +24,12 @@ public class TennisGame
 
     private string AffichageJ1OrJ2FunctionTheBest()
     {
-        return $"{(_PlayersPoints[0] > _PlayersPoints[1] ? "J1" : "J2")}";
+        return _PlayersPoints[0] > _PlayersPoints[1] ? "J1" : "J2";
     }
 
     private string AfficheGagnantOuAvantage()
     {
-        return $"{(Math.Abs(_PlayersPoints[0] - _PlayersPoints[1]) > 10 ? "GAGNANT" : "AVANTAGE")}";
+        return Math.Abs(_PlayersPoints[0] - _PlayersPoints[1]) > 10 ? "GAGNANT" : "AVANTAGE";
     }
 
     private string ComputeScore()
@@ -43,7 +43,7 @@ public class TennisGame
 
     private string ComputeScoreDebutGame()
     {
-        return $"{_PlayersPoints[0]} {_PlayersPoints[1]}";
+        return _PlayersPoints[0] + AffichageSeparator() + _PlayersPoints[1];
     }
 
     private string ComputeScoreFinSet()
