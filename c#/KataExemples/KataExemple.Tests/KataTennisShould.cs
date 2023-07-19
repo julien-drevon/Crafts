@@ -5,6 +5,34 @@ namespace KataExemples;
 
 public class KataTennisShould
 {
+
+    [Fact]
+    public void BabyStepsRegroupéExemple()
+    {
+        var givenGame = new TennisGame();
+        givenGame.ScoreString.Should().BeEquivalentTo("0 0");
+        givenGame.SetPoint(JoueurNumber.J1);
+        givenGame.ScoreString.Should().BeEquivalentTo("15 0");
+        givenGame.SetPoint(JoueurNumber.J2);
+        givenGame.ScoreString.Should().BeEquivalentTo("15 15");
+        givenGame.SetPoint(JoueurNumber.J1);
+        givenGame.ScoreString.Should().BeEquivalentTo("30 15");
+        givenGame.SetPoint(JoueurNumber.J1);
+        givenGame.ScoreString.Should().BeEquivalentTo("40 15");
+        givenGame.SetPoint(JoueurNumber.J2);
+        givenGame.SetPoint(JoueurNumber.J2);
+        givenGame.ScoreString.Should().BeEquivalentTo("EGALITE");
+        givenGame.SetPoint(JoueurNumber.J2);
+        givenGame.ScoreString.Should().BeEquivalentTo("AVANTAGE J2");
+        givenGame.SetPoint(JoueurNumber.J1);
+        givenGame.ScoreString.Should().BeEquivalentTo("EGALITE");
+        givenGame.SetPoint(JoueurNumber.J1);
+        givenGame.ScoreString.Should().BeEquivalentTo("AVANTAGE J1");
+        givenGame.SetPoint(JoueurNumber.J1);
+        givenGame.ScoreString.Should().BeEquivalentTo("GAGNANT J1");
+    }
+
+
     [Fact]
     public void StartGame_0_0()
     {
@@ -151,4 +179,7 @@ public class KataTennisShould
 
         givenGame.ScoreString.Should().BeEquivalentTo("GAGNANT J2");
     }
+
+
+
 }
