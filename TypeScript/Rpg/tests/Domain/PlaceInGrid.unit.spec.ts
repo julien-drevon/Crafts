@@ -1,5 +1,5 @@
-import { Grid } from '../../src/Domain/Grid';
-import { Sprite } from '../../src/Domain/Sprite';
+import { Grid } from '../../src/Domain/GameEngine/Grid';
+import { Sprite } from '../../src/Domain/GameEngine/Sprite';
 
 describe('PlaceInGrid', () => {
   it('GivenAGrid_WhenIStart_IShouldBeNoElementsInGrid', async () => {
@@ -39,7 +39,7 @@ describe('PlaceInGrid', () => {
     const monSprite = new Sprite(0, 0, 5, 3);
     givenGrid.add(monSprite);
 
-    expect(monSprite.Size.Longeur).toBe(5);
+    expect(monSprite.Size.Longueur).toBe(5);
     expect(monSprite.Size.Largeur).toBe(3);
   });
 });

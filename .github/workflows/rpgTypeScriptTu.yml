@@ -2,13 +2,14 @@ name: rpgTypeScriptTu
 
 on:
   push:
-    branches: ["*"]
+    branches: ["features/*", "main"]
     paths:
-      - "TypeScript/**"
+      - "TypeScript/Rpg/**"
+      #- "**"
   pull_request:
     branches: ["main"]
     paths:
-      - "TypeScript/**"
+      - "TypeScript/Rpg/**"
 
 permissions:
   contents: read
@@ -19,7 +20,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [14.x, 16.x, 18.x]
+        node-version: [18.x]
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
@@ -28,8 +29,8 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
-          cache: "npm"
-      - run: cd TypeScript/Rpg
-      - run: npm test
-      - run: npm run build --if-present
-      - run: npm test
+          #cache: "TypeScript/Rpg/package-lock.json"
+      - run: cd TypeScript/Rpg && npm ci
+      - run: cd TypeScript/Rpg && npm test
+      #- run: npm run build --if-present
+      #- run: npm test
