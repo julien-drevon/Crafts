@@ -6,7 +6,7 @@ public class TennisGame
 
     public string ScoreString { get => ComputeScore(); }
 
-    internal void SetPoint(JoueurNumber whichPlayer)
+    public void SetPoint(JoueurNumber whichPlayer)
     {
         var increment = _PlayersPoints[(int)whichPlayer] < 30 ? 15 : 10;
         _PlayersPoints[(int)whichPlayer] += increment;
