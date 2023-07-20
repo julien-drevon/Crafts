@@ -45,12 +45,12 @@ public static class StringExtensions
         string concatString,
         Func<T, string> toString,
         StringBuilder sb,
-        T y)
+        T line)
     {
-        if (toString(y).IsNullOrEmpty())
+        if (toString(line).IsNullOrEmpty())
             return sb;
 
-        var s = sb.Append(toString(y)).Append(concatString);
+        var s = sb.Append(toString(line)).Append(concatString);
         if (addLine)
             s.AppendLine();
         return s;
