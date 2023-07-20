@@ -40,7 +40,7 @@ public class ExempleDriverAdapterShould
 
         var driverResponse = await driverAdapter.DoAnExemple(aRequestForDriverAdapter);
 
-        driverResponse.Should().BeEquivalentTo(CreateMyErrorExpectAssert("La reponse Fournie n'est pas LA réponse", aRequestForDriverAdapter.CorrelationToken));
+        driverResponse.Should().BeEquivalentTo(CreateMyErrorExpectAssert("La reponse Fournie n'est pas LA reponse", aRequestForDriverAdapter.CorrelationToken));
     }
 
     private static ExempleDriverAdapter<ExempleUseCaseResponse> CreateDriverAdapter()
