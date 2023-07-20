@@ -29,9 +29,9 @@ public static class StringExtensions
 
         var retour = me.Aggregate(
             new StringBuilder(),
-            (x, y) =>
+            (sb, line) =>
             {
-                return AppendLineForJoinString(addLine, concatString, toString, x, y);
+                return AppendLineForJoinString(addLine, concatString, toString, sb, line);
             });
 
         var howManyCharToremove = ComputeLengthOfNewLine(addLine);
