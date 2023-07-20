@@ -9,7 +9,7 @@ public class ExempleUseCase : IUseCaseAsync<ExempleUseCaseQuery, ExempleUseCaseR
     {
         if (request.TheResponse != "42")
         {
-            throw new UseCaseExecption("La reponse Fournie n'est pas LA réponse");
+            throw new UseCaseExecption("La reponse Fournie n'est pas LA reponse");
         }
         return Task.FromResult(new ExempleUseCaseResponse(request.CorrelationToken, "42"));
     }
