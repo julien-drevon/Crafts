@@ -1,6 +1,6 @@
-﻿using System.Runtime.Serialization;
-
-namespace ElegantCode.Fundamental.Core;
+﻿using ElegantCode.Fundamental.Core.Errors;
+using System.Runtime.Serialization;
+namespace ElegantCode.Fundamental.Core.Presenter;
 
 public class SimplePresenter<TData> : IPresenter<TData, TData> where TData : class
 {

@@ -1,4 +1,6 @@
-﻿namespace ElegantCode.Fundamental.Core;
+﻿using ElegantCode.Fundamental.Core.Errors;
+
+namespace ElegantCode.Fundamental.Core.Presenter;
 
 public interface IOutPresenter<TDataOut>
 {

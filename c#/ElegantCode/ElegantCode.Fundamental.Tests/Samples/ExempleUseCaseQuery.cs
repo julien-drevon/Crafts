@@ -1,8 +1,11 @@
-﻿namespace ElegantCode.Fundamental.Tests.Samples;
+﻿using ElegantCode.Fundamental.Core.DriverAdapter;
 
-public class ExempleUseCaseQuery
+namespace ElegantCode.Fundamental.Tests.Samples;
+
+public class ExempleUseCaseQuery : UseCaseQueryBase
 {
     public ExempleUseCaseQuery(Guid correlationToken, string theResponse)
+        : base(correlationToken)
     {
         CorrelationToken = correlationToken;
         TheResponse = theResponse;

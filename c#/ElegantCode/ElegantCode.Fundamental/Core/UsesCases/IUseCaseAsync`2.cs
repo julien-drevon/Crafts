@@ -1,4 +1,4 @@
-﻿namespace ElegantCode.Fundamental.Core;
+﻿namespace ElegantCode.Fundamental.Core.UsesCases;
 
 public interface IUseCaseAsync<TQuery, TPresentationData>
 {
