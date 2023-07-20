@@ -6,10 +6,7 @@ namespace ElegantCode.Fundamental.Tests.Samples;
 
 public class ExempleDriverAdapterRequest : IValidateRequest<ExempleUseCaseQuery>
 {
-    public ExempleDriverAdapterRequest(Guid correlationToken)
-    {
-        CorrelationToken = correlationToken;
-    }
+    public ExempleDriverAdapterRequest(Guid correlationToken) { CorrelationToken = correlationToken; }
 
     public Guid CorrelationToken { get; }
 
@@ -17,8 +14,8 @@ public class ExempleDriverAdapterRequest : IValidateRequest<ExempleUseCaseQuery>
 
     public (ExempleUseCaseQuery UseCaseQuery, Error Error) ValidateRequest()
     {
-        return this.ValidationWorkflow(new ExempleUseCaseQuery(CorrelationToken, TheResponse), TheResponse.CreateErrorRule(x => x != "42" && x != "24", "Formatage incorrect"));        //if (this.TheResponse == "42" || this.TheResponse == "24") return (new(CorrelationToken, TheResponse), null);
-
-        //return (null, new Error(CorrelationToken, "Formatage incorrect"));
+        return this.ValidationWorkflow(
+           valueIfIsGood: new ExempleUseCaseQuery(CorrelationToken, TheResponse),
+           prediacateErrors: TheResponse.CreateErrorRule(theResponse => theResponse.Any(c => !Char.IsDigit(c)), "Formatage incorrect"));
     }
 }

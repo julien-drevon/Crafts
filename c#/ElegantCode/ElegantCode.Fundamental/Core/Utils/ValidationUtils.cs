@@ -19,10 +19,10 @@ public static class ValidationUtils
         return testARule(me).CreateErrorRule(error, correlationToken);
     }
 
-    public static (TUseCaseQuery UseCaseQuery, Error Error) ValidationWorkflow<TUseCaseQuery>(this IValidateRequest<TUseCaseQuery> validationModel, TUseCaseQuery valueIfIsGood, params Func<Error>[] predicatesForError)
+    public static (TUseCaseQuery UseCaseQuery, Error Error) ValidationWorkflow<TUseCaseQuery>(this IValidateRequest<TUseCaseQuery> validationModel, TUseCaseQuery valueIfIsGood, params Func<Error>[] prediacateErrors)
             where TUseCaseQuery : class, IUSeCaseQuery
     {
-        var errors = predicatesForError.Select(x => x?.Invoke()).Where(x => x != null);
+        var errors = prediacateErrors.Select(x => x?.Invoke()).Where(x => x != null);
         if (errors.IsAny()) return (null, new Error(validationModel.CorrelationToken, errors));
         return (valueIfIsGood, null);
     }
