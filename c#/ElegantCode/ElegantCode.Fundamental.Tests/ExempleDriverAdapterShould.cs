@@ -15,11 +15,20 @@ namespace ElegantCode.Fundamental.Tests
 
             var driverResponse = await driverAdapter.DoAnExemple(aRequestForDriverAdapter);
 
-            driverResponse.Should().BeEquivalentTo(new
-            {
-                TheResponse = "42",
-                CorrelationToken = aRequestForDriverAdapter.CorrelationToken
-            });
+            driverResponse.Should().BeEquivalentTo(CreateMyExpectAssert(aRequestForDriverAdapter.CorrelationToken, "42", error: null));
+        }
+
+
+        [Fact]
+        public async Task ForElegantCode_INeedToValidateMyRequest_BeforeExecuteUseCase()
+        {
+            ExempleDriverAdapterRequest aRequestForDriverAdapter = CreateDriverRequest("La question");
+
+            var driverAdapter = new ExempleDriverAdapter<ExempleUseCaseResponse>(new SimplePresenter<ExempleUseCaseResponse>());
+
+            var driverResponse = await driverAdapter.DoAnExemple(aRequestForDriverAdapter);
+
+            driverResponse.Should().BeEquivalentTo(CreateMyErrorExpectAssert("Formatage incorrect"));
         }
 
         private static ExempleDriverAdapterRequest CreateDriverRequest(string theResponse)
@@ -29,5 +38,17 @@ namespace ElegantCode.Fundamental.Tests
                 TheResponse = theResponse
             };
         }
+
+        private static (ExempleUseCaseResponse Entity, Error Error) CreateMyErrorExpectAssert(string error)
+        {
+            return new(null, new Error(error));
+        }
+
+        private static (ExempleUseCaseResponse Entity, Error Error) CreateMyExpectAssert(Guid token, string response, string error)
+        {
+            return new(new(token, response), error == null ? null : new Error(error));
+        }
     }
+
+
 }

@@ -2,6 +2,6 @@
 {
     public interface IInPresenter<in TData>
     {
-        void Present(TData data, CancellationToken cancelToken = default);
+        void Present(TData data, Error error, CancellationToken cancelToken = default);
     }
 }

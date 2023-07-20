@@ -1,7 +1,6 @@
-﻿namespace ElegantCode.Fundamental.Core
+﻿namespace ElegantCode.Fundamental.Core;
+
+public interface IOutPresenter<TDataOut>
 {
-    public interface IOutPresenter<TDataOut>
-    {
-        Task<TDataOut> View(CancellationToken cancelToken = default);
-    }
+    Task<(TDataOut Entity, Error Error)> View(CancellationToken cancelToken = default);
 }

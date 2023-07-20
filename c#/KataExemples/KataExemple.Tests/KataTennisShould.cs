@@ -11,25 +11,44 @@ public class KataTennisShould
     public void PlayAGame_Design()
     {
         var givenGame = new TennisGame();
+
         givenGame.ScoreString.Should().BeEquivalentTo("0 0");
+
         givenGame.SetPoint(JoueurNumber.J1);
+
         givenGame.ScoreString.Should().BeEquivalentTo("15 0");
+
         givenGame.SetPoint(JoueurNumber.J2);
+
         givenGame.ScoreString.Should().BeEquivalentTo("15 15");
+
         givenGame.SetPoint(JoueurNumber.J1);
+
         givenGame.ScoreString.Should().BeEquivalentTo("30 15");
+
         givenGame.SetPoint(JoueurNumber.J1);
+
         givenGame.ScoreString.Should().BeEquivalentTo("40 15");
+
         givenGame.SetPoint(JoueurNumber.J2);
         givenGame.SetPoint(JoueurNumber.J2);
+
         givenGame.ScoreString.Should().BeEquivalentTo("EGALITE");
+
         givenGame.SetPoint(JoueurNumber.J2);
+
         givenGame.ScoreString.Should().BeEquivalentTo("AVANTAGE J2");
+
         givenGame.SetPoint(JoueurNumber.J1);
+
         givenGame.ScoreString.Should().BeEquivalentTo("EGALITE");
+
         givenGame.SetPoint(JoueurNumber.J1);
+
         givenGame.ScoreString.Should().BeEquivalentTo("AVANTAGE J1");
+
         givenGame.SetPoint(JoueurNumber.J1);
+
         givenGame.ScoreString.Should().BeEquivalentTo("GAGNANT J1");
     }
 

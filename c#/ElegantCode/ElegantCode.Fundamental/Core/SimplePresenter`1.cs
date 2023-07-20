@@ -1,17 +1,19 @@
 ﻿namespace ElegantCode.Fundamental.Core
 {
-    public class SimplePresenter<TData> : IPresenter<TData, TData>
+    public class SimplePresenter<TData> : IPresenter<TData, TData> where TData : class
     {
-        private TData _Data = default;
+        private TData _Data = null;
+        private Error _Error = null;
 
-        public virtual async Task<TData> View(CancellationToken cancelToken = default)
+        public virtual async Task<(TData Entity, Error Error)> View(CancellationToken cancelToken = default)
         {
-            return await new ValueTask<TData>(_Data);
+            return await Task.FromResult<(TData Entity, Error Error)>(new(_Data, _Error));
         }
 
-        public virtual async void Present(TData data, CancellationToken cancelToken = default)
+        public virtual async void Present(TData data, Error error, CancellationToken cancelToken = default)
         {
             _Data = data;
+            _Error = error;
             await Task.CompletedTask;
         }
     }
