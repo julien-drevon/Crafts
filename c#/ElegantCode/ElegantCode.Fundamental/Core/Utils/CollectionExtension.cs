@@ -2,19 +2,26 @@
 {
     public static class CollectionExtension
     {
-        public static bool IsAny<T>(this IEnumerable<T> li)
+        /// <summary>
+        /// Test si la collection est differente de null et contient au moins un élément
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="collection"></param>
+        /// <returns></returns>
+        public static bool IsAny<T>(this IEnumerable<T> collection, Func<T, bool> predicate = null)
         {
-            return li != null && li.Any();
+            return (collection != null &&
+                     (predicate != null ? collection.Any(predicate) : collection.Any()));
         }
 
         public static void Foreach<T>(this IEnumerable<T> li, Action<T> doIt)
         {
-            if (!li.IsAny())
-                return;
-          
-            foreach(var x in li)
+            if (li.IsAny())
             {
-                doIt(x);
+                foreach (var x in li)
+                {
+                    doIt(x);
+                }
             }
         }
     }

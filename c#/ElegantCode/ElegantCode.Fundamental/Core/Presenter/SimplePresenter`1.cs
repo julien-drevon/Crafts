@@ -12,17 +12,9 @@ public class SimplePresenter<TData> : IPresenter<TData, TData> where TData : cla
         return await Task.FromResult<(TData Entity, Error Error)>(new(_Data, _Error));
     }
 
-    public virtual async void Present(TData data, Error error)
-    {
-        _Data = data;
-        _Error = error;
-        await Task.CompletedTask;
-    }
-
     public void PresentData(TData data)
     {
         _Data = data;
-
     }
 
     public void PresentError(Error error)
