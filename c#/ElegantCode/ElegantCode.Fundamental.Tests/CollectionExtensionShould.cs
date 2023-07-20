@@ -11,7 +11,7 @@ public class CollectionExtensionShould
         IEnumerable<string> li = null;
         li.IsAny(x => x == "a").Should().BeFalse();
 
-        li = new List<string>() { "a", "b" };
+        li = new[] { "a", "b" };
         li.IsAny(x => x == "a").Should().BeTrue();
     }
 

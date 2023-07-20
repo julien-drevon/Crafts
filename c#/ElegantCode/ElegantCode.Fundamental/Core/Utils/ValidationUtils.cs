@@ -8,9 +8,8 @@ public static class ValidationUtils
     public static Func<Error> CreateErrorRule(this bool isItBad, string error, Guid correlationToken = default)
     {
         if (isItBad)
-        {
             return () => new Error(correlationToken, error);
-        }
+
         return null;
     }
 
