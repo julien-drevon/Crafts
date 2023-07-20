@@ -2,7 +2,7 @@
 
 namespace ElegantCode.Fundamental.Tests.Samples;
 
-public class ExempleDriverAdapter<Tout>
+public class ExempleDriverAdapter<Tout> where Tout : class
 {
     private readonly IPresenter<ExempleUseCaseResponse, Tout> _DoExemplePresenter;
 
@@ -13,16 +13,15 @@ public class ExempleDriverAdapter<Tout>
 
     public async Task<(Tout Entity, Error Error)> DoAnExemple(ExempleDriverAdapterRequest aRequestForDriverAdapter, CancellationToken cancellation = default)
     {
-        var query = new ExempleUseCaseQuery() { CorrelationToken = aRequestForDriverAdapter.CorrelationToken, TheResponse = aRequestForDriverAdapter.TheResponse };
-        if (aRequestForDriverAdapter.TheResponse != "42")
-        {
-            _DoExemplePresenter.Present(null, new Error("Formatage incorrect"), cancellation);
+        var validation = aRequestForDriverAdapter.ValidateRequest();
 
-        }
-        else
+        _DoExemplePresenter.PresentError(validation.Error);
+
+        if (validation.Error.IsError() is false)
         {
-            _DoExemplePresenter.Present(await new ExempleUseCase().Execute(query, cancellation), null, cancellation);
+            _DoExemplePresenter.PresentData(await new ExempleUseCase().Execute(validation.UseCaseQuery, cancellation));
         }
+
         return await _DoExemplePresenter.View();
     }
 }

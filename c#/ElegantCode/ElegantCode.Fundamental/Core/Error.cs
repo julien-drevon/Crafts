@@ -1,11 +1,33 @@
-﻿namespace ElegantCode.Fundamental.Core;
+﻿using System.Diagnostics;
+
+namespace ElegantCode.Fundamental.Core;
 
 public class Error
 {
-    private string _Message;
+    public string Message { get; }
 
     public Error(string message)
     {
-        _Message = message;
+        Message = message;
+    }
+
+
+
+
+}
+public static class ErrorExtensions
+{
+
+    public static bool IsError(this Error error)
+    {
+        return error != null || error.Message.IsNullOrEmpty();
+    }
+}
+
+public static class StringExtensions
+{
+    public static bool IsNullOrEmpty(this string me)
+    {
+        return string.IsNullOrEmpty(me);
     }
 }
