@@ -19,9 +19,19 @@ public class ExempleDriverAdapter<Tout> where Tout : class
 
         if (validation.Error.IsError() is false)
         {
-            _DoExemplePresenter.PresentData(await new ExempleUseCase().Execute(validation.UseCaseQuery, cancellation));
+            try
+            {
+                _DoExemplePresenter.PresentData(await new ExempleUseCase().Execute(validation.UseCaseQuery, cancellation));
+            }
+            catch (UseCaseExecption ex)
+            {
+                _DoExemplePresenter.PresentError(new(aRequestForDriverAdapter.CorrelationToken, ex.Message));
+            }
         }
 
+
         return await _DoExemplePresenter.View();
+
     }
 }
+

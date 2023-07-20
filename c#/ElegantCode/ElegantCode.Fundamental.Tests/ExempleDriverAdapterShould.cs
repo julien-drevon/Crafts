@@ -28,8 +28,22 @@ public class ExempleDriverAdapterShould
 
         var driverResponse = await driverAdapter.DoAnExemple(aRequestForDriverAdapter);
 
-        driverResponse.Should().BeEquivalentTo(CreateMyErrorExpectAssert("Formatage incorrect"));
+        driverResponse.Should().BeEquivalentTo(CreateMyErrorExpectAssert("Formatage incorrect", aRequestForDriverAdapter.CorrelationToken));
     }
+
+    [Fact]
+
+    public async Task ForElegantCode_WhenErrorBusinessIsThrow_ThenBePrintASpecificError()
+    {
+        ExempleDriverAdapterRequest aRequestForDriverAdapter = CreateDriverRequest("24");
+
+        var driverAdapter = CreateDriverAdapter();
+
+        var driverResponse = await driverAdapter.DoAnExemple(aRequestForDriverAdapter);
+
+        driverResponse.Should().BeEquivalentTo(CreateMyErrorExpectAssert("La reponse Fournie n'est pas LA réponse", aRequestForDriverAdapter.CorrelationToken));
+    }
+
 
     private static ExempleDriverAdapter<ExempleUseCaseResponse> CreateDriverAdapter()
     {
@@ -44,13 +58,13 @@ public class ExempleDriverAdapterShould
         };
     }
 
-    private static (ExempleUseCaseResponse Entity, Error Error) CreateMyErrorExpectAssert(string error)
+    private static (ExempleUseCaseResponse Entity, Error Error) CreateMyErrorExpectAssert(string error, Guid correlationToken)
     {
-        return new(null, new Error(error));
+        return new(null, new Error(correlationToken, error));
     }
 
     private static (ExempleUseCaseResponse Entity, Error Error) CreateMyExpectAssert(Guid token, string response, string error)
     {
-        return new(new(token, response), error == null ? null : new Error(error));
+        return new(new(token, response), error == null ? null : new Error(token, error));
     }
 }

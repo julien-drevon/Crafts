@@ -6,21 +6,22 @@ public class Error
 {
     public string Message { get; }
 
-    public Error(string message)
+
+    public Guid CorrelationToken { get; }
+
+    public Error(Guid correlationToken, string message)
     {
         Message = message;
+        CorrelationToken = correlationToken;    
     }
-
-
-
-
 }
+
 public static class ErrorExtensions
 {
 
     public static bool IsError(this Error error)
     {
-        return error != null || error.Message.IsNullOrEmpty();
+        return error != null && error.Message.IsNullOrEmpty() is false;
     }
 }
 

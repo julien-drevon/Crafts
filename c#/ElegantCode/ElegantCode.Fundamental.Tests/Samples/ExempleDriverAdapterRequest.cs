@@ -15,8 +15,8 @@ public class ExempleDriverAdapterRequest : IValidateRequest<ExempleUseCaseQuery>
 
     public (ExempleUseCaseQuery UseCaseQuery, Error Error) ValidateRequest()
     {
-        if (this.TheResponse != "42") return new(null, new Error("Formatage incorrect"));
 
-        return new(new(CorrelationToken, TheResponse), null);
+        if (this.TheResponse == "42" || this.TheResponse == "24") return new(new(CorrelationToken, TheResponse), null);
+        return new(null, new Error(CorrelationToken, "Formatage incorrect"));
     }
 }
