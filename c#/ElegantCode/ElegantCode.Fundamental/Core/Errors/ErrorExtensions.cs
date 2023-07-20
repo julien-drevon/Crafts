@@ -1,4 +1,6 @@
-﻿namespace ElegantCode.Fundamental.Core.Errors
+﻿using ElegantCode.Fundamental.Core.Utils;
+
+namespace ElegantCode.Fundamental.Core.Errors
 {
     public static class ErrorExtensions
     {
