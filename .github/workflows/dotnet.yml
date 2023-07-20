@@ -6,10 +6,12 @@ name: Elegant code .net
 on:
   push:
     branches: ["*"]
-
+    # paths:
+    #   - "c#/ElegantCode/**"
   pull_request:
     branches: ["main"]
-
+    # paths:
+    #   - "c#/ElegantCode/**"
 jobs:
   build:
     runs-on: ubuntu-latest
