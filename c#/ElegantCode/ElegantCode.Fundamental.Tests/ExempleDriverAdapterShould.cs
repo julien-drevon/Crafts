@@ -7,7 +7,7 @@ namespace ElegantCode.Fundamental.Tests
     public class ExempleDriverAdapterShould
     {
         [Fact]
-        public async Task ForElegantCode_INeedToDesign_A_WorkflowUseCase()
+        public async Task ForElegantCode_INeedToDesign_AWorkflowUseCase()
         {
             ExempleDriverAdapterRequest aRequestForDriverAdapter = CreateDriverRequest("42");
 
