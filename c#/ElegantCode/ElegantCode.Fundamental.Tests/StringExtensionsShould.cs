@@ -1,12 +1,10 @@
 using ElegantCode.Fundamental.Core.Utils;
 using FluentAssertions;
-using System.Linq;
 
 namespace ElegantCode.Fundamental.Tests;
 
 public class StringExtensionsShould
 {
-
     [Fact]
     public void TestJoinString()
     {

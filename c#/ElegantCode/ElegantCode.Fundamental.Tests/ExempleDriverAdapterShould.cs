@@ -1,7 +1,5 @@
-using ElegantCode.Fundamental.Core;
 using ElegantCode.Fundamental.Core.Errors;
 using ElegantCode.Fundamental.Core.Presenter;
-using ElegantCode.Fundamental.Core.Utils;
 using ElegantCode.Fundamental.Tests.Samples;
 using FluentAssertions;
 
@@ -21,7 +19,6 @@ public class ExempleDriverAdapterShould
         driverResponse.Should().BeEquivalentTo(CreateMyExpectAssert(aRequestForDriverAdapter.CorrelationToken, "42", error: null));
     }
 
-
     [Fact]
     public async Task ForElegantCode_INeedToValidateMyRequest_BeforeExecuteUseCase()
     {
@@ -35,7 +32,6 @@ public class ExempleDriverAdapterShould
     }
 
     [Fact]
-
     public async Task ForElegantCode_WhenErrorBusinessIsThrow_ThenBePrintASpecificError()
     {
         ExempleDriverAdapterRequest aRequestForDriverAdapter = CreateDriverRequest("24");
@@ -64,7 +60,6 @@ public class ExempleDriverAdapterShould
         assert = new Error(token, new[] { new Error(token, "test1"), new Error(token, "test2") });
         assert.Message.Should().BeEquivalentTo("test1" + Environment.NewLine + "test2");
     }
-
 
     private static ExempleDriverAdapter<ExempleUseCaseResponse> CreateDriverAdapter()
     {

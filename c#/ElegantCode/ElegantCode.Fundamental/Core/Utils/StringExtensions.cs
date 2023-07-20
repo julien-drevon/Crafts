@@ -8,6 +8,7 @@ public static class StringExtensions
     {
         return string.IsNullOrEmpty(me);
     }    /// <summary>
+
          /// Joins the string.
          /// </summary>
          /// <typeparam name="T"></typeparam>
@@ -41,5 +42,4 @@ public static class StringExtensions
                                                              .ToString()
                                             : string.Empty;
     }
-
 }

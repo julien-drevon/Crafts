@@ -30,7 +30,6 @@ namespace ElegantCode.Fundamental.Core.DriverAdapter
                 }
             }
 
-
             return await doExemplePresenter.View();
         }
     }

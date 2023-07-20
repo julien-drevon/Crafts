@@ -1,8 +1,8 @@
 using ElegantCode.Fundamental.Core.Utils;
 using FluentAssertions;
-using System.Linq;
 
 namespace ElegantCode.Fundamental.Tests;
+
 public class CollectionExtensionShould
 {
     [Fact]
@@ -12,7 +12,7 @@ public class CollectionExtensionShould
         li.IsAny(x => x == "a").Should().BeFalse();
 
         li = new List<string>() { "a", "b" };
-       li.IsAny(x => x == "a").Should().BeTrue();
+        li.IsAny(x => x == "a").Should().BeTrue();
     }
 
     [Fact]
@@ -20,7 +20,7 @@ public class CollectionExtensionShould
     {
         IEnumerable<int> li = null;
         var expect = 0;
-        li.Foreach(x => expect += x);      
+        li.Foreach(x => expect += x);
         expect.Should().Be(0);
 
         li = new int[0];
@@ -28,10 +28,9 @@ public class CollectionExtensionShould
         li.Foreach(x => expect += x);
         expect.Should().Be(0);
 
-       li = new []{ 1, 2, 3 };
+        li = new[] { 1, 2, 3 };
         expect = 0;
         li.Foreach(x => expect += x);
         expect.Should().Be(6);
     }
-
 }

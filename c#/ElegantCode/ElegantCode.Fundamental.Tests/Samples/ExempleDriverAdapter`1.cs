@@ -1,7 +1,6 @@
 ﻿using ElegantCode.Fundamental.Core.DriverAdapter;
 using ElegantCode.Fundamental.Core.Errors;
 using ElegantCode.Fundamental.Core.Presenter;
-using System.Threading.Tasks;
 
 namespace ElegantCode.Fundamental.Tests.Samples;
 
@@ -19,5 +18,3 @@ public class ExempleDriverAdapter<Tout> where Tout : class
         return await DriverAdapter.CreateUseCaseWorflow(aRequestForDriverAdapter, new ExempleUseCase(), _DoExemplePresenter, cancellation);
     }
 }
-
-
