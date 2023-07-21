@@ -50,10 +50,10 @@ public static class StringExtensions
         if (toString(line).IsNullOrEmpty())
             return sb;
 
-        var s = sb.Append(toString(line)).Append(concatString);
+        var joinStringBuilder = sb.Append(toString(line)).Append(concatString);
         if (addLine)
-            s.AppendLine();
-        return s;
+            joinStringBuilder.AppendLine();
+        return joinStringBuilder;
     }
 
     private static int ComputeLengthOfNewLine(bool addLine)
