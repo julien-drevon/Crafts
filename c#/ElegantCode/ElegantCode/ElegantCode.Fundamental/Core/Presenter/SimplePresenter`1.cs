@@ -19,6 +19,6 @@ public class SimplePresenter<TData> : IPresenter<TData, TData> where TData : cla
 
     public virtual async Task<(TData Entity, Error Error)> View(CancellationToken cancelToken = default)
     {
-        return await Task.FromResult<(TData Entity, Error Error)>(new(_Data, _Error));
+        return await Task.FromResult((_Data, _Error));
     }
 }

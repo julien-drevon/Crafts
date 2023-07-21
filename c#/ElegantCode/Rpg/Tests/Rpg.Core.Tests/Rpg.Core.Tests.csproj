@@ -23,4 +23,9 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\ElegantCode\ElegantCode.Fundamental\ElegantCode.Fundamental.csproj" />
+    <ProjectReference Include="..\..\Rpg.Core\Rpg.Core.csproj" />
+  </ItemGroup>
+
 </Project>
