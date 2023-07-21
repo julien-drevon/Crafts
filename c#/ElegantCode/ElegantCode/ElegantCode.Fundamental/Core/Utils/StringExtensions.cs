@@ -44,13 +44,13 @@ public static class StringExtensions
         bool addLine,
         string concatString,
         Func<T, string> transformToString,
-        StringBuilder sb,
+        StringBuilder stringBuilder,
         T line)
     {
         if (transformToString(line).IsNullOrEmpty())
-            return sb;
+            return stringBuilder;
 
-        var joinStringBuilder = sb.Append(transformToString(line)).Append(concatString);
+        var joinStringBuilder = stringBuilder.Append(transformToString(line)).Append(concatString);
 
         if (addLine)
             joinStringBuilder.AppendLine();
