@@ -13,13 +13,13 @@ namespace ElegantCode.Fundamental.Core.DriverAdapter
             CancellationToken cancellation = default)
             where TUseCaseQuery : IUSeCaseQuery
         {
-            var validation = aRequestForDriverAdapter.ValidateRequest();
+            var validationResult = aRequestForDriverAdapter.ValidateRequest();
 
-            doExemplePresenter.PresentError(validation.Error);
+            doExemplePresenter.PresentError(validationResult.Error);
 
-            if (validation.Error.IsError() is false)
+            if (validationResult.Error.IsError() is false)
             {
-                await ExecuteUseCase(myUseCAse, doExemplePresenter, validation, cancellation);
+                await ExecuteUseCase(myUseCAse, doExemplePresenter, validationResult, cancellation);
             }
 
             return await doExemplePresenter.View();
@@ -28,11 +28,11 @@ namespace ElegantCode.Fundamental.Core.DriverAdapter
         public static async Task ExecuteUseCase<Tout, TUseCaseQuery, TUseCaseResult>(
             IUseCaseAsync<TUseCaseQuery, TUseCaseResult> myUseCAse,
             IPresenter<TUseCaseResult, Tout> doExemplePresenter,
-            (TUseCaseQuery UseCaseQuery, Error Error) validation,
+            (TUseCaseQuery UseCaseQuery, Error Error) validationResult,
             CancellationToken cancellation = default)
             where TUseCaseQuery : IUSeCaseQuery
         {
-            var useCaseQuery = validation.UseCaseQuery;
+            var useCaseQuery = validationResult.UseCaseQuery;
             try
             {
                 doExemplePresenter.PresentData(await myUseCAse.Execute(useCaseQuery, cancellation));
