@@ -4,7 +4,7 @@ namespace ElegantCode.Fundamental.Core.Errors;
 
 public class Error
 {
-    private List<String> _Message = new();
+    private readonly List<String> _Messages = new();
 
     public Error(Guid correlationToken, string message = "")
     {
@@ -20,13 +20,13 @@ public class Error
 
     public Guid CorrelationToken { get; }
 
-    public string Message { get => _Message.JoinString(); }
+    public string Message { get => _Messages.JoinString(); }
 
     public void AddError(string message)
     {
         if (message.IsNullOrEmpty() is false)
         {
-            _Message.Add(message);
+            _Messages.Add(message);
         }
     }
 }
