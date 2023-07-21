@@ -10,6 +10,7 @@ public class ErrorShould
     {
         var token = Guid.NewGuid();
         var assert = new Error(token, "");
+
         assert.CorrelationToken.Should().Be(token);
         assert.Message.Should().BeEmpty();
         assert.IsError().Should().BeFalse();

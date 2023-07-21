@@ -24,7 +24,8 @@ public class StringExtensionsShould
         addLineWithFactoryAssert.Should().Be(expectAddLine);
 
         (new[] { string.Empty, null }).JoinString(false, ",")
-        .Should().BeEmpty();
-        (null as string).JoinString(false, "+").Should().BeEmpty();
+                                      .Should().BeEmpty();
+        (null as string).JoinString(false, "+")
+                        .Should().BeEmpty();
     }
 }
