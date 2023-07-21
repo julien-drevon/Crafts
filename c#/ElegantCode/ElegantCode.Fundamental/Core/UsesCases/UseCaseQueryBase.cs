@@ -1,14 +1,13 @@
 ﻿using ElegantCode.Fundamental.Core.DriverAdapter;
 
-namespace ElegantCode.Fundamental.Core.UsesCases
-{
-    public class UseCaseQueryBase : IUSeCaseQuery
-    {
-        protected UseCaseQueryBase(Guid correlationToken)
-        {
-            CorrelationToken = correlationToken;
-        }
+namespace ElegantCode.Fundamental.Core.UsesCases;
 
-        public Guid CorrelationToken { get; }
+public class UseCaseQueryBase : IUSeCaseQuery
+{
+    protected UseCaseQueryBase(Guid correlationToken)
+    {
+        CorrelationToken = correlationToken;
     }
+
+    public Guid CorrelationToken { get; }
 }
