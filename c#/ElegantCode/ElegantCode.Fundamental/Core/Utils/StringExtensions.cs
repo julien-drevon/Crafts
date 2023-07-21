@@ -51,8 +51,10 @@ public static class StringExtensions
             return sb;
 
         var joinStringBuilder = sb.Append(toString(line)).Append(concatString);
+
         if (addLine)
             joinStringBuilder.AppendLine();
+
         return joinStringBuilder;
     }
 
