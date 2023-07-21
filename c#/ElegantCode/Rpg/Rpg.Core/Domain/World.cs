@@ -16,6 +16,7 @@
         }
 
         public IEnumerable<Sprite> Elements { get => _Elements; }
+
         public Guid Id { get; }
 
         public void AddElement(Sprite sprite)

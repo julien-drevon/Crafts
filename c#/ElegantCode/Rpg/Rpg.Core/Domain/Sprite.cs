@@ -3,8 +3,7 @@
     public class Sprite
     {
         public int X { get; }
+
         public int Y { get; }
     }
-
 }
-

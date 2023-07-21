@@ -8,8 +8,7 @@ namespace Rpg.Core.Drivers
 {
     public class WorldDriver<TWorld>
     {
-
-        IPresenter<WorldUseCaseResponse, TWorld> _CreateWorldPresenter;
+        private IPresenter<WorldUseCaseResponse, TWorld> _CreateWorldPresenter;
 
         public WorldDriver(IPresenter<WorldUseCaseResponse, TWorld> createWorldPresenter)
         {

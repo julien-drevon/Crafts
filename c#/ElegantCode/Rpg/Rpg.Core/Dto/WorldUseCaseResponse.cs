@@ -7,7 +7,6 @@ namespace Rpg.Core.Dto
         public WorldUseCaseResponse(Guid id, Guid correlationId) : base(correlationId)
         {
             Id = id;
-
         }
 
         public Guid Id { get; internal set; }
