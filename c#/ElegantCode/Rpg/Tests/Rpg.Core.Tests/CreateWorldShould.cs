@@ -6,10 +6,10 @@ using Rpg.Core.Dto;
 
 namespace Rpg.Core.Tests;
 
-public class RpgEngine
+public class CreateWorldShould
 {
     [Fact]
-    public void CreateWorld()
+    public void NewWorld()
     {
         var me = new Sprite();
         var worldId = Guid.NewGuid();
@@ -31,7 +31,7 @@ public class RpgEngine
     }
 
     [Fact]
-    public async Task GivenAUser_IWantçCreateAWorld()
+    public async Task GivenAUser_IWantCreateAWorld()
     {
         var worldDriver = new WorldDriver<WorldUseCaseResponse>(CreateAPresenter());
         var worldDriverRequest = new WorldDriverRequest(Guid.NewGuid(), Guid.NewGuid());
@@ -39,8 +39,6 @@ public class RpgEngine
         expect.Entity.Id.Should().Be(worldDriverRequest.Id);
     }
 
-    private static SimplePresenter<WorldUseCaseResponse> CreateAPresenter()
-    {
-        return new SimplePresenter<WorldUseCaseResponse>();
-    }
+    private static SimplePresenter<WorldUseCaseResponse> CreateAPresenter() => new();
+
 }

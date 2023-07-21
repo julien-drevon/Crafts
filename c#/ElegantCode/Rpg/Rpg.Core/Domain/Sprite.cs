@@ -1,6 +1,6 @@
 ﻿namespace Rpg.Core.Domain
 {
-    public class Sprite
+    public class Sprite : ISprite
     {
         public int X { get; }
 
