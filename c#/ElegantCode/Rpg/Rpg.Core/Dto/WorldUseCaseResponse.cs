@@ -4,7 +4,8 @@ namespace Rpg.Core.Dto
 {
     public class WorldUseCaseResponse : UseCaseResponseBase
     {
-        public WorldUseCaseResponse(Guid id, Guid correlationId) : base(correlationId)
+        public WorldUseCaseResponse(Guid id, Guid correlationId)
+            : base(correlationId)
         {
             Id = id;
         }
