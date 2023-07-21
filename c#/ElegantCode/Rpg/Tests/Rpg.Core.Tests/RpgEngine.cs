@@ -1,7 +1,11 @@
 using ElegantCode.Fundamental.Core.DriverAdapter;
 using ElegantCode.Fundamental.Core.Errors;
+using ElegantCode.Fundamental.Core.Presenter;
 using ElegantCode.Fundamental.Core.UsesCases;
 using FluentAssertions;
+using Rpg.Core.Domain;
+using Rpg.Core.Drivers;
+using Rpg.Core.Dto;
 using System.Net.Http.Headers;
 
 namespace Rpg.Core.Tests
@@ -32,88 +36,19 @@ namespace Rpg.Core.Tests
         }
 
         [Fact]
-        public void GivenAUser_IWantçCreateAWorld()
+        public async Task GivenAUser_IWantçCreateAWorld()
         {
-            var worldDriver = new WorldDriver();
-            var worldDriverRequest = new WorldDriverRequest(Guid.NewGuid());
-            var expect = worldDriver.CreateWorld(worldDriverRequest);
-            expect.Id.Should().Be(worldDriverRequest.Id);
-        }
-    }
 
-    public class WorldDriverRequest : IValidateRequest<CreateWorldUseCaseQuery>
-    {
-
-        public WorldDriverRequest(Guid id)
-        {
-            Id = id;
+            var worldDriver = new WorldDriver<WorldUseCaseResponse>(CreateAPresenter());
+            var worldDriverRequest = new WorldDriverRequest(Guid.NewGuid(), Guid.NewGuid());
+            var expect = await worldDriver.CreateWorld(worldDriverRequest);
+            expect.Entity.Id.Should().Be(worldDriverRequest.Id);
         }
 
-        public Guid Id { get; internal set; }
-
-        public Guid CorrelationToken => throw new NotImplementedException();
-
-        public (CreateWorldUseCaseQuery UseCaseQuery, Error Error) ValidateRequest()
+        private static SimplePresenter<WorldUseCaseResponse> CreateAPresenter()
         {
-            throw new NotImplementedException();
+            return new SimplePresenter<WorldUseCaseResponse>();
         }
-    }
-
-    public class CreateWorldUseCaseQuery : IUSeCaseQuery
-    {
-
-        public Guid CorrelationToken { get; }
-    }
-
-    public class WorldDriver
-    {
-        public WorldDriver()
-        {
-        }
-
-        public WorldResponse CreateWorld(WorldDriverRequest worldDriverRequest)
-        {
-            return new WorldResponse(worldDriverRequest.Id);
-        }
-    }
-
-    public class WorldResponse
-    {
-        public WorldResponse(Guid id)
-        {
-            Id = id;
-        }
-
-        public Guid Id { get; internal set; }
-    }
-
-    public class World
-    {
-        private HashSet<Sprite> _Elements = new();
-
-        public World(Guid guid)
-        {
-            this.Id = guid;
-        }
-
-        public World(Guid guid, IEnumerable<Sprite> sprites)
-            : this(guid)
-        {
-            this._Elements = new HashSet<Sprite>(sprites);
-        }
-
-        public IEnumerable<Sprite> Elements { get => this._Elements; }
-        public Guid Id { get; }
-
-        public void AddElement(Sprite sprite)
-        {
-            _Elements.Add(sprite);
-        }
-    }
-
-    public class Sprite
-    {
-        public int X { get; }
-        public int Y { get; }
     }
 }
+
