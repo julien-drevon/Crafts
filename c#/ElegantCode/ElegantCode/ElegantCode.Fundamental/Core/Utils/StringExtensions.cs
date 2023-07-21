@@ -36,7 +36,7 @@ public static class StringExtensions
 
         var howManyCharToremove = ComputeLengthOfNewLine(addLine);
         return (retour != null && retour.Length > 0)
-            ? RemoveLastConcat(concatString, howManyCharToremove, retour)
+            ? ToStringWithRemoveLastConcat(concatString, howManyCharToremove, retour)
             : string.Empty;
     }
 
@@ -61,7 +61,7 @@ public static class StringExtensions
     private static int ComputeLengthOfNewLine(bool addLine)
     { return addLine ? Environment.NewLine.Length : 0; }
 
-    private static string RemoveLastConcat(string concatString, int addLineValue, StringBuilder stringBuilder)
+    private static string ToStringWithRemoveLastConcat(string concatString, int addLineValue, StringBuilder stringBuilder)
     {
         return stringBuilder.Remove(stringBuilder.Length - concatString.Length - addLineValue, concatString.Length + addLineValue)
             .ToString();
