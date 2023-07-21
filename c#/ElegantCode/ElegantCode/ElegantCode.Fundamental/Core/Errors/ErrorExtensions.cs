@@ -1,12 +1,11 @@
 ﻿using ElegantCode.Fundamental.Core.Utils;
 
-namespace ElegantCode.Fundamental.Core.Errors
+namespace ElegantCode.Fundamental.Core.Errors;
+
+public static class ErrorExtensions
 {
-    public static class ErrorExtensions
+    public static bool IsError(this Error error)
     {
-        public static bool IsError(this Error error)
-        {
-            return error != null && error.Message.IsNullOrEmpty() is false;
-        }
+        return error != null && error.Message.IsNullOrEmpty() is false;
     }
 }
