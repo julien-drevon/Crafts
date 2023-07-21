@@ -3,9 +3,19 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.6.33815.320
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ElegantCode.Fundamental", "ElegantCode.Fundamental\ElegantCode.Fundamental.csproj", "{3B520142-AB99-4994-A548-B2F9B971477C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ElegantCode.Fundamental", "ElegantCode.Fundamental\ElegantCode.Fundamental.csproj", "{3B520142-AB99-4994-A548-B2F9B971477C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ElegantCode.Fundamental.Tests", "ElegantCode.Fundamental.Tests\ElegantCode.Fundamental.Tests.csproj", "{892E0C11-0609-4039-B6CB-D0AA5217D445}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ElegantCode.Fundamental.Tests", "ElegantCode.Fundamental.Tests\ElegantCode.Fundamental.Tests.csproj", "{892E0C11-0609-4039-B6CB-D0AA5217D445}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Rpg", "Rpg", "{CF5639AE-821E-4D5D-A2E7-6393BC93E70E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rpg.Core", "Rpg\Rpg.Core\Rpg.Core.csproj", "{30F28FBF-C466-466B-B34E-264CE555B316}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{9259AD48-EA07-4D73-9DE6-2C8B6A43239A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rpg.Core.Tests", "Rpg\Tests\Rpg.Core.Tests\Rpg.Core.Tests.csproj", "{53CF4291-E511-410D-BD9C-6B51F7570843}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{964C481E-7BC7-4572-AA5E-B3197F055D93}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,9 +31,23 @@ Global
 		{892E0C11-0609-4039-B6CB-D0AA5217D445}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{892E0C11-0609-4039-B6CB-D0AA5217D445}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{892E0C11-0609-4039-B6CB-D0AA5217D445}.Release|Any CPU.Build.0 = Release|Any CPU
+		{30F28FBF-C466-466B-B34E-264CE555B316}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{30F28FBF-C466-466B-B34E-264CE555B316}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{30F28FBF-C466-466B-B34E-264CE555B316}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{30F28FBF-C466-466B-B34E-264CE555B316}.Release|Any CPU.Build.0 = Release|Any CPU
+		{53CF4291-E511-410D-BD9C-6B51F7570843}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{53CF4291-E511-410D-BD9C-6B51F7570843}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{53CF4291-E511-410D-BD9C-6B51F7570843}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{53CF4291-E511-410D-BD9C-6B51F7570843}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{892E0C11-0609-4039-B6CB-D0AA5217D445} = {964C481E-7BC7-4572-AA5E-B3197F055D93}
+		{30F28FBF-C466-466B-B34E-264CE555B316} = {CF5639AE-821E-4D5D-A2E7-6393BC93E70E}
+		{9259AD48-EA07-4D73-9DE6-2C8B6A43239A} = {CF5639AE-821E-4D5D-A2E7-6393BC93E70E}
+		{53CF4291-E511-410D-BD9C-6B51F7570843} = {9259AD48-EA07-4D73-9DE6-2C8B6A43239A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {AEB4EC86-2B64-41DE-BCD0-21D8A48BB2A7}
