@@ -64,6 +64,6 @@ public static class StringExtensions
     private static string ToStringWithRemoveLastConcat(string concatString, int addLineValue, StringBuilder stringBuilder)
     {
         return stringBuilder.Remove(stringBuilder.Length - concatString.Length - addLineValue, concatString.Length + addLineValue)
-            .ToString();
+                            .ToString();
     }
 }

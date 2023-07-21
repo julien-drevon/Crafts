@@ -1,6 +1,4 @@
-﻿using ElegantCode.Fundamental.Core.DriverAdapter;
-
-namespace ElegantCode.Fundamental.Core.UsesCases;
+﻿namespace ElegantCode.Fundamental.Core.UsesCases;
 
 public class UseCaseQueryBase : IUSeCaseQuery
 {
