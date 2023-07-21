@@ -8,7 +8,7 @@ public static class StringExtensions
     { return string.IsNullOrEmpty(me); }
 
     /// <summary>
-    /// Joins the string.
+    /// Joins the string with Tostring() ^^ Can use a factory for transform T toString.
     /// </summary>
     /// <typeparam name="T"></typeparam>
     /// <param name="me">la liste de string</param>
@@ -16,7 +16,7 @@ public static class StringExtensions
     /// <param name="addLine">Si ce parametre est à true chaque objet est concaténé à la ligne, sionon à la suite</param>
     /// <param name="concatString">chaine ajouté à la fin de chaque ligne</param>
     /// <returns></returns>
-    public static string JoinString<T>(
+    public static string JoinToString<T>(
         this IEnumerable<T> me,
         bool addLine = true,
         string concatString = "",

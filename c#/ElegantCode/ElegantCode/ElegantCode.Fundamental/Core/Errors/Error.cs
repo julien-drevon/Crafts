@@ -20,7 +20,7 @@ public class Error
 
     public Guid CorrelationToken { get; }
 
-    public string Message { get => _Messages.JoinString(); }
+    public string Message { get => _Messages.JoinToString(); }
 
     public void AddError(string message)
     {
