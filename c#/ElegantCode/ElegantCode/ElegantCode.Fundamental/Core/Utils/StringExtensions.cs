@@ -61,9 +61,9 @@ public static class StringExtensions
     private static int ComputeLengthOfNewLine(bool addLine)
     { return addLine ? Environment.NewLine.Length : 0; }
 
-    private static string RemoveLastConcat(string concatString, int addLineValue, StringBuilder retour)
+    private static string RemoveLastConcat(string concatString, int addLineValue, StringBuilder stringBuilder)
     {
-        return retour.Remove(retour.Length - concatString.Length - addLineValue, concatString.Length + addLineValue)
+        return stringBuilder.Remove(stringBuilder.Length - concatString.Length - addLineValue, concatString.Length + addLineValue)
             .ToString();
     }
 }
