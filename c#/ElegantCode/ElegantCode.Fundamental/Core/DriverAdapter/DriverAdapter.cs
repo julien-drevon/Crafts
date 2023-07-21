@@ -17,7 +17,7 @@ namespace ElegantCode.Fundamental.Core.DriverAdapter
 
             doExemplePresenter.PresentError(validation.Error);
 
-            if(validation.Error.IsError() is false)
+            if (validation.Error.IsError() is false)
             {
                 await ExecuteUseCase(myUseCAse, doExemplePresenter, validation, cancellation);
             }
@@ -29,14 +29,15 @@ namespace ElegantCode.Fundamental.Core.DriverAdapter
             IUseCaseAsync<TUseCaseQuery, TUseCaseResult> myUseCAse,
             IPresenter<TUseCaseResult, Tout> doExemplePresenter,
             (TUseCaseQuery UseCaseQuery, Error Error) validation,
-            CancellationToken cancellation)
+            CancellationToken cancellation = default)
             where TUseCaseQuery : IUSeCaseQuery
         {
             var useCaseQuery = validation.UseCaseQuery;
             try
             {
                 doExemplePresenter.PresentData(await myUseCAse.Execute(useCaseQuery, cancellation));
-            } catch(UseCaseExecption ex)
+            }
+            catch (UseCaseExecption ex)
             {
                 doExemplePresenter.PresentError(new(useCaseQuery.CorrelationToken, ex.Message));
             }
