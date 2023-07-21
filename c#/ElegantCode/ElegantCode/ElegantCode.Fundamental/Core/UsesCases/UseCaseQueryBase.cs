@@ -7,5 +7,5 @@ public class UseCaseQueryBase : IUSeCaseQuery
         CorrelationToken = correlationToken;
     }
 
-    public Guid CorrelationToken { get; }
+    public virtual Guid CorrelationToken { get; }
 }
