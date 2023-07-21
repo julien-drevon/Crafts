@@ -12,7 +12,7 @@ public static class StringExtensions
     /// </summary>
     /// <typeparam name="T"></typeparam>
     /// <param name="me">la liste de string</param>
-    /// <param name="toString">Methode pour convertir un objet T en string</param>
+    /// <param name="transformToString">Methode pour convertir un objet T en string</param>
     /// <param name="addLine">Si ce parametre est à true chaque objet est concaténé à la ligne, sionon à la suite</param>
     /// <param name="concatString">chaine ajouté à la fin de chaque ligne</param>
     /// <returns></returns>
@@ -20,18 +20,18 @@ public static class StringExtensions
         this IEnumerable<T> me,
         bool addLine = true,
         string concatString = "",
-        Func<T, string> toString = null)
+        Func<T, string> transformToString = null)
     {
         if (me == null)
             return string.Empty;
 
-        toString ??= (x => x != null ? x.ToString() : string.Empty);
+        transformToString ??= (x => x != null ? x.ToString() : string.Empty);
 
         var retour = me.Aggregate(
             new StringBuilder(),
             (sb, line) =>
             {
-                return AppendLineForJoinString(addLine, concatString, toString, sb, line);
+                return AppendLineForJoinString(addLine, concatString, transformToString, sb, line);
             });
 
         var howManyCharToremove = ComputeLengthOfNewLine(addLine);
@@ -43,14 +43,14 @@ public static class StringExtensions
     private static StringBuilder AppendLineForJoinString<T>(
         bool addLine,
         string concatString,
-        Func<T, string> toString,
+        Func<T, string> transformToString,
         StringBuilder sb,
         T line)
     {
-        if (toString(line).IsNullOrEmpty())
+        if (transformToString(line).IsNullOrEmpty())
             return sb;
 
-        var joinStringBuilder = sb.Append(toString(line)).Append(concatString);
+        var joinStringBuilder = sb.Append(transformToString(line)).Append(concatString);
 
         if (addLine)
             joinStringBuilder.AppendLine();
