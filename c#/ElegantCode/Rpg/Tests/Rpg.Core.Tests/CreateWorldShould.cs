@@ -1,44 +1,65 @@
-using ElegantCode.Fundamental.Core.Presenter;
-using FluentAssertions;
-using Rpg.Core.Domain;
-using Rpg.Core.Drivers;
-using Rpg.Core.Dto;
+using Rpg.Core.UseCases;
 
 namespace Rpg.Core.Tests;
 
 public class CreateWorldShould
 {
     [Fact]
-    public void NewWorld()
+    public async Task GivenAUser_IWantCreateAWorld()
     {
-        var me = new Sprite();
         var worldId = Guid.NewGuid();
-        var world = new World(worldId);
+        var newWorld = await CreateNewWorldUseCase(worldId);
 
-        world.Id.Should().Be(worldId);
-        world.Elements.Should().BeEmpty();
-
-        world.AddElement(me);
-        world.Elements.Should().HaveCount(1);
-        world.Elements.First().Should().Be(me);
-
-        me.X.Should().Be(0);
-        me.Y.Should().Be(0);
-
-        var secondWorld = new World(worldId, new[] { me });
-
-        secondWorld.Elements.First().Should().Be(me);
+        newWorld.Entity.Id.Should().Be(worldId);
     }
 
     [Fact]
-    public async Task GivenAUser_IWantCreateAWorld()
+    public void NewWorld()
     {
-        var worldDriver = new WorldDriver<WorldUseCaseResponse>(CreateAPresenter());
-        var worldDriverRequest = new WorldDriverRequest(Guid.NewGuid(), Guid.NewGuid());
-        var expect = await worldDriver.CreateWorld(worldDriverRequest);
-        expect.Entity.Id.Should().Be(worldDriverRequest.Id);
+        var meInTheWorld = new Sprite();
+        var worldId = Guid.NewGuid();
+        var firstWorld = new World(worldId);
+
+        firstWorld.Id.Should().Be(worldId);
+        firstWorld.Elements.Should().BeEmpty();
+
+        firstWorld.AddElement(meInTheWorld);
+        firstWorld.Elements.First().Should().Be(meInTheWorld);
+
+        meInTheWorld.X.Should().Be(0);
+        meInTheWorld.Y.Should().Be(0);
+
+        var secondWorld = new World(worldId, new[] { meInTheWorld });
+        secondWorld.Elements.First().Should().Be(meInTheWorld);
     }
 
-    private static SimplePresenter<WorldUseCaseResponse> CreateAPresenter() => new();
+    [Fact]
+    public async Task GivenANewWorld_IWantToAddItems()
+    {
+        var worldId = Guid.NewGuid();
+        await CreateNewWorldUseCase(worldId);
+        var spritesToAdd = new Sprite[] { new(10, 10), new(0, 0) };
+        var world = await WorldDriver.AddItems(new WorldDriverRequest(Guid.NewGuid(), worldId, spritesToAdd));
 
+        world.Entity.Items.Should().BeEquivalentTo(spritesToAdd);
+
+    }
+
+    private new WorldDriver<WorldUseCaseResponse> WorldDriver { get; } = new(CreateAWorldPresenter(),new ProvideWorldForCreateWorldShould() );
+
+    private static SimplePresenter<WorldUseCaseResponse> CreateAWorldPresenter() => new();
+
+    private async Task<(WorldUseCaseResponse Entity, Error Error)> CreateNewWorldUseCase(Guid worldId)
+        => await WorldDriver.CreateWorld(new WorldDriverRequest( Guid.NewGuid(),worldId));
+}
+
+public class ProvideWorldForCreateWorldShould : IProvideTheWorld
+{
+    World _world;
+
+    public async Task<World> CreateWorld(CreateWorldUseCaseQuery createWorldQuery)
+    {
+        _world = new World(createWorldQuery.Id);
+        return _world;
+    }
 }

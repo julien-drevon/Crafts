@@ -1,4 +1,5 @@
 ﻿using ElegantCode.Fundamental.Core.UsesCases;
+using Rpg.Core.Domain;
 
 namespace Rpg.Core.Dto
 {
@@ -10,6 +11,7 @@ namespace Rpg.Core.Dto
             Id = id;
         }
 
-        public Guid Id { get; internal set; }
+        public Guid Id { get;  set; }
+        public IEnumerable<Sprite> Items { get; set; }
     }
 }

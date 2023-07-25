@@ -1,4 +1,4 @@
-using ElegantCode.Fundamental.Core.Errors;
+ using ElegantCode.Fundamental.Core.Errors;
 using ElegantCode.Fundamental.Core.Presenter;
 using ElegantCode.Fundamental.Tests.Samples;
 using FluentAssertions;
