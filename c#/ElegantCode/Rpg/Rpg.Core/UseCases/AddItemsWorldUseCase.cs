@@ -16,7 +16,9 @@ namespace Rpg.Core.UseCases
 
         public async Task<WorldUseCaseResponse> Execute(AddItemsWorldUseCaseQuery request, CancellationToken cancelToken = default)
         {
-            return new WorldUseCaseResponse(request.Id, request.CorrelationToken) { Items = new Sprite[] { new(10, 10), new(0, 0) } };
+            var world =await _WorldProvider.GetWorld(request.CorrelationToken, request.Id);
+            world.AddElement(request.Items);
+            return new WorldUseCaseResponse( request.CorrelationToken, world) ;
         }
     }
 }

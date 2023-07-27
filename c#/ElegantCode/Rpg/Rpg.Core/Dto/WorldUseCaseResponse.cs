@@ -5,13 +5,14 @@ namespace Rpg.Core.Dto
 {
     public class WorldUseCaseResponse : UseCaseResponseBase
     {
-        public WorldUseCaseResponse(Guid id, Guid correlationId)
+        public WorldUseCaseResponse(Guid correlationId, World world)
             : base(correlationId)
         {
-            Id = id;
+            Id = world.Id;
+            Items = world.Elements;
         }
 
-        public Guid Id { get;  set; }
-        public IEnumerable<Sprite> Items { get; set; }
+        public Guid Id { get; }
+        public IEnumerable<ISprite> Items { get; }
     }
 }

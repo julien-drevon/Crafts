@@ -17,8 +17,7 @@ public class CreateWorldUseCase : IUseCaseAsync<CreateWorldUseCaseQuery, WorldUs
 
     public async Task<WorldUseCaseResponse> Execute(CreateWorldUseCaseQuery request, CancellationToken cancelToken = default)
     {
-        var world = await _WorldProvider.CreateWorld(request);
-        return new WorldUseCaseResponse(world.Id, request.CorrelationToken);
+        return new WorldUseCaseResponse(request.CorrelationToken, await _WorldProvider.CreateWorld(request));
     }
 }
 

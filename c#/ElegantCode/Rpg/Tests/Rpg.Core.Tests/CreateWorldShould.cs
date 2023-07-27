@@ -24,7 +24,7 @@ public class CreateWorldShould
         firstWorld.Id.Should().Be(worldId);
         firstWorld.Elements.Should().BeEmpty();
 
-        firstWorld.AddElement(meInTheWorld);
+        firstWorld.AddElement(new[] { meInTheWorld });
         firstWorld.Elements.First().Should().Be(meInTheWorld);
 
         meInTheWorld.X.Should().Be(0);
@@ -46,21 +46,27 @@ public class CreateWorldShould
 
     }
 
-    private new WorldDriver<WorldUseCaseResponse> WorldDriver { get; } = new(CreateAWorldPresenter(),new ProvideWorldForCreateWorldShould() );
+    private WorldDriver<WorldUseCaseResponse> WorldDriver { get; } = new(CreateAWorldPresenter(), new ProvideWorldForCreateWorldShould());
 
     private static SimplePresenter<WorldUseCaseResponse> CreateAWorldPresenter() => new();
 
     private async Task<(WorldUseCaseResponse Entity, Error Error)> CreateNewWorldUseCase(Guid worldId)
-        => await WorldDriver.CreateWorld(new CreateWorldDriverRequest( Guid.NewGuid(),worldId));
+        => await WorldDriver.CreateWorld(new CreateWorldDriverRequest(Guid.NewGuid(), worldId));
 }
 
 public class ProvideWorldForCreateWorldShould : IProvideTheWorld
 {
     World _world;
 
-    public async Task<World> CreateWorld(CreateWorldUseCaseQuery createWorldQuery)
+    public Task<World> CreateWorld(CreateWorldUseCaseQuery createWorldQuery)
     {
         _world = new World(createWorldQuery.Id);
-        return _world;
+        return Task.FromResult(_world);
+
+    }
+
+    public Task<World> GetWorld(Guid correlationToken, Guid worldId)
+    {
+        return Task.FromResult(_world);
     }
 }

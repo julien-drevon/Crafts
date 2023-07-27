@@ -1,4 +1,6 @@
-﻿namespace Rpg.Core.Domain
+﻿using ElegantCode.Fundamental.Core.Utils;
+
+namespace Rpg.Core.Domain
 {
     public class World
     {
@@ -19,9 +21,9 @@
 
         public Guid Id { get; }
 
-        public void AddElement(ISprite sprite)
+        public void AddElement(IEnumerable<ISprite> sprite)
         {
-            _Elements.Add(sprite);
+            sprite.Foreach(x => _Elements.Add(x));
         }
     }
 }

@@ -6,5 +6,7 @@ namespace Rpg.Core.Providers
     public interface IProvideTheWorld
     {
         Task<World> CreateWorld(CreateWorldUseCaseQuery createWorldQuery);
+
+        Task<World> GetWorld(Guid correlationToken, Guid worldId);
     }
 }
