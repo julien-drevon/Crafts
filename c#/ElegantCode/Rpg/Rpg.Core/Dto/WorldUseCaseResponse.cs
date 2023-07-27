@@ -1,14 +1,18 @@
 ﻿using ElegantCode.Fundamental.Core.UsesCases;
+using Rpg.Core.Domain;
 
 namespace Rpg.Core.Dto
 {
     public class WorldUseCaseResponse : UseCaseResponseBase
     {
-        public WorldUseCaseResponse(Guid id, Guid correlationId) : base(correlationId)
+        public WorldUseCaseResponse(Guid correlationId, World world)
+            : base(correlationId)
         {
-            Id = id;
+            Id = world.Id;
+            Items = world.Elements;
         }
 
-        public Guid Id { get; internal set; }
+        public Guid Id { get; }
+        public IEnumerable<ISprite> Items { get; }
     }
 }

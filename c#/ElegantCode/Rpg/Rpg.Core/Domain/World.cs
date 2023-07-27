@@ -1,27 +1,29 @@
-﻿namespace Rpg.Core.Domain
+﻿using ElegantCode.Fundamental.Core.Utils;
+
+namespace Rpg.Core.Domain
 {
     public class World
     {
-        private HashSet<Sprite> _Elements = new();
+        private HashSet<ISprite> _Elements = new();
 
         public World(Guid guid)
         {
             Id = guid;
         }
 
-        public World(Guid guid, IEnumerable<Sprite> sprites)
+        public World(Guid guid, IEnumerable<ISprite> sprites)
             : this(guid)
         {
-            _Elements = new HashSet<Sprite>(sprites);
+            _Elements = new HashSet<ISprite>(sprites);
         }
 
-        public IEnumerable<Sprite> Elements { get => _Elements; }
+        public IEnumerable<ISprite> Elements { get => _Elements; }
 
         public Guid Id { get; }
 
-        public void AddElement(Sprite sprite)
+        public void AddElement(IEnumerable<ISprite> sprite)
         {
-            _Elements.Add(sprite);
+            sprite.Foreach(x => _Elements.Add(x));
         }
     }
 }

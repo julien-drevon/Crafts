@@ -7,12 +7,12 @@ public class SimplePresenter<TData> : IPresenter<TData, TData> where TData : cla
     private TData _Data = null;
     private Error _Error = null;
 
-    public void PresentData(TData data)
+    public virtual void PresentData(TData data)
     {
         _Data = data;
     }
 
-    public void PresentError(Error error)
+    public virtual void PresentError(Error error)
     {
         _Error = error;
     }
