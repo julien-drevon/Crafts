@@ -1,6 +1,7 @@
 ﻿using ElegantCode.Fundamental.Core.DriverAdapter;
 using ElegantCode.Fundamental.Core.Errors;
 using ElegantCode.Fundamental.Core.UsesCases;
+using ElegantCode.Fundamental.Core.Utils;
 using Rpg.Core.Domain;
 using Rpg.Core.UseCases.Query;
 
@@ -18,7 +19,8 @@ public class CreateWorldDriverRequest : IValidateRequest<CreateWorldUseCaseQuery
     public Guid Id { get; internal set; }
 
 
-    (CreateWorldUseCaseQuery UseCaseQuery, Error Error) IValidateRequest<CreateWorldUseCaseQuery>.ValidateRequest()
-     => (new CreateWorldUseCaseQuery(CorrelationToken, Id), null);
+    public (CreateWorldUseCaseQuery UseCaseQuery, Error Error) ValidateRequest()
+     => this.ValidationWorkflow(valueIfIsGood: new CreateWorldUseCaseQuery(CorrelationToken, Id));
+
 
 }

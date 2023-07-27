@@ -1,8 +1,6 @@
 ﻿using ElegantCode.Fundamental.Core.DriverAdapter;
 using ElegantCode.Fundamental.Core.Errors;
 using ElegantCode.Fundamental.Core.Presenter;
-using ElegantCode.Fundamental.Core.UsesCases;
-using Rpg.Core.Domain;
 using Rpg.Core.Dto;
 using Rpg.Core.Providers;
 using Rpg.Core.UseCases;
@@ -22,14 +20,16 @@ public class WorldDriver<TWorld>
 
     public async Task<(TWorld Entity, Error Error)> AddItems(AddItemsDriverRequest worldDriverRequest, CancellationToken cancellation = default)
     {
-
-        _WorldPresenter.PresentData(new WorldUseCaseResponse(worldDriverRequest.Id, worldDriverRequest.CorrelationToken) { Items = new Sprite[] { new(10, 10), new(0, 0) } });
-        return await _WorldPresenter.View();
+        return await DriverAdapter.CreateUseCaseWorflow(
+            worldDriverRequest,
+            new AddItemsWorldUseCase(_WorldProvider),
+            _WorldPresenter,
+            cancellation);
     }
 
     public async Task<(TWorld Entity, Error Error)> CreateWorld(
-        CreateWorldDriverRequest worldDriverRequest,
-        CancellationToken cancellation = default)
+            CreateWorldDriverRequest worldDriverRequest,
+            CancellationToken cancellation = default)
     {
         return await DriverAdapter.CreateUseCaseWorflow(
             worldDriverRequest,
