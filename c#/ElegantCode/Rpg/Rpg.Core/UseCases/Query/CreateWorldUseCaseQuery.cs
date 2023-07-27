@@ -1,10 +1,10 @@
 ﻿using ElegantCode.Fundamental.Core.UsesCases;
 
-namespace Rpg.Core.Dto
+namespace Rpg.Core.UseCases.Query
 {
     public class CreateWorldUseCaseQuery : UseCaseQueryBase
     {
-        public CreateWorldUseCaseQuery(Guid id, Guid correlationToken)
+        public CreateWorldUseCaseQuery( Guid correlationToken,Guid id)
             : base(correlationToken)
         {
             Id = id;

@@ -1,4 +1,5 @@
-using Rpg.Core.UseCases;
+using Rpg.Core.Providers;
+using Rpg.Core.UseCases.Query;
 
 namespace Rpg.Core.Tests;
 
@@ -39,7 +40,7 @@ public class CreateWorldShould
         var worldId = Guid.NewGuid();
         await CreateNewWorldUseCase(worldId);
         var spritesToAdd = new Sprite[] { new(10, 10), new(0, 0) };
-        var world = await WorldDriver.AddItems(new WorldDriverRequest(Guid.NewGuid(), worldId, spritesToAdd));
+        var world = await WorldDriver.AddItems(new AddItemsDriverRequest(Guid.NewGuid(), worldId, spritesToAdd));
 
         world.Entity.Items.Should().BeEquivalentTo(spritesToAdd);
 
@@ -50,7 +51,7 @@ public class CreateWorldShould
     private static SimplePresenter<WorldUseCaseResponse> CreateAWorldPresenter() => new();
 
     private async Task<(WorldUseCaseResponse Entity, Error Error)> CreateNewWorldUseCase(Guid worldId)
-        => await WorldDriver.CreateWorld(new WorldDriverRequest( Guid.NewGuid(),worldId));
+        => await WorldDriver.CreateWorld(new CreateWorldDriverRequest( Guid.NewGuid(),worldId));
 }
 
 public class ProvideWorldForCreateWorldShould : IProvideTheWorld

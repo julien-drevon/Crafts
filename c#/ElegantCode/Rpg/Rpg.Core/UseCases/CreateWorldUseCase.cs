@@ -1,6 +1,8 @@
 ﻿using ElegantCode.Fundamental.Core.UsesCases;
 using Rpg.Core.Domain;
 using Rpg.Core.Dto;
+using Rpg.Core.Providers;
+using Rpg.Core.UseCases.Query;
 
 namespace Rpg.Core.UseCases;
 
@@ -18,9 +20,4 @@ public class CreateWorldUseCase : IUseCaseAsync<CreateWorldUseCaseQuery, WorldUs
         var world = await worldProvider.CreateWorld(request);
         return new WorldUseCaseResponse(world.Id, request.CorrelationToken);
     }
-}
-
-public interface IProvideTheWorld
-{
-    Task<World> CreateWorld(CreateWorldUseCaseQuery createWorldQuery);
 }
