@@ -4,6 +4,11 @@ namespace Rpg.Core.Tests;
 
 public class CreateWorldShould
 {
+    public CreateWorldShould()
+    {
+        WorldDriver = new(CreateAWorldPresenter(), new ProvideWorldForCreateWorldFake(), new CreateItemsForCreateWorldFake());
+    }
+
     [Fact]
     public async Task GivenAUser_IWantCreateAWorld()
     {
@@ -44,10 +49,10 @@ public class CreateWorldShould
         world.Entity.Items.Should().BeEquivalentTo(spritesToAdd);
     }
 
-    private WorldDriver<WorldUseCaseResponse> WorldDriver { get; } = new(CreateAWorldPresenter(), new ProvideWorldForCreateWorldFake());
+    private WorldDriver<WorldUseCaseResponse> WorldDriver { get; }
 
     private static SimplePresenter<WorldUseCaseResponse> CreateAWorldPresenter() => new();
 
-    private async Task<(WorldUseCaseResponse Entity, Error Error)> CreateNewWorldUseCase(Guid worldId)
-        => await WorldDriver.CreateWorld(new CreateWorldDriverRequest(Guid.NewGuid(), worldId));
+    private async Task<(WorldUseCaseResponse Entity, Error Error)> CreateNewWorldUseCase(Guid worldId) => await WorldDriver.CreateWorld(
+        new CreateWorldDriverRequest(Guid.NewGuid(), worldId));
 }
