@@ -9,8 +9,8 @@ namespace Rpg.Core.Drivers;
 
 public class WorldDriver<TWorld>
 {
-    private readonly IProvideTheWorld _WorldProvider;
     private readonly IPresenter<WorldUseCaseResponse, TWorld> _WorldPresenter;
+    private readonly IProvideTheWorld _WorldProvider;
 
     public WorldDriver(IPresenter<WorldUseCaseResponse, TWorld> createWorldPresenter, IProvideTheWorld worldProvider)
     {
@@ -38,4 +38,3 @@ public class WorldDriver<TWorld>
             cancellation);
     }
 }
-

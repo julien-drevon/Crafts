@@ -1,5 +1,4 @@
 ﻿using ElegantCode.Fundamental.Core.UsesCases;
-using Rpg.Core.Domain;
 using Rpg.Core.Dto;
 using Rpg.Core.Providers;
 using Rpg.Core.UseCases.Query;
@@ -20,4 +19,3 @@ public class CreateWorldUseCase : IUseCaseAsync<CreateWorldUseCaseQuery, WorldUs
         return new WorldUseCaseResponse(request.CorrelationToken, await _WorldProvider.CreateWorld(request));
     }
 }
-
