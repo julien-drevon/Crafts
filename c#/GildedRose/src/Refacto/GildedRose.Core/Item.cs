@@ -2,34 +2,36 @@
 
 public abstract class Item : IUpdateQualityItem
 {
-    private int sellIn;
-    private int quality;
+    private int _SellIn;
+    private int _Quality;
 
-    protected Item(string name, int sellIn, int quantity)
+    protected Item(string name, int sellIn, int quality)
     {
         Name = name;
         SellIn = sellIn;
-        Quality = quantity;
+        Quality = quality;
     }
 
     public virtual string Name { get; set; }
 
     public virtual int SellIn
     {
-        get => sellIn;
+        get => _SellIn;
+
         set
         {
             if (value > -1)
-            { sellIn = value; }
+            { _SellIn = value; }
         }
     }
 
     public virtual int Quality
     {
-        get => quality; set
+        get => _Quality; set
+
         {
             if (value > -1)
-            { quality = value; }
+            { _Quality = value; }
         }
     }
 
@@ -40,6 +42,7 @@ public abstract class Item : IUpdateQualityItem
         if (Quality < 50)
             Quality++;
     }
+
     protected void DecreaseQuality()
     {
         Quality--;

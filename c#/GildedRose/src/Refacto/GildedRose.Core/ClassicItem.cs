@@ -12,6 +12,4 @@ public class ClassicItem : Item
         DecreaseQuality();
         DecreaseSellin();
     }
-
-
 }

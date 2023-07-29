@@ -32,6 +32,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GildedRose.Core", "src\Refa
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GildedRose.Core.Test", "src\Refacto\GildedRose.Core.Test\GildedRose.Core.Test.csproj", "{7FDA7CA9-DEBA-40D6-B31A-55F4CC09CB2C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GuildedRose.RefactoConsole", "src\Refacto\GuildedRose.RefactoConsole\GuildedRose.RefactoConsole.csproj", "{8B67DDFA-2414-4C62-8113-55D55CB6A902}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -50,6 +52,10 @@ Global
 		{7FDA7CA9-DEBA-40D6-B31A-55F4CC09CB2C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7FDA7CA9-DEBA-40D6-B31A-55F4CC09CB2C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7FDA7CA9-DEBA-40D6-B31A-55F4CC09CB2C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8B67DDFA-2414-4C62-8113-55D55CB6A902}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8B67DDFA-2414-4C62-8113-55D55CB6A902}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8B67DDFA-2414-4C62-8113-55D55CB6A902}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8B67DDFA-2414-4C62-8113-55D55CB6A902}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -58,6 +64,7 @@ Global
 		{F2E879A9-7F1C-4C34-AB0D-2662F9815046} = {D67838A3-9724-4B30-B164-C23B12E1AC6B}
 		{B9D45C83-4496-4FDF-B03D-07295EB2A373} = {51B98171-1094-45F9-B48F-9F3402E8AABF}
 		{7FDA7CA9-DEBA-40D6-B31A-55F4CC09CB2C} = {51B98171-1094-45F9-B48F-9F3402E8AABF}
+		{8B67DDFA-2414-4C62-8113-55D55CB6A902} = {51B98171-1094-45F9-B48F-9F3402E8AABF}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {7292CD95-957F-44C2-A876-5B1067F0B8CC}
