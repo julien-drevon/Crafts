@@ -13,6 +13,7 @@ namespace Rpg.Core.Dto
         }
 
         public Guid Id { get; }
+
         public IEnumerable<ISprite> Items { get; }
     }
 }

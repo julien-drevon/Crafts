@@ -3,6 +3,7 @@
     public interface ISprite
     {
         int X { get; }
+
         int Y { get; }
     }
 }

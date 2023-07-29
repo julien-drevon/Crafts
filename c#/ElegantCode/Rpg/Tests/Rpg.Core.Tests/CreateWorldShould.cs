@@ -1,10 +1,14 @@
-using Rpg.Core.Providers;
-using Rpg.Core.UseCases.Query;
+using Rpg.Core.Tests.Fakes;
 
 namespace Rpg.Core.Tests;
 
 public class CreateWorldShould
 {
+    public CreateWorldShould()
+    {
+        WorldDriver = new(CreateAWorldPresenter(), new ProvideWorldForCreateWorldFake(), new CreateItemsForCreateWorldFake());
+    }
+
     [Fact]
     public async Task GivenAUser_IWantCreateAWorld()
     {
@@ -43,30 +47,12 @@ public class CreateWorldShould
         var world = await WorldDriver.AddItems(new AddItemsDriverRequest(Guid.NewGuid(), worldId, spritesToAdd));
 
         world.Entity.Items.Should().BeEquivalentTo(spritesToAdd);
-
     }
 
-    private WorldDriver<WorldUseCaseResponse> WorldDriver { get; } = new(CreateAWorldPresenter(), new ProvideWorldForCreateWorldShould());
+    private WorldDriver<WorldUseCaseResponse> WorldDriver { get; }
 
     private static SimplePresenter<WorldUseCaseResponse> CreateAWorldPresenter() => new();
 
-    private async Task<(WorldUseCaseResponse Entity, Error Error)> CreateNewWorldUseCase(Guid worldId)
-        => await WorldDriver.CreateWorld(new CreateWorldDriverRequest(Guid.NewGuid(), worldId));
-}
-
-public class ProvideWorldForCreateWorldShould : IProvideTheWorld
-{
-    World _world;
-
-    public Task<World> CreateWorld(CreateWorldUseCaseQuery createWorldQuery)
-    {
-        _world = new World(createWorldQuery.Id);
-        return Task.FromResult(_world);
-
-    }
-
-    public Task<World> GetWorld(Guid correlationToken, Guid worldId)
-    {
-        return Task.FromResult(_world);
-    }
+    private async Task<(WorldUseCaseResponse Entity, Error Error)> CreateNewWorldUseCase(Guid worldId) => await WorldDriver.CreateWorld(
+        new CreateWorldDriverRequest(Guid.NewGuid(), worldId));
 }
