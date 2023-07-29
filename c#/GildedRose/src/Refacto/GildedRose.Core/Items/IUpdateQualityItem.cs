@@ -7,6 +7,7 @@
         int Quality { get; }
 
         int SellIn { get; }
+
         void UpdateQuality(UpdateQualityParameters qualityParameters);
     }
 }
