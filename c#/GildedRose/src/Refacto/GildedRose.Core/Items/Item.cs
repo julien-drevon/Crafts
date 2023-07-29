@@ -42,9 +42,9 @@ public abstract class Item : IUpdateQualityItem
         Quality--;
     }
 
-    protected int DecreaseSellin()
+    protected void DecreaseSellin()
     {
-        return SellIn--;
+        SellIn--;
     }
 
     protected void IncreaseQuality()
