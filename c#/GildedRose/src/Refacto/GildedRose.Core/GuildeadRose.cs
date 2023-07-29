@@ -1,18 +1,20 @@
-﻿namespace GildedRose.Core;
+﻿using GildedRose.Core.Items;
+
+namespace GildedRose.Core;
 
 public class GuildeadRose
 {
-    private List<Item> _Items;
-    private UpdateQualityParameters _QualityParameters;
+    private List<IUpdateQualityItem> _Items;
+    private UpdateQualityParameters _QualityParameters = new UpdateQualityParameters();
 
-    public GuildeadRose(IEnumerable<Item> items)
+    public GuildeadRose(IEnumerable<IUpdateQualityItem> items = null)
     {
-        _Items = items.ToList();
+        _Items = items?.ToList() ?? new List<IUpdateQualityItem>();
     }
 
-    public IEnumerable<Item> Items { get => _Items; }
+    public IEnumerable<IUpdateQualityItem> Items { get => _Items; }
 
-    internal void AddItem(Item item)
+    public void AddItem(IUpdateQualityItem item)
     {
         _Items.Add(item);
     }

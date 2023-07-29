@@ -1,4 +1,4 @@
-﻿namespace GildedRose.Core;
+﻿namespace GildedRose.Core.Items;
 
 public enum ItemsName
 {

@@ -1,9 +1,9 @@
-﻿namespace GildedRose.Core;
+﻿namespace GildedRose.Core.Items;
 
 public abstract class Item : IUpdateQualityItem
 {
-    private int _SellIn;
     private int _Quality;
+    private int _SellIn;
 
     protected Item(string name, int sellIn, int quality)
     {
@@ -13,6 +13,16 @@ public abstract class Item : IUpdateQualityItem
     }
 
     public virtual string Name { get; set; }
+
+    public virtual int Quality
+    {
+        get => _Quality; set
+
+        {
+            if (value > -1)
+            { _Quality = value; }
+        }
+    }
 
     public virtual int SellIn
     {
@@ -25,23 +35,7 @@ public abstract class Item : IUpdateQualityItem
         }
     }
 
-    public virtual int Quality
-    {
-        get => _Quality; set
-
-        {
-            if (value > -1)
-            { _Quality = value; }
-        }
-    }
-
     public abstract void UpdateQuality(UpdateQualityParameters qualityParameters);
-
-    protected void IncreaseQuality()
-    {
-        if (Quality < 50)
-            Quality++;
-    }
 
     protected void DecreaseQuality()
     {
@@ -51,5 +45,11 @@ public abstract class Item : IUpdateQualityItem
     protected int DecreaseSellin()
     {
         return SellIn--;
+    }
+
+    protected void IncreaseQuality()
+    {
+        if (Quality < 50)
+            Quality++;
     }
 }

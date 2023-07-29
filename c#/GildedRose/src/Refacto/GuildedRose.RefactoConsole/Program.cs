@@ -1,5 +1,6 @@
 ﻿// See https://aka.ms/new-console-template for more information
 using GildedRose.Core;
+using GildedRose.Core.Items;
 
 Console.WriteLine("OMGHAI!");
 
