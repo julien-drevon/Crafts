@@ -32,6 +32,24 @@ public class UnitTest1
 
         guildedRose.Items.Should().BeEquivalentTo(new[] { new ClassicItem(name: "Aged Brie", sellIn: 1, quality: 1) });
     }
+    [Fact]
+    public void GivenAPlayer_WhenIPlaceAgedBrie_ShouldTheirQualityNeverExceed50()
+    {
+
+        var guildedRose = new GuildeadRose(new[] { CreateItem(ItemsName.AgedBrie, 2, 50) });
+        guildedRose.UpdateQuality();
+
+        guildedRose.Items.Should().BeEquivalentTo(new[] { new ClassicItem(name: "Aged Brie", sellIn: 1, quality: 50) });
+    }
+    [Fact]
+    public void GivenAPlayer_WhenIPlaceObjectAt0_ShouldNeverDecreaseUnder0()
+    {
+
+        var guildedRose = new GuildeadRose(new[] { CreateItem(ItemsName.Plus5DexterityVest, 0, 0) });
+        guildedRose.UpdateQuality();
+
+        guildedRose.Items.Should().BeEquivalentTo(new[] { new ClassicItem(name: "+5 Dexterity Vest", sellIn: 0, quality: 0) });
+    }
 
     private Item CreateItem(ItemsName itemsName, int sellin, int quality)
     {
