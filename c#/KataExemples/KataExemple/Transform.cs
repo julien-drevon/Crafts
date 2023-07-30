@@ -47,11 +47,8 @@ public static class Transform
 
     private static string PrintAfterSigne(int coef, int actualDegree, string ret)
     {
-        if (coef != 1 || actualDegree == 0)
+        if (Math.Abs(coef) != 1 || actualDegree == 0)
         {
-            if (Math.Abs(coef) == 1 && actualDegree != 0)
-                return ret;
-
             ret += Math.Abs(coef).ToString();
         }
 
@@ -77,8 +74,11 @@ public static class Transform
 
     private static string PrintMaxDegreeEqualActual(int coef)
     {
-        if (Math.Abs(coef) == 1)
-            return coef == -1 ? "-" : string.Empty;
+        if (coef == 1)
+            return string.Empty;
+        if (coef == -1)
+            return "-";
+
         return coef.ToString();
     }
 
