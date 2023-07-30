@@ -13,6 +13,12 @@ public class CollectionExtensionShould
 
         li = new[] { "a", "b" };
         li.IsAny(x => x == "a").Should().BeTrue();
+
+        li = new string[0];
+        li.IsAny().Should().BeFalse();
+
+        li = new string[] { "1" };
+        li.IsAny().Should().BeTrue();
     }
 
     [Fact]

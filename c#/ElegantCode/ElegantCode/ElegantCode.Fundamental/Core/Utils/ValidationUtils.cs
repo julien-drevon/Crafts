@@ -1,6 +1,5 @@
 ﻿using ElegantCode.Fundamental.Core.DriverAdapter;
 using ElegantCode.Fundamental.Core.Errors;
-using ElegantCode.Fundamental.Core.UsesCases;
 
 namespace ElegantCode.Fundamental.Core.Utils;
 
@@ -20,7 +19,7 @@ public static class ValidationUtils
     }
 
     public static (TUseCaseQuery UseCaseQuery, Error Error) ValidationWorkflow<TUseCaseQuery>(this IValidateRequest<TUseCaseQuery> validationModel, TUseCaseQuery valueIfIsGood, params Func<Error>[] prediacateErrors)
-            where TUseCaseQuery : class, IUSeCaseQuery
+            where TUseCaseQuery : class, IGotCorrelationToken
     {
         var errors = prediacateErrors.Select(x => x?.Invoke()).Where(x => x != null);
         if (errors.IsAny()) return (null, new Error(validationModel.CorrelationToken, errors));

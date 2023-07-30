@@ -19,7 +19,7 @@ public class StringExtensionsShould
         var addLineAssert = myListOfString.JoinToString(true, ",");
         var addLineWithFactoryAssert = new[] { 0, 1, 2, 3, 4, 5 }.JoinToString(true, ",", x => (x + 1).ToString());
         var expectAddLine = @"1," + Environment.NewLine + "2," + Environment.NewLine + "3," + Environment.NewLine + "4," + Environment.NewLine + "5," + Environment.NewLine + "6";
-       
+
         addLineAssert.Should().Be(expectAddLine);
         addLineWithFactoryAssert.Should().Be(expectAddLine);
 

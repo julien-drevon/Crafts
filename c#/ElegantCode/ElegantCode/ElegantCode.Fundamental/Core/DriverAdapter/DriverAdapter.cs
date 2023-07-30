@@ -1,6 +1,7 @@
 ﻿using ElegantCode.Fundamental.Core.Errors;
 using ElegantCode.Fundamental.Core.Presenter;
 using ElegantCode.Fundamental.Core.UsesCases;
+using ElegantCode.Fundamental.Core.Utils;
 
 namespace ElegantCode.Fundamental.Core.DriverAdapter
 {
@@ -11,7 +12,7 @@ namespace ElegantCode.Fundamental.Core.DriverAdapter
             IUseCaseAsync<TUseCaseQuery, TUseCaseResult> myUseCAse,
             IPresenter<TUseCaseResult, Tout> doExemplePresenter,
             CancellationToken cancellation = default)
-            where TUseCaseQuery : IUSeCaseQuery
+            where TUseCaseQuery : IGotCorrelationToken
         {
             var validationResult = aRequestForDriverAdapter.ValidateRequest();
 
@@ -30,7 +31,7 @@ namespace ElegantCode.Fundamental.Core.DriverAdapter
             IPresenter<TUseCaseResult, Tout> doExemplePresenter,
             (TUseCaseQuery UseCaseQuery, Error Error) validationResult,
             CancellationToken cancellation = default)
-            where TUseCaseQuery : IUSeCaseQuery
+            where TUseCaseQuery : IGotCorrelationToken
         {
             var useCaseQuery = validationResult.UseCaseQuery;
             try

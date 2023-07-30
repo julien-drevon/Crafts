@@ -1,6 +1,8 @@
-﻿namespace ElegantCode.Fundamental.Core.UsesCases;
+﻿using ElegantCode.Fundamental.Core.Utils;
 
-public class UseCaseQueryBase : IUSeCaseQuery
+namespace ElegantCode.Fundamental.Core.UsesCases;
+
+public class UseCaseQueryBase : IGotCorrelationToken
 {
     protected UseCaseQueryBase(Guid correlationToken)
     {

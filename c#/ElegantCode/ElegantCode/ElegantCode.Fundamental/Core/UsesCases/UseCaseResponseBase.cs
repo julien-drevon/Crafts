@@ -1,12 +1,14 @@
-﻿namespace ElegantCode.Fundamental.Core.UsesCases
+﻿using ElegantCode.Fundamental.Core.Utils;
+
+namespace ElegantCode.Fundamental.Core.UsesCases
 {
-    public class UseCaseResponseBase
+    public class UseCaseResponseBase //: IGotCorrelationToken
     {
         public UseCaseResponseBase(Guid correlationToken)
         {
-            CorrelationToken = correlationToken;
+            //CorrelationToken = correlationToken;
         }
-        public virtual Guid CorrelationToken { get; }
 
+        //public virtual Guid CorrelationToken { get; }
     }
 }

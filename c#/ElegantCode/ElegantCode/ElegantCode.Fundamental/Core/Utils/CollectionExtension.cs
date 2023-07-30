@@ -13,6 +13,29 @@ public static class CollectionExtension
         }
     }
 
+    /// <summary> Effectue la pagination d'un IEnumerable<T> suivant le nulmero de page
+    /// (pageIndex) et le nombre d'élémpent par page (pageSize) un page size a 0 renvois TOUS les
+    /// éléments. un page index inferieur à 1 est considéré comme 1
+    /// </summary>
+    /// <typeparam  name="T"></typeparam>
+    /// <param name="query"></param>
+    /// <param name="pageIndex"></param>
+    /// <param name="pageSize"></param>
+    /// <returns></returns>
+    public static IEnumerable<T> GetPage<T>(this IEnumerable<T> query, int pageIndex = 1, int pageSize = 0)
+    {
+        int pi = pageIndex < 2 ? 1 : pageIndex;
+        if (pageSize > 0)
+        {
+            return query.Skip((pi - 1) * pageSize)
+                        .Take(pageSize);
+        }
+        else
+        {
+            return query;
+        }
+    }
+
     /// <summary>
     /// Test si la collection est differente de null et contient au moins un élément
     /// </summary>
@@ -23,5 +46,16 @@ public static class CollectionExtension
     {
         return (collection != null &&
                  (predicate != null ? collection.Any(predicate) : collection.Any()));
+    }
+
+    /// <summary>
+    /// retourne true si la connection possede au moins un élément.
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    /// <param name="li"></param>
+    /// <returns></returns>
+    public static bool IsAny<T>(this IPaginatedResponse<T> li, Func<T, bool> predicate = null)
+    {
+        return li != null && (predicate == null ? li.Datas.IsAny() : li.Datas.IsAny(predicate));
     }
 }

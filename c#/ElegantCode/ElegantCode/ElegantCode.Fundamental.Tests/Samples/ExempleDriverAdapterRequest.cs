@@ -6,7 +6,8 @@ namespace ElegantCode.Fundamental.Tests.Samples;
 
 public class ExempleDriverAdapterRequest : IValidateRequest<ExempleUseCaseQuery>
 {
-    public ExempleDriverAdapterRequest(Guid correlationToken) { CorrelationToken = correlationToken; }
+    public ExempleDriverAdapterRequest(Guid correlationToken)
+    { CorrelationToken = correlationToken; }
 
     public Guid CorrelationToken { get; }
 

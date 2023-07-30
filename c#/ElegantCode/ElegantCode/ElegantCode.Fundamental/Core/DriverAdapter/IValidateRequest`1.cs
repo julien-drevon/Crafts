@@ -1,10 +1,9 @@
 ﻿using ElegantCode.Fundamental.Core.Errors;
-using ElegantCode.Fundamental.Core.UsesCases;
+using ElegantCode.Fundamental.Core.Utils;
 
 namespace ElegantCode.Fundamental.Core.DriverAdapter
 {
-
-    public interface IValidateRequest<TUseCaseQuery> where TUseCaseQuery : IUSeCaseQuery
+    public interface IValidateRequest<TUseCaseQuery> where TUseCaseQuery : IGotCorrelationToken
     {
         Guid CorrelationToken { get; }
 
