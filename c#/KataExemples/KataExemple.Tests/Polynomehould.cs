@@ -16,5 +16,7 @@ public class PolynomeShould
         Transform.ToPolynome(1, -1).Should().Be("x - 1");
         Transform.ToPolynome(-2, -1, -1).Should().Be("-2x^2 - x - 1");
         Transform.ToPolynome(-4, 2, -1, -1).Should().Be("-4x^3 + 2x^2 - x - 1");
+        Transform.ToPolynome().Should().BeEmpty();
+        Transform.ToPolynome(null).Should().BeEmpty();
     }
 }

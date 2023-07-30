@@ -6,6 +6,9 @@ public static class Transform
 {
     public static string ToPolynome(params int[] valuesToTransform)
     {
+        if (valuesToTransform == null)
+            return string.Empty;
+
         StringBuilder sb = new StringBuilder();
 
         if (valuesToTransform.Length == 1)
