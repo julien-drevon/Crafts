@@ -9,13 +9,13 @@ public static class Transform
         if (valuesToTransform == null)
             return string.Empty;
 
-        StringBuilder sb = new StringBuilder();
 
         if (valuesToTransform.Length == 1)
         {
             return valuesToTransform[0].ToString();
         }
 
+        StringBuilder sb = new StringBuilder();
         int maxDegree = ComputeMaxDegree(valuesToTransform);
 
         for (int i = 0; i < valuesToTransform.Length; i++)
