@@ -88,13 +88,13 @@ public class PaginationShould
     public void IEnumerableShouldBePaginatesAndConvert()
     {
         IEnumerable<int> source = null;
-        var assert = source.ToPaginationResponse(CorrrelationToken, x => x.ToString(), pageNumber: 3, pageSize: 2);
+        var assert = source.ToPaginationResponse(CorrrelationToken, convert: x => x.ToString(), pageNumber: 3, pageSize: 2);
         assert.Should().NotBeNull();
         assert.Datas.Should().BeEmpty();
         assert.CorrelationToken.Should().Be(CorrrelationToken);
 
         source = new List<int>() { 1, 2, 3, 4, 5, 6 };
-        assert = source.ToPaginationResponse(CorrrelationToken, x => x.ToString(), pageNumber: 3, pageSize: 2);
+        assert = source.ToPaginationResponse(CorrrelationToken, convert: x => x.ToString(), pageNumber: 3, pageSize: 2);
         assert.Datas.Should().HaveCount(2);
         assert.Datas.Should().BeEquivalentTo("5", "6");
         assert.Pagination.PageSize.Should().Be(2);
@@ -108,13 +108,13 @@ public class PaginationShould
     public void IEnumerableWithConvertAndPaginationRequestShouldBePaginates()
     {
         IEnumerable<int> source = null;
-        var assert = source.ToPaginationResponse(CorrrelationToken, x => x.ToString(), new PaginationRequest(3, 2));
+        var assert = source.ToPaginationResponse(CorrrelationToken, convert: x => x.ToString(), new PaginationRequest(3, 2));
         assert.Should().NotBeNull();
         assert.Datas.Should().BeEmpty();
         assert.CorrelationToken.Should().Be(CorrrelationToken);
 
         source = new List<int>() { 1, 2, 3, 4, 5, 6 };
-        assert = source.ToPaginationResponse(CorrrelationToken, x => x.ToString(), new PaginationRequest(3, 2));
+        assert = source.ToPaginationResponse(CorrrelationToken, convert: x => x.ToString(), new PaginationRequest(3, 2));
         assert.Datas.Should().HaveCount(2);
         assert.Datas.Should().BeEquivalentTo("5", "6");
         assert.Pagination.PageSize.Should().Be(2);
@@ -148,13 +148,13 @@ public class PaginationShould
     public void IListShouldBePaginatedAndConvert()
     {
         IList<int> source = null;
-        var assert = source.ToPaginationResponse(CorrrelationToken, x => x.ToString(), pageNumber: 3, pageSize: 2);
+        var assert = source.ToPaginationResponse(CorrrelationToken, convert: x => x.ToString(), pageNumber: 3, pageSize: 2);
         assert.Should().NotBeNull();
         assert.Datas.Should().BeEmpty();
         assert.CorrelationToken.Should().Be(CorrrelationToken);
 
         source = new List<int>() { 1, 2, 3, 4, 5, 6 };
-        assert = source.ToPaginationResponse(CorrrelationToken, x => x.ToString(), pageNumber: 3, pageSize: 2);
+        assert = source.ToPaginationResponse(CorrrelationToken, convert: x => x.ToString(), pageNumber: 3, pageSize: 2);
         assert.Datas.Should().HaveCount(2);
         assert.Datas.Should().BeEquivalentTo("5", "6");
         assert.Pagination.PageSize.Should().Be(2);
@@ -188,13 +188,13 @@ public class PaginationShould
     public void IListWthConvertAndPaginationRequestShouldBePaginated()
     {
         IList<int> source = null;
-        var assert = source.ToPaginationResponse(CorrrelationToken, x => x.ToString(), new PaginationRequest(3, 2));
+        var assert = source.ToPaginationResponse(CorrrelationToken, convert: x => x.ToString(), new PaginationRequest(3, 2));
         assert.Should().NotBeNull();
         assert.CorrelationToken.Should().Be(CorrrelationToken);
         assert.Datas.Should().BeEmpty();
 
         source = new List<int>() { 1, 2, 3, 4, 5, 6 };
-        assert = source.ToPaginationResponse(CorrrelationToken, x => x.ToString(), new PaginationRequest(3, 2));
+        assert = source.ToPaginationResponse(CorrrelationToken, convert: x => x.ToString(), new PaginationRequest(3, 2));
         assert.Datas.Should().HaveCount(2);
         assert.Datas.Should().BeEquivalentTo("5", "6");
         assert.Pagination.PageSize.Should().Be(2);
@@ -228,13 +228,13 @@ public class PaginationShould
     public void IQueryableShouldBePaginatedAndConvert()
     {
         IQueryable<int> source = null;
-        var assert = source.ToPaginationResponse(CorrrelationToken, x => x.ToString(), pageNumber: 3, pageSize: 2);
+        var assert = source.ToPaginationResponse(CorrrelationToken, convert: x => x.ToString(), pageNumber: 3, pageSize: 2);
         assert.Should().NotBeNull();
         assert.Datas.Should().BeEmpty();
         assert.CorrelationToken.Should().Be(CorrrelationToken);
 
         source = new List<int>() { 1, 2, 3, 4, 5, 6 }.AsQueryable();
-        assert = source.ToPaginationResponse(CorrrelationToken, x => x.ToString(), pageNumber: 3, pageSize: 2);
+        assert = source.ToPaginationResponse(CorrrelationToken, convert: x => x.ToString(), pageNumber: 3, pageSize: 2);
         assert.Datas.Should().HaveCount(2);
         assert.Datas.Should().BeEquivalentTo("5", "6");
         assert.Pagination.PageSize.Should().Be(2);
@@ -248,13 +248,13 @@ public class PaginationShould
     public void IQueryableWithConvertAndPaginationRequestShouldBePaginated()
     {
         IQueryable<int> source = null;
-        var assert = source.ToPaginationResponse(CorrrelationToken, x => x.ToString(), new PaginationRequest(3, 2));
+        var assert = source.ToPaginationResponse(CorrrelationToken, convert: x => x.ToString(), pagination: new PaginationRequest(3, 2));
         assert.Should().NotBeNull();
         assert.Datas.Should().BeEmpty();
         assert.CorrelationToken.Should().Be(CorrrelationToken);
 
         source = new List<int>() { 1, 2, 3, 4, 5, 6 }.AsQueryable();
-        assert = source.ToPaginationResponse(CorrrelationToken, x => x.ToString(), new PaginationRequest(3, 2));
+        assert = source.ToPaginationResponse(CorrrelationToken, convert: x => x.ToString(), pagination: new PaginationRequest(3, 2));
         assert.Datas.Should().HaveCount(2);
         assert.Datas.Should().BeEquivalentTo("5", "6");
         assert.Pagination.PageSize.Should().Be(2);
@@ -313,12 +313,15 @@ public class PaginationShould
     public void PaginationResponseShouldBePaginated()
     {
         PaginatedResponse<int> source = null;
+
         var assert = source.ToPaginationResponse();
         assert.Should().NotBeNull();
         assert.Datas.Should().BeEmpty();
         assert.CorrelationToken.Should().BeEmpty();
 
+        /*******************************************/
         source = new PaginatedResponse<int>(CorrrelationToken, new List<int>() { 5, 6 }, 6, 3, 2);
+
         assert = source.ToPaginationResponse();
         assert.Datas.Should().HaveCount(2);
         assert.Datas.Should().BeEquivalentTo(new[] { 5, 6 });
@@ -419,19 +422,19 @@ public class PaginationShould
     {
         var fact = new List<int> { 1, 2, 3, 4 };
 
-        var assert = fact.GetPage(3, 1);
+        var assert = fact.GetPage(pageIndex: 3, pageSize: 1);
         assert.Should().HaveCount(1);
         assert.First().Should().Be(3);
 
-        assert = fact.GetPage(1, 0);
+        assert = fact.GetPage(pageIndex: 1, pageSize: 0);
         assert.Should().HaveCount(fact.Count);
         assert.First().Should().Be(fact[0]);
 
-        assert = fact.GetPage(2, 2);
+        assert = fact.GetPage(pageIndex: 2, pageSize: 2);
         assert.Should().HaveCount(2);
         assert.First().Should().Be(fact[2]);
 
-        assert = fact.GetPage(0, 2);
+        assert = fact.GetPage(pageIndex: 0, pageSize: 2);
         assert.Should().HaveCount(2);
         assert.First().Should().Be(fact[0]);
     }

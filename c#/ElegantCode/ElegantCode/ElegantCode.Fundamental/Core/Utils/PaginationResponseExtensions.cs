@@ -1,5 +1,6 @@
 ﻿namespace ElegantCode.Fundamental.Core.Utils;
 
+
 public static class PaginationResponseExtensions
 {
     /// <summary>
