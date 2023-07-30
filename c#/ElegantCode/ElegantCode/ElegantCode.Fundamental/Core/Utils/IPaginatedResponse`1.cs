@@ -1,26 +1,25 @@
-﻿namespace ElegantCode.Fundamental.Core.Utils
+﻿namespace ElegantCode.Fundamental.Core.Utils;
+
+/// <summary>
+/// PAgination contract. Is composition between DataList and pagination abstraction
+/// </summary>
+/// <typeparam name="T"></typeparam>
+/// <seealso cref="Agaetis.ServicesModel.IBaseResponse" />
+public interface IPaginatedResponse<T> : IBaseResponse, IGotCorrelationToken
 {
     /// <summary>
-    /// PAgination contract. Is composition between DataList and pagination abstraction
+    /// Gets or sets the datas list.
     /// </summary>
-    /// <typeparam name="T"></typeparam>
-    /// <seealso cref="Agaetis.ServicesModel.IBaseResponse" />
-    public interface IPaginatedResponse<T> : IBaseResponse, IGotCorrelationToken
-    {
-        /// <summary>
-        /// Gets or sets the datas list.
-        /// </summary>
-        /// <value>
-        /// The datas.
-        /// </value>
-        IList<T> Datas { get; set; }
+    /// <value>
+    /// The datas.
+    /// </value>
+    IList<T> Datas { get; set; }
 
-        /// <summary>
-        /// Gets the pagination.
-        /// </summary>
-        /// <value>
-        /// The pagination.
-        /// </value>
-        IPagination Pagination { get; }
-    }
+    /// <summary>
+    /// Gets the pagination.
+    /// </summary>
+    /// <value>
+    /// The pagination.
+    /// </value>
+    IPagination Pagination { get; }
 }

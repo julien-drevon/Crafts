@@ -1,9 +1,8 @@
-﻿namespace ElegantCode.Fundamental.Core.Utils
-{
-    public interface IPaginationRequest
-    {
-        int PageNumber { get; set; }
+﻿namespace ElegantCode.Fundamental.Core.Utils;
 
-        int PageSize { get; set; }
-    }
+public interface IPaginationRequest
+{
+    int PageNumber { get; set; }
+
+    int PageSize { get; set; }
 }
