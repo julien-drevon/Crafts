@@ -1,7 +1,7 @@
 ﻿using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
 
-namespace ElegantCode.Fundamental.Core.Utils;
+namespace ElegantCode.Fundamental.Core.DriverAdapter.Responses;
 
 public class Pagination : IPagination
 {

@@ -30,10 +30,8 @@ public static class CollectionExtension
             return query.Skip((pi - 1) * pageSize)
                         .Take(pageSize);
         }
-        else
-        {
-            return query;
-        }
+
+        return query;
     }
 
     /// <summary>

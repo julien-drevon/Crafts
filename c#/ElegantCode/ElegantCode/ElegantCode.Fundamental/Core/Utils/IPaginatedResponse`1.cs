@@ -1,4 +1,6 @@
-﻿namespace ElegantCode.Fundamental.Core.Utils;
+﻿using ElegantCode.Fundamental.Core.DriverAdapter.Responses;
+
+namespace ElegantCode.Fundamental.Core.Utils;
 
 /// <summary>
 /// PAgination contract. Is composition between DataList and pagination abstraction

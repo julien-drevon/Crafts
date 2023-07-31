@@ -1,7 +1,8 @@
-﻿using System.Runtime.Serialization;
+﻿using ElegantCode.Fundamental.Core.Utils;
+using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
 
-namespace ElegantCode.Fundamental.Core.Utils;
+namespace ElegantCode.Fundamental.Core.DriverAdapter.Responses;
 
 /// <summary>
 /// Collection paginée

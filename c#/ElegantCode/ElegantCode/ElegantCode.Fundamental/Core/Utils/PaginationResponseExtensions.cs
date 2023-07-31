@@ -1,5 +1,6 @@
-﻿namespace ElegantCode.Fundamental.Core.Utils;
+﻿using ElegantCode.Fundamental.Core.DriverAdapter.Responses;
 
+namespace ElegantCode.Fundamental.Core.Utils;
 
 public static class PaginationResponseExtensions
 {

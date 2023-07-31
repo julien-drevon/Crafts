@@ -1,4 +1,5 @@
-﻿using System.Text.Json;
+﻿using ElegantCode.Fundamental.Core.DriverAdapter.Responses;
+using System.Text.Json;
 using System.Text.Json.Serialization;
 
 namespace ElegantCode.Fundamental.Core.Utils
