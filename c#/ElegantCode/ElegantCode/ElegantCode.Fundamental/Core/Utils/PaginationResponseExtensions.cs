@@ -34,7 +34,7 @@ public static class PaginationResponseExtensions
     /// <returns></returns>
     public static IPaginatedResponse<TResponse> ToPaginationResponse<TResponse>(this IPaginatedResponse<TResponse> query)
     {
-        if (query == null)
+        if (query.IsNull())
         {
             return new PaginatedResponse<TResponse>(Guid.Empty, new List<TResponse>(), 0, 1, 0);
         }
@@ -58,7 +58,7 @@ public static class PaginationResponseExtensions
     public static IPaginatedResponse<TResponse> ToPaginationResponse<TResponse>(this IEnumerable<TResponse> query, Guid correlationToken,
                                                                                 IPaginationRequest pagination)
     {
-        if (query == null)
+        if (query.IsNull())
         {
             return new PaginatedResponse<TResponse>(correlationToken, new List<TResponse>(), 0, 1, pagination?.PageSize ?? 0);
         }
@@ -74,7 +74,7 @@ public static class PaginationResponseExtensions
                                                                                    Func<T, TResponse> convert,
                                                                                    IPaginationRequest pagination = null)
     {
-        if (query == null)
+        if (query.IsNull())
         {
             return new PaginatedResponse<TResponse>(correlationToken, new List<TResponse>(), 0, 1, pagination?.PageSize ?? 0);
         }
@@ -91,7 +91,7 @@ public static class PaginationResponseExtensions
                                                                                     Func<T, TResponse> convert,
                                                                                     IPaginationRequest pagination = null)
     {
-        if (query == null)
+        if (query.IsNull())
         {
             return new PaginatedResponse<TResponse>(correlationToken, new List<TResponse>(), 0, 1, pagination?.PageSize ?? 0);
         }
@@ -108,7 +108,7 @@ public static class PaginationResponseExtensions
                                                                                     Func<T, TResponse> convert,
                                                                                     IPaginationRequest pagination = null)
     {
-        if (query == null)
+        if (query.IsNull())
         {
             return new PaginatedResponse<TResponse>(correlationToken, new List<TResponse>(), 0, 1, pagination?.PageSize ?? 0);
         }
@@ -134,7 +134,7 @@ public static class PaginationResponseExtensions
                                                                                 int pageNumber = 1, int pageSize = 0
                                                                                 , long? totalItem = null)
     {
-        if (query == null)
+        if (query.IsNull())
         {
             return new PaginatedResponse<TResponse>(correlationToken, new List<TResponse>(), 0, 1, pageSize);
         }
@@ -148,9 +148,9 @@ public static class PaginationResponseExtensions
 
     public static IPaginatedResponse<TResponse> ToPaginationResponse<T, TResponse>(this IPaginatedResponse<T> query, Func<T, TResponse> convert)
     {
-        if (query?.Datas == null)
+        if ((query?.Datas).IsNull())
         {
-            return new PaginatedResponse<TResponse>(query == null ? Guid.Empty : query.CorrelationToken, new List<TResponse>(), 0, 1, 0);
+            return new PaginatedResponse<TResponse>(query.IsNull() ? Guid.Empty : query.CorrelationToken, new List<TResponse>(), 0, 1, 0);
         }
 
         var pi = query.Pagination.CurrentPage;
@@ -166,7 +166,7 @@ public static class PaginationResponseExtensions
                                                                                     int pageSize = 0,
                                                                                     long? totalItem = null)
     {
-        if (query == null)
+        if (query.IsNull())
         {
             return new PaginatedResponse<TResponse>(correlationToken, new List<TResponse>(), 0, 1, pageSize);
         }
@@ -185,7 +185,7 @@ public static class PaginationResponseExtensions
                                                                                     int pageSize = 0,
                                                                                     long? totalItem = null)
     {
-        if (query == null)
+        if (query.IsNull())
         {
             return new PaginatedResponse<TResponse>(correlationToken, new List<TResponse>(), 0, 1, pageSize);
         }
@@ -204,7 +204,7 @@ public static class PaginationResponseExtensions
                                                                                     int pageSize = 0,
                                                                                     long? totalItem = null)
     {
-        if (query == null)
+        if (query.IsNull())
         {
             return new PaginatedResponse<TResponse>(correlationToken, new List<TResponse>(), 0, 1, pageSize);
         }

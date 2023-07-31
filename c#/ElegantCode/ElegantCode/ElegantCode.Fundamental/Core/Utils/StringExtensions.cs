@@ -22,10 +22,10 @@ public static class StringExtensions
         string concatString = "",
         Func<T, string> transformToString = null)
     {
-        if (me == null)
+        if (me.IsNull())
             return string.Empty;
 
-        transformToString ??= (x => x != null ? x.ToString() : string.Empty);
+        transformToString ??= (x => x.IsNotNull() ? x.ToString() : string.Empty);
 
         var retour = me.Aggregate(
             new StringBuilder(),
@@ -35,7 +35,7 @@ public static class StringExtensions
             });
 
         var howManyCharToremove = ComputeLengthOfNewLine(addLine);
-        return (retour != null && retour.Length > 0)
+        return (retour.IsNotNull() && retour.Length > 0)
             ? ToStringWithRemoveLastConcat(concatString, howManyCharToremove, retour)
             : string.Empty;
     }

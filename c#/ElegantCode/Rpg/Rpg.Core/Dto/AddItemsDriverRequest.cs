@@ -10,7 +10,7 @@ namespace Rpg.Core.Dto
         public AddItemsDriverRequest(Guid correlationToken, Guid id, IEnumerable<ISprite> itemsToAdd = null)
         {
             Id = id;
-            Items = itemsToAdd == null
+            Items = itemsToAdd.IsNull()
                     ? new HashSet<ISprite>(itemsToAdd)
                     : itemsToAdd;
         }

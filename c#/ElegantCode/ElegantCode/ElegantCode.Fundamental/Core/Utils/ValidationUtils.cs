@@ -21,7 +21,7 @@ public static class ValidationUtils
     public static (TUseCaseQuery UseCaseQuery, Error Error) ValidationWorkflow<TUseCaseQuery>(this IValidateRequest<TUseCaseQuery> validationModel, TUseCaseQuery valueIfIsGood, params Func<Error>[] prediacateErrors)
             where TUseCaseQuery : class, IGotCorrelationToken
     {
-        var errors = prediacateErrors.Select(x => x?.Invoke()).Where(x => x != null);
+        var errors = prediacateErrors.Select(x => x?.Invoke()).Where(x => x.IsNotNull());
         if (errors.IsAny()) return (null, new Error(validationModel.CorrelationToken, errors));
         return (valueIfIsGood, null);
     }

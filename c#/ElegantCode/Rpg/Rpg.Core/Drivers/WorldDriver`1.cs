@@ -18,7 +18,6 @@ public class WorldDriver<TWorld>
         _WorldPresenter = createWorldPresenter;
         _WorldProvider = worldProvider;
         _ItemsFactory = itemsFactory;
-
     }
 
     public async Task<(TWorld Entity, Error Error)> AddItems(AddItemsDriverRequest worldDriverRequest, CancellationToken cancellation = default)

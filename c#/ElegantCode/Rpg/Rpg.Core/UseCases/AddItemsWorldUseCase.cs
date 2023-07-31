@@ -1,5 +1,4 @@
 ﻿using ElegantCode.Fundamental.Core.UsesCases;
-using Rpg.Core.Domain;
 using Rpg.Core.Dto;
 using Rpg.Core.Providers;
 
@@ -23,5 +22,4 @@ namespace Rpg.Core.UseCases
             return new WorldUseCaseResponse(request.CorrelationToken, world);
         }
     }
-
 }

@@ -42,8 +42,8 @@ public static class CollectionExtension
     /// <returns></returns>
     public static bool IsAny<T>(this IEnumerable<T> collection, Func<T, bool> predicate = null)
     {
-        return (collection != null &&
-                 (predicate != null ? collection.Any(predicate) : collection.Any()));
+        return (collection.IsNotNull() &&
+                 (predicate.IsNotNull() ? collection.Any(predicate) : collection.Any()));
     }
 
     /// <summary>
@@ -54,6 +54,6 @@ public static class CollectionExtension
     /// <returns></returns>
     public static bool IsAny<T>(this IPaginatedResponse<T> li, Func<T, bool> predicate = null)
     {
-        return li != null && (predicate == null ? li.Datas.IsAny() : li.Datas.IsAny(predicate));
+        return li.IsNotNull() && (predicate.IsNull() ? li.Datas.IsAny() : li.Datas.IsAny(predicate));
     }
 }
