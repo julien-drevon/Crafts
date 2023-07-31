@@ -15,13 +15,11 @@ namespace ElegantCode.Fundamental.Core.DriverAdapter
             where TUseCaseQuery : IGotCorrelationToken
         {
             var validationResult = aRequestForDriverAdapter.ValidateRequest();
-
             doExemplePresenter.PresentError(validationResult.Error);
 
             if (validationResult.Error.IsError() is false)
-            {
                 await ExecuteUseCase(myUseCAse, doExemplePresenter, validationResult, cancellation);
-            }
+
 
             return await doExemplePresenter.View();
         }

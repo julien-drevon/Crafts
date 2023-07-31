@@ -16,7 +16,7 @@ public static class StringExtensions
     /// <param name="addLine">Si ce parametre est à true chaque objet est concaténé à la ligne, sionon à la suite</param>
     /// <param name="concatString">chaine ajouté à la fin de chaque ligne</param>
     /// <returns></returns>
-    public static string JoinToString<T>(
+    public static string ToJoinString<T>(
         this IEnumerable<T> me,
         bool addLine = true,
         string concatString = "",

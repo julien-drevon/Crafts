@@ -26,9 +26,8 @@ public class PaginatedResponse<T> : BaseResponse, IPaginatedResponse<T>
         : base(correlationToken, message, isOk)
     {
         if (values.IsNotNull())
-        {
             Datas = values.ToList();
-        }
+
         InitValue(totalEntry, pageIndex, nbElementPerPage);
     }
 
@@ -42,9 +41,8 @@ public class PaginatedResponse<T> : BaseResponse, IPaginatedResponse<T>
     protected void InitValue(long totalEntry, int pageNumber, int nbElementPerPage)
     {
         if (pageNumber < 1)
-        {
             throw new ArgumentOutOfRangeException(nameof(pageNumber), pageNumber, PAGE_UNDER_1);
-        }
+
 
         Pagination = new Pagination
         {
@@ -52,15 +50,20 @@ public class PaginatedResponse<T> : BaseResponse, IPaginatedResponse<T>
         };
 
         long totP = totalEntry.ComputeNbOfPage(nbElementPerPage);
+        PaginationStateCompute(totalEntry, pageNumber, totP);
+    }
+
+    private void PaginationStateCompute(long totalEntry, int pageNumber, long totP)
+    {
         Pagination.PageNumber = totP;
         Pagination.Total = totalEntry;
         Pagination.CurrentPage = pageNumber;
         Pagination.PageIndex = pageNumber - 1;
+        PaginationBooleanStateCompute();
 
-        BooleanStateCompute();
     }
 
-    private void BooleanStateCompute()
+    private void PaginationBooleanStateCompute()
     {
         Pagination.IsLast = Pagination.PageIndex >= Pagination.PageNumber - 1;
         Pagination.IsFirst = Pagination.PageIndex <= 0;
