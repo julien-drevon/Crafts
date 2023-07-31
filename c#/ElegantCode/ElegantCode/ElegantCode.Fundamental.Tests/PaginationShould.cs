@@ -1,6 +1,4 @@
 using ElegantCode.Fundamental.Core.DriverAdapter.Responses;
-using ElegantCode.Fundamental.Core.Utils;
-using FluentAssertions;
 using System.Text.Json;
 
 namespace ElegantCode.Fundamental.Tests;

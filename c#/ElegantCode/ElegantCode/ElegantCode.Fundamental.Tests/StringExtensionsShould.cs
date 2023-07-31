@@ -1,6 +1,3 @@
-using ElegantCode.Fundamental.Core.Utils;
-using FluentAssertions;
-
 namespace ElegantCode.Fundamental.Tests;
 
 public class StringExtensionsShould

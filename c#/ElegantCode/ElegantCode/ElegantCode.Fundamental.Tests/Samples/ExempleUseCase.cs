@@ -1,5 +1,4 @@
-﻿using ElegantCode.Fundamental.Core.Errors;
-using ElegantCode.Fundamental.Core.UsesCases;
+﻿using ElegantCode.Fundamental.Core.UsesCases;
 
 namespace ElegantCode.Fundamental.Tests.Samples;
 

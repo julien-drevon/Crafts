@@ -1,6 +1,4 @@
 ﻿using ElegantCode.Fundamental.Core.DriverAdapter;
-using ElegantCode.Fundamental.Core.Errors;
-using ElegantCode.Fundamental.Core.Presenter;
 
 namespace ElegantCode.Fundamental.Tests.Samples;
 
