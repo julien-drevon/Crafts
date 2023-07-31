@@ -1,7 +1,7 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 using System.Text.Json.Serialization;
 
-namespace ElegantCode.Fundamental.Core.DriverAdapter.Responses;
+namespace ElegantCode.Fundamental.Core.Entities;
 
 public class BaseResponse : IBaseResponse
 {

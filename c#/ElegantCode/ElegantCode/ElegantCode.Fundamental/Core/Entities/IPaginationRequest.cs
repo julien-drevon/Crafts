@@ -1,4 +1,4 @@
-﻿namespace ElegantCode.Fundamental.Core.DriverAdapter.Responses;
+﻿namespace ElegantCode.Fundamental.Core.Entities;
 
 public interface IPaginationRequest
 {

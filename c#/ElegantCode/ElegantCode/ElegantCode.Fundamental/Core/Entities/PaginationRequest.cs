@@ -1,6 +1,6 @@
 ﻿using System.Runtime.Serialization;
 
-namespace ElegantCode.Fundamental.Core.DriverAdapter.Responses;
+namespace ElegantCode.Fundamental.Core.Entities;
 
 public class PaginationRequest : IPaginationRequest
 {
