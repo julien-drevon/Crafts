@@ -56,10 +56,10 @@ public class PaginatedResponse<T> : BaseResponse, IPaginatedResponse<T>
         Pagination.CurrentPage = pageNumber;
         Pagination.PageIndex = pageNumber - 1;
 
-        BooleanCompute();
+        BooleanStateCompute();
     }
 
-    private void BooleanCompute()
+    private void BooleanStateCompute()
     {
         Pagination.IsLast = Pagination.PageIndex >= Pagination.PageNumber - 1;
         Pagination.IsFirst = Pagination.PageIndex <= 0;
