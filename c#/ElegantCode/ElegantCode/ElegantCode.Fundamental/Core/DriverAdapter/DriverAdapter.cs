@@ -9,19 +9,19 @@ namespace ElegantCode.Fundamental.Core.DriverAdapter
     {
         public static async Task<(Tout Entity, Error Error)> CreateUseCaseWorflow<Tout, TUseCaseQuery, TUseCaseResult>(
             IValidateRequest<TUseCaseQuery> aRequestForDriverAdapter,
-            IUseCaseAsync<TUseCaseQuery, TUseCaseResult> myUseCAse,
-            IPresenter<TUseCaseResult, Tout> doExemplePresenter,
+            IUseCaseAsync<TUseCaseQuery, TUseCaseResult> myUseCase,
+            IPresenter<TUseCaseResult, Tout> presenter,
             CancellationToken cancellation = default)
             where TUseCaseQuery : IGotCorrelationToken
         {
             var validationResult = aRequestForDriverAdapter.ValidateRequest();
-            doExemplePresenter.PresentError(validationResult.Error);
+            presenter.PresentError(validationResult.Error);
 
             if (validationResult.Error.IsError() is false)
-                await ExecuteUseCase(myUseCAse, doExemplePresenter, validationResult, cancellation);
+                await ExecuteUseCase(myUseCase, presenter, validationResult, cancellation);
 
 
-            return await doExemplePresenter.View();
+            return await presenter.View();
         }
 
         public static async Task ExecuteUseCase<Tout, TUseCaseQuery, TUseCaseResult>(

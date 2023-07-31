@@ -22,8 +22,6 @@ namespace Rpg.Core.Dto
         public IEnumerable<ISprite> Items { get; set; }
 
         public (AddItemsWorldUseCaseQuery UseCaseQuery, Error Error) ValidateRequest()
-        {
-            return this.ValidationWorkflow(valueIfIsGood: new AddItemsWorldUseCaseQuery(CorrelationToken, Id, Items));
-        }
+            => this.ValidationWorkflow(valueIfIsGood: new AddItemsWorldUseCaseQuery(CorrelationToken, Id, Items));
     }
 }

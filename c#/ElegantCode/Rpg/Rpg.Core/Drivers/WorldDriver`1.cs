@@ -13,30 +13,36 @@ public class WorldDriver<TWorld>
     private readonly IProvideTheWorld _WorldProvider;
     private readonly ICreateItems _ItemsFactory;
 
-    public WorldDriver(IPresenter<WorldUseCaseResponse, TWorld> createWorldPresenter, IProvideTheWorld worldProvider, ICreateItems itemsFactory)
+    public WorldDriver(
+        IPresenter<WorldUseCaseResponse, TWorld> createWorldPresenter,
+        IProvideTheWorld worldProvider,
+        ICreateItems itemsFactory)
     {
         _WorldPresenter = createWorldPresenter;
         _WorldProvider = worldProvider;
         _ItemsFactory = itemsFactory;
     }
 
-    public async Task<(TWorld Entity, Error Error)> AddItems(AddItemsDriverRequest worldDriverRequest, CancellationToken cancellation = default)
+    public async Task<(TWorld Entity, Error Error)> AddItems(
+        AddItemsDriverRequest worldDriverRequest,
+        CancellationToken cancellation = default)
     {
         return await DriverAdapter.CreateUseCaseWorflow(
-            worldDriverRequest,
-            new AddItemsWorldUseCase(_WorldProvider, _ItemsFactory),
-            _WorldPresenter,
-            cancellation);
+            aRequestForDriverAdapter: worldDriverRequest,
+            myUseCase: new AddItemsWorldUseCase(_WorldProvider, _ItemsFactory),
+            presenter: _WorldPresenter,
+            cancellation: cancellation);
     }
 
     public async Task<(TWorld Entity, Error Error)> CreateWorld(
-            CreateWorldDriverRequest worldDriverRequest,
-            CancellationToken cancellation = default)
+        CreateWorldDriverRequest worldDriverRequest,
+        CancellationToken cancellation = default)
     {
         return await DriverAdapter.CreateUseCaseWorflow(
-            worldDriverRequest,
-            new CreateWorldUseCase(_WorldProvider),
-            _WorldPresenter,
-            cancellation);
+            aRequestForDriverAdapter: worldDriverRequest,
+            myUseCase: new CreateWorldUseCase(_WorldProvider),
+            presenter: _WorldPresenter,
+            cancellation: cancellation);
+        ;
     }
 }
