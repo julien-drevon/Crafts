@@ -2,15 +2,15 @@
 
 namespace ElegantCode.Fundamental.Tests.Samples;
 
-public class ExempleDriverAdapter<Tout> where Tout : class
+public class ExampleDriverAdapter<Tout> where Tout : class
 {
-    private readonly IPresenter<ExempleUseCaseResponse, Tout> _DoExemplePresenter;
+    private readonly IPresenter<ExampleUseCaseResponse, Tout> _DoExemplePresenter;
 
-    public ExempleDriverAdapter(IPresenter<ExempleUseCaseResponse, Tout> doExemplePresenter)
+    public ExampleDriverAdapter(IPresenter<ExampleUseCaseResponse, Tout> doExemplePresenter)
     { _DoExemplePresenter = doExemplePresenter; }
 
-    public async Task<(Tout Entity, Error Error)> DoAnExemple(
-        ExempleDriverAdapterRequest aRequestForDriverAdapter,
+    public async Task<(Tout Entity, Error Error)> DoAnExample(
+        ExampleDriverAdapterRequest aRequestForDriverAdapter,
         CancellationToken cancellation = default)
     {
         return await DriverAdapter.CreateUseCaseWorflow(aRequestForDriverAdapter, new ExempleUseCase(), _DoExemplePresenter, cancellation);

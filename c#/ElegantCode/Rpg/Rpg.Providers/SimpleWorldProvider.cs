@@ -12,7 +12,7 @@ public class SimpleWorldProvider : IProvideTheWorld
     public Task<World> CreateWorld(CreateWorldUseCaseQuery createWorldQuery)
     {
         if (_world.IsAny(x => x.Id == createWorldQuery.Id))
-            throw new WorldProviderException($"Id {createWorldQuery.Id} already exist");
+            throw new WorldProviderException(createWorldQuery.CorrelationToken, $"Id {createWorldQuery.Id} already exist");
 
         var world = new World(createWorldQuery.Id);
         _world.Add(world);

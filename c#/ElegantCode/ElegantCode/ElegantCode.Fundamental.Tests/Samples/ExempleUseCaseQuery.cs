@@ -2,9 +2,9 @@
 
 namespace ElegantCode.Fundamental.Tests.Samples;
 
-public class ExempleUseCaseQuery : UseCaseQueryBase
+public class ExampleUseCaseQuery : UseCaseQueryBase
 {
-    public ExempleUseCaseQuery(Guid correlationToken, string theResponse)
+    public ExampleUseCaseQuery(Guid correlationToken, string theResponse)
         : base(correlationToken)
     {
         TheResponse = theResponse;

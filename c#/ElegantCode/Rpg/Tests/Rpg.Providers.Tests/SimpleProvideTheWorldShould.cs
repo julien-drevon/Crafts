@@ -1,3 +1,5 @@
+using ElegantCode.Fundamental.Core.Errors;
+
 namespace Rpg.Providers.Tests;
 
 public class SimpleProvideTheWorldShould
@@ -22,7 +24,16 @@ public class SimpleProvideTheWorldShould
         notsameWorlds = (await worldProvider.GetWorld(Token, world.Id));
         notsameWorlds.Should().NotBe(world2);
 
-        await Assert.ThrowsAnyAsync<Exception>(() => worldProvider.CreateWorld(new(Token, world.Id)));
+        await Assert.ThrowsAnyAsync<WorldProviderException>(() => worldProvider.CreateWorld(new(Token, world.Id)));
+
+        try
+        {
+            await worldProvider.CreateWorld(new(Token, world.Id));
+        }
+        catch (WorldProviderException ex)
+        {
+            ex.CorrelationToken.Should().Be(Token);
+        }
 
         (await worldProvider.GetWorld(Token, Guid.NewGuid())).Should().BeNull();
     }

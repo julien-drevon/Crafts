@@ -36,7 +36,7 @@ namespace ElegantCode.Fundamental.Core.DriverAdapter
             {
                 doExemplePresenter.PresentData(await myUseCAse.Execute(useCaseQuery, cancellation));
             }
-            catch (UseCaseExecption ex)
+            catch (UseCaseException ex)
             {
                 doExemplePresenter.PresentError(new(useCaseQuery.CorrelationToken, ex.Message));
             }
