@@ -13,6 +13,6 @@ public class ExampleDriverAdapter<Tout> where Tout : class
         ExampleDriverAdapterRequest aRequestForDriverAdapter,
         CancellationToken cancellation = default)
     {
-        return await DriverAdapter.CreateUseCaseWorflow(aRequestForDriverAdapter, new ExempleUseCase(), _DoExemplePresenter, cancellation);
+        return await DriverAdapter.CreateUseCaseWorkflow(aRequestForDriverAdapter, new ExempleUseCase(), _DoExemplePresenter, cancellation);
     }
 }

@@ -3,10 +3,9 @@ using Rpg.Core.Domain;
 
 namespace Rpg.Core.Dto
 {
-    public class WorldUseCaseResponse : UseCaseResponseBase
+    public class WorldUseCaseResponse 
     {
-        public WorldUseCaseResponse(Guid correlationId, World world)
-            : base(correlationId)
+        public WorldUseCaseResponse( World world)
         {
             Id = world.Id;
             Items = world.Elements;

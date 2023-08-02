@@ -27,7 +27,7 @@ public class WorldDriver<TWorld>
         AddItemsDriverRequest worldDriverRequest,
         CancellationToken cancellation = default)
     {
-        return await DriverAdapter.CreateUseCaseWorflow(
+        return await DriverAdapter.CreateUseCaseWorkflow(
             aRequestForDriverAdapter: worldDriverRequest,
             myUseCase: new AddItemsWorldUseCase(_WorldProvider, _ItemsFactory),
             presenter: _WorldPresenter,
@@ -38,7 +38,7 @@ public class WorldDriver<TWorld>
         CreateWorldDriverRequest worldDriverRequest,
         CancellationToken cancellation = default)
     {
-        return await DriverAdapter.CreateUseCaseWorflow(
+        return await DriverAdapter.CreateUseCaseWorkflow(
             aRequestForDriverAdapter: worldDriverRequest,
             myUseCase: new CreateWorldUseCase(_WorldProvider),
             presenter: _WorldPresenter,

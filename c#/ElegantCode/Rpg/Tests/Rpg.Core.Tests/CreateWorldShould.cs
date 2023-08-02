@@ -47,6 +47,9 @@ public class CreateWorldShould
         var world = await WorldDriver.AddItems(new AddItemsDriverRequest(Guid.NewGuid(), worldId, spritesToAdd));
 
         world.Entity.Items.Should().BeEquivalentTo(spritesToAdd);
+        var sprite1 = world.Entity.Items.First();
+        sprite1.X.Should().Be(10);
+        sprite1.Y.Should().Be(10);
     }
 
     private WorldDriver<WorldUseCaseResponse> WorldDriver { get; }

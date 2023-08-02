@@ -19,7 +19,7 @@ namespace Rpg.Core.UseCases
         {
             var world = await _WorldProvider.GetWorld(request.CorrelationToken, request.Id);
             world.AddElement(_ItemsFactory.Do(request.Items));
-            return new WorldUseCaseResponse(request.CorrelationToken, world);
+            return new WorldUseCaseResponse(world);
         }
     }
 }

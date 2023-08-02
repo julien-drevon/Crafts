@@ -7,7 +7,7 @@ namespace ElegantCode.Fundamental.Core.DriverAdapter
 {
     public static class DriverAdapter
     {
-        public static async Task<(Tout Entity, Error Error)> CreateUseCaseWorflow<Tout, TUseCaseQuery, TUseCaseResult>(
+        public static async Task<(Tout Entity, Error Error)> CreateUseCaseWorkflow<Tout, TUseCaseQuery, TUseCaseResult>(
             IValidateRequest<TUseCaseQuery> aRequestForDriverAdapter,
             IUseCaseAsync<TUseCaseQuery, TUseCaseResult> myUseCase,
             IPresenter<TUseCaseResult, Tout> presenter,

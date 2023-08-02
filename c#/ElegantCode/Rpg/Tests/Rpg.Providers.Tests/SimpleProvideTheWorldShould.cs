@@ -4,10 +4,10 @@ namespace Rpg.Providers.Tests;
 
 public class SimpleProvideTheWorldShould
 {
-    private Guid Token = Guid.NewGuid();
+    private Guid Token { get; } = Guid.NewGuid();
 
     [Fact]
-    public async Task CreateWorld()
+    public async Task CreateWorldScenarioForProvider()
     {
         var worldProvider = new SimpleWorldProvider();
         var world = await worldProvider.CreateWorld(new(Token, Guid.NewGuid()));
@@ -33,6 +33,7 @@ public class SimpleProvideTheWorldShould
         catch (WorldProviderException ex)
         {
             ex.CorrelationToken.Should().Be(Token);
+            ex.Message.Should().BeEquivalentTo($"Id: {world.Id} already exist");
         }
 
         (await worldProvider.GetWorld(Token, Guid.NewGuid())).Should().BeNull();
