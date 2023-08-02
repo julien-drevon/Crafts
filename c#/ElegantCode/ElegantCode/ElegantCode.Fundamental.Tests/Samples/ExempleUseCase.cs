@@ -1,16 +1,15 @@
-﻿using ElegantCode.Fundamental.Core.Errors;
-using ElegantCode.Fundamental.Core.UsesCases;
+﻿using ElegantCode.Fundamental.Core.UsesCases;
 
 namespace ElegantCode.Fundamental.Tests.Samples;
 
-public class ExempleUseCase : IUseCaseAsync<ExempleUseCaseQuery, ExempleUseCaseResponse>
+public class ExempleUseCase : IUseCaseAsync<ExampleUseCaseQuery, ExampleUseCaseResponse>
 {
-    public Task<ExempleUseCaseResponse> Execute(ExempleUseCaseQuery request, CancellationToken cancelToken = default)
+    public Task<ExampleUseCaseResponse> Execute(ExampleUseCaseQuery request, CancellationToken cancelToken = default)
     {
         if (request.TheResponse != "42")
         {
-            throw new UseCaseExecption("La reponse Fournie n'est pas LA reponse");
+            throw new UseCaseException(request.CorrelationToken, "La reponse Fournie n'est pas LA reponse");
         }
-        return Task.FromResult(new ExempleUseCaseResponse(request.CorrelationToken, "42"));
+        return Task.FromResult(new ExampleUseCaseResponse( "42"));
     }
 }

@@ -16,16 +16,16 @@ public static class StringExtensions
     /// <param name="addLine">Si ce parametre est à true chaque objet est concaténé à la ligne, sionon à la suite</param>
     /// <param name="concatString">chaine ajouté à la fin de chaque ligne</param>
     /// <returns></returns>
-    public static string JoinToString<T>(
+    public static string ToJoinString<T>(
         this IEnumerable<T> me,
         bool addLine = true,
         string concatString = "",
         Func<T, string> transformToString = null)
     {
-        if (me == null)
+        if (me.IsNull())
             return string.Empty;
 
-        transformToString ??= (x => x != null ? x.ToString() : string.Empty);
+        transformToString ??= (x => x.IsNotNull() ? x.ToString() : string.Empty);
 
         var retour = me.Aggregate(
             new StringBuilder(),
@@ -35,7 +35,7 @@ public static class StringExtensions
             });
 
         var howManyCharToremove = ComputeLengthOfNewLine(addLine);
-        return (retour != null && retour.Length > 0)
+        return (retour.IsNotNull() && retour.Length > 0)
             ? ToStringWithRemoveLastConcat(concatString, howManyCharToremove, retour)
             : string.Empty;
     }

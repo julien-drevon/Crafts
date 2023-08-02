@@ -3,7 +3,7 @@ using GildedRose.Core.Items;
 
 namespace GildedRose.Core.Test;
 
-public class UnitTest1
+public class GuildedRoseShould
 {
     [Fact]
     public void GivenAPlayer_WhenIPlacedASulfuras_ThenShouldNoChange()

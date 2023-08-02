@@ -2,7 +2,6 @@
 using KataExemples.TennisClass;
 
 namespace KataExemples;
-
 public class KataTennisShould
 {
     #region Baby steps regroupés

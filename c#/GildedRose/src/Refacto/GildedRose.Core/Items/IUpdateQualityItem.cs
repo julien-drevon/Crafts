@@ -2,11 +2,11 @@
 {
     public interface IUpdateQualityItem
     {
-        string Name { get; set; }
+        string Name { get; }
 
-        int Quality { get; set; }
+        int Quality { get; }
 
-        int SellIn { get; set; }
+        int SellIn { get; }
 
         void UpdateQuality(UpdateQualityParameters qualityParameters);
     }

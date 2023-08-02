@@ -6,6 +6,6 @@ public static class ErrorExtensions
 {
     public static bool IsError(this Error error)
     {
-        return error != null && error.Message.IsNullOrEmpty() is false;
+        return error.IsNotNull() && error.Message.IsNullOrEmpty() is false;
     }
 }

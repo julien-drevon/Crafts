@@ -2,15 +2,12 @@
 
 namespace ElegantCode.Fundamental.Tests.Samples;
 
-public class ExempleUseCaseResponse : UseCaseResponseBase
+public class ExampleUseCaseResponse
 {
-    public ExempleUseCaseResponse(Guid correlationToken, string theResponse)
-        :base(correlationToken)
+    public ExampleUseCaseResponse(string theResponse)
     {
         TheResponse = theResponse;
     }
 
-
     public string TheResponse { get; }
 }
-
