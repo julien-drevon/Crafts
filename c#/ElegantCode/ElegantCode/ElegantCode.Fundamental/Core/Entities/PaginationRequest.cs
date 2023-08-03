@@ -8,7 +8,7 @@ public class PaginationRequest : IPaginationRequest
 
     public PaginationRequest(int pageNumber = 1, int pageSize = 0)
     {
-        PageNumber = pageNumber < 1 ? 1 : pageNumber;
+        PageNumber = pageNumber < 2 ? 1 : pageNumber;
         PageSize = pageSize < 1 ? 0 : pageSize;
     }
 

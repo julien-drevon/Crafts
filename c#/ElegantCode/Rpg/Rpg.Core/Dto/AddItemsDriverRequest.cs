@@ -7,12 +7,10 @@ namespace Rpg.Core.Dto
 {
     public class AddItemsDriverRequest : IValidateRequest<AddItemsWorldUseCaseQuery>
     {
-        public AddItemsDriverRequest(Guid correlationToken, Guid id, IEnumerable<ISprite> itemsToAdd = null)
+        public AddItemsDriverRequest(Guid correlationToken, Guid id, IEnumerable<ISprite> itemsToAdd)
         {
             Id = id;
-            Items = itemsToAdd.IsNull()
-                    ? new HashSet<ISprite>(itemsToAdd)
-                    : itemsToAdd;
+            Items = itemsToAdd;
         }
 
         public Guid CorrelationToken { get; }
