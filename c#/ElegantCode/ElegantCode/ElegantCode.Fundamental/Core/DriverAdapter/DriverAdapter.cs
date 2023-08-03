@@ -17,7 +17,7 @@ namespace ElegantCode.Fundamental.Core.DriverAdapter
             var validationResult = aRequestForDriverAdapter.ValidateRequest();
             presenter.PresentError(validationResult.Error);
 
-            if (validationResult.Error.IsError() is false)
+            if (validationResult.IsNotOnError())
                 await ExecuteUseCase(myUseCase, presenter, validationResult, cancellation);
 
 

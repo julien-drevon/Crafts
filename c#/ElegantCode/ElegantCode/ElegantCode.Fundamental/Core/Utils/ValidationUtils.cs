@@ -43,7 +43,10 @@ public static class ValidationUtils
     /// <param name="valueIfIsGood">The value if is good.</param>
     /// <param name="prediacateErrors">The prediacate errors.</param>
     /// <returns>Tuple (UseCaseQuery, Error) </returns>
-    public static (TUseCaseQuery UseCaseQuery, Error Error) ValidationWorkflow<TUseCaseQuery>(this IValidateRequest<TUseCaseQuery> validationModel, TUseCaseQuery valueIfIsGood, params Func<Error>[] prediacateErrors)
+    public static (TUseCaseQuery UseCaseQuery, Error Error) ValidationWorkflow<TUseCaseQuery>(
+        this IValidateRequest<TUseCaseQuery> validationModel,
+        TUseCaseQuery valueIfIsGood,
+        params Func<Error>[] prediacateErrors)
             where TUseCaseQuery : class, IGotCorrelationToken
     {
         var errors = prediacateErrors.Select(x => x?.Invoke()).Where(x => x.IsNotNull());
