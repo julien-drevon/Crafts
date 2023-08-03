@@ -1,4 +1,4 @@
-﻿using ElegantCode.Fundamental.Core.Utils;
+﻿using ElegantCode.Fundamental.Core.Entities;
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.Serialization;
 

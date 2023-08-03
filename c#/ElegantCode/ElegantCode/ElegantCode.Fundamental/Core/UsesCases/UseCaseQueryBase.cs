@@ -1,4 +1,4 @@
-﻿using ElegantCode.Fundamental.Core.Utils;
+﻿using ElegantCode.Fundamental.Core.Entities;
 
 namespace ElegantCode.Fundamental.Core.UsesCases;
 

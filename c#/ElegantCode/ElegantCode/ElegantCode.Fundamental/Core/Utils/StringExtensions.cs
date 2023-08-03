@@ -4,8 +4,15 @@ namespace ElegantCode.Fundamental.Core.Utils;
 
 public static class StringExtensions
 {
+    public static bool IsNotNullOrEmpty(this string me)
+    {
+        return !me.IsNullOrEmpty();
+    }
+
     public static bool IsNullOrEmpty(this string me)
-    { return string.IsNullOrEmpty(me); }
+    {
+        return string.IsNullOrEmpty(me);
+    }
 
     /// <summary>
     /// Joins the string with Tostring() ^^ Can use a factory for transform T toString.
@@ -35,9 +42,9 @@ public static class StringExtensions
             });
 
         var howManyCharToremove = ComputeLengthOfNewLine(addLine);
-        return (retour.IsNotNull() && retour.Length > 0)
-            ? ToStringWithRemoveLastConcat(concatString, howManyCharToremove, retour)
-            : string.Empty;
+        return retour.Length > 0
+               ? ToStringWithRemoveLastConcat(concatString, howManyCharToremove, retour)
+               : string.Empty;
     }
 
     private static StringBuilder AppendLineForJoinString<T>(
@@ -50,7 +57,8 @@ public static class StringExtensions
         if (transformToString(line).IsNullOrEmpty())
             return stringBuilder;
 
-        var joinStringBuilder = stringBuilder.Append(transformToString(line)).Append(concatString);
+        var joinStringBuilder = stringBuilder.Append(transformToString(line))
+                                             .Append(concatString);
 
         if (addLine)
             joinStringBuilder.AppendLine();

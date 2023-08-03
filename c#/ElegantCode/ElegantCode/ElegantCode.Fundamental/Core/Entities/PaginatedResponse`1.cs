@@ -25,7 +25,7 @@ public class PaginatedResponse<T> : BaseResponse, IPaginatedResponse<T>
     public PaginatedResponse(Guid correlationToken, IEnumerable<T> values, long totalEntry, int pageIndex, int nbElementPerPage, string message = "", bool isOk = true)
         : base(correlationToken, message, isOk)
     {
-        if (values.IsNotNull())
+        if (values is not null)
             Datas = values.ToList();
 
         InitValue(totalEntry, pageIndex, nbElementPerPage);

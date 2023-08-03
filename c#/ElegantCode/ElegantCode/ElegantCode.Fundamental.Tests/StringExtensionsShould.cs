@@ -25,4 +25,12 @@ public class StringExtensionsShould
         (null as string).ToJoinString(addLine: false, concatString: "+")
                         .Should().BeEmpty();
     }
+
+    [Fact]
+    public void TestIsNotNullOrEmpty()
+    {
+        (null as string).IsNotNullOrEmpty().Should().BeFalse();
+        ("a").IsNotNullOrEmpty().Should().BeTrue();
+        ("").IsNotNullOrEmpty().Should().BeFalse();
+    }
 }

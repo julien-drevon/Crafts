@@ -15,4 +15,21 @@ public class UtilsExtensionShould
         (null as object).IsNotNull().Should().BeFalse();
         new object().IsNotNull().Should().BeTrue();
     }
+
+    [Fact]
+    public void Bool_IsTrue()
+    {
+        true.IsTrue().Should().BeTrue();
+        false.IsTrue().Should().BeFalse();
+        false.IsFalse().Should().BeTrue();
+        true.IsFalse().Should().BeFalse();
+
+        new Nullable<bool>(true).IsTrue().Should().BeTrue();
+        new Nullable<bool>().IsTrue().Should().BeFalse();
+        new Nullable<bool>(false).IsTrue().Should().BeFalse();
+
+        new Nullable<bool>(true).IsFalseOrNull().Should().BeFalse();
+        new Nullable<bool>().IsFalseOrNull().Should().BeTrue();
+        new Nullable<bool>(false).IsFalseOrNull().Should().BeTrue();
+    }
 }

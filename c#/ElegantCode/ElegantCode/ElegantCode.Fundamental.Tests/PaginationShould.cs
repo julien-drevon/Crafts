@@ -1,5 +1,4 @@
 using ElegantCode.Fundamental.Core.Entities;
-using ElegantCode.Fundamental.Core.Utils;
 using System.Text.Json;
 
 namespace ElegantCode.Fundamental.Tests;
@@ -268,6 +267,23 @@ public class PaginationShould
     public void PaginationIsAny()
     {
         IPaginatedResponse<string> assert = null;
+        assert.IsNotAny().Should().BeTrue();
+
+        assert = new PaginatedResponse<string>();
+        assert.IsOk.Should().BeFalse();
+        assert.IsNotAny().Should().BeTrue();
+
+        assert = (new[] { "1", "2", "3" }).ToPaginationResponse(CorrrelationToken);
+        assert.IsNotAny().Should().BeFalse();
+        assert.IsNotAny(x => x == "1").Should().BeFalse();
+        assert.IsNotAny(x => x == "42").Should().BeTrue();
+        assert.CorrelationToken.Should().Be(CorrrelationToken);
+    }
+
+    [Fact]
+    public void PaginationIsNotAny()
+    {
+        IPaginatedResponse<string> assert = null;
         assert.IsAny().Should().BeFalse();
 
         assert = new PaginatedResponse<string>();
@@ -297,9 +313,9 @@ public class PaginationShould
         assert.PageSize.Should().Be(0);
         assert.Should().BeEquivalentTo(PaginationRequest.DefaultPage);
 
-        assert = new PaginationRequest(0,1);
+        assert = new PaginationRequest(0, 1);
         assert.PageNumber.Should().Be(1);
-        assert.PageSize.Should().Be(1);;
+        assert.PageSize.Should().Be(1); ;
 
         assert = new PaginationRequest(1, 0);
         assert.PageNumber.Should().Be(1);
@@ -472,11 +488,11 @@ public class MyFactIPaginationImplements<T> : IPaginatedResponse<T>
 {
     public IList<T> Datas { get; set; } = null;
 
-    public IPagination Pagination { get; }=new Pagination() { CurrentPage = 1,PageIndex=0 };
+    public IPagination Pagination { get; } = new Pagination() { CurrentPage = 1, PageIndex = 0 };
 
     public bool IsOk { get; set; }
-    public string Message { get; set; }
 
+    public string Message { get; set; }
 
     public Guid CorrelationToken { get; }
 }

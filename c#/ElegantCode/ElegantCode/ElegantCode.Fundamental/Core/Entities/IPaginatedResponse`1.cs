@@ -1,6 +1,4 @@
-﻿using ElegantCode.Fundamental.Core.Entities;
-
-namespace ElegantCode.Fundamental.Core.Utils;
+﻿namespace ElegantCode.Fundamental.Core.Entities;
 
 /// <summary>
 /// PAgination contract. Is composition between DataList and pagination abstraction
