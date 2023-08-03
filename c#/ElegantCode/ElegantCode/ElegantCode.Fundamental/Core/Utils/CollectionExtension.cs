@@ -42,18 +42,47 @@ public static class CollectionExtension
     /// <returns></returns>
     public static bool IsAny<T>(this IEnumerable<T> collection, Func<T, bool> predicate = null)
     {
-        return (collection.IsNotNull() &&
-                 (predicate.IsNotNull() ? collection.Any(predicate) : collection.Any()));
+        return (collection.IsNotNull()
+             && (predicate.IsNotNull()
+                 ? collection.Any(predicate)
+                 : collection.Any()));
     }
 
     /// <summary>
-    /// retourne true si la connection possede au moins un élément.
+    /// retourne true si la coLLection possede au moins un élément.
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    /// <param name="li"></param>
+    /// <param name="paginedResponse"></param>
     /// <returns></returns>
-    public static bool IsAny<T>(this IPaginatedResponse<T> li, Func<T, bool> predicate = null)
+    public static bool IsAny<T>(this IPaginatedResponse<T> paginedResponse, Func<T, bool> predicate = null)
     {
-        return li.IsNotNull() && (predicate.IsNull() ? li.Datas.IsAny() : li.Datas.IsAny(predicate));
+        return paginedResponse.IsNotNull()
+              && (predicate.IsNull()
+                 ? paginedResponse.Datas.IsAny()
+                 : paginedResponse.Datas.IsAny(predicate));
+    }
+
+    /// <summary>
+    /// Test si la collection est == à null ou ne contient pas d'élément
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    /// <param name="collection"></param>
+    /// <returns></returns>
+    public static bool IsNotAny<T>(this IEnumerable<T> collection, Func<T, bool> predicate = null)
+    {
+        return collection.IsAny(predicate)
+                         .IsFalse();
+    }
+
+    /// <summary>
+    /// retourne true si la collection est vide
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    /// <param name="paginedResponse"></param>
+    /// <returns></returns>
+    public static bool IsNotAny<T>(this IPaginatedResponse<T> paginedResponse, Func<T, bool> predicate = null)
+    {
+        return paginedResponse.IsAny(predicate)
+                              .IsFalse();
     }
 }

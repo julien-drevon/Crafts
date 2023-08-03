@@ -4,8 +4,15 @@ namespace ElegantCode.Fundamental.Core.Utils;
 
 public static class StringExtensions
 {
+    public static bool IsNotNullOrEmpty(this string me)
+    {
+        return !me.IsNullOrEmpty();
+    }
+
     public static bool IsNullOrEmpty(this string me)
-    { return string.IsNullOrEmpty(me); }
+    {
+        return string.IsNullOrEmpty(me);
+    }
 
     /// <summary>
     /// Joins the string with Tostring() ^^ Can use a factory for transform T toString.

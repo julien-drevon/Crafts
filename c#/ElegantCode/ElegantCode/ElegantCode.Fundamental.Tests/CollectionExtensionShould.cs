@@ -36,4 +36,19 @@ public class CollectionExtensionShould
         li = new string[] { "1" };
         li.IsAny().Should().BeTrue();
     }
+    [Fact]
+    public void IsNotAnyShould()
+    {
+        IEnumerable<string> li = null;
+        li.IsNotAny(x => x == "a").Should().BeTrue();
+
+        li = new[] { "a", "b" };
+        li.IsNotAny(x => x == "a").Should().BeFalse();
+
+        li = new string[0];
+        li.IsNotAny().Should().BeTrue();
+
+        li = new string[] { "1" };
+        li.IsNotAny().Should().BeFalse();
+    }
 }
