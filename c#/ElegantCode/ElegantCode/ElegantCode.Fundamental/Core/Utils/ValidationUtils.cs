@@ -7,7 +7,7 @@ namespace ElegantCode.Fundamental.Core.Utils;
 public static class ValidationUtils
 {
     /// <summary>
-    /// Creates the error rule if is bad.
+    /// Creates the Func error rule if is bad.
     /// </summary>
     /// <param name="isBad">if set to <c>true</c> [is bad].</param>
     /// <param name="error">The error.</param>

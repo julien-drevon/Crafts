@@ -1,4 +1,4 @@
-﻿using ElegantCode.Fundamental.Core.Errors;
+﻿using ElegantCode.Fundamental.Core.UsesCases;
 using System.Runtime.Serialization;
 
 namespace Rpg.Providers;

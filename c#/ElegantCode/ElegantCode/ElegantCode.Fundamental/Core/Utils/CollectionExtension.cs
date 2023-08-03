@@ -37,7 +37,7 @@ public static class CollectionExtension
     }
 
     /// <summary>
-    /// Test si la collection est differente de null et contient au moins un élément
+    /// retourne true si la collection est differente de null et contient au moins un élément
     /// </summary>
     /// <typeparam name="T"></typeparam>
     /// <param name="collection"></param>
@@ -51,7 +51,7 @@ public static class CollectionExtension
     }
 
     /// <summary>
-    /// retourne true si la coLLection possede au moins un élément.
+    /// retourne true si la répose paginée possède au moins un élément.
     /// </summary>
     /// <typeparam name="T"></typeparam>
     /// <param name="paginedResponse"></param>

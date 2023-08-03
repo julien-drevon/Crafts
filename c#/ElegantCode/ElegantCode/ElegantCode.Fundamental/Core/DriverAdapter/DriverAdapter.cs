@@ -20,7 +20,6 @@ namespace ElegantCode.Fundamental.Core.DriverAdapter
             if (validationResult.IsNotOnError())
                 await ExecuteUseCase(myUseCase, presenter, validationResult, cancellation);
 
-
             return await presenter.View();
         }
 

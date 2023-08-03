@@ -2,16 +2,16 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.Serialization;
 
-namespace ElegantCode.Fundamental.Core.Errors;
+namespace ElegantCode.Fundamental.Core.UsesCases;
 
 [Serializable]
 public class UseCaseException : Exception, IGotCorrelationToken
 {
-    public virtual Guid CorrelationToken { get;  }
+    public virtual Guid CorrelationToken { get; }
 
     public UseCaseException(Guid correlationToken, string message) : base(message)
     {
-        this.CorrelationToken = correlationToken;
+        CorrelationToken = correlationToken;
     }
 
     [ExcludeFromCodeCoverage]
