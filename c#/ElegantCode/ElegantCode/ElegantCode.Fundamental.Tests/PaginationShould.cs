@@ -1,4 +1,5 @@
 using ElegantCode.Fundamental.Core.Entities;
+using ElegantCode.Fundamental.Core.Utils;
 using System.Text.Json;
 
 namespace ElegantCode.Fundamental.Tests;
@@ -270,6 +271,7 @@ public class PaginationShould
         assert.IsAny().Should().BeFalse();
 
         assert = new PaginatedResponse<string>();
+        assert.IsOk.Should().BeFalse();
         assert.IsAny().Should().BeFalse();
 
         assert = (new[] { "1", "2", "3" }).ToPaginationResponse(CorrrelationToken);
@@ -294,6 +296,10 @@ public class PaginationShould
         assert.PageNumber.Should().Be(1);
         assert.PageSize.Should().Be(0);
         assert.Should().BeEquivalentTo(PaginationRequest.DefaultPage);
+
+        assert = new PaginationRequest(0,1);
+        assert.PageNumber.Should().Be(1);
+        assert.PageSize.Should().Be(1);;
 
         assert = new PaginationRequest(1, 0);
         assert.PageNumber.Should().Be(1);
@@ -329,6 +335,13 @@ public class PaginationShould
         assert.Pagination.Total.Should().Be(6);
         assert.Pagination.PageIndex.Should().Be(2);
         assert.CorrelationToken.Should().Be(CorrrelationToken);
+
+        /********************************************/
+
+        var nullSource = new MyFactIPaginationImplements<int>();
+        assert = nullSource.ToPaginationResponse();
+        assert.Datas.Should().HaveCount(0);
+        assert.Datas.Should().BeEmpty();
     }
 
     [Fact]
@@ -453,4 +466,17 @@ public class PaginationShould
         assert = JsonSerializer.Deserialize<PaginatedResponse<string>>(json);
         assert.Should().BeEquivalentTo(original);
     }
+}
+
+public class MyFactIPaginationImplements<T> : IPaginatedResponse<T>
+{
+    public IList<T> Datas { get; set; } = null;
+
+    public IPagination Pagination { get; }=new Pagination() { CurrentPage = 1,PageIndex=0 };
+
+    public bool IsOk { get; set; }
+    public string Message { get; set; }
+
+
+    public Guid CorrelationToken { get; }
 }
