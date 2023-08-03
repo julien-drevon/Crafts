@@ -7,7 +7,7 @@ public static class UtilsExtension
         return !me;
     }
 
-    public static bool IsFalse(this bool? me)
+    public static bool IsFalseOrNull(this bool? me)
     {
         return !me.HasValue || !me.Value;
     }

@@ -1,4 +1,4 @@
-﻿namespace ElegantCode.Fundamental.Core.Utils
+﻿namespace ElegantCode.Fundamental.Core.Entities
 {
     public interface IGotCorrelationToken
     {

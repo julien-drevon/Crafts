@@ -1,7 +1,7 @@
-﻿using ElegantCode.Fundamental.Core.Errors;
+﻿using ElegantCode.Fundamental.Core.Entities;
+using ElegantCode.Fundamental.Core.Errors;
 using ElegantCode.Fundamental.Core.Presenter;
 using ElegantCode.Fundamental.Core.UsesCases;
-using ElegantCode.Fundamental.Core.Utils;
 
 namespace ElegantCode.Fundamental.Core.DriverAdapter
 {

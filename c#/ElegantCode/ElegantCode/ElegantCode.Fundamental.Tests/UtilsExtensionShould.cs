@@ -28,8 +28,8 @@ public class UtilsExtensionShould
         new Nullable<bool>().IsTrue().Should().BeFalse();
         new Nullable<bool>(false).IsTrue().Should().BeFalse();
 
-        new Nullable<bool>(true).IsFalse().Should().BeFalse();
-        new Nullable<bool>().IsFalse().Should().BeTrue();
-        new Nullable<bool>(false).IsFalse().Should().BeTrue();
+        new Nullable<bool>(true).IsFalseOrNull().Should().BeFalse();
+        new Nullable<bool>().IsFalseOrNull().Should().BeTrue();
+        new Nullable<bool>(false).IsFalseOrNull().Should().BeTrue();
     }
 }

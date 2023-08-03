@@ -42,9 +42,9 @@ public static class StringExtensions
             });
 
         var howManyCharToremove = ComputeLengthOfNewLine(addLine);
-        return (retour.IsNotNull() && retour.Length > 0)
-            ? ToStringWithRemoveLastConcat(concatString, howManyCharToremove, retour)
-            : string.Empty;
+        return retour.Length > 0
+               ? ToStringWithRemoveLastConcat(concatString, howManyCharToremove, retour)
+               : string.Empty;
     }
 
     private static StringBuilder AppendLineForJoinString<T>(
@@ -57,7 +57,8 @@ public static class StringExtensions
         if (transformToString(line).IsNullOrEmpty())
             return stringBuilder;
 
-        var joinStringBuilder = stringBuilder.Append(transformToString(line)).Append(concatString);
+        var joinStringBuilder = stringBuilder.Append(transformToString(line))
+                                             .Append(concatString);
 
         if (addLine)
             joinStringBuilder.AppendLine();
