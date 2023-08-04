@@ -16,9 +16,8 @@ public static class Transform
         }
 
         StringBuilder sb = new StringBuilder();
-        int maxDegree = ComputeMaxDegree(valuesToTransform);
-
-        ExtractPolynome(valuesToTransform, sb, maxDegree);
+        
+        ExtractPolynome(valuesToTransform, sb, ComputeMaxDegree(valuesToTransform));
 
         return sb.ToString();
     }
