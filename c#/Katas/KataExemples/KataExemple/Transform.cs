@@ -35,8 +35,13 @@ public static class Transform
         if (actualDegree == 0)
             return string.Empty;
 
-        return "x" + (actualDegree > 1 ? "^" + actualDegree : string.Empty);
+        return "x" + PrintPowerLevel(actualDegree);
 
+    }
+
+    private static string PrintPowerLevel(int actualDegree)
+    {
+        return (actualDegree > 1 ? "^" + actualDegree : string.Empty);
     }
 
     private static int ComputeActualDegree(int[] valuesToTransform, int i)
