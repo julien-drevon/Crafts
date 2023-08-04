@@ -19,8 +19,6 @@ public class UtilsExtensionShould
     [Fact]
     public void Bool_IsTrue()
     {
-        true.IsTrue().Should().BeTrue();
-        false.IsTrue().Should().BeFalse();
         false.IsFalse().Should().BeTrue();
         true.IsFalse().Should().BeFalse();
 

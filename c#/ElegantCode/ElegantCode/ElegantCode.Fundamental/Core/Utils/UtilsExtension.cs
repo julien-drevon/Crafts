@@ -22,11 +22,6 @@ public static class UtilsExtension
         return me is null;
     }
 
-    public static bool IsTrue(this bool me)
-    {
-        return me;
-    }
-
     public static bool IsTrue(this bool? me)
     {
         return me.HasValue && me.Value;
