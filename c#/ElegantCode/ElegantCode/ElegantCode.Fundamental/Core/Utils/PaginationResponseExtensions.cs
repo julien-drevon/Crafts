@@ -34,7 +34,8 @@ public static class PaginationResponseExtensions
     {
         if (query.IsNull())
         {
-            return new PaginatedResponse<TResponse>(Guid.Empty, new List<TResponse>(), 0, 1, 0);
+            return CreateDefaultPaginationResponse<TResponse>(Guid.Empty, 0);
+
         }
 
         var pi = query.Pagination?.CurrentPage ?? 0;

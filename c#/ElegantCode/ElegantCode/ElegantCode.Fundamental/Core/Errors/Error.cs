@@ -7,7 +7,7 @@ namespace ElegantCode.Fundamental.Core.Errors;
 /// </summary>
 public class Error
 {
-    private readonly List<String> _Messages = new();
+    private readonly HashSet<String> _Messages = new();
 
     public Error(Guid correlationToken, string message = "")
     {
