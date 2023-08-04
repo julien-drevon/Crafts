@@ -18,12 +18,18 @@ public static class Transform
         StringBuilder sb = new StringBuilder();
         int maxDegree = ComputeMaxDegree(valuesToTransform);
 
+        ExtractPolynome(valuesToTransform, sb, maxDegree);
+
+        return sb.ToString();
+    }
+
+    private static void ExtractPolynome(int[] valuesToTransform, StringBuilder sb, int maxDegree)
+    {
         for (int i = 0; i < valuesToTransform.Length; i++)
         {
             int actualDegree = ComputeActualDegree(valuesToTransform, i);
             sb.Append(valuesToTransform[i].PrintCoeffForPolynome(maxDegree, actualDegree) + PrintXPower(actualDegree));
         }
-        return sb.ToString();
     }
 
     private static string PrintXPower(int actualDegree)
