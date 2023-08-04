@@ -2,6 +2,9 @@
 
 namespace ElegantCode.Fundamental.Core.Errors;
 
+/// <summary>
+/// Monad Error
+/// </summary>
 public class Error
 {
     private readonly List<String> _Messages = new();
