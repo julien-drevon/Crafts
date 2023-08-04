@@ -12,23 +12,22 @@ public static class Transform
 
         if (valuesToTransform.Length == 1)
         {
-            return valuesToTransform[0].ToString();
+            return valuesToTransform.First()
+                                    .ToString();
         }
 
-        StringBuilder sb = new StringBuilder();
-        
-        ExtractPolynome(valuesToTransform, sb, ComputeMaxDegree(valuesToTransform));
-
-        return sb.ToString();
+        return ExtractPolynome(new StringBuilder(), valuesToTransform, ComputeMaxDegree(valuesToTransform))
+               .ToString();
     }
 
-    private static void ExtractPolynome(int[] valuesToTransform, StringBuilder sb, int maxDegree)
+    private static StringBuilder ExtractPolynome(StringBuilder sb, int[] valuesToTransform, int maxDegree)
     {
         for (int i = 0; i < valuesToTransform.Length; i++)
         {
             int actualDegree = ComputeActualDegree(valuesToTransform, i);
             sb.Append(valuesToTransform[i].PrintCoeffForPolynome(maxDegree, actualDegree) + PrintXPower(actualDegree));
         }
+        return sb;
     }
 
     private static string PrintXPower(int actualDegree)
