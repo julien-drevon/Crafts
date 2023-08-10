@@ -20,12 +20,12 @@ public static class StringExtensions
     /// <typeparam name="T"></typeparam>
     /// <param name="me">la liste de string</param>
     /// <param name="transformToString">Methode pour convertir un objet T en string</param>
-    /// <param name="addLine">Si ce parametre est à true chaque objet est concaténé à la ligne, sionon à la suite</param>
+    /// <param name="isAddLine">Si ce parametre est à true chaque objet est concaténé à la ligne, sionon à la suite</param>
     /// <param name="concatString">chaine ajouté à la fin de chaque ligne</param>
     /// <returns></returns>
     public static string ToJoinString<T>(
         this IEnumerable<T> me,
-        bool addLine = true,
+        bool isAddLine = true,
         string concatString = "",
         Func<T, string> transformToString = null)
     {
@@ -38,13 +38,12 @@ public static class StringExtensions
             new StringBuilder(),
             (sb, line) =>
             {
-                return AppendLineForJoinString(addLine, concatString, transformToString, sb, line);
+                return AppendLineForJoinString(isAddLine, concatString, transformToString, sb, line);
             });
 
-        var howManyCharToremove = ComputeLengthOfNewLine(addLine);
-        return retour.Length > 0
-               ? ToStringWithRemoveLastConcat(concatString, howManyCharToremove, retour)
-               : string.Empty;
+        var howManyCharToremove = ComputeLengthOfNewLine(isAddLine);
+
+        return ToStringWithRemoveLastConcat(concatString, howManyCharToremove, retour);
     }
 
     private static StringBuilder AppendLineForJoinString<T>(
@@ -71,7 +70,9 @@ public static class StringExtensions
 
     private static string ToStringWithRemoveLastConcat(string concatString, int addLineValue, StringBuilder stringBuilder)
     {
-        return stringBuilder.Remove(stringBuilder.Length - concatString.Length - addLineValue, concatString.Length + addLineValue)
-                            .ToString();
+        return stringBuilder.Length > 0
+            ? stringBuilder.Remove(stringBuilder.Length - concatString.Length - addLineValue, concatString.Length + addLineValue)
+                           .ToString()
+            : string.Empty;
     }
 }

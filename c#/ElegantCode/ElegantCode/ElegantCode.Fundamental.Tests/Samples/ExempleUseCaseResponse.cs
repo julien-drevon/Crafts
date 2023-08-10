@@ -1,6 +1,4 @@
-﻿using ElegantCode.Fundamental.Core.UsesCases;
-
-namespace ElegantCode.Fundamental.Tests.Samples;
+﻿namespace ElegantCode.Fundamental.Tests.Samples;
 
 public class ExampleUseCaseResponse
 {

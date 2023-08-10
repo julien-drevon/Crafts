@@ -3,7 +3,7 @@ namespace ElegantCode.Fundamental.Tests;
 public class CollectionExtensionShould
 {
     [Fact]
-    public void ForeachShould()
+    public void Foreach_Should()
     {
         IEnumerable<int> li = null;
         var expect = 0;
@@ -22,7 +22,7 @@ public class CollectionExtensionShould
     }
 
     [Fact]
-    public void IsAnyShould()
+    public void IsAny_Should()
     {
         IEnumerable<string> li = null;
         li.IsAny(x => x == "a").Should().BeFalse();
@@ -36,8 +36,9 @@ public class CollectionExtensionShould
         li = new string[] { "1" };
         li.IsAny().Should().BeTrue();
     }
+
     [Fact]
-    public void IsNotAnyShould()
+    public void IsNotAny_Should()
     {
         IEnumerable<string> li = null;
         li.IsNotAny(x => x == "a").Should().BeTrue();

@@ -364,7 +364,7 @@ public class PaginationShould
     public void PaginatedResponseShouldThrowException()
     {
         var assert = Assert.Throws<ArgumentOutOfRangeException>(() => new PaginatedResponse<string>(CorrrelationToken, 0, 0));
-        assert.Message.Should().Be(new ArgumentOutOfRangeException("pageNumber", 0, PaginatedResponse<string>.PAGE_UNDER_1).Message);
+        assert.Message.Should().Be(new ArgumentOutOfRangeException("pageNumber", 0, PaginatedResponse<string>.PAGE_UNDER_1_ERROR).Message);
     }
 
     [Fact]

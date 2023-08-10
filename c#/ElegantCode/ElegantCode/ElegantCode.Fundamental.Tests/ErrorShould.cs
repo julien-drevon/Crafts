@@ -1,11 +1,9 @@
-using FluentAssertions.Formatting;
-
 namespace ElegantCode.Fundamental.Tests;
 
 public class ErrorShould
 {
     [Fact]
-    public void TestErrorClass()
+    public void Error_steps()
     {
         var token = Guid.NewGuid();
         var assert = new Error(token, message: "");
@@ -30,7 +28,7 @@ public class ErrorShould
         /***************** Validation Workflow ***************************/
         (object UseCaseQuery, Error Error) assert2 = new(null, null);
         assert2.IsNotOnError().Should().BeTrue();
-         assert2 = new(null, new Error(Guid.NewGuid(), "Erreur"));
+        assert2 = new(null, new Error(Guid.NewGuid(), "Erreur"));
         assert2.IsOnError().Should().BeTrue();
     }
 }

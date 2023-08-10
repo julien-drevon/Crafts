@@ -12,7 +12,7 @@ namespace ElegantCode.Fundamental.Core.Entities;
 [DataContract]
 public class PaginatedResponse<T> : BaseResponse, IPaginatedResponse<T>
 {
-    public const string PAGE_UNDER_1 = "pageNumber cannot be below 1.";
+    public const string PAGE_UNDER_1_ERROR = "pageNumber cannot be below 1.";
 
     [JsonConstructor]
     public PaginatedResponse()
@@ -41,7 +41,7 @@ public class PaginatedResponse<T> : BaseResponse, IPaginatedResponse<T>
     protected void InitValue(long totalEntry, int pageNumber, int nbElementPerPage)
     {
         if (pageNumber < 1)
-            throw new ArgumentOutOfRangeException(nameof(pageNumber), pageNumber, PAGE_UNDER_1);
+            throw new ArgumentOutOfRangeException(nameof(pageNumber), pageNumber, PAGE_UNDER_1_ERROR);
 
 
         Pagination = new Pagination
@@ -49,13 +49,13 @@ public class PaginatedResponse<T> : BaseResponse, IPaginatedResponse<T>
             PageSize = nbElementPerPage
         };
 
-        long totP = totalEntry.ComputeNbOfPage(nbElementPerPage);
-        PaginationStateCompute(totalEntry, pageNumber, totP);
+        long totalPage = totalEntry.ComputeNbOfPage(nbElementPerPage);
+        PaginationStateCompute(totalEntry, pageNumber, totalPage);
     }
 
-    private void PaginationStateCompute(long totalEntry, int pageNumber, long totP)
+    private void PaginationStateCompute(long totalEntry, int pageNumber, long totalPage)
     {
-        Pagination.PageNumber = totP;
+        Pagination.PageNumber = totalPage;
         Pagination.Total = totalEntry;
         Pagination.CurrentPage = pageNumber;
         Pagination.PageIndex = pageNumber - 1;
