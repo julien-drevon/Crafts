@@ -47,7 +47,7 @@ public static class StringExtensions
     }
 
     private static StringBuilder AppendLineForJoinString<T>(
-        bool addLine,
+        bool isAddLine,
         string concatString,
         Func<T, string> transformToString,
         StringBuilder stringBuilder,
@@ -59,7 +59,7 @@ public static class StringExtensions
         var joinStringBuilder = stringBuilder.Append(transformToString(line))
                                              .Append(concatString);
 
-        if (addLine)
+        if (isAddLine)
             joinStringBuilder.AppendLine();
 
         return joinStringBuilder;
