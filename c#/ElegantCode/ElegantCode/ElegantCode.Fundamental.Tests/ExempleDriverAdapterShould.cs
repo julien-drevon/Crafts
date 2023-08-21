@@ -6,9 +6,7 @@ public class ExampleDriverAdapterShould
     public async Task ForElegantCode_INeedToDesign_AWorkflowUseCase()
     {
         ExampleDriverAdapterRequest aRequestForDriverAdapter = CreateDriverRequest("42");
-
         var driverResponse = await CreateDriverAdapter().DoAnExample(aRequestForDriverAdapter);
-
         driverResponse.Should().BeEquivalentTo(CreateMyExpectAssert(aRequestForDriverAdapter.CorrelationToken, "42", error: null));
     }
 
@@ -16,9 +14,7 @@ public class ExampleDriverAdapterShould
     public async Task ForElegantCode_INeedToValidateMyRequest_BeforeExecuteUseCase()
     {
         ExampleDriverAdapterRequest aRequestForDriverAdapter = CreateDriverRequest("La question");
-
         var driverResponse = await CreateDriverAdapter().DoAnExample(aRequestForDriverAdapter);
-
         driverResponse.Should().BeEquivalentTo(CreateMyErrorExpectAssert("Formatage incorrect", aRequestForDriverAdapter.CorrelationToken));
     }
 
@@ -26,9 +22,7 @@ public class ExampleDriverAdapterShould
     public async Task ForElegantCode_WhenErrorBusinessIsThrow_ThenBePrintASpecificError()
     {
         ExampleDriverAdapterRequest aRequestForDriverAdapter = CreateDriverRequest("24");
-
         var driverResponse = await CreateDriverAdapter().DoAnExample(aRequestForDriverAdapter);
-
         driverResponse.Should().BeEquivalentTo(CreateMyErrorExpectAssert("La reponse Fournie n'est pas LA reponse", aRequestForDriverAdapter.CorrelationToken));
     }
 

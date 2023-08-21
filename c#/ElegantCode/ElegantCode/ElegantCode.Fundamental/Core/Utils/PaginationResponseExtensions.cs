@@ -68,7 +68,12 @@ public static class PaginationResponseExtensions
         var pageSizeCompute = pagination?.PageSize ?? 0;
         var total = query?.Count();
         var values = query.GetPage(pageNumberCompute, pageSizeCompute);
-        return new PaginatedResponse<TResponse>(correlationToken, values ?? new List<TResponse>(), total ?? 0, pageNumberCompute, pageSizeCompute);
+        return new PaginatedResponse<TResponse>(
+            correlationToken,
+            values ?? new List<TResponse>(),
+            total ?? 0,
+            pageNumberCompute,
+            pageSizeCompute);
     }
 
     /// <summary>
@@ -95,7 +100,12 @@ public static class PaginationResponseExtensions
         var total = query?.Count();
         var values = query.GetPage(pageNumberCompute, pageSizeCompute);
         var collect = values.Select(convert).ToList();
-        return new PaginatedResponse<TResponse>(correlationToken, collect ?? new List<TResponse>(), total ?? 0, pageNumberCompute, pageSizeCompute);
+        return new PaginatedResponse<TResponse>(
+            correlationToken,
+            collect ?? new List<TResponse>(),
+            total ?? 0,
+            pageNumberCompute,
+            pageSizeCompute);
     }
 
     /// <summary>
@@ -122,7 +132,12 @@ public static class PaginationResponseExtensions
         var total = query?.Count;
         var values = query.GetPage(pageNumberCompute, pageSizeCompute);
         var collect = values.Select(convert).ToList();
-        return new PaginatedResponse<TResponse>(correlationToken, collect ?? new List<TResponse>(), total ?? 0, pageNumberCompute, pageSizeCompute);
+        return new PaginatedResponse<TResponse>(
+            correlationToken,
+            collect ?? new List<TResponse>(),
+            total ?? 0,
+            pageNumberCompute,
+            pageSizeCompute);
     }
 
     /// <summary>
@@ -149,7 +164,12 @@ public static class PaginationResponseExtensions
         var total = query?.Count();
         var values = query.GetPage(pageNumberCompute, pageSizeCompute);
         var collect = values.Select(convert).ToList();
-        return new PaginatedResponse<TResponse>(correlationToken, collect ?? new List<TResponse>(), total ?? 0, pageNumberCompute, pageSizeCompute);
+        return new PaginatedResponse<TResponse>(
+            correlationToken,
+            collect ?? new List<TResponse>(),
+            total ?? 0,
+            pageNumberCompute,
+            pageSizeCompute);
     }
 
     /// <summary>
@@ -173,7 +193,12 @@ public static class PaginationResponseExtensions
 
         var total = totalItem ?? query.Count();
         var values = query.GetPage(pageNumber, pageSize);
-        return new PaginatedResponse<TResponse>(correlationToken, values ?? new List<TResponse>(), total, pageNumber, pageSize);
+        return new PaginatedResponse<TResponse>(
+            correlationToken,
+            values ?? new List<TResponse>(),
+            total,
+            pageNumber,
+            pageSize);
     }
 
     /// <summary>
@@ -195,7 +220,12 @@ public static class PaginationResponseExtensions
         var pageSizeCompute = query.Pagination.PageSize;
         var values = query.Datas;
         var collect = values.Select(convert).ToList();
-        return new PaginatedResponse<TResponse>(query.CorrelationToken, collect, query.Pagination.Total, pageNumberCompute, pageSizeCompute);
+        return new PaginatedResponse<TResponse>(
+            query.CorrelationToken,
+            collect,
+            query.Pagination.Total,
+            pageNumberCompute,
+            pageSizeCompute);
     }
 
     /// <summary>
@@ -225,7 +255,12 @@ public static class PaginationResponseExtensions
         var total = totalItem ?? query.Count();
         var values = query.GetPage(pageNumberCompute, pageSize);
         var collect = values.Select(convert).ToList();
-        return new PaginatedResponse<TResponse>(correlationToken, collect ?? new List<TResponse>(), total, pageNumberCompute, pageSize);
+        return new PaginatedResponse<TResponse>(
+            correlationToken,
+            collect ?? new List<TResponse>(),
+            total,
+            pageNumberCompute,
+            pageSize);
     }
 
     /// <summary>
@@ -255,7 +290,12 @@ public static class PaginationResponseExtensions
         var total = totalItem ?? query.Count;
         var values = query.GetPage(pageNumberCompute, pageSize);
         var collect = values.Select(convert).ToList();
-        return new PaginatedResponse<TResponse>(correlationToken, collect ?? new List<TResponse>(), total, pageNumberCompute, pageSize);
+        return new PaginatedResponse<TResponse>(
+            correlationToken,
+            collect ?? new List<TResponse>(),
+            total,
+            pageNumberCompute,
+            pageSize);
     }
 
     /// <summary>
@@ -285,16 +325,16 @@ public static class PaginationResponseExtensions
         var total = totalItem ?? query.Count();
         var values = query.GetPage(pageNumberCompute, pageSize);
         var collect = values.Select(convert).ToList();
-        return new PaginatedResponse<TResponse>(correlationToken, collect ?? new List<TResponse>(), total, pageNumberCompute, pageSize);
-    }
-
-    private static IPaginatedResponse<TResponse> CreateDefaultPaginationResponse<TResponse>(Guid correlationToken, int? pageSize = 0)
-    {
         return new PaginatedResponse<TResponse>(
             correlationToken,
-            new List<TResponse>(),
-            0,
-            1,
-            pageSize ?? 0);
+            collect ?? new List<TResponse>(),
+            total,
+            pageNumberCompute,
+            pageSize);
     }
+
+    private static IPaginatedResponse<TResponse> CreateDefaultPaginationResponse<TResponse>(
+        Guid correlationToken,
+        int? pageSize = 0)
+        => new PaginatedResponse<TResponse>(correlationToken, new List<TResponse>(), 0, 1, pageSize ?? 0);
 }

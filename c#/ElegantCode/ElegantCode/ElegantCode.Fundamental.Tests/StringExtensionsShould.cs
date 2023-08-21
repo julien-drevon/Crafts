@@ -2,6 +2,17 @@ namespace ElegantCode.Fundamental.Tests;
 
 public class StringExtensionsShould
 {
+    private static string GetExpectLine =>
+        @"1," + Environment.NewLine + "2," + Environment.NewLine + "3," + Environment.NewLine + "4," + Environment.NewLine + "5," + Environment.NewLine + "6";
+
+    [Fact]
+    public void TestIsNotNullOrEmpty()
+    {
+        (null as string).IsNotNullOrEmpty().Should().BeFalse();
+        ("a").IsNotNullOrEmpty().Should().BeTrue();
+        ("").IsNotNullOrEmpty().Should().BeFalse();
+    }
+
     [Fact]
     public void TestJoinString()
     {
@@ -14,23 +25,14 @@ public class StringExtensionsShould
         noAddLineAssert.Should().Be("1+-+2+-+3+-+4+-+5+-+6");
 
         var addLineAssert = myListOfString.ToJoinString(isAddLine: true, ",");
-        var addLineWithFactoryAssert = new[] { 0, 1, 2, 3, 4, 5 }.ToJoinString(isAddLine: true, concatString: ",", transformToString: x => (x + 1).ToString());
-        var expectAddLine = @"1," + Environment.NewLine + "2," + Environment.NewLine + "3," + Environment.NewLine + "4," + Environment.NewLine + "5," + Environment.NewLine + "6";
+        addLineAssert.Should().Be(GetExpectLine);
 
-        addLineAssert.Should().Be(expectAddLine);
-        addLineWithFactoryAssert.Should().Be(expectAddLine);
+        var joinIntByFactory = new[] { 0, 1, 2, 3, 4, 5 }.ToJoinString(isAddLine: true, concatString: ",", transformToString: x => (x + 1).ToString());
+        joinIntByFactory.Should().Be(GetExpectLine);
 
         (new[] { string.Empty, null }).ToJoinString(isAddLine: false, concatString: ",")
                                       .Should().BeEmpty();
         (null as string).ToJoinString(isAddLine: false, concatString: "+")
                         .Should().BeEmpty();
-    }
-
-    [Fact]
-    public void TestIsNotNullOrEmpty()
-    {
-        (null as string).IsNotNullOrEmpty().Should().BeFalse();
-        ("a").IsNotNullOrEmpty().Should().BeTrue();
-        ("").IsNotNullOrEmpty().Should().BeFalse();
     }
 }
