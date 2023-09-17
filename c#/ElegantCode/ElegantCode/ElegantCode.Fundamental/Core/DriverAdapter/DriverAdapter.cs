@@ -20,7 +20,7 @@ public static class DriverAdapter
         if (validationResult.IsNotOnError())
             await ExecuteUseCase(myUseCase, presenter, validationResult, cancellation);
 
-        return await presenter.View();
+        return await presenter.View(cancellation);
     }
 
     public static async Task ExecuteUseCase<Tout, TUseCaseQuery, TUseCaseResult>(

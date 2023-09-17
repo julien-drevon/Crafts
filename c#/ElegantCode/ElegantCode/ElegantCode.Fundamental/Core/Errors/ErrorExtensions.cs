@@ -16,7 +16,7 @@ public static class ErrorExtensions
 
     public static bool IsOnError(this Error error)
     {
-        return error.IsNotNull() && error.Message.IsNotNullOrEmpty();
+        return error.IsNotNull() && error.Message.IsNotEmpty();
     }
 
     public static bool IsOnError<TUseCaseQuery>(this (TUseCaseQuery UseCaseQuery, Error Error) error)

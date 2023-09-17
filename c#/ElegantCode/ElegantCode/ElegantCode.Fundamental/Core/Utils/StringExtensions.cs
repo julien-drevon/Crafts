@@ -4,7 +4,7 @@ namespace ElegantCode.Fundamental.Core.Utils;
 
 public static class StringExtensions
 {
-    public static bool IsNotNullOrEmpty(this string me)
+    public static bool IsNotEmpty(this string me)
     {
         return !me.IsNullOrEmpty();
     }
@@ -19,7 +19,7 @@ public static class StringExtensions
     /// </summary>
     /// <typeparam name="T"></typeparam>
     /// <param name="stringLi">la liste de string</param>
-    /// <param name="transformToString">Methode pour convertir un objet T en string</param>
+    /// <param name="transformToStringFactory">Methode pour convertir un objet T en string</param>
     /// <param name="isAddLine">Si ce parametre est à true chaque objet est concaténé à la ligne, sionon à la suite</param>
     /// <param name="concatString">chaine ajouté à la fin de chaque ligne</param>
     /// <returns></returns>
@@ -27,18 +27,18 @@ public static class StringExtensions
         this IEnumerable<T> stringLi,
         bool isAddLine = true,
         string concatString = "",
-        Func<T, string> transformToString = null)
+        Func<T, string> transformToStringFactory = null)
     {
         if (stringLi.IsNull())
             return string.Empty;
 
-        transformToString ??= (x => x.IsNotNull() ? x.ToString() : string.Empty);
+        transformToStringFactory ??= (x => x.IsNotNull() ? x.ToString() : string.Empty);
 
         var retour = stringLi.Aggregate(
             new StringBuilder(),
             (sb, line) =>
             {
-                return AppendLineForJoinString(isAddLine, concatString, transformToString, sb, line);
+                return AppendEachLineForJoinString(isAddLine, concatString, transformToStringFactory, sb, line);
             });
 
         var howManyCharToremove = ComputeLengthOfNewLine(isAddLine);
@@ -46,7 +46,7 @@ public static class StringExtensions
         return ToStringWithRemoveLastConcat(concatString, howManyCharToremove, retour);
     }
 
-    private static StringBuilder AppendLineForJoinString<T>(
+    private static StringBuilder AppendEachLineForJoinString<T>(
         bool isAddLine,
         string concatString,
         Func<T, string> transformToString,

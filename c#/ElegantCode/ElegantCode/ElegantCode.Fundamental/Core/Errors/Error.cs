@@ -27,7 +27,7 @@ public class Error
 
     public void AddError(string message)
     {
-        if (message.IsNotNullOrEmpty())
+        if (message.IsNotEmpty())
         {
             _Messages.Add(message);
         }

@@ -25,14 +25,14 @@ public static class ValidationUtils
     /// Creates the error rule.
     /// </summary>
     /// <typeparam name="K"></typeparam>
-    /// <param name="me">Me.</param>
-    /// <param name="testARule">The test a rule.</param>
+    /// <param name="classWantToTest">Me.</param>
+    /// <param name="RuleTest">The test a rule.</param>
     /// <param name="error">The error.</param>
     /// <param name="correlationToken">The correlation token.</param>
     /// <returns></returns>
-    public static Func<Error> CreateErrorRule<K>(this K me, Func<K, bool> testARule, string error, Guid correlationToken = default)
+    public static Func<Error> CreateErrorRule<K>(this K classWantToTest, Func<K, bool> RuleTest, string error, Guid correlationToken = default)
     {
-        return testARule(me).CreateErrorRule(error, correlationToken);
+        return RuleTest(classWantToTest).CreateErrorRule(error, correlationToken);
     }
 
     /// <summary>

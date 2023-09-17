@@ -6,11 +6,11 @@ public class StringExtensionsShould
         @"1," + Environment.NewLine + "2," + Environment.NewLine + "3," + Environment.NewLine + "4," + Environment.NewLine + "5," + Environment.NewLine + "6";
 
     [Fact]
-    public void TestIsNotNullOrEmpty()
+    public void TestIsNotEmpty()
     {
-        (null as string).IsNotNullOrEmpty().Should().BeFalse();
-        ("a").IsNotNullOrEmpty().Should().BeTrue();
-        ("").IsNotNullOrEmpty().Should().BeFalse();
+        (null as string).IsNotEmpty().Should().BeFalse();
+        ("a").IsNotEmpty().Should().BeTrue();
+        ("").IsNotEmpty().Should().BeFalse();
     }
 
     [Fact]
@@ -27,7 +27,7 @@ public class StringExtensionsShould
         var addLineAssert = myListOfString.ToJoinString(isAddLine: true, ",");
         addLineAssert.Should().Be(GetExpectLine);
 
-        var joinIntByFactory = new[] { 0, 1, 2, 3, 4, 5 }.ToJoinString(isAddLine: true, concatString: ",", transformToString: x => (x + 1).ToString());
+        var joinIntByFactory = new[] { 0, 1, 2, 3, 4, 5 }.ToJoinString(isAddLine: true, concatString: ",", transformToStringFactory: x => (x + 1).ToString());
         joinIntByFactory.Should().Be(GetExpectLine);
 
         (new[] { string.Empty, null }).ToJoinString(isAddLine: false, concatString: ",")
