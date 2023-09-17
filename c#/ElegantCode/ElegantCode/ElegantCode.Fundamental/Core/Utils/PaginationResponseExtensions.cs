@@ -59,7 +59,7 @@ public static class PaginationResponseExtensions
     public static IPaginatedResponse<TResponse> ToPaginationResponse<TResponse>(
         this IEnumerable<TResponse> query,
         Guid correlationToken,
-        IPaginationRequest pagination)
+        IPaginationQuery pagination)
     {
         if (query.IsNull())
             return CreateDefaultPaginationResponse<TResponse>(correlationToken, pagination?.PageSize);
@@ -90,7 +90,7 @@ public static class PaginationResponseExtensions
         this IEnumerable<T> query,
         Guid correlationToken,
         Func<T, TResponse> convert,
-        IPaginationRequest pagination = null)
+        IPaginationQuery pagination = null)
     {
         if (query.IsNull())
             return CreateDefaultPaginationResponse<TResponse>(correlationToken, pagination?.PageSize);
@@ -122,7 +122,7 @@ public static class PaginationResponseExtensions
         this IList<T> query,
         Guid correlationToken,
         Func<T, TResponse> convert,
-        IPaginationRequest pagination = null)
+        IPaginationQuery pagination = null)
     {
         if (query.IsNull())
             return CreateDefaultPaginationResponse<TResponse>(correlationToken, pagination?.PageSize);
@@ -154,7 +154,7 @@ public static class PaginationResponseExtensions
         this IQueryable<T> query,
         Guid correlationToken,
         Func<T, TResponse> convert,
-        IPaginationRequest pagination = null)
+        IPaginationQuery pagination = null)
     {
         if (query.IsNull())
             return CreateDefaultPaginationResponse<TResponse>(correlationToken, pagination?.PageSize);

@@ -18,23 +18,23 @@ public static class StringExtensions
     /// Joins the string with Tostring() ^^ Can use a factory for transform T toString.
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    /// <param name="me">la liste de string</param>
+    /// <param name="stringLi">la liste de string</param>
     /// <param name="transformToString">Methode pour convertir un objet T en string</param>
     /// <param name="isAddLine">Si ce parametre est à true chaque objet est concaténé à la ligne, sionon à la suite</param>
     /// <param name="concatString">chaine ajouté à la fin de chaque ligne</param>
     /// <returns></returns>
     public static string ToJoinString<T>(
-        this IEnumerable<T> me,
+        this IEnumerable<T> stringLi,
         bool isAddLine = true,
         string concatString = "",
         Func<T, string> transformToString = null)
     {
-        if (me.IsNull())
+        if (stringLi.IsNull())
             return string.Empty;
 
         transformToString ??= (x => x.IsNotNull() ? x.ToString() : string.Empty);
 
-        var retour = me.Aggregate(
+        var retour = stringLi.Aggregate(
             new StringBuilder(),
             (sb, line) =>
             {

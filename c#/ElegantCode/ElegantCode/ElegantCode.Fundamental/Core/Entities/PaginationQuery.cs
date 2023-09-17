@@ -2,11 +2,11 @@
 
 namespace ElegantCode.Fundamental.Core.Entities;
 
-public class PaginationRequest : IPaginationRequest
+public class PaginationQuery : IPaginationQuery
 {
-    public static readonly PaginationRequest DefaultPage = new PaginationRequest();
+    public static readonly PaginationQuery DefaultPage = new PaginationQuery();
 
-    public PaginationRequest(int pageNumber = 1, int pageSize = 0)
+    public PaginationQuery(int pageNumber = 1, int pageSize = 0)
     {
         PageNumber = pageNumber < 2 ? 1 : pageNumber;
         PageSize = pageSize < 1 ? 0 : pageSize;

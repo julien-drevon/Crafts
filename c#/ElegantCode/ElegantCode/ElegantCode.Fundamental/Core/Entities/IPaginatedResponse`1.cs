@@ -1,7 +1,7 @@
 ﻿namespace ElegantCode.Fundamental.Core.Entities;
 
 /// <summary>
-/// PAgination contract. Is composition between DataList and pagination abstraction
+/// Pagination contract. Is composition between DataList and pagination abstraction
 /// </summary>
 /// <typeparam name="T"></typeparam>
 /// <seealso cref="Agaetis.ServicesModel.IBaseResponse" />
