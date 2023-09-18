@@ -4,7 +4,7 @@ namespace ElegantCode.Fundamental.Core.Utils;
 
 public static class StringExtensions
 {
-    public static bool IsNotEmpty(this string me)
+    public static bool IsNotNullOrEmpty(this string me)
     {
         return !me.IsNullOrEmpty();
     }

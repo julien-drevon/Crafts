@@ -8,9 +8,9 @@ public class StringExtensionsShould
     [Fact]
     public void TestIsNotEmpty()
     {
-        (null as string).IsNotEmpty().Should().BeFalse();
-        ("a").IsNotEmpty().Should().BeTrue();
-        ("").IsNotEmpty().Should().BeFalse();
+        (null as string).IsNotNullOrEmpty().Should().BeFalse();
+        ("a").IsNotNullOrEmpty().Should().BeTrue();
+        ("").IsNotNullOrEmpty().Should().BeFalse();
     }
 
     [Fact]

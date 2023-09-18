@@ -12,7 +12,7 @@ namespace ElegantCode.Fundamental.Core.Entities;
 [DataContract]
 public class PaginatedResponse<T> : BaseResponse, IPaginatedResponse<T>
 {
-    public const string PAGE_UNDER_1_ERROR = "pageNumber cannot be below 1.";
+    public const string PAGE_UNDER_1_ERROR = "pageNumber cannot be under 1.";
 
     [JsonConstructor]
     public PaginatedResponse()
@@ -25,7 +25,7 @@ public class PaginatedResponse<T> : BaseResponse, IPaginatedResponse<T>
     public PaginatedResponse(Guid correlationToken, IEnumerable<T> values, long totalEntry, int pageIndex, int nbElementPerPage, string message = "", bool isOk = true)
         : base(correlationToken, message, isOk)
     {
-        if (values is not null)
+        if (values.IsAny())
             Datas = values.ToList();
 
         InitValue(totalEntry, pageIndex, nbElementPerPage);
