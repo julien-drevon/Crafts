@@ -1,3 +1,6 @@
+using System.Text;
+using System.Windows.Input;
+
 namespace Rpg.Drivers.Wpf.Core.Tests;
 
 public class BaseViewModelShould
@@ -26,6 +29,8 @@ public class BaseViewModelShould
         basicViewModel.Name.Should().Be("42");
     }
 }
+
+
 
 public class BasicViewModel : BaseViewModel
 {
