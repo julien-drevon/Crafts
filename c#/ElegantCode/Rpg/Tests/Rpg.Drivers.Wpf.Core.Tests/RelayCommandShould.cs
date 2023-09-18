@@ -21,4 +21,12 @@ public class RelayCommandShould
 
         assert.ToString().Should().Be("421");
     }
+
+    [Fact]
+    public void GivenARelayCommand_WhenCanExecuteAnjdExecuteAreNull_NotRaisedException()
+    {
+        var myCommand = new BaseCommand<string>(null, null);
+        myCommand.CanExecute("42");
+        myCommand.Execute("42");
+    }
 }

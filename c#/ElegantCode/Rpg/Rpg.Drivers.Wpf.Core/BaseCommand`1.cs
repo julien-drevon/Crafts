@@ -5,8 +5,6 @@ namespace Rpg.Drivers.Wpf.Core;
 
 public class BaseCommand<TArgs> : ICommand
 {
-    public event EventHandler CanExecuteChanged;
-
     private Predicate<TArgs> _CanExecute;
     private Action<TArgs> _Execute;
 
@@ -16,15 +14,25 @@ public class BaseCommand<TArgs> : ICommand
         _Execute = execute;
     }
 
-    public virtual bool CanExecute(object parameter)
+    public event EventHandler CanExecuteChanged;
+
+    public virtual bool CanExecute(TArgs parameter)
     {
-        return _CanExecute((TArgs)parameter);
+        return ((ICommand)this).CanExecute(parameter);
     }
 
-    public virtual void Execute(object parameter)
+    bool ICommand.CanExecute(object parameter)
     {
-        _Execute((TArgs)parameter);
+        return _CanExecute?.Invoke((TArgs)parameter) ?? false;
     }
 
+    public virtual void Execute(TArgs parameter)
+    {
+        ((ICommand)this).Execute(parameter);
+    }
+
+    void ICommand.Execute(object parameter)
+    {
+        _Execute?.Invoke((TArgs)parameter);
+    }
 }
-
