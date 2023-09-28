@@ -64,7 +64,7 @@ public class PaginationShould
     }
 
     [Fact]
-    public void IEnumerableShouldBePaginates()
+    public void IEnumerableShouldBePaginated()
     {
         IEnumerable<int> source = null;
         var assert = source.ToPaginationResponse(CorrrelationToken, pageNumber: 3, pageSize: 2);
@@ -104,7 +104,7 @@ public class PaginationShould
     }
 
     [Fact]
-    public void IEnumerableWithConvertAndPaginationRequestShouldBePaginates()
+    public void IEnumerableWithConvertAndPaginationRequestShouldBePaginated()
     {
         IEnumerable<int> source = null;
         var assert = source.ToPaginationResponse(CorrrelationToken, convert: x => x.ToString(), new PaginationQuery(3, 2));
@@ -124,7 +124,7 @@ public class PaginationShould
     }
 
     [Fact]
-    public void IEnumerableWithPaginationRequestShouldBePaginates()
+    public void IEnumerableWithPaginationRequestShouldBePaginated()
     {
         IEnumerable<int> source = null;
         var assert = source.ToPaginationResponse(CorrrelationToken, new PaginationQuery(3, 2));

@@ -24,7 +24,7 @@ public class StringExtensionsShould
         noAddLineAssert = myListOfString.ToJoinString(isAddLine: false, concatString: "+-+");
         noAddLineAssert.Should().Be("1+-+2+-+3+-+4+-+5+-+6");
 
-        var addLineAssert = myListOfString.ToJoinString(isAddLine: true, ",");
+        var addLineAssert = myListOfString.ToJoinString(isAddLine: true, concatString: ",");
         addLineAssert.Should().Be(GetExpectLine);
 
         var joinIntByFactory = new[] { 0, 1, 2, 3, 4, 5 }.ToJoinString(isAddLine: true, concatString: ",", transformToStringFactory: x => (x + 1).ToString());

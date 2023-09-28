@@ -26,10 +26,10 @@ public static class CollectionExtension
     /// <returns></returns>
     public static IEnumerable<T> GetPage<T>(this IEnumerable<T> query, int pageIndex = 1, int pageSize = 0)
     {
-        int pi = pageIndex < 2 ? 1 : pageIndex;
+        int pindex = pageIndex < 2 ? 1 : pageIndex;
         if (pageSize > 0)
         {
-            return query.Skip((pi - 1) * pageSize)
+            return query.Skip((pindex - 1) * pageSize)
                         .Take(pageSize);
         }
 
