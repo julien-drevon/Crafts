@@ -3,7 +3,7 @@
 namespace ElegantCode.Fundamental.Core.Errors;
 
 /// <summary>
-/// Monad Error
+/// Monad Type Error
 /// </summary>
 public class Error
 {

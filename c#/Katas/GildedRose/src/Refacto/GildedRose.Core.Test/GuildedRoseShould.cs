@@ -96,6 +96,8 @@ public class GuildedRoseShould
         guildedRose.Items.Should().BeEquivalentTo(new[] { new ItemToCompare(name: "Aged Brie", sellIn: 0, quality: 2) });
     }
 
+
+
     private Item CreateItem(ItemsName itemsName, int sellin, int quality)
     {
         return CreateItemFactory.Create(itemsName, sellin, quality);

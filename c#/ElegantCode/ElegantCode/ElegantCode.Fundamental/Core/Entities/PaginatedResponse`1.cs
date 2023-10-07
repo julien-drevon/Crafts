@@ -35,7 +35,7 @@ public class PaginatedResponse<T> : BaseResponse, IPaginatedResponse<T>
 
     [DataMember(Name = "Pagination")]
     [JsonPropertyName("pagination")]
-    [JsonConverter(typeof(IPaginationJsonConverter))]
+    [JsonConverter(typeof(PaginationJsonConverter))]
     public IPagination Pagination { get; set; } = new Pagination();
 
     protected void InitValue(long totalEntry, int pageNumber, int nbElementPerPage)
@@ -50,21 +50,15 @@ public class PaginatedResponse<T> : BaseResponse, IPaginatedResponse<T>
         };
 
         long totalPage = totalEntry.ComputeNbOfPage(nbElementPerPage);
-        PaginationStateCompute(totalEntry, pageNumber, totalPage);
+        PaginationAttributesCompute(totalEntry, pageNumber, totalPage);
     }
 
-    private void PaginationStateCompute(long totalEntry, int pageNumber, long totalPage)
+    private void PaginationAttributesCompute(long totalEntry, int pageNumber, long totalPage)
     {
         Pagination.PageNumber = totalPage;
         Pagination.Total = totalEntry;
         Pagination.CurrentPage = pageNumber;
         Pagination.PageIndex = pageNumber - 1;
-        PaginationBooleanAttributesCompute();
-
-    }
-
-    private void PaginationBooleanAttributesCompute()
-    {
         Pagination.IsLast = Pagination.PageIndex >= Pagination.PageNumber - 1;
         Pagination.IsFirst = Pagination.PageIndex <= 0;
         Pagination.HasPrevious = Pagination.PageIndex > 0;
