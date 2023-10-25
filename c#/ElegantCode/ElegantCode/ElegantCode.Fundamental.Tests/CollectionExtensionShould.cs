@@ -38,18 +38,15 @@ public class CollectionExtensionShould
     }
 
     [Fact]
-    public void IsNotAny_Should()
+    public void IsEmptyOrNull_Should()
     {
         IEnumerable<string> li = null;
-        li.IsNotAny(x => x == "a").Should().BeTrue();
-
-        li = new[] { "a", "b" };
-        li.IsNotAny(x => x == "a").Should().BeFalse();
+        li.IsEmptyOrNull().Should().BeTrue();
 
         li = new string[0];
-        li.IsNotAny().Should().BeTrue();
+        li.IsEmptyOrNull().Should().BeTrue();
 
         li = new string[] { "1" };
-        li.IsNotAny().Should().BeFalse();
+        li.IsEmptyOrNull().Should().BeFalse();
     }
 }

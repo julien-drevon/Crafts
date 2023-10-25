@@ -6,11 +6,10 @@ public static class Transform
 {
     public static string ToPolynome(params int[] valuesToTransform)
     {
-        if (valuesToTransform == null)
+        if (IsNoValue(valuesToTransform))
             return string.Empty;
 
-
-        if (valuesToTransform.Length == 1)
+        if (IsDegre0(valuesToTransform))
         {
             return valuesToTransform.First()
                                     .ToString();
@@ -18,6 +17,16 @@ public static class Transform
 
         return ExtractPolynome(new StringBuilder(), valuesToTransform, ComputeMaxDegree(valuesToTransform))
                .ToString();
+    }
+
+    private static int ComputeActualDegree(int[] valuesToTransform, int i)
+    {
+        return valuesToTransform.Length - 1 - i;
+    }
+
+    private static int ComputeMaxDegree(int[] valuesToTransform)
+    {
+        return valuesToTransform.Length - 1;
     }
 
     private static StringBuilder ExtractPolynome(StringBuilder sb, int[] valuesToTransform, int maxDegree)
@@ -30,28 +39,14 @@ public static class Transform
         return sb;
     }
 
-    private static string PrintXPower(int actualDegree)
+    private static bool IsDegre0(int[] valuesToTransform)
     {
-        if (actualDegree == 0)
-            return string.Empty;
-
-        return "x" + PrintPowerLevel(actualDegree);
-
+        return valuesToTransform.Length == 1;
     }
 
-    private static string PrintPowerLevel(int actualDegree)
+    private static bool IsNoValue(int[] valuesToTransform)
     {
-        return (actualDegree > 1 ? "^" + actualDegree : string.Empty);
-    }
-
-    private static int ComputeActualDegree(int[] valuesToTransform, int i)
-    {
-        return valuesToTransform.Length - 1 - i;
-    }
-
-    private static int ComputeMaxDegree(int[] valuesToTransform)
-    {
-        return valuesToTransform.Length - 1;
+        return valuesToTransform == null;
     }
 
     private static string PrintAfterSigne(int coef, int actualDegree, string ret)
@@ -91,8 +86,21 @@ public static class Transform
         return coef.ToString();
     }
 
+    private static string PrintPowerLevel(int actualDegree)
+    {
+        return (actualDegree > 1 ? "^" + actualDegree : string.Empty);
+    }
+
     private static string PrintSigne(int coef, int maxDegree, int actualDegree)
     {
         return coef > 0 ? " + " : " - ";
+    }
+
+    private static string PrintXPower(int actualDegree)
+    {
+        if (actualDegree == 0)
+            return string.Empty;
+
+        return "x" + PrintPowerLevel(actualDegree);
     }
 }

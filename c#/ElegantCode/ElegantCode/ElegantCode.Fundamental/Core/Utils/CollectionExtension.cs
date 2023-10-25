@@ -70,9 +70,9 @@ public static class CollectionExtension
     /// <typeparam name="T"></typeparam>
     /// <param name="collection"></param>
     /// <returns></returns>
-    public static bool IsNotAny<T>(this IEnumerable<T> collection, Func<T, bool> predicate = null)
+    public static bool IsEmptyOrNull<T>(this IEnumerable<T> collection)
     {
-        return collection.IsAny(predicate)
+        return collection.IsAny()
                          .IsFalse();
     }
 
