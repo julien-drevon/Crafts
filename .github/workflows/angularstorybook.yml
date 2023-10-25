@@ -2,7 +2,7 @@ name: rpgTypeScriptTu
 
 on:
   push:
-    branches: ["*", "main"]
+    branches: ["*"]
     paths:
       - "TypeScript/storybook/**"
       #- "**"
