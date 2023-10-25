@@ -1,4 +1,4 @@
-name: rpgTypeScriptTu
+name: angular storybook
 
 on:
   push:
