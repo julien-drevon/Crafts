@@ -2,9 +2,9 @@ name: rpgTypeScriptTu
 
 on:
   push:
-    branches: ["features/*", "main"]
+    branches: ["*", "main"]
     paths:
-      - "TypeScript/Rpg/**"
+      - "TypeScript/storybook/**"
       #- "**"
   pull_request:
     branches: ["main"]
