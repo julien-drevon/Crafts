@@ -34,19 +34,17 @@ jobs:
       #     ${{ runner.os }}-build-
       #     ${{ runner.os }}-
 
-      - if: ${{ steps.cache-npm.outputs.cache-hit != 'true' }}
-        name: List the state of node modules
-        continue-on-error: true
-        run: npm list
+      # - if: ${{ steps.cache-npm.outputs.cache-hit != 'true' }}
+      #   name: List the state of node modules
+      #   continue-on-error: true
+      #   run: npm list
 
-      - name: Install dependencies
-        run: npm install
-
-      - name: Build
-        run: npm run build
+      - name: CI
+        run: cd TypeScript/Storybook && npm ci
+        working-directory: "TypeScript/Storybook"
 
       - name: Test
-        run: npm test
+        run: cd TypeScript/Storybook && npm test
 
     # strategy:
     #   matrix:
