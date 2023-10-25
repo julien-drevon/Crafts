@@ -1,6 +1,5 @@
-﻿namespace ElegantCode.Fundamental.Core.Presenter
+﻿namespace ElegantCode.Fundamental.Core.Presenter;
+
+public interface IPresenter<in TDataIn, TDataOut> : IOutPresenter<TDataOut>, IInPresenter<TDataIn>
 {
-    public interface IPresenter<in TDataIn, TDataOut> : IOutPresenter<TDataOut>, IInPresenter<TDataIn>
-    {
-    }
 }

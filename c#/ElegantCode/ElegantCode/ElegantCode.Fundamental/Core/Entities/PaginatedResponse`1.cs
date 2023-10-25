@@ -12,7 +12,7 @@ namespace ElegantCode.Fundamental.Core.Entities;
 [DataContract]
 public class PaginatedResponse<T> : BaseResponse, IPaginatedResponse<T>
 {
-    public const string PAGE_UNDER_1 = "pageNumber cannot be below 1.";
+    public const string PAGE_UNDER_1_ERROR = "pageNumber cannot be under 1.";
 
     [JsonConstructor]
     public PaginatedResponse()
@@ -25,7 +25,7 @@ public class PaginatedResponse<T> : BaseResponse, IPaginatedResponse<T>
     public PaginatedResponse(Guid correlationToken, IEnumerable<T> values, long totalEntry, int pageIndex, int nbElementPerPage, string message = "", bool isOk = true)
         : base(correlationToken, message, isOk)
     {
-        if (values is not null)
+        if (values.IsAny())
             Datas = values.ToList();
 
         InitValue(totalEntry, pageIndex, nbElementPerPage);
@@ -35,13 +35,13 @@ public class PaginatedResponse<T> : BaseResponse, IPaginatedResponse<T>
 
     [DataMember(Name = "Pagination")]
     [JsonPropertyName("pagination")]
-    [JsonConverter(typeof(IPaginationJsonConverter))]
+    [JsonConverter(typeof(PaginationJsonConverter))]
     public IPagination Pagination { get; set; } = new Pagination();
 
     protected void InitValue(long totalEntry, int pageNumber, int nbElementPerPage)
     {
         if (pageNumber < 1)
-            throw new ArgumentOutOfRangeException(nameof(pageNumber), pageNumber, PAGE_UNDER_1);
+            throw new ArgumentOutOfRangeException(nameof(pageNumber), pageNumber, PAGE_UNDER_1_ERROR);
 
 
         Pagination = new Pagination
@@ -49,22 +49,16 @@ public class PaginatedResponse<T> : BaseResponse, IPaginatedResponse<T>
             PageSize = nbElementPerPage
         };
 
-        long totP = totalEntry.ComputeNbOfPage(nbElementPerPage);
-        PaginationStateCompute(totalEntry, pageNumber, totP);
+        long totalPage = totalEntry.ComputeNbOfPage(nbElementPerPage);
+        PaginationAttributesCompute(totalEntry, pageNumber, totalPage);
     }
 
-    private void PaginationStateCompute(long totalEntry, int pageNumber, long totP)
+    private void PaginationAttributesCompute(long totalEntry, int pageNumber, long totalPage)
     {
-        Pagination.PageNumber = totP;
+        Pagination.PageNumber = totalPage;
         Pagination.Total = totalEntry;
         Pagination.CurrentPage = pageNumber;
         Pagination.PageIndex = pageNumber - 1;
-        PaginationBooleanStateCompute();
-
-    }
-
-    private void PaginationBooleanStateCompute()
-    {
         Pagination.IsLast = Pagination.PageIndex >= Pagination.PageNumber - 1;
         Pagination.IsFirst = Pagination.PageIndex <= 0;
         Pagination.HasPrevious = Pagination.PageIndex > 0;

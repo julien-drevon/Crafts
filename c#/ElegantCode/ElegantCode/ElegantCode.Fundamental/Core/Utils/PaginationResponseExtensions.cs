@@ -33,20 +33,18 @@ public static class PaginationResponseExtensions
         this IPaginatedResponse<TResponse> query)
     {
         if (query.IsNull())
-        {
-            return new PaginatedResponse<TResponse>(Guid.Empty, new List<TResponse>(), 0, 1, 0);
-        }
+            return CreateDefaultPaginationResponse<TResponse>(Guid.Empty, 0);
 
-        var pi = query.Pagination?.CurrentPage ?? 0;
-        var ps = query.Pagination?.PageSize ?? 0;
-
+        var pageNumberCompute = query.Pagination?.CurrentPage ?? 0;
+        var pageSizeCompute = query.Pagination?.PageSize ?? 0;
         var values = query.Datas;
+
         return new PaginatedResponse<TResponse>(
             query.CorrelationToken,
             values ?? new List<TResponse>(),
             query.Pagination?.Total ?? 0,
-            pi,
-            ps);
+            pageNumberCompute,
+            pageSizeCompute);
     }
 
     /// <summary>
@@ -61,95 +59,121 @@ public static class PaginationResponseExtensions
     public static IPaginatedResponse<TResponse> ToPaginationResponse<TResponse>(
         this IEnumerable<TResponse> query,
         Guid correlationToken,
-        IPaginationRequest pagination)
+        IPaginationQuery pagination)
     {
         if (query.IsNull())
-        {
-            return new PaginatedResponse<TResponse>(
-                correlationToken,
-                new List<TResponse>(),
-                0,
-                1,
-                pagination?.PageSize ?? 0);
-        }
+            return CreateDefaultPaginationResponse<TResponse>(correlationToken, pagination?.PageSize);
 
-        var pi = pagination?.PageNumber ?? 1;
-        var ps = pagination?.PageSize ?? 0;
+        var pageNumberCompute = pagination?.PageNumber ?? 1;
+        var pageSizeCompute = pagination?.PageSize ?? 0;
         var total = query?.Count();
-        var values = query.GetPage(pi, ps);
-        return new PaginatedResponse<TResponse>(correlationToken, values ?? new List<TResponse>(), total ?? 0, pi, ps);
+        var values = query.GetPage(pageNumberCompute, pageSizeCompute);
+
+        return new PaginatedResponse<TResponse>(
+            correlationToken,
+            values ?? new List<TResponse>(),
+            total ?? 0,
+            pageNumberCompute,
+            pageSizeCompute);
     }
 
+    /// <summary>
+    /// Converts to paginationresponse.
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    /// <typeparam name="TResponse">The type of the response.</typeparam>
+    /// <param name="query">The query.</param>
+    /// <param name="correlationToken">The correlation token.</param>
+    /// <param name="convert">The convert.</param>
+    /// <param name="pagination">The pagination.</param>
+    /// <returns></returns>
     public static IPaginatedResponse<TResponse> ToPaginationResponse<T, TResponse>(
         this IEnumerable<T> query,
         Guid correlationToken,
         Func<T, TResponse> convert,
-        IPaginationRequest pagination = null)
+        IPaginationQuery pagination = null)
     {
         if (query.IsNull())
-        {
-            return new PaginatedResponse<TResponse>(
-                correlationToken,
-                new List<TResponse>(),
-                0,
-                1,
-                pagination?.PageSize ?? 0);
-        }
+            return CreateDefaultPaginationResponse<TResponse>(correlationToken, pagination?.PageSize);
 
-        var pi = pagination?.PageNumber ?? 1;
-        var ps = pagination?.PageSize ?? 0;
+        var pageNumberCompute = pagination?.PageNumber ?? 1;
+        var pageSizeCompute = pagination?.PageSize ?? 0;
         var total = query?.Count();
-        var values = query.GetPage(pi, ps);
+        var values = query.GetPage(pageNumberCompute, pageSizeCompute);
         var collect = values.Select(convert).ToList();
-        return new PaginatedResponse<TResponse>(correlationToken, collect ?? new List<TResponse>(), total ?? 0, pi, ps);
+
+        return new PaginatedResponse<TResponse>(
+            correlationToken,
+            collect ?? new List<TResponse>(),
+            total ?? 0,
+            pageNumberCompute,
+            pageSizeCompute);
     }
 
+    /// <summary>
+    /// Converts to paginationresponse.
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    /// <typeparam name="TResponse">The type of the response.</typeparam>
+    /// <param name="query">The query.</param>
+    /// <param name="correlationToken">The correlation token.</param>
+    /// <param name="convert">The convert.</param>
+    /// <param name="pagination">The pagination.</param>
+    /// <returns></returns>
     public static IPaginatedResponse<TResponse> ToPaginationResponse<T, TResponse>(
         this IList<T> query,
         Guid correlationToken,
         Func<T, TResponse> convert,
-        IPaginationRequest pagination = null)
+        IPaginationQuery pagination = null)
     {
         if (query.IsNull())
-        {
-            return new PaginatedResponse<TResponse>(
-                correlationToken,
-                new List<TResponse>(),
-                0,
-                1,
-                pagination?.PageSize ?? 0);
-        }
+            return CreateDefaultPaginationResponse<TResponse>(correlationToken, pagination?.PageSize);
 
-        var pi = pagination?.PageNumber ?? 1;
-        var ps = pagination?.PageSize ?? 0;
+        var pageNumberCompute = pagination?.PageNumber ?? 1;
+        var pageSizeCompute = pagination?.PageSize ?? 0;
         var total = query?.Count;
-        var values = query.GetPage(pi, ps);
+        var values = query.GetPage(pageNumberCompute, pageSizeCompute);
         var collect = values.Select(convert).ToList();
-        return new PaginatedResponse<TResponse>(correlationToken, collect ?? new List<TResponse>(), total ?? 0, pi, ps);
+
+        return new PaginatedResponse<TResponse>(
+            correlationToken,
+            collect ?? new List<TResponse>(),
+            total ?? 0,
+            pageNumberCompute,
+            pageSizeCompute);
     }
 
+    /// <summary>
+    /// Converts to paginationresponse.
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    /// <typeparam name="TResponse">The type of the response.</typeparam>
+    /// <param name="query">The query.</param>
+    /// <param name="correlationToken">The correlation token.</param>
+    /// <param name="convert">The convert.</param>
+    /// <param name="pagination">The pagination.</param>
+    /// <returns></returns>
     public static IPaginatedResponse<TResponse> ToPaginationResponse<T, TResponse>(
         this IQueryable<T> query,
         Guid correlationToken,
         Func<T, TResponse> convert,
-        IPaginationRequest pagination = null)
+        IPaginationQuery pagination = null)
     {
         if (query.IsNull())
-        {
-            return new PaginatedResponse<TResponse>(
-                correlationToken,
-                new List<TResponse>(),
-                0,
-                1,
-                pagination?.PageSize ?? 0);
-        }
+            return CreateDefaultPaginationResponse<TResponse>(correlationToken, pagination?.PageSize);
 
-        var pi = pagination?.PageNumber ?? 1;
-        var ps = pagination?.PageSize ?? 0;
+        var pageNumberCompute = pagination?.PageNumber ?? 1;
+        var pageSizeCompute = pagination?.PageSize ?? 0;
         var total = query?.Count();
-        var values = query.GetPage(pi, ps);
+        var values = query.GetPage(pageNumberCompute, pageSizeCompute);
         var collect = values.Select(convert).ToList();
-        return new PaginatedResponse<TResponse>(correlationToken, collect ?? new List<TResponse>(), total ?? 0, pi, ps);
+
+        return new PaginatedResponse<TResponse>(
+            correlationToken,
+            collect ?? new List<TResponse>(),
+            total ?? 0,
+            pageNumberCompute,
+            pageSizeCompute);
     }
 
     /// <summary>
@@ -169,38 +193,59 @@ public static class PaginationResponseExtensions
         long? totalItem = null)
     {
         if (query.IsNull())
-        {
-            return new PaginatedResponse<TResponse>(correlationToken, new List<TResponse>(), 0, 1, pageSize);
-        }
+            return CreateDefaultPaginationResponse<TResponse>(correlationToken, pageSize);
 
-        var pi = pageNumber;
-        var ps = pageSize;
         var total = totalItem ?? query.Count();
-        var values = query.GetPage(pi, ps);
-        return new PaginatedResponse<TResponse>(correlationToken, values ?? new List<TResponse>(), total, pi, ps);
+        var values = query.GetPage(pageNumber, pageSize);
+
+        return new PaginatedResponse<TResponse>(
+            correlationToken,
+            values ?? new List<TResponse>(),
+            total,
+            pageNumber,
+            pageSize);
     }
 
+    /// <summary>
+    /// Converts to paginationresponse.
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    /// <typeparam name="TResponse">The type of the response.</typeparam>
+    /// <param name="query">The query.</param>
+    /// <param name="convert">The convert.</param>
+    /// <returns></returns>
     public static IPaginatedResponse<TResponse> ToPaginationResponse<T, TResponse>(
         this IPaginatedResponse<T> query,
         Func<T, TResponse> convert)
     {
         if ((query?.Datas).IsNull())
-        {
-            return new PaginatedResponse<TResponse>(
-                query.IsNull() ? Guid.Empty : query.CorrelationToken,
-                new List<TResponse>(),
-                0,
-                1,
-                0);
-        }
+            return CreateDefaultPaginationResponse<TResponse>(query.IsNull() ? Guid.Empty : query.CorrelationToken, 0);
 
-        var pi = query.Pagination.CurrentPage;
-        var ps = query.Pagination.PageSize;
+        var pageNumberCompute = query.Pagination.CurrentPage;
+        var pageSizeCompute = query.Pagination.PageSize;
         var values = query.Datas;
         var collect = values.Select(convert).ToList();
-        return new PaginatedResponse<TResponse>(query.CorrelationToken, collect, query.Pagination.Total, pi, ps);
+
+        return new PaginatedResponse<TResponse>(
+            query.CorrelationToken,
+            collect,
+            query.Pagination.Total,
+            pageNumberCompute,
+            pageSizeCompute);
     }
 
+    /// <summary>
+    /// Converts to paginationresponse.
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    /// <typeparam name="TResponse">The type of the response.</typeparam>
+    /// <param name="query">The query.</param>
+    /// <param name="correlationToken">The correlation token.</param>
+    /// <param name="convert">The convert.</param>
+    /// <param name="pageNumber">The page number.</param>
+    /// <param name="pageSize">Size of the page.</param>
+    /// <param name="totalItem">The total item.</param>
+    /// <returns></returns>
     public static IPaginatedResponse<TResponse> ToPaginationResponse<T, TResponse>(
         this IEnumerable<T> query,
         Guid correlationToken,
@@ -210,18 +255,33 @@ public static class PaginationResponseExtensions
         long? totalItem = null)
     {
         if (query.IsNull())
-        {
-            return new PaginatedResponse<TResponse>(correlationToken, new List<TResponse>(), 0, 1, pageSize);
-        }
+            return CreateDefaultPaginationResponse<TResponse>(correlationToken, pageSize);
 
-        var pi = pageNumber ?? 1;
-        var ps = pageSize;
+        var pageNumberCompute = pageNumber ?? 1;
         var total = totalItem ?? query.Count();
-        var values = query.GetPage(pi, ps);
+        var values = query.GetPage(pageNumberCompute, pageSize);
         var collect = values.Select(convert).ToList();
-        return new PaginatedResponse<TResponse>(correlationToken, collect ?? new List<TResponse>(), total, pi, ps);
+
+        return new PaginatedResponse<TResponse>(
+            correlationToken,
+            collect ?? new List<TResponse>(),
+            total,
+            pageNumberCompute,
+            pageSize);
     }
 
+    /// <summary>
+    /// Converts to paginationresponse.
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    /// <typeparam name="TResponse">The type of the response.</typeparam>
+    /// <param name="query">The query.</param>
+    /// <param name="correlationToken">The correlation token.</param>
+    /// <param name="convert">The convert.</param>
+    /// <param name="pageNumber">The page number.</param>
+    /// <param name="pageSize">Size of the page.</param>
+    /// <param name="totalItem">The total item.</param>
+    /// <returns></returns>
     public static IPaginatedResponse<TResponse> ToPaginationResponse<T, TResponse>(
         this IList<T> query,
         Guid correlationToken,
@@ -231,18 +291,33 @@ public static class PaginationResponseExtensions
         long? totalItem = null)
     {
         if (query.IsNull())
-        {
-            return new PaginatedResponse<TResponse>(correlationToken, new List<TResponse>(), 0, 1, pageSize);
-        }
+            return CreateDefaultPaginationResponse<TResponse>(correlationToken, pageSize);
 
-        var pi = pageNumber ?? 1;
-        var ps = pageSize;
+        var pageNumberCompute = pageNumber ?? 1;
         var total = totalItem ?? query.Count;
-        var values = query.GetPage(pi, ps);
+        var values = query.GetPage(pageNumberCompute, pageSize);
         var collect = values.Select(convert).ToList();
-        return new PaginatedResponse<TResponse>(correlationToken, collect ?? new List<TResponse>(), total, pi, ps);
+
+        return new PaginatedResponse<TResponse>(
+            correlationToken,
+            collect ?? new List<TResponse>(),
+            total,
+            pageNumberCompute,
+            pageSize);
     }
 
+    /// <summary>
+    /// Converts to paginationresponse.
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    /// <typeparam name="TResponse">The type of the response.</typeparam>
+    /// <param name="query">The query.</param>
+    /// <param name="correlationToken">The correlation token.</param>
+    /// <param name="convert">The convert.</param>
+    /// <param name="pageNumber">The page number.</param>
+    /// <param name="pageSize">Size of the page.</param>
+    /// <param name="totalItem">The total item.</param>
+    /// <returns></returns>
     public static IPaginatedResponse<TResponse> ToPaginationResponse<T, TResponse>(
         this IQueryable<T> query,
         Guid correlationToken,
@@ -252,15 +327,23 @@ public static class PaginationResponseExtensions
         long? totalItem = null)
     {
         if (query.IsNull())
-        {
-            return new PaginatedResponse<TResponse>(correlationToken, new List<TResponse>(), 0, 1, pageSize);
-        }
+            return CreateDefaultPaginationResponse<TResponse>(correlationToken, pageSize);
 
-        var pi = pageNumber ?? 1;
-        var ps = pageSize;
+        var pageNumberCompute = pageNumber ?? 1;
         var total = totalItem ?? query.Count();
-        var values = query.GetPage(pi, ps);
+        var values = query.GetPage(pageNumberCompute, pageSize);
         var collect = values.Select(convert).ToList();
-        return new PaginatedResponse<TResponse>(correlationToken, collect ?? new List<TResponse>(), total, pi, ps);
+
+        return new PaginatedResponse<TResponse>(
+            correlationToken,
+            collect ?? new List<TResponse>(),
+            total,
+            pageNumberCompute,
+            pageSize);
     }
+
+    private static IPaginatedResponse<TResponse> CreateDefaultPaginationResponse<TResponse>(
+        Guid correlationToken,
+        int? pageSize = 0)
+        => new PaginatedResponse<TResponse>(correlationToken, new List<TResponse>(), 0, 1, pageSize ?? 0);
 }

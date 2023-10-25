@@ -1,6 +1,6 @@
 ﻿namespace ElegantCode.Fundamental.Core.Entities;
 
-public interface IPaginationRequest
+public interface IPaginationQuery
 {
     int PageNumber { get; set; }
 

@@ -16,6 +16,6 @@ public class CreateItemFactory
             ItemsName.ConjuredManaCake => new ClassicItem(name: "Conjured Mana Cake", sellIn, quality),
 
             _ => throw new Exception(),
-        }; ; ;
+        };
     }
 }

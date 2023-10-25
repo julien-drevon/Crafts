@@ -1,8 +1,9 @@
-﻿using ElegantCode.Fundamental.Core.Utils;
+﻿using ElegantCode.Fundamental.Core.Entities;
+using ElegantCode.Fundamental.Core.Utils;
 
 namespace Rpg.Core.Domain
 {
-    public class World
+    public class World : IGotId<Guid>
     {
         private HashSet<ISprite> _Elements = new();
 

@@ -1,4 +1,4 @@
-﻿using ElegantCode.Fundamental.Core.DriverAdapter;
+﻿ using ElegantCode.Fundamental.Core.DriverAdapter;
 using ElegantCode.Fundamental.Core.Entities;
 using ElegantCode.Fundamental.Core.Errors;
 
@@ -7,7 +7,7 @@ namespace ElegantCode.Fundamental.Core.Utils;
 public static class ValidationUtils
 {
     /// <summary>
-    /// Creates the error rule if is bad.
+    /// Creates the Func error rule if is bad.
     /// </summary>
     /// <param name="isBad">if set to <c>true</c> [is bad].</param>
     /// <param name="error">The error.</param>
@@ -25,14 +25,14 @@ public static class ValidationUtils
     /// Creates the error rule.
     /// </summary>
     /// <typeparam name="K"></typeparam>
-    /// <param name="me">Me.</param>
-    /// <param name="testARule">The test a rule.</param>
+    /// <param name="classWantToTest">Me.</param>
+    /// <param name="RuleTest">The test a rule.</param>
     /// <param name="error">The error.</param>
     /// <param name="correlationToken">The correlation token.</param>
     /// <returns></returns>
-    public static Func<Error> CreateErrorRule<K>(this K me, Func<K, bool> testARule, string error, Guid correlationToken = default)
+    public static Func<Error> CreateErrorRule<K>(this K classWantToTest, Func<K, bool> RuleTest, string error, Guid correlationToken = default)
     {
-        return testARule(me).CreateErrorRule(error, correlationToken);
+        return RuleTest(classWantToTest).CreateErrorRule(error, correlationToken);
     }
 
     /// <summary>
@@ -43,7 +43,10 @@ public static class ValidationUtils
     /// <param name="valueIfIsGood">The value if is good.</param>
     /// <param name="prediacateErrors">The prediacate errors.</param>
     /// <returns>Tuple (UseCaseQuery, Error) </returns>
-    public static (TUseCaseQuery UseCaseQuery, Error Error) ValidationWorkflow<TUseCaseQuery>(this IValidateRequest<TUseCaseQuery> validationModel, TUseCaseQuery valueIfIsGood, params Func<Error>[] prediacateErrors)
+    public static (TUseCaseQuery UseCaseQuery, Error Error) ValidationWorkflow<TUseCaseQuery>(
+        this IValidateRequest<TUseCaseQuery> validationModel,
+        TUseCaseQuery valueIfIsGood,
+        params Func<Error>[] prediacateErrors)
             where TUseCaseQuery : class, IGotCorrelationToken
     {
         var errors = prediacateErrors.Select(x => x?.Invoke()).Where(x => x.IsNotNull());
