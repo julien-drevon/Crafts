@@ -3,9 +3,9 @@ name: angular storybook
 on:
   push:
     branches: ["**"]
-    # paths:
-    #   - "TypeScript/Storybook/**"
-    #   #- "**"
+    paths:
+      - "TypeScript/Storybook/**"
+      #- "**"
   pull_request:
     branches: ["main"]
     paths:
