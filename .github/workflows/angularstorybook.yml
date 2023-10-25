@@ -41,7 +41,6 @@ jobs:
 
       - name: CI
         run: cd TypeScript/Storybook && npm ci
-        working-directory: "TypeScript/Storybook"
 
       - name: Test
         run: cd TypeScript/Storybook && npm test
