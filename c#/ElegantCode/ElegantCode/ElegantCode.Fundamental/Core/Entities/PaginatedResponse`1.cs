@@ -43,7 +43,6 @@ public class PaginatedResponse<T> : BaseResponse, IPaginatedResponse<T>
         if (pageNumber < 1)
             throw new ArgumentOutOfRangeException(nameof(pageNumber), pageNumber, PAGE_UNDER_1_ERROR);
 
-
         Pagination = new Pagination
         {
             PageSize = nbElementPerPage

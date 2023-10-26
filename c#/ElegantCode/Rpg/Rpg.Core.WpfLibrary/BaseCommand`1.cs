@@ -6,17 +6,18 @@ namespace Rpg.Core.WpfLibrary;
 public class BaseCommand<TArgs> : ICommand
 {
     private Predicate<TArgs> _ExecutePredicate;
+
     public virtual Action<TArgs> ExecuteAction { get; set; }
 
-    public virtual Predicate<TArgs>ExecutePredicate
+    public virtual Predicate<TArgs> ExecutePredicate
     {
         get => _ExecutePredicate;
+
         set
         {
             if (_ExecutePredicate != value)
             {
                 _ExecutePredicate = value;
-
             }
         }
     }
@@ -31,7 +32,12 @@ public class BaseCommand<TArgs> : ICommand
     {
     }
 
-    public event EventHandler CanExecuteChanged;
+    //public event EventHandler CanExecuteChanged;
+    public event EventHandler CanExecuteChanged
+    {
+        add { CommandManager.RequerySuggested += value; }
+        remove { CommandManager.RequerySuggested -= value; }
+    }
 
     public virtual bool CanExecute(TArgs parameter)
     {

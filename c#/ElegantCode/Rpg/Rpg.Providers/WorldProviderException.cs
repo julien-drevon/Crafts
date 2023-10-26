@@ -6,7 +6,6 @@ namespace Rpg.Providers;
 [Serializable]
 public class WorldProviderException : UseCaseException
 {
-
     public WorldProviderException(Guid correlationToken, string message) : base(correlationToken, message)
     {
     }

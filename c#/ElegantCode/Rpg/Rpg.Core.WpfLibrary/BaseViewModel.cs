@@ -1,7 +1,6 @@
 using System;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using System.Windows.Input;
 
 namespace Rpg.Core.WpfLibrary;
 
@@ -15,4 +14,3 @@ public abstract class BaseViewModel : INotifyPropertyChanged
 
     public virtual event PropertyChangedEventHandler PropertyChanged;
 }
-
