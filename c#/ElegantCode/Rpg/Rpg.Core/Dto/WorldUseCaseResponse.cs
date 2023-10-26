@@ -1,11 +1,10 @@
-﻿using ElegantCode.Fundamental.Core.UsesCases;
-using Rpg.Core.Domain;
+﻿using Rpg.Core.Domain;
 
 namespace Rpg.Core.Dto
 {
-    public class WorldUseCaseResponse 
+    public class WorldUseCaseResponse
     {
-        public WorldUseCaseResponse( World world)
+        public WorldUseCaseResponse(World world)
         {
             Id = world.Id;
             Items = world.Elements;

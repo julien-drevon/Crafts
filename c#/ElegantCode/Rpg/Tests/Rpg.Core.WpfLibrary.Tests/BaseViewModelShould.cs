@@ -1,5 +1,5 @@
-using System.Text;
-using System.Windows.Input;
+using Rpg.Core.WpfLibrary;
+using Rpg.Drivers.Wpf.Core.Tests.Dummy;
 
 namespace Rpg.Drivers.Wpf.Core.Tests;
 
@@ -9,7 +9,7 @@ public class BaseViewModelShould
     public void GivenABasicBaseViewModel_WhenIRisingOnePropertie_ThenShouldBeNotifing()
     {
         var isRising = false;
-        var basicViewModel = new BasicViewModel();
+        var basicViewModel = new DummyViewModel();
         basicViewModel.PropertyChanged += (o, e) =>
         {
             isRising = true;
@@ -24,25 +24,24 @@ public class BaseViewModelShould
     [Fact]
     public void GivenABasicBaseViewModel_WhenIChangedValueWithoutHandling_ThenShouldNotRaiseException()
     {
-        var basicViewModel = new BasicViewModel();
+        var basicViewModel = new DummyViewModel();
         basicViewModel.Name = "42";
         basicViewModel.Name.Should().Be("42");
     }
-}
 
-
-
-public class BasicViewModel : BaseViewModel
-{
-    private string name;
-
-    public string Name
+    [Fact]
+    public void GivenABasicBaseViewModelPropertie_WhenIRisingOnePropertieWithNoActionInMethodToNotify_ThenShouldBeNotifingAndNotNullException()
     {
-        get => name; set
-
+        var isRising = false;
+        var basicViewModel = new DummyViewModel();
+        basicViewModel.PropertyChanged += (o, e) =>
         {
-            name = value;
-            this.OnPropertyChanged();
-        }
+            isRising = true;
+            e.PropertyName.Should().Be(nameof(basicViewModel.TestNullAction));
+        };
+
+        basicViewModel.TestNullAction = "42";
+
+        isRising.Should().BeTrue();
     }
 }

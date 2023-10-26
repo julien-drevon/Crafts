@@ -1,7 +1,7 @@
 using System;
 using System.Windows.Input;
 
-namespace Rpg.Drivers.Wpf.Core;
+namespace Rpg.Core.WpfLibrary;
 
 public class BaseCommand<TArgs> : ICommand
 {

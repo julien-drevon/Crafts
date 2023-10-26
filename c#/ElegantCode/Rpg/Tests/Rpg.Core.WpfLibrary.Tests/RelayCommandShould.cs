@@ -1,3 +1,4 @@
+using Rpg.Core.WpfLibrary;
 using System.Text;
 
 namespace Rpg.Drivers.Wpf.Core.Tests;
