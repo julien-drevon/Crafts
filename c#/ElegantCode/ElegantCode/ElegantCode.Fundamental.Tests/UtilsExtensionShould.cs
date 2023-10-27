@@ -30,4 +30,12 @@ public class UtilsExtensionShould
         new Nullable<bool>().IsFalseOrNull().Should().BeTrue();
         new Nullable<bool>(false).IsFalseOrNull().Should().BeTrue();
     }
+
+    [Fact]
+    public void GuidIsEmpty()
+    {
+        (Guid.Empty).IsEmpty().Should().BeTrue();
+        Guid.NewGuid().IsEmpty().Should().BeFalse();      
+    }
+
 }
