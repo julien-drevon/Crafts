@@ -25,6 +25,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Rpg.Core.WpfLibrary\Rpg.Core.WpfLibrary.csproj" />
+    <ProjectReference Include="..\..\Rpg.Core\Rpg.Core.csproj" />
   </ItemGroup>
 
 </Project>

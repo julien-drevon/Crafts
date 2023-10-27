@@ -1,6 +1,6 @@
 using Rpg.Drivers.Wpf.Core.Tests.Dummy;
 
-namespace Rpg.Drivers.Wpf.Core.Tests;
+namespace Rpg.Core.WpfLibrary.Tests.Base;
 
 public class BaseViewModelShould
 {

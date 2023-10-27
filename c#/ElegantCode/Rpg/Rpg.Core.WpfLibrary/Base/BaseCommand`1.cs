@@ -1,11 +1,22 @@
 using System;
 using System.Windows.Input;
 
-namespace Rpg.Core.WpfLibrary;
-
+namespace Rpg.Core.WpfLibrary.Base;
 public class BaseCommand<TArgs> : ICommand
 {
     private Predicate<TArgs> _ExecutePredicate;
+
+    public BaseCommand(Predicate<TArgs> canExecute, Action<TArgs> execute)
+    {
+        this._ExecutePredicate = canExecute;
+        ExecuteAction = execute;
+    }
+
+    public event EventHandler CanExecuteChanged
+    {
+        add { CommandManager.RequerySuggested += value; }
+        remove { CommandManager.RequerySuggested -= value; }
+    }
 
     public virtual Action<TArgs> ExecuteAction { get; set; }
 
@@ -20,23 +31,6 @@ public class BaseCommand<TArgs> : ICommand
                 _ExecutePredicate = value;
             }
         }
-    }
-
-    public BaseCommand(Predicate<TArgs> canExecute, Action<TArgs> execute)
-    {
-        this._ExecutePredicate = canExecute;
-        ExecuteAction = execute;
-    }
-
-    public BaseCommand()
-    {
-    }
-
-    //public event EventHandler CanExecuteChanged;
-    public event EventHandler CanExecuteChanged
-    {
-        add { CommandManager.RequerySuggested += value; }
-        remove { CommandManager.RequerySuggested -= value; }
     }
 
     public virtual bool CanExecute(TArgs parameter)

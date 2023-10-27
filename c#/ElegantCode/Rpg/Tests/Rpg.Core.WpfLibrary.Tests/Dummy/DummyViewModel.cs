@@ -1,4 +1,4 @@
-using Rpg.Core.WpfLibrary;
+using Rpg.Core.WpfLibrary.Base;
 
 namespace Rpg.Drivers.Wpf.Core.Tests.Dummy
 {

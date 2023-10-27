@@ -6,4 +6,8 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Rpg.Core\Rpg.Core.csproj" />
+  </ItemGroup>
+
 </Project>
