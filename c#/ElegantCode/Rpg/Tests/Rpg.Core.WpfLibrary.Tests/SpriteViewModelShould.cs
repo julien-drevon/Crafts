@@ -74,11 +74,14 @@ public class SpriteViewModelShould
         isChangingHeight.Should().BeTrue();
         viewModel.Height.Should().Be(5);
         viewModel.PropertyChanged -= verifyChangingHeight;
-
     }
 }
 
 public class WorldPResenterShould
 {
+    [Fact]
+    public void ConvertWorld()
+    {
 
+    }
 }
