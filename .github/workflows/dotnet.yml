@@ -5,7 +5,7 @@ name: Elegant code .net
 
 on:
   push:
-    branches: ["main"]
+    branches: ["**"]
     paths:
       - "c#/ElegantCode/**"
   pull_request:
