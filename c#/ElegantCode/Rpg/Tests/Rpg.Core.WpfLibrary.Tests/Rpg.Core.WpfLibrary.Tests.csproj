@@ -1,7 +1,7 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net7.0</TargetFramework>
+    <TargetFramework>net7.0-windows</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>disable</Nullable>
 
@@ -24,8 +24,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Rpg.Core.WpfLibrary\Rpg.Core.WpfLibrary.csproj" />
     <ProjectReference Include="..\..\Rpg.Core\Rpg.Core.csproj" />
-    <ProjectReference Include="..\..\Rpg.Drivers.Wpf.Core\Rpg.Drivers.Wpf.Core.csproj" />
   </ItemGroup>
 
 </Project>

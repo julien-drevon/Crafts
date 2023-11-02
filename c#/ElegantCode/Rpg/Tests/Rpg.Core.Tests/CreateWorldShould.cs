@@ -21,7 +21,7 @@ public class CreateWorldShould
     [Fact]
     public void NewWorld()
     {
-        var meInTheWorld = new Sprite();
+        var meInTheWorld = new Sprite(id: Guid.NewGuid());
         var worldId = Guid.NewGuid();
         var firstWorld = new World(worldId);
 

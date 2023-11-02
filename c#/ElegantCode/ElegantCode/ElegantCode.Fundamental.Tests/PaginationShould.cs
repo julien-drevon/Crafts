@@ -33,6 +33,8 @@ public class PaginationShould
         assert.Pagination.Total.Should().Be(0);
         assert.Pagination.PageIndex.Should().Be(0);
         assert.Pagination.PageNumber.Should().Be(1);
+        assert.Message.Should().Be("ok");
+        assert.IsOk.Should().BeTrue();
         assert.CorrelationToken.Should().Be(CorrrelationToken);
     }
 
@@ -354,7 +356,7 @@ public class PaginationShould
 
         /********************************************/
 
-        var nullSource = new MyFactIPaginationImplements<int>();
+        var nullSource = new DummyPaginationImplementsWithNullSource<int>();
         assert = nullSource.ToPaginationResponse();
         assert.Datas.Should().HaveCount(0);
         assert.Datas.Should().BeEmpty();
@@ -484,7 +486,7 @@ public class PaginationShould
     }
 }
 
-public class MyFactIPaginationImplements<T> : IPaginatedResponse<T>
+public class DummyPaginationImplementsWithNullSource<T> : IPaginatedResponse<T>
 {
     public IList<T> Datas { get; set; } = null;
 
