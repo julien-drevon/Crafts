@@ -1,3 +1,7 @@
+import { PresentData } from "./PresentData";
+
 export interface IMOutPresenter<TOut> {
-  View(): PromiseLike<TOut>;
+  View(): PromiseLike<PresentData<TOut>>;
 }
+
+

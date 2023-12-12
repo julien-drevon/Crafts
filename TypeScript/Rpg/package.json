@@ -15,7 +15,7 @@
     "start:debug": "nest start --debug --watch",
     "start:prod": "node dist/main",
     "lint": "eslint \"{src,apps,libs,tests}/**/*.ts\" --fix",
-    "test": "jest --runInBand",
+    "test": "jest --runInBand --watch",
     "test:watch": "jest --watch",
     "test:cov": "jest --collect-coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
@@ -27,7 +27,7 @@
   },
   "devDependencies": {
     "@types/jest": "28.1.8",
-    "@types/node": "^16.0.0",
+    "@types/node": "^16.18.68",
     "@types/supertest": "^2.0.11",
     "@typescript-eslint/eslint-plugin": "^5.0.0",
     "@typescript-eslint/parser": "^5.62.0",
@@ -50,8 +50,8 @@
       "json",
       "ts"
     ],
-    "rootDir": "tests",
-    "testRegex": ".*\\.spec\\.ts$",
+    "rootDir": "src",
+    "testRegex": ".*\\.should\\.ts$",
     "transform": {
       "^.+\\.(t|j)s$": "ts-jest"
     },
