@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { WordleLetterModel } from "./WordleLetterModel";
 
 @Component({
   selector: 'app-word-letter',
@@ -7,4 +8,6 @@ import { Component } from '@angular/core';
 })
 export class WordLetterComponent {
 
+  constructor(public   viewModel: WordleLetterModel=new WordleLetterModel()){}
 }
+
