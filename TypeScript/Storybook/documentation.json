@@ -750,13 +750,13 @@
         },
         {
             "name": "WordleMainModule",
-            "id": "module-WordleMainModule-b7dcd6466bfeab81be0763c4f44b6d09a39a58d10f5cc21e2a950b5770fbb6e02d2f7df965d144586020d6b459baca82e14f3705c5dfd70ea429920ebc613347",
+            "id": "module-WordleMainModule-10a043a0773d44273f6fd72ace50d48e8514b77f0bf3dcc77043d9bd1f893f50560f918720c46a65e4f58660bdf567e1761ff1fcd450239dc77cb651b3b87112",
             "description": "",
             "deprecationMessage": "",
             "deprecated": false,
             "file": "src/app/wordle-main.module.ts",
             "methods": [],
-            "sourceCode": "import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from \"@angular/core\";\r\nimport { CommonModule } from \"@angular/common\";\r\nimport { FormsModule } from \"@angular/forms\";\r\nimport { WordleLetterComponent } from \"./word-letter/wordle-letter.component\";\r\nimport { WordleGridComponent } from \"./wordle-grid/wordle-grid.component\";\r\n\r\n\r\n\r\n@NgModule({\r\n    declarations: [   \r\n      WordleLetterComponent,\r\n      WordleGridComponent,\r\n    ],\r\n    imports: [   \r\n      CommonModule,\r\n      FormsModule    \r\n    ], \r\n     providers: [],\r\n    schemas: [\r\n      CUSTOM_ELEMENTS_SCHEMA,\r\n    ],\r\n  })  \r\n  export class WordleMainModule { }\r\n\r\n",
+            "sourceCode": "import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from \"@angular/core\";\r\nimport { CommonModule } from \"@angular/common\";\r\nimport { FormsModule } from \"@angular/forms\";\r\nimport { WordleLetterComponent } from \"./word-letter/wordle-letter.component\";\r\nimport { WordleGridComponent } from \"./wordle-grid/wordle-grid.component\";\r\n\r\n\r\n\r\n@NgModule({\r\n    declarations: [   \r\n      WordleLetterComponent,\r\n      WordleGridComponent,\r\n    ],\r\n    exports:[WordleLetterComponent,WordleGridComponent],\r\n    imports: [   \r\n      CommonModule,\r\n      FormsModule    \r\n    ], \r\n     providers: [],\r\n    schemas: [\r\n      CUSTOM_ELEMENTS_SCHEMA,\r\n    ],\r\n  })  \r\n  export class WordleMainModule { }\r\n\r\n",
             "children": [
                 {
                     "type": "providers",
@@ -779,7 +779,14 @@
                 },
                 {
                     "type": "exports",
-                    "elements": []
+                    "elements": [
+                        {
+                            "name": "WordleGridComponent"
+                        },
+                        {
+                            "name": "WordleLetterComponent"
+                        }
+                    ]
                 },
                 {
                     "type": "bootstrap",
@@ -803,6 +810,16 @@
                 "deprecationMessage": "",
                 "type": "Story",
                 "defaultValue": "{\r\n  args: {\r\n    viewModel: {\r\n      letter:\"A\",\r\n      placement: WordleLetterPlacement.badPlacement\r\n     },\r\n  },\r\n}"
+            },
+            {
+                "name": "Empty",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/wordle-grid.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\r\n  args: {\r\n    // viewModel: {\r\n    //   letter:\"\",\r\n    //   placement: WordleGridComponent.empty\r\n    //  },\r\n  },\r\n}"
             },
             {
                 "name": "Empty",
@@ -908,11 +925,21 @@
                 "name": "meta",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
+                "file": "src/stories/wordle-grid.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<WordleGridComponent>",
+                "defaultValue": "{\r\n  title: 'Example/WordleGridComponent',\r\n  component: WordleGridComponent,\r\n  tags: ['autodocs'], decorators: [\r\n    moduleMetadata({\r\n      //👇 Imports both components to allow component composition with Storybook\r\n      declarations: [ ],\r\n      imports: [WordleMainModule],\r\n    }),\r\n  ],\r\n  render: (args: WordleGridComponent) => ({\r\n    props: {\r\n      backgroundColor: null,\r\n      ...args,\r\n    },\r\n  }),\r\n  argTypes: {\r\n  //   viewModel: {\r\n  //    letter:'A',\r\n  //    placement: WordleLetterPlacement.good\r\n  //   },\r\n   },\r\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
                 "file": "src/stories/wordle-letter.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<WordleLetterComponent>",
-                "defaultValue": "{\r\n  title: 'Example/WordLetterComponent',\r\n  component: WordleLetterComponent,\r\n  tags: ['autodocs'],\r\n  render: (args: WordleLetterComponent) => ({\r\n    props: {\r\n      backgroundColor: null,\r\n      ...args,\r\n    },\r\n  }),\r\n  argTypes: {\r\n    viewModel: {\r\n     letter:'A',\r\n     placement: WordleLetterPlacement.good\r\n    },\r\n  },\r\n}"
+                "defaultValue": "{\r\n  title: 'Example/WordLetterComponent',\r\n  component: WordleLetterComponent,\r\n  tags: ['autodocs'],\r\n  render: (args: WordleLetterComponent) => ({\r\n    props: {\r\n      backgroundColor: null,\r\n      ...args,\r\n    },\r\n  }),\r\n  argTypes: {\r\n    viewModel: {\r\n     letter:'A',\r\n     placement: WordleLetterPlacement.good\r\n    },\r\n  }\r\n}"
             },
             {
                 "name": "preview",
@@ -1034,6 +1061,17 @@
                 "name": "Story",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
+                "rawtype": "StoryObj<WordleGridComponent>",
+                "file": "src/stories/wordle-grid.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 183
+            },
+            {
+                "name": "Story",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
                 "rawtype": "StoryObj<WordleLetterComponent>",
                 "file": "src/stories/wordle-letter.stories.ts",
                 "deprecated": false,
@@ -1115,7 +1153,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Meta<WordleLetterComponent>",
-                    "defaultValue": "{\r\n  title: 'Example/WordLetterComponent',\r\n  component: WordleLetterComponent,\r\n  tags: ['autodocs'],\r\n  render: (args: WordleLetterComponent) => ({\r\n    props: {\r\n      backgroundColor: null,\r\n      ...args,\r\n    },\r\n  }),\r\n  argTypes: {\r\n    viewModel: {\r\n     letter:'A',\r\n     placement: WordleLetterPlacement.good\r\n    },\r\n  },\r\n}"
+                    "defaultValue": "{\r\n  title: 'Example/WordLetterComponent',\r\n  component: WordleLetterComponent,\r\n  tags: ['autodocs'],\r\n  render: (args: WordleLetterComponent) => ({\r\n    props: {\r\n      backgroundColor: null,\r\n      ...args,\r\n    },\r\n  }),\r\n  argTypes: {\r\n    viewModel: {\r\n     letter:'A',\r\n     placement: WordleLetterPlacement.good\r\n    },\r\n  }\r\n}"
                 },
                 {
                     "name": "Wrong",
@@ -1126,6 +1164,28 @@
                     "deprecationMessage": "",
                     "type": "Story",
                     "defaultValue": "{\r\n  args: {\r\n    viewModel: {\r\n      letter:\"A\",\r\n      placement: WordleLetterPlacement.wrong\r\n     },\r\n  },\r\n}"
+                }
+            ],
+            "src/stories/wordle-grid.stories.ts": [
+                {
+                    "name": "Empty",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/wordle-grid.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\r\n  args: {\r\n    // viewModel: {\r\n    //   letter:\"\",\r\n    //   placement: WordleGridComponent.empty\r\n    //  },\r\n  },\r\n}"
+                },
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/wordle-grid.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta<WordleGridComponent>",
+                    "defaultValue": "{\r\n  title: 'Example/WordleGridComponent',\r\n  component: WordleGridComponent,\r\n  tags: ['autodocs'], decorators: [\r\n    moduleMetadata({\r\n      //👇 Imports both components to allow component composition with Storybook\r\n      declarations: [ ],\r\n      imports: [WordleMainModule],\r\n    }),\r\n  ],\r\n  render: (args: WordleGridComponent) => ({\r\n    props: {\r\n      backgroundColor: null,\r\n      ...args,\r\n    },\r\n  }),\r\n  argTypes: {\r\n  //   viewModel: {\r\n  //    letter:'A',\r\n  //    placement: WordleLetterPlacement.good\r\n  //   },\r\n   },\r\n}"
                 }
             ],
             "src/stories/Button.stories.ts": [
@@ -1365,6 +1425,19 @@
                     "kind": 183
                 }
             ],
+            "src/stories/wordle-grid.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "StoryObj<WordleGridComponent>",
+                    "file": "src/stories/wordle-grid.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 183
+                }
+            ],
             "src/stories/wordle-letter.stories.ts": [
                 {
                     "name": "Story",
@@ -1395,7 +1468,7 @@
         ]
     },
     "coverage": {
-        "count": 3,
+        "count": 2,
         "status": "low",
         "files": [
             {
@@ -1607,6 +1680,26 @@
                 "name": "PageComponent",
                 "coveragePercent": 0,
                 "coverageCount": "0/5",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/wordle-grid.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Empty",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/wordle-grid.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "meta",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
                 "status": "low"
             },
             {

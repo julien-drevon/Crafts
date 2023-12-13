@@ -1,8 +1,9 @@
 import type { ComponentFixture} from "@angular/core/testing";
 import { TestBed } from "@angular/core/testing";
 import { WordleGridComponent } from "./wordle-grid.component";
-import { WordleLetterComponent } from "../word-letter/wordle-letter.component";
+
 import { WordleLetterPlacement } from "../word-letter/WordleLetterModel";
+import { WordleMainModule } from "../wordle-main.module";
 
 
 
@@ -13,10 +14,8 @@ describe("WordleGridComponent", () => {
   
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [ 
-        WordleLetterComponent,
-        WordleGridComponent,],
-        imports:[],
+      declarations: [ ],
+        imports:[WordleMainModule],
       });
       fixture = TestBed.createComponent(WordleGridComponent);
       component = fixture.componentInstance;   

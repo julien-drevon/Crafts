@@ -11,6 +11,7 @@ import { WordleGridComponent } from "./wordle-grid/wordle-grid.component";
       WordleLetterComponent,
       WordleGridComponent,
     ],
+    exports:[WordleLetterComponent,WordleGridComponent],
     imports: [   
       CommonModule,
       FormsModule    

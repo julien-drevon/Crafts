@@ -1,6 +1,7 @@
-import type { Meta, StoryObj } from '@storybook/angular';
+import { moduleMetadata, type Meta, type StoryObj } from '@storybook/angular';
 import { WordleLetterComponent } from "src/app/word-letter/wordle-letter.component";
 import { WordleLetterPlacement } from "src/app/word-letter/WordleLetterModel";
+import { WordleMainModule } from "src/app/wordle-main.module";
 
 
 //More on how to set up stories at: https://storybook.js.org/docs/angular/writing-stories/introduction
@@ -19,7 +20,7 @@ const meta: Meta<WordleLetterComponent> = {
      letter:'A',
      placement: WordleLetterPlacement.good
     },
-  },
+  }
 };
 
 export default meta;

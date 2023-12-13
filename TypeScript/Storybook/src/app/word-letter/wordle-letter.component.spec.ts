@@ -3,6 +3,7 @@ import { TestBed } from "@angular/core/testing";
 
 import { WordleLetterModel, WordleLetterPlacement } from "./WordleLetterModel";
 import { WordleLetterComponent } from "./wordle-letter.component";
+import { WordleMainModule } from "../wordle-main.module";
 
 
 describe("WordleLetterComponent", () => {
@@ -13,8 +14,8 @@ describe("WordleLetterComponent", () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [WordleLetterComponent],
-      imports:[],
+      declarations: [],
+      imports:[WordleMainModule],
       providers:[
         {
           provide : WordleLetterModel,
