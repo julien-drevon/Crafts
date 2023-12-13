@@ -1,0 +1,20 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "pattern-lib": {
+      "root": "",
+      "sourceRoot": "src",
+      "projectType": "library",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "less"
+        }
+      }
+    }
+  },
+  "cli": {
+    "analytics": "18fae49e-6bd9-4a86-9d35-4bb9539e7134"
+  }
+}
