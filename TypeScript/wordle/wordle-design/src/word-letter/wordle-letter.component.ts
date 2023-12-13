@@ -1,18 +1,18 @@
-import { Component, Input } from '@angular/core';
-import { WordleLetterModel, WordleLetterPlacement } from './WordleLetterModel';
+import { Component, Input } from "@angular/core";
+import { WordleLetterModel, WordleLetterPlacement } from "./WordleLetterModel";
 
 @Component({
-  selector: 'app-word-letter',
-  templateUrl: './word-letter.component.html',
-  styleUrls: ['./word-letter.component.less']
+  selector: "wordle-letter",
+  templateUrl: "./wordle-letter.component.html",
+  styleUrls: ["./wordle-letter.component.less"]
 })
-export class WordLetterComponent {
+export class WordleLetterComponent {
   @Input()
   viewModel: WordleLetterModel = new WordleLetterModel(); 
   
   convertWordLetterModelToWordCss(letterModel:WordleLetterModel):string{
     if( !letterModel.letter)
-    return 'wordle-empty-letter';    
+    return "wordle-empty-letter";    
     
     return getColorPlacementForNonEmptyLetter(letterModel);
   } 

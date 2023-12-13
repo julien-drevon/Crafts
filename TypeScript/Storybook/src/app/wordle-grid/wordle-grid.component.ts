@@ -8,7 +8,7 @@ import { WordleLetterModel } from "../word-letter/WordleLetterModel";
   styleUrls: ["./wordle-grid.component.less"]
 })
 export class WordleGridComponent {
-@Input()
+  @Input()
   viewModel: WordleWordModel[]=[new WordleWordModel(),new WordleWordModel(),new WordleWordModel(),new WordleWordModel(),new WordleWordModel()];
   
 }

@@ -21,12 +21,12 @@
     "classes": [
         {
             "name": "WordleLetterModel",
-            "id": "class-WordleLetterModel-25d66d22c31c38fc2f0122ec840f2c1a4cd4ea535328c96ab7d2a431e0dd734b0bc1bee64a9cf7aaff0175d3eda9f072f2f78d240d9b5b4f1d796764c0d2d463",
+            "id": "class-WordleLetterModel-555f08c9441af4c603f716c8f5042242a791aded791adbe42ce34bff07dedaee1b2c88fbcd72d521e0b3b2dab0803ba968cfd0c466861bf57819f2dcef015181",
             "file": "src/app/word-letter/WordleLetterModel.ts",
             "deprecated": false,
             "deprecationMessage": "",
             "type": "class",
-            "sourceCode": "export enum WordleLetterPlacement {\r\n  good,\r\n  badPlacement,\r\n  wrong,\r\n  empty\r\n}\r\nexport class WordleLetterModel {\r\n  constructor(public letter: string = \"\", public placement:WordleLetterPlacement=WordleLetterPlacement.good) { };\r\n\r\n}\r\n",
+            "sourceCode": "export enum WordleLetterPlacement {\r\n  good,\r\n  badPlacement,\r\n  wrong,\r\n  empty\r\n}\r\nexport class WordleLetterModel {\r\n  constructor(public letter: string = \"\", public placement:WordleLetterPlacement=WordleLetterPlacement.empty) { }\r\n\r\n}\r\n",
             "constructorObj": {
                 "name": "constructor",
                 "description": "",
@@ -45,7 +45,7 @@
                         "type": "WordleLetterPlacement",
                         "deprecated": false,
                         "deprecationMessage": "",
-                        "defaultValue": "WordleLetterPlacement.good"
+                        "defaultValue": "WordleLetterPlacement.empty"
                     }
                 ],
                 "line": 7,
@@ -65,7 +65,7 @@
                         "type": "WordleLetterPlacement",
                         "deprecated": false,
                         "deprecationMessage": "",
-                        "defaultValue": "WordleLetterPlacement.good",
+                        "defaultValue": "WordleLetterPlacement.empty",
                         "tagName": {
                             "text": "param"
                         }
@@ -88,13 +88,72 @@
                 },
                 {
                     "name": "placement",
-                    "defaultValue": "WordleLetterPlacement.good",
+                    "defaultValue": "WordleLetterPlacement.empty",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "WordleLetterPlacement",
                     "optional": false,
                     "description": "",
                     "line": 8,
+                    "modifierKind": [
+                        125
+                    ]
+                }
+            ],
+            "methods": [],
+            "indexSignatures": [],
+            "extends": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "hostBindings": [],
+            "hostListeners": []
+        },
+        {
+            "name": "WordleWordModel",
+            "id": "class-WordleWordModel-be9caed9e81e31e7abde10d48f5e836bcc1db6157f1e12b000ac46c6aa41b72e80579bcc08a8637f6a8206d3ad47be0a7789ee5f4d98cef6119944b02c8ae539",
+            "file": "src/app/wordle-grid/wordle-grid.component.ts",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "type": "class",
+            "sourceCode": "import { Component, Input } from \"@angular/core\";\nimport { WordleLetterModel } from \"../word-letter/WordleLetterModel\";\n\n\n@Component({\n  selector: \"wordle-grid\",\n  templateUrl: \"./wordle-grid.component.html\",\n  styleUrls: [\"./wordle-grid.component.less\"]\n})\nexport class WordleGridComponent {\n  @Input()\n  viewModel: WordleWordModel[]=[new WordleWordModel(),new WordleWordModel(),new WordleWordModel(),new WordleWordModel(),new WordleWordModel()];\n  \n}\n\nexport class WordleWordModel{\n  constructor(public line:WordleLetterModel[]=    \n    [new WordleLetterModel(), new WordleLetterModel(), new WordleLetterModel(), new WordleLetterModel(), new WordleLetterModel()  ]){}\n  }",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "line",
+                        "type": "WordleLetterModel[]",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "defaultValue": "[new WordleLetterModel(), new WordleLetterModel(), new WordleLetterModel(), new WordleLetterModel(), new WordleLetterModel()  ]"
+                    }
+                ],
+                "line": 16,
+                "jsdoctags": [
+                    {
+                        "name": "line",
+                        "type": "WordleLetterModel[]",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "defaultValue": "[new WordleLetterModel(), new WordleLetterModel(), new WordleLetterModel(), new WordleLetterModel(), new WordleLetterModel()  ]",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "properties": [
+                {
+                    "name": "line",
+                    "defaultValue": "[new WordleLetterModel(), new WordleLetterModel(), new WordleLetterModel(), new WordleLetterModel(), new WordleLetterModel()  ]",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "WordleLetterModel[]",
+                    "optional": false,
+                    "description": "",
+                    "line": 17,
                     "modifierKind": [
                         125
                     ]
@@ -461,21 +520,75 @@
             "extends": []
         },
         {
-            "name": "WordLetterComponent",
-            "id": "component-WordLetterComponent-58053c84553d9fe9e32f2a6fa723cd4cc3596dc85c41e485e06b35f0e8641f6075f482004377ad551353b960b66a7a7ab08c197eb84a0661b8d93768fed2975c",
-            "file": "src/app/word-letter/word-letter.component.ts",
+            "name": "WordleGridComponent",
+            "id": "component-WordleGridComponent-be9caed9e81e31e7abde10d48f5e836bcc1db6157f1e12b000ac46c6aa41b72e80579bcc08a8637f6a8206d3ad47be0a7789ee5f4d98cef6119944b02c8ae539",
+            "file": "src/app/wordle-grid/wordle-grid.component.ts",
             "encapsulation": [],
             "entryComponents": [],
             "inputs": [],
             "outputs": [],
             "providers": [],
-            "selector": "app-word-letter",
+            "selector": "wordle-grid",
             "styleUrls": [
-                "./word-letter.component.less"
+                "./wordle-grid.component.less"
             ],
             "styles": [],
             "templateUrl": [
-                "./word-letter.component.html"
+                "./wordle-grid.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [
+                {
+                    "name": "viewModel",
+                    "defaultValue": "[new WordleWordModel(),new WordleWordModel(),new WordleWordModel(),new WordleWordModel(),new WordleWordModel()]",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 12,
+                    "type": "WordleWordModel[]",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": false,
+            "imports": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, Input } from \"@angular/core\";\nimport { WordleLetterModel } from \"../word-letter/WordleLetterModel\";\n\n\n@Component({\n  selector: \"wordle-grid\",\n  templateUrl: \"./wordle-grid.component.html\",\n  styleUrls: [\"./wordle-grid.component.less\"]\n})\nexport class WordleGridComponent {\n  @Input()\n  viewModel: WordleWordModel[]=[new WordleWordModel(),new WordleWordModel(),new WordleWordModel(),new WordleWordModel(),new WordleWordModel()];\n  \n}\n\nexport class WordleWordModel{\n  constructor(public line:WordleLetterModel[]=    \n    [new WordleLetterModel(), new WordleLetterModel(), new WordleLetterModel(), new WordleLetterModel(), new WordleLetterModel()  ]){}\n  }",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "",
+                    "styleUrl": "./wordle-grid.component.less"
+                }
+            ],
+            "stylesData": "",
+            "extends": [],
+            "templateData": "<div>\n    <div>\n        <wordle-letter [viewModel]=\"viewModel[0].line[0]\" />\n        <wordle-letter [viewModel]=\"viewModel[0].line[1]\" />\n        <wordle-letter [viewModel]=\"viewModel[0].line[2]\" />\n        <wordle-letter [viewModel]=\"viewModel[0].line[3]\" />\n        <wordle-letter [viewModel]=\"viewModel[0].line[4]\" />\n    </div>\n    <div>\n        <wordle-letter [viewModel]=\"viewModel[1].line[0]\" />\n        <wordle-letter [viewModel]=\"viewModel[1].line[1]\" />\n        <wordle-letter [viewModel]=\"viewModel[1].line[2]\" />\n        <wordle-letter [viewModel]=\"viewModel[1].line[3]\" />\n        <wordle-letter [viewModel]=\"viewModel[1].line[4]\" />\n    </div>\n    <div>\n        <wordle-letter [viewModel]=\"viewModel[2].line[0]\" />\n        <wordle-letter [viewModel]=\"viewModel[2].line[1]\" />\n        <wordle-letter [viewModel]=\"viewModel[2].line[2]\" />\n        <wordle-letter [viewModel]=\"viewModel[2].line[3]\" />\n        <wordle-letter [viewModel]=\"viewModel[2].line[4]\" />\n    </div>\n    <div>\n        <wordle-letter [viewModel]=\"viewModel[3].line[0]\" />\n        <wordle-letter [viewModel]=\"viewModel[3].line[1]\" />\n        <wordle-letter [viewModel]=\"viewModel[3].line[2]\" />\n        <wordle-letter [viewModel]=\"viewModel[3].line[3]\" />\n        <wordle-letter [viewModel]=\"viewModel[3].line[4]\" />\n    </div>\n    <div>\n        <wordle-letter [viewModel]=\"viewModel[4].line[0]\" />\n        <wordle-letter [viewModel]=\"viewModel[4].line[1]\" />\n        <wordle-letter [viewModel]=\"viewModel[4].line[2]\" />\n        <wordle-letter [viewModel]=\"viewModel[4].line[3]\" />\n        <wordle-letter [viewModel]=\"viewModel[4].line[4]\" />\n    </div>\n</div>"
+        },
+        {
+            "name": "WordleLetterComponent",
+            "id": "component-WordleLetterComponent-1ea823b73470d4e07679c663b480f43a03e70bc8bd9c7c0e532dd42e972437459a30a192f8332a74d0d08ad5e83689072680261140408f7c452a54d6b0c100b9",
+            "file": "src/app/word-letter/wordle-letter.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "wordle-letter",
+            "styleUrls": [
+                "./wordle-letter.component.less"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./wordle-letter.component.html"
             ],
             "viewProviders": [],
             "hostDirectives": [],
@@ -491,19 +604,37 @@
                 }
             ],
             "outputsClass": [],
-            "propertiesClass": [
+            "propertiesClass": [],
+            "methodsClass": [
                 {
                     "name": "convertWordLetterModelToWordCss",
-                    "defaultValue": "convertWordLetterModelToWordCss",
+                    "args": [
+                        {
+                            "name": "letterModel",
+                            "type": "WordleLetterModel",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "string",
+                    "typeParameters": [],
+                    "line": 13,
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 12
+                    "jsdoctags": [
+                        {
+                            "name": "letterModel",
+                            "type": "WordleLetterModel",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
                 }
             ],
-            "methodsClass": [],
             "deprecated": false,
             "deprecationMessage": "",
             "hostBindings": [],
@@ -513,29 +644,29 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, Input } from '@angular/core';\nimport { WordleLetterModel, WordleLetterPlacement } from './WordleLetterModel';\n\n@Component({\n  selector: 'app-word-letter',\n  templateUrl: './word-letter.component.html',\n  styleUrls: ['./word-letter.component.less']\n})\nexport class WordLetterComponent {\n  @Input()\n  viewModel: WordleLetterModel = new WordleLetterModel(); \n  convertWordLetterModelToWordCss=convertWordLetterModelToWordCss;\n}\nexport function convertWordLetterModelToWordCss(letterModel:WordleLetterModel ):string{\n  if( !letterModel.letter)\n  return 'wordle-empty-letter';    \n  \n  return getColorPlacementForNonEmptyLetter(letterModel);\n} \n\nfunction getColorPlacementForNonEmptyLetter(letterModel:WordleLetterModel):string\n{\n  switch(letterModel.placement){\n    case WordleLetterPlacement.badPlacement:\n    return \"wordle-bad-place-letter\";\n    \n    case WordleLetterPlacement.wrong:\n    return \"wordle-wrong-letter\";\n    \n    case WordleLetterPlacement.good :      \n    return \"wordle-good-letter\";\n    \n    case WordleLetterPlacement.empty:\n    default  :\n    return\"wordle-empty-letter\";      \n  }\n}\n\n",
+            "sourceCode": "import { Component, Input } from \"@angular/core\";\nimport { WordleLetterModel, WordleLetterPlacement } from \"./WordleLetterModel\";\n\n@Component({\n  selector: \"wordle-letter\",\n  templateUrl: \"./wordle-letter.component.html\",\n  styleUrls: [\"./wordle-letter.component.less\"]\n})\nexport class WordleLetterComponent {\n  @Input()\n  viewModel: WordleLetterModel = new WordleLetterModel(); \n  \n  convertWordLetterModelToWordCss(letterModel:WordleLetterModel):string{\n    if( !letterModel.letter)\n    return \"wordle-empty-letter\";    \n    \n    return getColorPlacementForNonEmptyLetter(letterModel);\n  } \n}\n\nfunction getColorPlacementForNonEmptyLetter(letterModel:WordleLetterModel):string\n{\n  switch(letterModel.placement){\n    case WordleLetterPlacement.badPlacement:\n    return \"wordle-bad-place-letter\";\n    \n    case WordleLetterPlacement.wrong:\n    return \"wordle-wrong-letter\";\n    \n    case WordleLetterPlacement.good :      \n    return \"wordle-good-letter\";\n    \n    case WordleLetterPlacement.empty:\n    default  :\n    return\"wordle-empty-letter\";      \n  }\n}\n\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": ".wordle-empty-letter {\r\n    background-color: white;\r\n}\r\n\r\n.wordle-good-letter {\r\n    background-color: green;\r\n}\r\n\r\n.wordle-bad-place-letter {\r\n    background-color: orange;\r\n}\r\n\r\n.wordle-wrong-letter {\r\n    background-color: red;\r\n}",
-                    "styleUrl": "./word-letter.component.less"
+                    "data": ".wordle-letter {\r\n    border: solid black 2px;\r\n    height: 25px;\r\n    width: 25px;\r\n}\r\n\r\n.wordle-empty-letter {\r\n    .wordle-letter;\r\n    background-color: white;\r\n}\r\n\r\n.wordle-good-letter {\r\n    .wordle-letter;\r\n    background-color: green;\r\n}\r\n\r\n.wordle-bad-place-letter {\r\n    .wordle-letter;\r\n    background-color: orange;\r\n}\r\n\r\n.wordle-wrong-letter {\r\n    .wordle-letter;\r\n    background-color: blue;\r\n}",
+                    "styleUrl": "./wordle-letter.component.less"
                 }
             ],
             "stylesData": "",
             "extends": [],
-            "templateData": "<div [ngClass]=\"convertWordLetterModelToWordCss(this.viewModel)\">\n    <p>{{viewModel.letter}}</p>\n</div>"
+            "templateData": "<div [ngClass]=\"convertWordLetterModelToWordCss(this.viewModel)\">\n    <p style=\" margin: auto;padding: 5px; color: white;\">{{viewModel.letter}}</p>\n</div>"
         }
     ],
     "modules": [
         {
             "name": "AppModule",
-            "id": "module-AppModule-3a0e823c245327b2b6f1c4d76240a39f972bc73009a6f555165be4b1040581bc94cfe0ba981310f367df0264c1682c30070e2d3683a6fe0456b8ea37e68de58d",
+            "id": "module-AppModule-9d4b0ac7580f6084fe0d4cd117054f4daa27379b64a35c5f11f46d1b19ae741d4c72afcca07016a5ddebfe4213eb7f73a248397079ced044e9f4f142fb3d34ac",
             "description": "",
             "deprecationMessage": "",
             "deprecated": false,
             "file": "src/app/app.module.ts",
             "methods": [],
-            "sourceCode": "import { NgModule } from '@angular/core';\r\nimport { BrowserModule } from '@angular/platform-browser';\r\n\r\nimport { AppRoutingModule } from './app-routing.module';\r\nimport { AppComponent } from './app.component';\r\n\r\nimport { WordLetterComponent } from './word-letter/word-letter.component';\r\n\r\n\r\n@NgModule({\r\n  declarations: [\r\n    AppComponent,\r\n    WordLetterComponent,    \r\n  ],\r\n  imports: [\r\n    BrowserModule,\r\n    AppRoutingModule\r\n  ],\r\n  providers: [],\r\n  bootstrap: [AppComponent]\r\n})\r\nexport class AppModule { }\r\n",
+            "sourceCode": "import { NgModule } from '@angular/core';\r\nimport { BrowserModule } from '@angular/platform-browser';\r\n\r\nimport { AppRoutingModule } from './app-routing.module';\r\nimport { AppComponent } from './app.component';\r\nimport { WordleLetterComponent } from \"./word-letter/wordle-letter.component\";\r\nimport { WordleMainModule } from \"./wordle-main.module\";\r\n\r\n\r\n\r\n\r\n@NgModule({\r\n  declarations: [\r\n    AppComponent,\r\n    WordleLetterComponent,    \r\n  ],\r\n  imports: [\r\n    BrowserModule,\r\n    AppRoutingModule,\r\n    WordleMainModule\r\n  ],\r\n  providers: [],\r\n  bootstrap: [AppComponent]\r\n})\r\nexport class AppModule { }\r\n",
             "children": [
                 {
                     "type": "providers",
@@ -548,7 +679,7 @@
                             "name": "AppComponent"
                         },
                         {
-                            "name": "WordLetterComponent"
+                            "name": "WordleLetterComponent"
                         }
                     ]
                 },
@@ -557,6 +688,9 @@
                     "elements": [
                         {
                             "name": "AppRoutingModule"
+                        },
+                        {
+                            "name": "WordleMainModule"
                         }
                     ]
                 },
@@ -613,10 +747,63 @@
                     "elements": []
                 }
             ]
+        },
+        {
+            "name": "WordleMainModule",
+            "id": "module-WordleMainModule-b7dcd6466bfeab81be0763c4f44b6d09a39a58d10f5cc21e2a950b5770fbb6e02d2f7df965d144586020d6b459baca82e14f3705c5dfd70ea429920ebc613347",
+            "description": "",
+            "deprecationMessage": "",
+            "deprecated": false,
+            "file": "src/app/wordle-main.module.ts",
+            "methods": [],
+            "sourceCode": "import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from \"@angular/core\";\r\nimport { CommonModule } from \"@angular/common\";\r\nimport { FormsModule } from \"@angular/forms\";\r\nimport { WordleLetterComponent } from \"./word-letter/wordle-letter.component\";\r\nimport { WordleGridComponent } from \"./wordle-grid/wordle-grid.component\";\r\n\r\n\r\n\r\n@NgModule({\r\n    declarations: [   \r\n      WordleLetterComponent,\r\n      WordleGridComponent,\r\n    ],\r\n    imports: [   \r\n      CommonModule,\r\n      FormsModule    \r\n    ], \r\n     providers: [],\r\n    schemas: [\r\n      CUSTOM_ELEMENTS_SCHEMA,\r\n    ],\r\n  })  \r\n  export class WordleMainModule { }\r\n\r\n",
+            "children": [
+                {
+                    "type": "providers",
+                    "elements": []
+                },
+                {
+                    "type": "declarations",
+                    "elements": [
+                        {
+                            "name": "WordleGridComponent"
+                        },
+                        {
+                            "name": "WordleLetterComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "imports",
+                    "elements": []
+                },
+                {
+                    "type": "exports",
+                    "elements": []
+                },
+                {
+                    "type": "bootstrap",
+                    "elements": []
+                },
+                {
+                    "type": "classes",
+                    "elements": []
+                }
+            ]
         }
     ],
     "miscellaneous": {
         "variables": [
+            {
+                "name": "BadPlacement",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/wordle-letter.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\r\n  args: {\r\n    viewModel: {\r\n      letter:\"A\",\r\n      placement: WordleLetterPlacement.badPlacement\r\n     },\r\n  },\r\n}"
+            },
             {
                 "name": "Empty",
                 "ctype": "miscellaneous",
@@ -626,6 +813,16 @@
                 "deprecationMessage": "",
                 "type": "Story",
                 "defaultValue": "{\r\n  args: {\r\n    viewModel: {\r\n      letter:\"\",\r\n      placement: WordleLetterPlacement.empty\r\n     },\r\n  },\r\n}"
+            },
+            {
+                "name": "Good",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/wordle-letter.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\r\n  args: {\r\n    viewModel: {\r\n      letter:\"A\",\r\n      placement: WordleLetterPlacement.good\r\n     },\r\n  },\r\n}"
             },
             {
                 "name": "Large",
@@ -714,8 +911,8 @@
                 "file": "src/stories/wordle-letter.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
-                "type": "Meta<WordLetterComponent>",
-                "defaultValue": "{\r\n  title: 'Example/WordLetterComponent',\r\n  component: WordLetterComponent,\r\n  tags: ['autodocs'],\r\n  render: (args: WordLetterComponent) => ({\r\n    props: {\r\n      backgroundColor: null,\r\n      ...args,\r\n    },\r\n  }),\r\n  argTypes: {\r\n    viewModel: {\r\n     letter:'A',\r\n     placement: WordleLetterPlacement.good\r\n    },\r\n  },\r\n}"
+                "type": "Meta<WordleLetterComponent>",
+                "defaultValue": "{\r\n  title: 'Example/WordLetterComponent',\r\n  component: WordleLetterComponent,\r\n  tags: ['autodocs'],\r\n  render: (args: WordleLetterComponent) => ({\r\n    props: {\r\n      backgroundColor: null,\r\n      ...args,\r\n    },\r\n  }),\r\n  argTypes: {\r\n    viewModel: {\r\n     letter:'A',\r\n     placement: WordleLetterPlacement.good\r\n    },\r\n  },\r\n}"
             },
             {
                 "name": "preview",
@@ -756,41 +953,22 @@
                 "deprecationMessage": "",
                 "type": "Story",
                 "defaultValue": "{\r\n  args: {\r\n    size: 'small',\r\n    label: 'Button',\r\n  },\r\n}"
+            },
+            {
+                "name": "Wrong",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/wordle-letter.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\r\n  args: {\r\n    viewModel: {\r\n      letter:\"A\",\r\n      placement: WordleLetterPlacement.wrong\r\n     },\r\n  },\r\n}"
             }
         ],
         "functions": [
             {
-                "name": "convertWordLetterModelToWordCss",
-                "file": "src/app/word-letter/word-letter.component.ts",
-                "ctype": "miscellaneous",
-                "subtype": "function",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "description": "",
-                "args": [
-                    {
-                        "name": "letterModel",
-                        "type": "WordleLetterModel",
-                        "deprecated": false,
-                        "deprecationMessage": ""
-                    }
-                ],
-                "returnType": "string",
-                "jsdoctags": [
-                    {
-                        "name": "letterModel",
-                        "type": "WordleLetterModel",
-                        "deprecated": false,
-                        "deprecationMessage": "",
-                        "tagName": {
-                            "text": "param"
-                        }
-                    }
-                ]
-            },
-            {
                 "name": "getColorPlacementForNonEmptyLetter",
-                "file": "src/app/word-letter/word-letter.component.ts",
+                "file": "src/app/word-letter/wordle-letter.component.ts",
                 "ctype": "miscellaneous",
                 "subtype": "function",
                 "deprecated": false,
@@ -856,7 +1034,7 @@
                 "name": "Story",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
-                "rawtype": "StoryObj<WordLetterComponent>",
+                "rawtype": "StoryObj<WordleLetterComponent>",
                 "file": "src/stories/wordle-letter.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
@@ -900,6 +1078,16 @@
         "groupedVariables": {
             "src/stories/wordle-letter.stories.ts": [
                 {
+                    "name": "BadPlacement",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/wordle-letter.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\r\n  args: {\r\n    viewModel: {\r\n      letter:\"A\",\r\n      placement: WordleLetterPlacement.badPlacement\r\n     },\r\n  },\r\n}"
+                },
+                {
                     "name": "Empty",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
@@ -910,14 +1098,34 @@
                     "defaultValue": "{\r\n  args: {\r\n    viewModel: {\r\n      letter:\"\",\r\n      placement: WordleLetterPlacement.empty\r\n     },\r\n  },\r\n}"
                 },
                 {
+                    "name": "Good",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/wordle-letter.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\r\n  args: {\r\n    viewModel: {\r\n      letter:\"A\",\r\n      placement: WordleLetterPlacement.good\r\n     },\r\n  },\r\n}"
+                },
+                {
                     "name": "meta",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
                     "file": "src/stories/wordle-letter.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "Meta<WordLetterComponent>",
-                    "defaultValue": "{\r\n  title: 'Example/WordLetterComponent',\r\n  component: WordLetterComponent,\r\n  tags: ['autodocs'],\r\n  render: (args: WordLetterComponent) => ({\r\n    props: {\r\n      backgroundColor: null,\r\n      ...args,\r\n    },\r\n  }),\r\n  argTypes: {\r\n    viewModel: {\r\n     letter:'A',\r\n     placement: WordleLetterPlacement.good\r\n    },\r\n  },\r\n}"
+                    "type": "Meta<WordleLetterComponent>",
+                    "defaultValue": "{\r\n  title: 'Example/WordLetterComponent',\r\n  component: WordleLetterComponent,\r\n  tags: ['autodocs'],\r\n  render: (args: WordleLetterComponent) => ({\r\n    props: {\r\n      backgroundColor: null,\r\n      ...args,\r\n    },\r\n  }),\r\n  argTypes: {\r\n    viewModel: {\r\n     letter:'A',\r\n     placement: WordleLetterPlacement.good\r\n    },\r\n  },\r\n}"
+                },
+                {
+                    "name": "Wrong",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/wordle-letter.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\r\n  args: {\r\n    viewModel: {\r\n      letter:\"A\",\r\n      placement: WordleLetterPlacement.wrong\r\n     },\r\n  },\r\n}"
                 }
             ],
             "src/stories/Button.stories.ts": [
@@ -1050,39 +1258,10 @@
             ]
         },
         "groupedFunctions": {
-            "src/app/word-letter/word-letter.component.ts": [
-                {
-                    "name": "convertWordLetterModelToWordCss",
-                    "file": "src/app/word-letter/word-letter.component.ts",
-                    "ctype": "miscellaneous",
-                    "subtype": "function",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "description": "",
-                    "args": [
-                        {
-                            "name": "letterModel",
-                            "type": "WordleLetterModel",
-                            "deprecated": false,
-                            "deprecationMessage": ""
-                        }
-                    ],
-                    "returnType": "string",
-                    "jsdoctags": [
-                        {
-                            "name": "letterModel",
-                            "type": "WordleLetterModel",
-                            "deprecated": false,
-                            "deprecationMessage": "",
-                            "tagName": {
-                                "text": "param"
-                            }
-                        }
-                    ]
-                },
+            "src/app/word-letter/wordle-letter.component.ts": [
                 {
                     "name": "getColorPlacementForNonEmptyLetter",
-                    "file": "src/app/word-letter/word-letter.component.ts",
+                    "file": "src/app/word-letter/wordle-letter.component.ts",
                     "ctype": "miscellaneous",
                     "subtype": "function",
                     "deprecated": false,
@@ -1191,7 +1370,7 @@
                     "name": "Story",
                     "ctype": "miscellaneous",
                     "subtype": "typealias",
-                    "rawtype": "StoryObj<WordLetterComponent>",
+                    "rawtype": "StoryObj<WordleLetterComponent>",
                     "file": "src/stories/wordle-letter.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
@@ -1248,32 +1427,40 @@
                 "status": "low"
             },
             {
-                "filePath": "src/app/word-letter/word-letter.component.ts",
+                "filePath": "src/app/word-letter/wordle-letter.component.ts",
                 "type": "component",
                 "linktype": "component",
-                "name": "WordLetterComponent",
+                "name": "WordleLetterComponent",
                 "coveragePercent": 0,
                 "coverageCount": "0/3",
                 "status": "low"
             },
             {
-                "filePath": "src/app/word-letter/word-letter.component.ts",
-                "type": "function",
-                "linktype": "miscellaneous",
-                "linksubtype": "function",
-                "name": "convertWordLetterModelToWordCss",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "src/app/word-letter/word-letter.component.ts",
+                "filePath": "src/app/word-letter/wordle-letter.component.ts",
                 "type": "function",
                 "linktype": "miscellaneous",
                 "linksubtype": "function",
                 "name": "getColorPlacementForNonEmptyLetter",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/wordle-grid/wordle-grid.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "WordleGridComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/2",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/wordle-grid/wordle-grid.component.ts",
+                "type": "class",
+                "linktype": "classe",
+                "name": "WordleWordModel",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
                 "status": "low"
             },
             {
@@ -1427,6 +1614,16 @@
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
+                "name": "BadPlacement",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/wordle-letter.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
                 "name": "Empty",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
@@ -1437,7 +1634,27 @@
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
+                "name": "Good",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/wordle-letter.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
                 "name": "meta",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/wordle-letter.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Wrong",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"

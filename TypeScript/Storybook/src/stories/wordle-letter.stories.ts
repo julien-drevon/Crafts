@@ -1,13 +1,14 @@
 import type { Meta, StoryObj } from '@storybook/angular';
+import { WordleLetterComponent } from "src/app/word-letter/wordle-letter.component";
 import { WordleLetterPlacement } from "src/app/word-letter/WordleLetterModel";
-import { WordLetterComponent } from "src/app/word-letter/word-letter.component";
+
 
 //More on how to set up stories at: https://storybook.js.org/docs/angular/writing-stories/introduction
-const meta: Meta<WordLetterComponent> = {
+const meta: Meta<WordleLetterComponent> = {
   title: 'Example/WordLetterComponent',
-  component: WordLetterComponent,
+  component: WordleLetterComponent,
   tags: ['autodocs'],
-  render: (args: WordLetterComponent) => ({
+  render: (args: WordleLetterComponent) => ({
     props: {
       backgroundColor: null,
       ...args,
@@ -22,7 +23,7 @@ const meta: Meta<WordLetterComponent> = {
 };
 
 export default meta;
-type Story = StoryObj<WordLetterComponent>;
+type Story = StoryObj<WordleLetterComponent>;
 
 // More on writing stories with args: https://storybook.js.org/docs/angular/writing-stories/args
 export const Empty: Story = {

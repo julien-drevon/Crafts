@@ -3,18 +3,21 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { WordleLetterComponent } from "./word-letter/wordle-letter.component";
+import { WordleMainModule } from "./wordle-main.module";
 
-import { WordLetterComponent } from './word-letter/word-letter.component';
+
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    WordLetterComponent,    
+    WordleLetterComponent,    
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    WordleMainModule
   ],
   providers: [],
   bootstrap: [AppComponent]

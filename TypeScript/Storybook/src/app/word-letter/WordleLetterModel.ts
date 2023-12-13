@@ -5,6 +5,6 @@ export enum WordleLetterPlacement {
   empty
 }
 export class WordleLetterModel {
-  constructor(public letter: string = "", public placement:WordleLetterPlacement=WordleLetterPlacement.good) { };
+  constructor(public letter: string = "", public placement:WordleLetterPlacement=WordleLetterPlacement.empty) { }
 
 }
