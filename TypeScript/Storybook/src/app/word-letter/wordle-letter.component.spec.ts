@@ -6,6 +6,7 @@ import { WordleLetterComponent } from "./wordle-letter.component";
 import { WordleMainModule } from "../wordle-main.module";
 
 
+
 describe("WordleLetterComponent", () => {
 
   let component: WordleLetterComponent;
@@ -34,22 +35,22 @@ describe("WordleLetterComponent", () => {
   });
   
   it("When letter is empty then should be class wordle-empty-letter", ()=>{
-    expect( nativeElements.querySelector("div")?.className).toEqual("wordle-empty-letter");
+    expect( nativeElements.getElementsByClassName("wordle-empty-letter")).toHaveLength(1);
   });
   
   it("When letter is good then should be class wordle-good-letter", ()=>{
     component.viewModel.letter = "A";
     component.viewModel.placement = WordleLetterPlacement.good;
     fixture.detectChanges();
-    expect( nativeElements.querySelector("div")?.className).toEqual("wordle-good-letter");
+    expect( nativeElements.getElementsByClassName("wordle-good-letter")).toHaveLength(1);
   });
 
   it("When letter is good then should be class wordle-good-letter", ()=>{
     component.viewModel.letter = "A";
     component.viewModel.placement = WordleLetterPlacement.good;
     fixture.detectChanges();
-    expect(nativeElements.querySelector("div")?.className).toEqual("wordle-good-letter");
-    expect(nativeElements.querySelector("p")?.textContent).toEqual("A");   
+    expect(nativeElements.getElementsByClassName("wordle-good-letter")).toHaveLength(1);
+    expect(nativeElements.querySelector("p")?.textContent).toContain("A");   
   });
   
   it("When letter is bad placed then should be class wordle-bad-place-letter", ()=>{
@@ -57,8 +58,8 @@ describe("WordleLetterComponent", () => {
     component.viewModel.placement = WordleLetterPlacement.badPlacement;
     fixture.detectChanges();
     
-    expect(nativeElements.querySelector("div")?.className).toEqual("wordle-bad-place-letter");
-    expect(nativeElements.querySelector("p")?.textContent).toEqual("A");   
+    expect(nativeElements.getElementsByClassName("wordle-bad-place-letter")).toHaveLength(1);
+    expect(nativeElements.querySelector("p")?.textContent).toContain("A");   
   });
   
   it("When letter is wrong  then should be class wordle-wrong-letter", ()=>{
@@ -66,7 +67,7 @@ describe("WordleLetterComponent", () => {
     component.viewModel.placement = WordleLetterPlacement.wrong;
     fixture.detectChanges();
     
-    expect(nativeElements.querySelector("div")?.className).toEqual("wordle-wrong-letter");
-    expect(nativeElements.querySelector("p")?.textContent).toEqual("A");   
+    expect(nativeElements.getElementsByClassName("wordle-wrong-letter")).toHaveLength(1);
+    expect(nativeElements.querySelector("p")?.textContent).toContain("A");   
   });
 });

@@ -1,7 +1,8 @@
-import { moduleMetadata, type Meta, type StoryObj } from '@storybook/angular';
-import { WordleLetterComponent } from "src/app/word-letter/wordle-letter.component";
+
+import { Meta, StoryObj } from "@storybook/angular";
 import { WordleLetterPlacement } from "src/app/word-letter/WordleLetterModel";
-import { WordleMainModule } from "src/app/wordle-main.module";
+import { WordleLetterComponent } from "src/app/word-letter/wordle-letter.component";
+
 
 
 //More on how to set up stories at: https://storybook.js.org/docs/angular/writing-stories/introduction

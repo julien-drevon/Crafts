@@ -30,8 +30,8 @@ describe("WordleGridComponent", () => {
     it("Grid should have 5 column and line and bind letter", () => {    
       expect(nativeElements.getElementsByClassName("wordle-empty-letter")).toHaveLength(25); 
       
-      component.viewModel[0].line[1].letter="A";
-      component.viewModel[0].line[1].placement= WordleLetterPlacement.good;
+      component.viewModel[3].line[1].letter="A";
+      component.viewModel[3].line[1].placement= WordleLetterPlacement.good;
       fixture.detectChanges();
       expect(nativeElements.getElementsByClassName("wordle-good-letter")).toHaveLength(1); 
       

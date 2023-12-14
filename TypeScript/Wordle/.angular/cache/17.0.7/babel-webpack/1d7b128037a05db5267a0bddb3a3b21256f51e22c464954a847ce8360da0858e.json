@@ -1,0 +1,1 @@
+{"ast":null,"code":"export * from '@mdx-js/react';","map":{"version":3,"names":[],"sources":["C:/Users/drevo/Documents/GitHub/Crafts/TypeScript/Storybook/node_modules/@storybook/addon-docs/dist/shims/mdx-react-shim.mjs"],"sourcesContent":["export * from '@mdx-js/react';\n"],"mappings":"AAAA,cAAc,eAAe"},"metadata":{},"sourceType":"module","externalDependencies":[]}

@@ -1,7 +1,9 @@
 import { moduleMetadata, type Meta, type StoryObj } from '@storybook/angular';
-import { WordleGridComponent, WordleWordModel } from '../app/wordle-grid/wordle-grid.component';
+
 import { WordleMainModule } from "src/app/wordle-main.module";
 import { WordleLetterPlacement } from "src/app/word-letter/WordleLetterModel";
+import { WordleGridComponent, WordleWordModel } from "src/app/wordle-grid/wordle-grid.component";
+
 
 
 //More on how to set up stories at: https://storybook.js.org/docs/angular/writing-stories/introduction
@@ -53,21 +55,14 @@ export const Good: Story = {
     ]
   },
 };
-
-// export const BadPlacement: Story = {
-//   args: {
-//     viewModel: {
-//       letter:"A",
-//       placement: WordleLetterPlacement.badPlacement
-//      },
-//   },
-// };
-
-// export const Wrong: Story = {
-//   args: {
-//     viewModel: {
-//       letter:"A",
-//       placement: WordleLetterPlacement.wrong
-//      },
-//   },
-// };
+export const CompleteGrid: Story = {
+  args: {
+    viewModel: [
+      new WordleWordModel([{letter:"A", placement:WordleLetterPlacement.good},{letter:"B", placement:WordleLetterPlacement.good},{letter:"C", placement:WordleLetterPlacement.wrong},{letter:"D", placement:WordleLetterPlacement.wrong},{letter:"A", placement:WordleLetterPlacement.badPlacement}]),
+      new WordleWordModel([{letter:"A", placement:WordleLetterPlacement.good},{letter:"B", placement:WordleLetterPlacement.good},{letter:"E", placement:WordleLetterPlacement.wrong},{letter:"A", placement:WordleLetterPlacement.good},{letter:"T", placement:WordleLetterPlacement.wrong}]),
+      new WordleWordModel([{letter:"A", placement:WordleLetterPlacement.good},{letter:"B", placement:WordleLetterPlacement.good},{letter:"C", placement:WordleLetterPlacement.good},{letter:"D", placement:WordleLetterPlacement.badPlacement},{letter:"A", placement:WordleLetterPlacement.good}]),
+      new WordleWordModel([{letter:"A", placement:WordleLetterPlacement.good},{letter:"B", placement:WordleLetterPlacement.good},{letter:"C", placement:WordleLetterPlacement.wrong},{letter:"D", placement:WordleLetterPlacement.wrong},{letter:"A", placement:WordleLetterPlacement.badPlacement}]),
+      new WordleWordModel([{letter:"A", placement:WordleLetterPlacement.good},{letter:"B", placement:WordleLetterPlacement.good},{letter:"C", placement:WordleLetterPlacement.good},{letter:"D", placement:WordleLetterPlacement.good},{letter:"A", placement:WordleLetterPlacement.good}])
+    ]
+  },
+};

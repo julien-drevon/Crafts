@@ -1,8 +1,11 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
-import { CommonModule } from "@angular/common";
+
 import { FormsModule } from "@angular/forms";
+
+import {MatGridListModule} from "@angular/material/grid-list";
 import { WordleLetterComponent } from "./word-letter/wordle-letter.component";
 import { WordleGridComponent } from "./wordle-grid/wordle-grid.component";
+import { CommonModule } from "@angular/common";
 
 
 
@@ -14,7 +17,8 @@ import { WordleGridComponent } from "./wordle-grid/wordle-grid.component";
     exports:[WordleLetterComponent,WordleGridComponent],
     imports: [   
       CommonModule,
-      FormsModule    
+      FormsModule,
+      MatGridListModule   
     ], 
      providers: [],
     schemas: [
