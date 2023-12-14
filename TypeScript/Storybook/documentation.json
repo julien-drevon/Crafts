@@ -110,12 +110,12 @@
         },
         {
             "name": "WordleWordModel",
-            "id": "class-WordleWordModel-be9caed9e81e31e7abde10d48f5e836bcc1db6157f1e12b000ac46c6aa41b72e80579bcc08a8637f6a8206d3ad47be0a7789ee5f4d98cef6119944b02c8ae539",
+            "id": "class-WordleWordModel-bf1874dc911846896453406a316d480056d28f18cad8d3419834ade3ef52d28850f3869db27552634194670c9547b8dbba9b0bf2b55d513fa4ad73578595e912",
             "file": "src/app/wordle-grid/wordle-grid.component.ts",
             "deprecated": false,
             "deprecationMessage": "",
             "type": "class",
-            "sourceCode": "import { Component, Input } from \"@angular/core\";\nimport { WordleLetterModel } from \"../word-letter/WordleLetterModel\";\n\n\n@Component({\n  selector: \"wordle-grid\",\n  templateUrl: \"./wordle-grid.component.html\",\n  styleUrls: [\"./wordle-grid.component.less\"]\n})\nexport class WordleGridComponent {\n  @Input()\n  viewModel: WordleWordModel[]=[new WordleWordModel(),new WordleWordModel(),new WordleWordModel(),new WordleWordModel(),new WordleWordModel()];\n  \n}\n\nexport class WordleWordModel{\n  constructor(public line:WordleLetterModel[]=    \n    [new WordleLetterModel(), new WordleLetterModel(), new WordleLetterModel(), new WordleLetterModel(), new WordleLetterModel()  ]){}\n  }",
+            "sourceCode": "import { Component, Input } from \"@angular/core\";\r\nimport { WordleLetterModel } from \"../word-letter/WordleLetterModel\";\r\n\r\n\r\n@Component({\r\n  selector: \"wordle-grid\",\r\n  templateUrl: \"./wordle-grid.component.html\",\r\n  styleUrls: [\"./wordle-grid.component.less\"]\r\n})\r\nexport class WordleGridComponent {\r\n  @Input()\r\n  viewModel: WordleWordModel[]=[new WordleWordModel(),new WordleWordModel(),new WordleWordModel(),new WordleWordModel(),new WordleWordModel()];\r\n  \r\n}\r\n\r\nexport class WordleWordModel{\r\n  constructor(public line:WordleLetterModel[]=    \r\n    [new WordleLetterModel(), new WordleLetterModel(), new WordleLetterModel(), new WordleLetterModel(), new WordleLetterModel()  ]){}\r\n  }",
             "constructorObj": {
                 "name": "constructor",
                 "description": "",
@@ -521,7 +521,7 @@
         },
         {
             "name": "WordleGridComponent",
-            "id": "component-WordleGridComponent-be9caed9e81e31e7abde10d48f5e836bcc1db6157f1e12b000ac46c6aa41b72e80579bcc08a8637f6a8206d3ad47be0a7789ee5f4d98cef6119944b02c8ae539",
+            "id": "component-WordleGridComponent-bf1874dc911846896453406a316d480056d28f18cad8d3419834ade3ef52d28850f3869db27552634194670c9547b8dbba9b0bf2b55d513fa4ad73578595e912",
             "file": "src/app/wordle-grid/wordle-grid.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -561,7 +561,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, Input } from \"@angular/core\";\nimport { WordleLetterModel } from \"../word-letter/WordleLetterModel\";\n\n\n@Component({\n  selector: \"wordle-grid\",\n  templateUrl: \"./wordle-grid.component.html\",\n  styleUrls: [\"./wordle-grid.component.less\"]\n})\nexport class WordleGridComponent {\n  @Input()\n  viewModel: WordleWordModel[]=[new WordleWordModel(),new WordleWordModel(),new WordleWordModel(),new WordleWordModel(),new WordleWordModel()];\n  \n}\n\nexport class WordleWordModel{\n  constructor(public line:WordleLetterModel[]=    \n    [new WordleLetterModel(), new WordleLetterModel(), new WordleLetterModel(), new WordleLetterModel(), new WordleLetterModel()  ]){}\n  }",
+            "sourceCode": "import { Component, Input } from \"@angular/core\";\r\nimport { WordleLetterModel } from \"../word-letter/WordleLetterModel\";\r\n\r\n\r\n@Component({\r\n  selector: \"wordle-grid\",\r\n  templateUrl: \"./wordle-grid.component.html\",\r\n  styleUrls: [\"./wordle-grid.component.less\"]\r\n})\r\nexport class WordleGridComponent {\r\n  @Input()\r\n  viewModel: WordleWordModel[]=[new WordleWordModel(),new WordleWordModel(),new WordleWordModel(),new WordleWordModel(),new WordleWordModel()];\r\n  \r\n}\r\n\r\nexport class WordleWordModel{\r\n  constructor(public line:WordleLetterModel[]=    \r\n    [new WordleLetterModel(), new WordleLetterModel(), new WordleLetterModel(), new WordleLetterModel(), new WordleLetterModel()  ]){}\r\n  }",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -571,11 +571,11 @@
             ],
             "stylesData": "",
             "extends": [],
-            "templateData": "<mat-grid-list gutterSize=\"5px\" rowHeight=\"25px\" cols=\"5\">\n    @for(vm of viewModel; track vm)\n    {\n    <mat-grid-tile>\n        <mat-form-field>\n            <mat-label><wordle-letter [viewModel]=\"vm.line[0]\" /></mat-label>\n        </mat-form-field>\n    </mat-grid-tile>\n    <mat-grid-tile>\n        <mat-form-field>\n            <mat-label><wordle-letter [viewModel]=\"vm.line[1]\" /></mat-label>\n        </mat-form-field>\n    </mat-grid-tile>\n    <mat-grid-tile>\n        <mat-form-field>\n            <mat-label><wordle-letter [viewModel]=\"vm.line[2]\" /></mat-label>\n        </mat-form-field>\n    </mat-grid-tile>\n    <mat-grid-tile>\n        <mat-form-field>\n            <mat-label><wordle-letter [viewModel]=\"vm.line[3]\" /></mat-label>\n        </mat-form-field>\n    </mat-grid-tile>\n    <mat-grid-tile>\n        <mat-form-field>\n            <mat-label><wordle-letter [viewModel]=\"vm.line[4]\" /></mat-label>\n        </mat-form-field>\n    </mat-grid-tile>\n    }\n</mat-grid-list>"
+            "templateData": "<mat-grid-list gutterSize=\"5px\" rowHeight=\"25px\" cols=\"5\">\r\n    @for(vm of viewModel; track vm)\r\n    {\r\n    <mat-grid-tile>\r\n        <mat-form-field>\r\n            <mat-label><wordle-letter [viewModel]=\"vm.line[0]\" /></mat-label>\r\n        </mat-form-field>\r\n    </mat-grid-tile>\r\n    <mat-grid-tile>\r\n        <mat-form-field>\r\n            <mat-label><wordle-letter [viewModel]=\"vm.line[1]\" /></mat-label>\r\n        </mat-form-field>\r\n    </mat-grid-tile>\r\n    <mat-grid-tile>\r\n        <mat-form-field>\r\n            <mat-label><wordle-letter [viewModel]=\"vm.line[2]\" /></mat-label>\r\n        </mat-form-field>\r\n    </mat-grid-tile>\r\n    <mat-grid-tile>\r\n        <mat-form-field>\r\n            <mat-label><wordle-letter [viewModel]=\"vm.line[3]\" /></mat-label>\r\n        </mat-form-field>\r\n    </mat-grid-tile>\r\n    <mat-grid-tile>\r\n        <mat-form-field>\r\n            <mat-label><wordle-letter [viewModel]=\"vm.line[4]\" /></mat-label>\r\n        </mat-form-field>\r\n    </mat-grid-tile>\r\n    }\r\n</mat-grid-list>"
         },
         {
             "name": "WordleLetterComponent",
-            "id": "component-WordleLetterComponent-1ea823b73470d4e07679c663b480f43a03e70bc8bd9c7c0e532dd42e972437459a30a192f8332a74d0d08ad5e83689072680261140408f7c452a54d6b0c100b9",
+            "id": "component-WordleLetterComponent-3376f91235da52a3d1e2b3dcc9d6be8cb0463b0713a82703c6f7500ba91e870ff4b8ec2e4e1c6d6fb29cf3baeb259e64e43081417b71a5f3166b2f3a165ea961",
             "file": "src/app/word-letter/wordle-letter.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -644,7 +644,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, Input } from \"@angular/core\";\nimport { WordleLetterModel, WordleLetterPlacement } from \"./WordleLetterModel\";\n\n@Component({\n  selector: \"wordle-letter\",\n  templateUrl: \"./wordle-letter.component.html\",\n  styleUrls: [\"./wordle-letter.component.less\"]\n})\nexport class WordleLetterComponent {\n  @Input()\n  viewModel: WordleLetterModel = new WordleLetterModel(); \n  \n  convertWordLetterModelToWordCss(letterModel:WordleLetterModel):string{\n    if( !letterModel.letter)\n    return \"wordle-empty-letter\";    \n    \n    return getColorPlacementForNonEmptyLetter(letterModel);\n  } \n}\n\nfunction getColorPlacementForNonEmptyLetter(letterModel:WordleLetterModel):string\n{\n  switch(letterModel.placement){\n    case WordleLetterPlacement.badPlacement:\n    return \"wordle-bad-place-letter\";\n    \n    case WordleLetterPlacement.wrong:\n    return \"wordle-wrong-letter\";\n    \n    case WordleLetterPlacement.good :      \n    return \"wordle-good-letter\";\n    \n    case WordleLetterPlacement.empty:\n    default  :\n    return\"wordle-empty-letter\";      \n  }\n}\n\n",
+            "sourceCode": "import { Component, Input } from \"@angular/core\";\r\nimport { WordleLetterModel, WordleLetterPlacement } from \"./WordleLetterModel\";\r\n\r\n@Component({\r\n  selector: \"wordle-letter\",\r\n  templateUrl: \"./wordle-letter.component.html\",\r\n  styleUrls: [\"./wordle-letter.component.less\"]\r\n})\r\nexport class WordleLetterComponent {\r\n  @Input()\r\n  viewModel: WordleLetterModel = new WordleLetterModel(); \r\n  \r\n  convertWordLetterModelToWordCss(letterModel:WordleLetterModel):string{\r\n    if( !letterModel.letter)\r\n    return \"wordle-empty-letter\";    \r\n    \r\n    return getColorPlacementForNonEmptyLetter(letterModel);\r\n  } \r\n}\r\n\r\nfunction getColorPlacementForNonEmptyLetter(letterModel:WordleLetterModel):string\r\n{\r\n  switch(letterModel.placement){\r\n    case WordleLetterPlacement.badPlacement:\r\n    return \"wordle-bad-place-letter\";\r\n    \r\n    case WordleLetterPlacement.wrong:\r\n    return \"wordle-wrong-letter\";\r\n    \r\n    case WordleLetterPlacement.good :      \r\n    return \"wordle-good-letter\";\r\n    \r\n    case WordleLetterPlacement.empty:\r\n    default  :\r\n    return\"wordle-empty-letter\";      \r\n  }\r\n}\r\n\r\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -654,7 +654,7 @@
             ],
             "stylesData": "",
             "extends": [],
-            "templateData": "<p [ngClass]=\"convertWordLetterModelToWordCss(this.viewModel)\" style=\" margin: auto;padding: 5px; color: white;\">\n    {{viewModel.letter}}</p>"
+            "templateData": "<p [ngClass]=\"convertWordLetterModelToWordCss(this.viewModel)\" style=\" margin: auto;padding: 5px; color: white;\">\r\n    {{viewModel.letter}}</p>"
         }
     ],
     "modules": [
@@ -969,7 +969,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Preview",
-                "defaultValue": "{\r\n  parameters: {\r\n    actions: { argTypesRegex: \"^on[A-Z].*\" },\r\n    controls: {\r\n      matchers: {\r\n        color: /(background|color)$/i,\r\n        date: /Date$/i,\r\n      },\r\n    },\r\n  },\r\n}"
+                "defaultValue": "{\n  parameters: {\n    actions: { argTypesRegex: \"^on[A-Z].*\" },\n    controls: {\n      matchers: {\n        color: /(background|color)$/i,\n        date: /Date$/i,\n      },\n    },\n  },\n}"
             },
             {
                 "name": "Primary",
@@ -1353,7 +1353,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Preview",
-                    "defaultValue": "{\r\n  parameters: {\r\n    actions: { argTypesRegex: \"^on[A-Z].*\" },\r\n    controls: {\r\n      matchers: {\r\n        color: /(background|color)$/i,\r\n        date: /Date$/i,\r\n      },\r\n    },\r\n  },\r\n}"
+                    "defaultValue": "{\n  parameters: {\n    actions: { argTypesRegex: \"^on[A-Z].*\" },\n    controls: {\n      matchers: {\n        color: /(background|color)$/i,\n        date: /Date$/i,\n      },\n    },\n  },\n}"
                 }
             ]
         },

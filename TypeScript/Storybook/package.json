@@ -20,6 +20,7 @@
     "@storybook/addon-links": "^7.6.4",
     "@storybook/angular": "^7.6.4",
     "@storybook/blocks": "^7.6.4",
+    "@storybook/test": "^7.6.4",
     "@storybook/testing-library": "^0.2.2",
     "@types/jest": "^29.5.11",
     "jest": "^29.7.0",
