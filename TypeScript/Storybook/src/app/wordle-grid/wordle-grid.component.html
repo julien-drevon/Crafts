@@ -1,0 +1,30 @@
+<mat-grid-list gutterSize="5px" rowHeight="25px" cols="5">
+    @for(vm of viewModel; track vm)
+    {
+    <mat-grid-tile>
+        <mat-form-field>
+            <mat-label><wordle-letter [viewModel]="vm.line[0]" /></mat-label>
+        </mat-form-field>
+    </mat-grid-tile>
+    <mat-grid-tile>
+        <mat-form-field>
+            <mat-label><wordle-letter [viewModel]="vm.line[1]" /></mat-label>
+        </mat-form-field>
+    </mat-grid-tile>
+    <mat-grid-tile>
+        <mat-form-field>
+            <mat-label><wordle-letter [viewModel]="vm.line[2]" /></mat-label>
+        </mat-form-field>
+    </mat-grid-tile>
+    <mat-grid-tile>
+        <mat-form-field>
+            <mat-label><wordle-letter [viewModel]="vm.line[3]" /></mat-label>
+        </mat-form-field>
+    </mat-grid-tile>
+    <mat-grid-tile>
+        <mat-form-field>
+            <mat-label><wordle-letter [viewModel]="vm.line[4]" /></mat-label>
+        </mat-form-field>
+    </mat-grid-tile>
+    }
+</mat-grid-list>

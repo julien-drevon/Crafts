@@ -30,6 +30,7 @@ module.exports = {
         "@typescript-eslint/no-explicit-any": "off",
         "@typescript-eslint/comma-dangle": "off",
         "comma-dangle": "off",
+        "quotes": [ "double"]        
     },
     "settings": {
         "import/parsers": {
