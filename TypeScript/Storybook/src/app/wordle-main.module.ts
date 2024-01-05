@@ -6,6 +6,7 @@ import {MatGridListModule} from "@angular/material/grid-list";
 import { WordleLetterComponent } from "./word-letter/wordle-letter.component";
 import { WordleGridComponent } from "./wordle-grid/wordle-grid.component";
 import { CommonModule } from "@angular/common";
+import { WordleProposeComponent } from "./wordle-propose/wordle-propose.component";
 
 
 
@@ -13,12 +14,13 @@ import { CommonModule } from "@angular/common";
     declarations: [   
       WordleLetterComponent,
       WordleGridComponent,
+      WordleProposeComponent
     ],
-    exports:[WordleLetterComponent,WordleGridComponent],
+    exports:[WordleLetterComponent,WordleGridComponent,WordleProposeComponent],
     imports: [   
       CommonModule,
       FormsModule,
-      MatGridListModule   
+      MatGridListModule         
     ], 
      providers: [],
     schemas: [
