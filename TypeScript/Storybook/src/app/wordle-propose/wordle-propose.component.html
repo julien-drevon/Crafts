@@ -1,0 +1,4 @@
+<form #loginForm="ngForm" (ngSubmit)="onSubmit()">
+    <input value="" type="text" [(ngModel)]="viewModel" [ngModelOptions]="{standalone: true}" required>
+    <button type=" submit">Login</button>
+</form>
