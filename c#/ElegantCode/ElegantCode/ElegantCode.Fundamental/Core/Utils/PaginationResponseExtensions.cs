@@ -5,7 +5,7 @@ namespace ElegantCode.Fundamental.Core.Utils;
 public static class PaginationResponseExtensions
 {
     /// <summary>
-    /// Retrun nb of page of nbElementPerPage for this number
+    /// Retrun nb of page with nbElementPerPage for this number
     /// </summary>
     /// <param name="totalEntry"></param>
     /// <param name="nbElementPerPage"></param>
@@ -14,7 +14,7 @@ public static class PaginationResponseExtensions
     { return nbElementPerPage != 0 ? (int)Math.Ceiling(totalEntry / (double)nbElementPerPage) : 1; }
 
     /// <summary>
-    /// Retrun nb of page of nbElementPerPage for this number
+    /// Retrun nb of page with nbElementPerPage for this number
     /// </summary>
     /// <param name="totalEntry"></param>
     /// <param name="nbElementPerPage"></param>
