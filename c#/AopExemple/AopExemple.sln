@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34221.43
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AopExemple", "AopExemple\AopExemple.csproj", "{083308BD-F478-45BF-AF51-39CDB99CDB8D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AopExemple.Tests", "AopExemple.Tests\AopExemple.Tests.csproj", "{5C179BFF-0C33-4A8F-B9D5-37E6113B1C5F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{083308BD-F478-45BF-AF51-39CDB99CDB8D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{083308BD-F478-45BF-AF51-39CDB99CDB8D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{083308BD-F478-45BF-AF51-39CDB99CDB8D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{083308BD-F478-45BF-AF51-39CDB99CDB8D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5C179BFF-0C33-4A8F-B9D5-37E6113B1C5F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5C179BFF-0C33-4A8F-B9D5-37E6113B1C5F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5C179BFF-0C33-4A8F-B9D5-37E6113B1C5F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5C179BFF-0C33-4A8F-B9D5-37E6113B1C5F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {810BBCBD-2A0A-4B4C-BD34-7B2342627369}
+	EndGlobalSection
+EndGlobal
