@@ -70,7 +70,7 @@ public static class Transform
             return PrintMaxDegreeEqualActual(coef);
         }
 
-        var ret = PrintSigne(coef, maxDegree, actualDegree);
+        var ret = PrintSigne(coef);
         ret = PrintAfterSigne(coef, actualDegree, ret);
 
         return ret;
@@ -91,7 +91,7 @@ public static class Transform
         return (actualDegree > 1 ? "^" + actualDegree : string.Empty);
     }
 
-    private static string PrintSigne(int coef, int maxDegree, int actualDegree)
+    private static string PrintSigne(int coef)
     {
         return coef > 0 ? " + " : " - ";
     }
