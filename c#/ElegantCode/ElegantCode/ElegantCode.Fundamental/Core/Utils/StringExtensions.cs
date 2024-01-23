@@ -41,9 +41,7 @@ public static class StringExtensions
                 return AppendEachLineForJoinString(isAddLine, concatString, transformToStringFactory, sb, line);
             });
 
-        var howManyCharToremove = ComputeLengthOfNewLine(isAddLine);
-
-        return ToStringWithRemoveLastConcat(concatString, howManyCharToremove, retour);
+        return ToStringWithRemoveLastConcat(concatString, HowMayCharToRemove(isAddLine), retour);
     }
 
     private static StringBuilder AppendEachLineForJoinString<T>(
@@ -65,7 +63,7 @@ public static class StringExtensions
         return joinStringBuilder;
     }
 
-    private static int ComputeLengthOfNewLine(bool addLine)
+    private static int HowMayCharToRemove(bool addLine)
     { return addLine ? Environment.NewLine.Length : 0; }
 
     private static string ToStringWithRemoveLastConcat(string concatString, int addLineValue, StringBuilder stringBuilder)
