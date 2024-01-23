@@ -49,14 +49,14 @@ public static class Transform
         return valuesToTransform == null;
     }
 
-    private static string PrintAfterSigne(int coef, int actualDegree, string ret)
+    private static string PrintAfterSigne(int coef, int actualDegree, string printSigne)
     {
         if (Math.Abs(coef) != 1 || actualDegree == 0)
         {
-            ret += Math.Abs(coef).ToString();
+            printSigne += Math.Abs(coef).ToString();
         }
 
-        return ret;
+        return printSigne;
     }
 
     private static string PrintCoeffForPolynome(this int coef, int maxDegree, int actualDegree)
@@ -70,10 +70,9 @@ public static class Transform
             return PrintMaxDegreeEqualActual(coef);
         }
 
-        var ret = PrintSigne(coef);
-        ret = PrintAfterSigne(coef, actualDegree, ret);
 
-        return ret;
+        return PrintAfterSigne(coef, actualDegree, PrintSigne(coef));
+
     }
 
     private static string PrintMaxDegreeEqualActual(int coef)
