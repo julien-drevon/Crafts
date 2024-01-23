@@ -1,6 +1,7 @@
 package PatternExamples;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 
 public class ChainConditionalTransformer<T> {
@@ -10,8 +11,8 @@ public class ChainConditionalTransformer<T> {
         this.filters = filters;
     }
 
-    public T chain(T val) {
-        var ret = val;
+    public T chain(T valToTransform) {
+        T ret = valToTransform;
         for (var filter : this.filters) {
             ret = filter.transformIfMatch(ret);
         }

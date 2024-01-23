@@ -13,7 +13,7 @@ public class RelayCommandShould
 
         var myCommand = new BaseCommand<StringBuilder>(x =>
         {
-            isCanExecuteRaised |= true;
+            isCanExecuteRaised = true;
             return x.ToString() == "42";
         }, x => x.Append("1"));
 

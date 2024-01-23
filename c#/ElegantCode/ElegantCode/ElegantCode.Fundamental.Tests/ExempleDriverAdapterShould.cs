@@ -7,7 +7,8 @@ public class ExampleDriverAdapterShould
     {
         ExampleDriverAdapterRequest aRequestForDriverAdapter = CreateDriverRequest("42");
         var driverResponse = await CreateDriverAdapter().DoAnExample(aRequestForDriverAdapter);
-        driverResponse.Should().BeEquivalentTo(CreateMyExpectAssert(aRequestForDriverAdapter.CorrelationToken, response: "42", error: null));
+        driverResponse.Should().BeEquivalentTo(CreateMyExpectAssert(aRequestForDriverAdapter.CorrelationToken
+                                                                    , response: "42", error: null));
     }
 
     [Fact]
@@ -15,7 +16,8 @@ public class ExampleDriverAdapterShould
     {
         ExampleDriverAdapterRequest aRequestForDriverAdapter = CreateDriverRequest("La question");
         var driverResponse = await CreateDriverAdapter().DoAnExample(aRequestForDriverAdapter);
-        driverResponse.Should().BeEquivalentTo(CreateMyErrorExpectAssert(error: "Formatage incorrect", aRequestForDriverAdapter.CorrelationToken));
+        driverResponse.Should().BeEquivalentTo(CreateMyErrorExpectAssert(error: "Formatage incorrect"
+                                                                         , aRequestForDriverAdapter.CorrelationToken));
     }
 
     [Fact]
@@ -23,7 +25,8 @@ public class ExampleDriverAdapterShould
     {
         ExampleDriverAdapterRequest aRequestForDriverAdapter = CreateDriverRequest("24");
         var driverResponse = await CreateDriverAdapter().DoAnExample(aRequestForDriverAdapter);
-        driverResponse.Should().BeEquivalentTo(CreateMyErrorExpectAssert(error: "La reponse Fournie n'est pas LA reponse", aRequestForDriverAdapter.CorrelationToken));
+        driverResponse.Should().BeEquivalentTo(CreateMyErrorExpectAssert(error: "La reponse Fournie n'est pas LA reponse"
+                                                                         , aRequestForDriverAdapter.CorrelationToken));
     }
 
     private static ExampleDriverAdapter<ExampleUseCaseResponse> CreateDriverAdapter()
