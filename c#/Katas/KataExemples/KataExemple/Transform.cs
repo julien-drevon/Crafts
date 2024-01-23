@@ -70,9 +70,7 @@ public static class Transform
             return PrintMaxDegreeEqualActual(coef);
         }
 
-
         return PrintAfterSigne(coef, actualDegree, PrintSigne(coef));
-
     }
 
     private static string PrintMaxDegreeEqualActual(int coef)

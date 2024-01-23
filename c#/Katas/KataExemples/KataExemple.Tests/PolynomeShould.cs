@@ -1,6 +1,5 @@
 ﻿using FluentAssertions;
 using KataExemples.TennisClass;
-using System.Text;
 
 namespace KataExemples;
 

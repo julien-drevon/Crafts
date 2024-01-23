@@ -53,5 +53,4 @@ namespace KataExemple
             FizzBuzzUtils.FizzBuzz(30).Should().Be("FizzBuzz");
         }
     }
-
 }

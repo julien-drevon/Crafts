@@ -1,7 +1,4 @@
-﻿using System.Text;
-
-namespace KataExemples.TennisClass;
-
+﻿namespace KataExemples.TennisClass;
 
 public class TennisGame
 {
