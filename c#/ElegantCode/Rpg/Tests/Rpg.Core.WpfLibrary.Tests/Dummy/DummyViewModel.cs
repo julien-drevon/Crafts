@@ -1,7 +1,7 @@
 using Rpg.Core.WpfLibrary.Base;
 
-namespace Rpg.Drivers.Wpf.Core.Tests.Dummy
-{
+namespace Rpg.Drivers.Wpf.Core.Tests.Dummy;
+
     public class DummyViewModel : BaseViewModel
     {
         private string name;
@@ -25,4 +25,3 @@ namespace Rpg.Drivers.Wpf.Core.Tests.Dummy
             }
         }
     }
-}
