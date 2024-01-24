@@ -2,7 +2,7 @@
 
 public class TennisGame
 {
-    private int[] _PlayersPoints = new int[2];
+    private readonly int[] _PlayersPoints = new int[2];
 
     public string ScoreString { get => ComputeScore(); }
 
