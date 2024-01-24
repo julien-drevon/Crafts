@@ -26,6 +26,7 @@ public static class UtilsExtension
     {
         return me.HasValue && me.Value;
     }
+
     public static bool IsEmpty(this Guid me)
     {
         return me == Guid.Empty;
