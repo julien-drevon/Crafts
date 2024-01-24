@@ -35,7 +35,6 @@ public class UtilsExtensionShould
     public void GuidIsEmpty()
     {
         (Guid.Empty).IsEmpty().Should().BeTrue();
-        Guid.NewGuid().IsEmpty().Should().BeFalse();      
+        Guid.NewGuid().IsEmpty().Should().BeFalse();
     }
-
 }

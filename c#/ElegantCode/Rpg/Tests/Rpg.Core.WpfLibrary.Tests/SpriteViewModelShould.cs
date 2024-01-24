@@ -38,7 +38,6 @@ public class SpriteViewModelShould
         viewModel = new SpriteViewModel(5, 4);
         viewModel.X.Should().Be(5);
         viewModel.Y.Should().Be(4);
-
     }
 
     [Fact]
@@ -82,6 +81,5 @@ public class WorldPResenterShould
     [Fact]
     public void ConvertWorld()
     {
-
     }
 }

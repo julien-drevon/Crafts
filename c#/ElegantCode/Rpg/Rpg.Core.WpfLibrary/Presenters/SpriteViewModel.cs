@@ -1,20 +1,15 @@
+using ElegantCode.Fundamental.Core.Errors;
+using ElegantCode.Fundamental.Core.Presenter;
+using Rpg.Core.Domain;
 using System;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-using System.Windows.Media;
-using ElegantCode.Fundamental.Core.Errors;
-using ElegantCode.Fundamental.Core.Presenter;
-using Rpg.Core.Domain;
-using Rpg.Core.WpfLibrary.Base;
 
 namespace Rpg.Core.WpfLibrary
 {
-    public class WorldPresenter : IPresenter<World,IEnumerable<SpriteViewModel>>
+    public class WorldPresenter : IPresenter<World, IEnumerable<SpriteViewModel>>
     {
-
-
-    
         public void PresentData(World data)
         {
             throw new NotImplementedException();

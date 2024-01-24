@@ -2,26 +2,26 @@ using Rpg.Core.WpfLibrary.Base;
 
 namespace Rpg.Drivers.Wpf.Core.Tests.Dummy;
 
-    public class DummyViewModel : BaseViewModel
+public class DummyViewModel : BaseViewModel
+{
+    private string name;
+    private string testNullAction;
+
+    public string Name
     {
-        private string name;
-        private string testNullAction;
+        get => name;
 
-        public string Name
+        set { OnPropertyChanged(() => name = value); }
+    }
+
+    public string TestNullAction
+    {
+        get => testNullAction;
+
+        set
         {
-            get => name;
-
-            set { OnPropertyChanged(() => name = value); }
-        }
-
-        public string TestNullAction
-        {
-            get => testNullAction;
-
-            set
-            {
-                testNullAction = value;
-                OnPropertyChanged();
-            }
+            testNullAction = value;
+            OnPropertyChanged();
         }
     }
+}

@@ -23,8 +23,8 @@ jobs:
 
       - uses: actions/setup-java@v4
         with:
-          distribution: 'temurin' # See 'Supported distributions' for available options
-          java-version: '21'   
+          distribution: 'oracle' # See 'Supported distributions' for available options
+          java-version: '17'   
 
       - name: Setup .NET
         uses: actions/setup-dotnet@v3

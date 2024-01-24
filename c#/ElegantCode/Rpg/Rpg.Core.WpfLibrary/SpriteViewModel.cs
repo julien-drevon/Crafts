@@ -1,7 +1,7 @@
-using System;
 using ElegantCode.Fundamental.Core.Entities;
 using Rpg.Core.Domain;
 using Rpg.Core.WpfLibrary.Base;
+using System;
 
 namespace Rpg.Core.WpfLibrary
 {
@@ -15,8 +15,11 @@ namespace Rpg.Core.WpfLibrary
         }
 
         public int X { get => _Sprite.X; set => OnPropertyChanged(() => _Sprite.X = value); }
+
         public int Y { get => _Sprite.Y; set => OnPropertyChanged(() => _Sprite.Y = value); }
+
         public int Width { get => _Sprite.Width; set => OnPropertyChanged(() => _Sprite.Width = value); }
+
         public int Height { get => _Sprite.Height; set => OnPropertyChanged(() => _Sprite.Height = value); }
 
         public Guid Id { get => _Sprite.Id; }

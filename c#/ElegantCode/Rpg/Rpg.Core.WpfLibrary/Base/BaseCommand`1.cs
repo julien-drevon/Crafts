@@ -2,6 +2,7 @@ using System;
 using System.Windows.Input;
 
 namespace Rpg.Core.WpfLibrary.Base;
+
 public class BaseCommand<TArgs> : ICommand
 {
     private Predicate<TArgs> _ExecutePredicate;
