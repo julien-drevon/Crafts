@@ -7,6 +7,7 @@ public class CollectionExtensionShould
     {
         IEnumerable<int> li = null;
         var expect = 0;
+
         li.Foreach(x => expect += x);
         expect.Should().Be(0);
 
