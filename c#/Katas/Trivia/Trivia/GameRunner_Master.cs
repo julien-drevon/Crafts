@@ -1,4 +1,5 @@
 ﻿using System;
+using Trivia.Infra;
 
 namespace Trivia;
 
@@ -8,15 +9,13 @@ public class GameRunner_Master : IGameRunner
 
 
 
-    public void Run(IPrint print)
+    public void Run(IPrint print, IGenerateRand rand)
     {
         var aGame = new Game_Master(print);
 
         aGame.Add("Chet");
         aGame.Add("Pat");
-        aGame.Add("Sue");
-
-        var rand = new Random();
+        aGame.Add("Sue");       
 
         do
         {

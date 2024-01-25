@@ -1,12 +1,11 @@
 ﻿using System;
 
-namespace Trivia
+namespace Trivia;
+
+public class Program
 {
-    public class Program
+    public static void Main(string[] args)
     {
-        public static void Main(string[] args)
-        {
-           new GameRunner_Master().Run(new ConsolePrinter());
-        }
+       new GameRunner_Master().Run(new ConsolePrinter(), new UseDefautRand());
     }
 }
