@@ -7,7 +7,7 @@ namespace Trivia
     {
         Random _Rand = new Random();
 
-        public int Next(int maxValue)
+        public int GenerateNew(int maxValue)
         {
             return _Rand.Next(maxValue);
         }

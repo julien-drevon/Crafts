@@ -15,13 +15,13 @@ public class GameRunner_Master : IGameRunner
 
         aGame.Add("Chet");
         aGame.Add("Pat");
-        aGame.Add("Sue");       
+        aGame.Add("Sue");
 
         do
         {
-            aGame.Roll(rand.Next(5) + 1);
+            aGame.Roll(rand.GenerateNew(5) + 1);
 
-            if (rand.Next(9) == 7)
+            if (rand.GenerateNew(9) == 7)
             {
                 _notAWinner = aGame.WrongAnswer();
             }

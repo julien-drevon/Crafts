@@ -4,5 +4,5 @@ namespace Trivia.Infra;
 
 public interface IGenerateRand
 {
-    int Next(int maxValue);
+    int GenerateNew(int maxValue);
 }
