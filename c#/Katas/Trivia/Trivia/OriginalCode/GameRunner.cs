@@ -6,7 +6,7 @@ namespace Trivia.OriginalCode
     {
         private static bool _notAWinner;
 
-        public static void Main(string[] args)
+        public static void Main1(string[] args)
         {
             var aGame = new Game();
 

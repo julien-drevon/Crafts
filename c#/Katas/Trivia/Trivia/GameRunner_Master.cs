@@ -9,9 +9,9 @@ public class GameRunner_Master : IGameRunner
 
 
 
-    public void Run(IPrint print, IGenerateRand rand)
+    public void Run(IPrint print, IGenerateRand rand, int pointsToWin = 2)
     {
-        var aGame = new Game_Master(print);
+        var aGame = new Game_Master(print, pointsToWin);
 
         aGame.Add("Chet");
         aGame.Add("Pat");

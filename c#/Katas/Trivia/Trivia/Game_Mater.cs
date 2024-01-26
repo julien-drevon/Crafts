@@ -8,6 +8,7 @@ namespace Trivia
 
     public class Game_Master
     {
+        public  int PointsToWin {  get; }
         private readonly List<string> _players = new List<string>();
 
         private readonly int[] _places = new int[6];
@@ -23,8 +24,9 @@ namespace Trivia
         private int _currentPlayer;
         private bool _isGettingOutOfPenaltyBox;
 
-        public Game_Master(IPrint print)
+        public Game_Master(IPrint print, int pointsToWin)
         {
+            this.PointsToWin = pointsToWin;
             this._print = print;
             for (var i = 0; i < 50; i++)
             {
@@ -197,7 +199,7 @@ namespace Trivia
 
         private bool DidPlayerWin()
         {
-            return !(_purses[_currentPlayer] == 6);
+            return !(_purses[_currentPlayer] == PointsToWin );
         }
     }
 

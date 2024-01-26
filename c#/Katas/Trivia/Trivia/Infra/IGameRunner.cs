@@ -2,6 +2,6 @@
 {
     public interface IGameRunner
     {
-        void Run(IPrint print, IGenerateRand rand);
+        void Run(IPrint print, IGenerateRand rand, int pointsToWin);
     }
 }
