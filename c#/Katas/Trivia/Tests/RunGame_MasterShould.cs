@@ -13,6 +13,7 @@ namespace Tests;
 
 public class RunGame_MasterShould
 {
+    const int ROLL_TO_LOOSE = 7;
     IGameRunner GameRunner = new GameRunner_Master();
 
 
@@ -63,7 +64,7 @@ public class RunGame_MasterShould
             }
             else
             {
-                generator.NumberToRandReturn = 7;
+                generator.NumberToRandReturn = ROLL_TO_LOOSE;
             }
         }
         if (generator.Round == 4)
@@ -76,7 +77,7 @@ public class RunGame_MasterShould
             }
             else
             {
-                generator.NumberToRandReturn = 7;
+                generator.NumberToRandReturn = 2;
             }
         }
         if (generator.Round == 5)
@@ -89,7 +90,7 @@ public class RunGame_MasterShould
             }
             else
             {
-                generator.NumberToRandReturn = 7;
+                generator.NumberToRandReturn = ROLL_TO_LOOSE;
             }
         }
         if (generator.Round == 6)
@@ -102,7 +103,33 @@ public class RunGame_MasterShould
             }
             else
             {
-                generator.NumberToRandReturn = 1;
+                generator.NumberToRandReturn = ROLL_TO_LOOSE;
+            }
+        }
+        if (generator.Round == 7)
+        {
+            if (DebutDeRound(e))
+            {
+                generator.NumberToRandReturn = 2;
+                printer.PrintHistory.Should().BeEquivalentTo(ValeuresDuScenarioMaster.ValeuresFinDeRound6());
+                printer.PrintHistory.Clear();
+            }
+            else
+            {
+                generator.NumberToRandReturn = 2;
+            }
+        }
+        if (generator.Round == 8)
+        {
+            if (DebutDeRound(e))
+            {
+                generator.NumberToRandReturn = 3;
+                printer.PrintHistory.Should().BeEquivalentTo(ValeuresDuScenarioMaster.ValeuresFinDeRound7());
+                printer.PrintHistory.Clear();
+            }
+            else
+            {
+                generator.NumberToRandReturn = ROLL_TO_LOOSE;
             }
         }
     }
