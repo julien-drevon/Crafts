@@ -2,9 +2,19 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Xml.Serialization;
 using Trivia;
 using Trivia.Infra;
 using Xunit;
+using ElegantCode.Fundamental;
+using Microsoft.Extensions.Hosting;
+using ElegantCode.Fundamental.Core.Presenter;
+using System.Threading.Tasks;
+using ElegantCode.Fundamental.Core.DriverAdapter;
+using ElegantCode.Fundamental.Core.Entities;
+using ElegantCode.Fundamental.Core.UsesCases;
+using System.Runtime.CompilerServices;
+using ElegantCode.Fundamental.Core.Errors;
 
 namespace Tests;
 
@@ -116,18 +126,7 @@ public class RunGame_MasterShould
                 generator.NumberToRandReturn = 2;
             }
         }
-        //if(generator.Round == 8)
-        //{
-        //    if(DebutDeRound(e))
-        //    {
-        //        generator.NumberToRandReturn = 3;
-        //        printer.PrintHistory.Should().BeEquivalentTo(ValeuresDuScenarioMaster.ValeuresFinDeRound7());
-        //        printer.PrintHistory.Clear();
-        //    } else
-        //    {
-        //        generator.NumberToRandReturn = ROLL_TO_LOOSE;
-        //    }
-        //}
+
     }
 
 
@@ -136,15 +135,61 @@ public class RunGame_MasterShould
 }
 
 
+
 public class GameShould
 {
     [Fact]
-    public void WhenIStartAPartieIWantToAddAPlayers()
-    {
-
+    public async Task WhenIStartAPartieIWantToAddAPlayers()
+    {   
+        var gameId = Guid.NewGuid();
+        var gameAdapter = new GameDriverAdapter(new SimplePresenter<GameResult>());
+        var gameResult = await gameAdapter.CreateNew(new NewGameRequest(Guid.NewGuid(), gameId, new []{"","","" }));
+     
     }
 }
 
+
+public class NewGameRequest //: BaseDriverAdapterRequest<BaseDriverQuery>
+{
+
+    public NewGameRequest(Guid correlationToken, Guid gameId, string[] strings)//:base(correlationToken)
+    {
+        Guid = correlationToken;
+        GameId = gameId;
+        Strings = strings;
+    }
+
+    public Guid Guid { get; }
+    public Guid GameId { get; }
+    public string[] Strings { get; }
+
+
+    //public override (BaseDriverQuery UseCaseQuery, Error Error) ValidateRequest()
+    //{
+    //    throw new NotImplementedException();
+    //}
+}
+
+
+
+public class GameDriverAdapter
+{
+    private IInPresenter<GameResult> gamePresenter;
+
+    public GameDriverAdapter(IInPresenter<GameResult> gamePresenter)
+    {
+        this.gamePresenter = gamePresenter;
+    }
+
+    internal Task<GameResult> CreateNew(NewGameRequest gameRequest)
+    {
+        throw new NotImplementedException();
+    }
+}
+
+public class GameResult
+{
+}
 
 public static class ValeuresDuScenarioMaster
 {
@@ -237,7 +282,6 @@ public static class ValeuresDuScenarioMaster
             "Sue was sent to the penalty box",
         };
     }
-
 }
 
 public class MyDisplaySpy : IPrint

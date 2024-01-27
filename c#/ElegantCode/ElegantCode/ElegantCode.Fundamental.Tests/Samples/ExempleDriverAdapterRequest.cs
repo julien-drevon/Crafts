@@ -2,16 +2,14 @@
 
 namespace ElegantCode.Fundamental.Tests.Samples;
 
-public class ExampleDriverAdapterRequest : IValidateRequest<ExampleUseCaseQuery>
+public class ExampleDriverAdapterRequest : BaseDriverAdapterRequest<ExampleUseCaseQuery>
 {
-    public ExampleDriverAdapterRequest(Guid correlationToken)
-    { CorrelationToken = correlationToken; }
-
-    public Guid CorrelationToken { get; }
+    public ExampleDriverAdapterRequest(Guid correlationToken) : base(correlationToken)
+    { }
 
     public string TheResponse { get; set; }
 
-    public (ExampleUseCaseQuery UseCaseQuery, Error Error) ValidateRequest()
+    public override (ExampleUseCaseQuery UseCaseQuery, Error Error) ValidateRequest()
     {
         return this.ValidationWorkflow(
            valueIfIsGood: new ExampleUseCaseQuery(CorrelationToken, TheResponse),
