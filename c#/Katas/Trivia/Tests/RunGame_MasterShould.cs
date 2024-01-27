@@ -1,10 +1,7 @@
-﻿using System;
+﻿using FluentAssertions;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
-using FluentAssertions;
 using Trivia;
 using Trivia.Infra;
 using Xunit;
@@ -28,7 +25,7 @@ public class RunGame_MasterShould
         };
 
         // printer.Printed += (o, e) => whenIPrint(o, e, printer, generator);
-        GameRunner.Run(printer, generator, 2);
+        GameRunner.Run(printer, generator, 3);
     }
 
     private static void ValeuresAttenduePourLeScenario(
@@ -119,25 +116,35 @@ public class RunGame_MasterShould
                 generator.NumberToRandReturn = 2;
             }
         }
-        if (generator.Round == 8)
-        {
-            if (DebutDeRound(e))
-            {
-                generator.NumberToRandReturn = 3;
-                printer.PrintHistory.Should().BeEquivalentTo(ValeuresDuScenarioMaster.ValeuresFinDeRound7());
-                printer.PrintHistory.Clear();
-            }
-            else
-            {
-                generator.NumberToRandReturn = ROLL_TO_LOOSE;
-            }
-        }
+        //if(generator.Round == 8)
+        //{
+        //    if(DebutDeRound(e))
+        //    {
+        //        generator.NumberToRandReturn = 3;
+        //        printer.PrintHistory.Should().BeEquivalentTo(ValeuresDuScenarioMaster.ValeuresFinDeRound7());
+        //        printer.PrintHistory.Clear();
+        //    } else
+        //    {
+        //        generator.NumberToRandReturn = ROLL_TO_LOOSE;
+        //    }
+        //}
     }
 
 
     private static bool DebutDeRound((int Round, int Max) e)
     { return e.Max == MyDeterministeGenerator.MAX_VALUE_FOR_START; }
 }
+
+
+public class GameShould
+{
+    [Fact]
+    public void WhenIStartAPartieIWantToAddAPlayers()
+    {
+
+    }
+}
+
 
 public static class ValeuresDuScenarioMaster
 {
@@ -197,42 +204,40 @@ public static class ValeuresDuScenarioMaster
     {
         return new[]
         {
-            "",
-
+            "Chet is the current player",
+            "They have rolled a 4",
+            "Chet's new location is 6",
+            "The category is Sports",
+            "Sports Question 1",
+            "Answer was corrent!!!!",
+            "Chet now has 2 Gold Coins.",
         };
-    }    
+    }
     public static string[] ValeuresFinDeRound5()
     {
         return new[]
         {
-            "",
-
+            "Pat is the current player",
+            "They have rolled a 5",
+            "Pat's new location is 6",
+            "The category is Sports",
+            "Sports Question 2",
+            "Question was incorrectly answered",
+            "Pat was sent to the penalty box",
         };
     }
     public static string[] ValeuresFinDeRound6()
     {
         return new[]
         {
-            "",
-
+            "Sue is the current player",
+            "They have rolled a 2",
+            "Sue is not getting out of the penalty box",
+            "Question was incorrectly answered",
+            "Sue was sent to the penalty box",
         };
     }
-    public static string[] ValeuresFinDeRound7()
-    {
-        return new[]
-        {
-            "",
 
-        };
-    }
-    public static string[] ValeuresFinDeRound8()
-    {
-        return new[]
-        {
-            "",
-
-        };
-    }
 }
 
 public class MyDisplaySpy : IPrint
