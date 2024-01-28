@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using Trivia.Infra;
 
-namespace Trivia
+namespace Trivia.Master
 {
 
     public class Game_Master
     {
-        public  int PointsToWin {  get; }
+        public int PointsToWin { get; }
         private readonly List<string> _players = new List<string>();
 
         private readonly int[] _places = new int[6];
@@ -26,13 +26,13 @@ namespace Trivia
 
         public Game_Master(IPrint print, int pointsToWin)
         {
-            this.PointsToWin = pointsToWin;
-            this._print = print;
+            PointsToWin = pointsToWin;
+            _print = print;
             for (var i = 0; i < 50; i++)
             {
                 _popQuestions.AddLast("Pop Question " + i);
-                _scienceQuestions.AddLast(("Science Question " + i));
-                _sportsQuestions.AddLast(("Sports Question " + i));
+                _scienceQuestions.AddLast("Science Question " + i);
+                _sportsQuestions.AddLast("Sports Question " + i);
                 _rockQuestions.AddLast(CreateRockQuestion(i));
             }
         }
@@ -44,7 +44,7 @@ namespace Trivia
 
         public bool IsPlayable()
         {
-            return (HowManyPlayers() >= 2);
+            return HowManyPlayers() >= 2;
         }
 
         public bool Add(string playerName)
@@ -199,7 +199,7 @@ namespace Trivia
 
         private bool DidPlayerWin()
         {
-            return !(_purses[_currentPlayer] == PointsToWin );
+            return !(_purses[_currentPlayer] == PointsToWin);
         }
     }
 

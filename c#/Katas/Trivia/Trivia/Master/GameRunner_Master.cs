@@ -1,7 +1,7 @@
 ﻿using System;
 using Trivia.Infra;
 
-namespace Trivia;
+namespace Trivia.Master;
 
 public class GameRunner_Master : IGameRunner
 {
