@@ -15,6 +15,7 @@ using ElegantCode.Fundamental.Core.Entities;
 using ElegantCode.Fundamental.Core.UsesCases;
 using System.Runtime.CompilerServices;
 using ElegantCode.Fundamental.Core.Errors;
+using System.Threading;
 
 namespace Tests;
 
@@ -140,11 +141,14 @@ public class GameShould
 {
     [Fact]
     public async Task WhenIStartAPartieIWantToAddAPlayers()
-    {   
+    {
+
         var gameId = Guid.NewGuid();
+        var playersName = new[] { "", "", "" };
         var gameAdapter = new GameDriverAdapter(new SimplePresenter<GameResult>());
-        var gameResult = await gameAdapter.CreateNew(new NewGameRequest(Guid.NewGuid(), gameId, new []{"","","" }));
-     
+        var gameResult = await gameAdapter.CreateNew(new NewGameRequest(Guid.NewGuid(), gameId, playersName));
+        gameResult.GameResult.GameId.Should().Be(gameId);
+        gameResult.GameResult.Players.Select(x => x.Name).Should().BeEquivalentTo(playersName);
     }
 }
 
@@ -152,16 +156,16 @@ public class GameShould
 public class NewGameRequest //: BaseDriverAdapterRequest<BaseDriverQuery>
 {
 
-    public NewGameRequest(Guid correlationToken, Guid gameId, string[] strings)//:base(correlationToken)
+    public NewGameRequest(Guid correlationToken, Guid gameId, string[] playersName)//:base(correlationToken)
     {
         Guid = correlationToken;
         GameId = gameId;
-        Strings = strings;
+        PlayersName = playersName;
     }
 
     public Guid Guid { get; }
     public Guid GameId { get; }
-    public string[] Strings { get; }
+    public string[] PlayersName { get; }
 
 
     //public override (BaseDriverQuery UseCaseQuery, Error Error) ValidateRequest()
@@ -181,14 +185,33 @@ public class GameDriverAdapter
         this.gamePresenter = gamePresenter;
     }
 
-    internal Task<GameResult> CreateNew(NewGameRequest gameRequest)
+    public async Task<(GameResult GameResult, Error Error)> CreateNew(NewGameRequest gameRequest, CancellationToken cancellation = default)
     {
-        throw new NotImplementedException();
+        var players = gameRequest.PlayersName.Select(x => new Player(x));
+        return new(new(gameRequest.GameId, players.ToList()), null);
     }
 }
 
 public class GameResult
 {
+    public GameResult(Guid gameId, IEnumerable<Player> players)
+    {
+        GameId = gameId;
+        Players = players;
+    }
+
+    public Guid GameId { get; internal set; }
+    public IEnumerable<Player> Players { get; internal set; }
+}
+
+public class Player
+{
+    public Player(string name)
+    {
+        Name = name;
+    }
+
+    public string Name { get; internal set; }
 }
 
 public static class ValeuresDuScenarioMaster
