@@ -191,11 +191,9 @@ namespace Trivia.OriginalCode
             return true;
         }
 
-
         private bool DidPlayerWin()
         {
             return !(_purses[_currentPlayer] == 6);
         }
     }
-
 }

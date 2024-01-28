@@ -1,7 +1,4 @@
-﻿using System;
-using System.Linq;
-
-namespace Trivia.Domaine.Entities
+﻿namespace Trivia.Domaine.Entities
 {
     public class Player
     {
@@ -13,4 +10,3 @@ namespace Trivia.Domaine.Entities
         public string Name { get; internal set; }
     }
 }
-

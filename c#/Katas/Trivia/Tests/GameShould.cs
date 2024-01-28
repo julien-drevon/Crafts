@@ -14,7 +14,6 @@ namespace Tests
         [Fact]
         public async Task WhenIStartAPartieIWantToAddAPlayers()
         {
-
             var gameId = Guid.NewGuid();
             var playersName = new[] { "", "", "" };
             var gameAdapter = new GameDriverAdapter<GameResult>(new SimplePresenter<GameResult>());
@@ -24,4 +23,3 @@ namespace Tests
         }
     }
 }
-

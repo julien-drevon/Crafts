@@ -1,7 +1,6 @@
 ﻿using ElegantCode.Fundamental.Core.UsesCases;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace Trivia.Domaine.UseCases
 {
@@ -16,4 +15,3 @@ namespace Trivia.Domaine.UseCases
         public IEnumerable<string> PlayerNames { get; set; }
     }
 }
-

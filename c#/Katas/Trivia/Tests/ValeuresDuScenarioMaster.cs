@@ -1,7 +1,4 @@
-﻿using System;
-using System.Linq;
-
-namespace Tests
+﻿namespace Tests
 {
     public static class ValeuresDuScenarioMaster
     {
@@ -31,6 +28,7 @@ namespace Tests
             "Chet now has 1 Gold Coins."
         };
         }
+
         public static string[] ValeuresFinDeRound2()
         {
             return new[]
@@ -44,6 +42,7 @@ namespace Tests
             "Pat now has 1 Gold Coins.",
         };
         }
+
         public static string[] ValeuresFinDeRound3()
         {
             return new[]
@@ -57,6 +56,7 @@ namespace Tests
             "Sue was sent to the penalty box",
         };
         }
+
         public static string[] ValeuresFinDeRound4()
         {
             return new[]
@@ -70,6 +70,7 @@ namespace Tests
             "Chet now has 2 Gold Coins.",
         };
         }
+
         public static string[] ValeuresFinDeRound5()
         {
             return new[]
@@ -83,6 +84,7 @@ namespace Tests
             "Pat was sent to the penalty box",
         };
         }
+
         public static string[] ValeuresFinDeRound6()
         {
             return new[]
@@ -96,4 +98,3 @@ namespace Tests
         }
     }
 }
-

@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using Trivia.Infra;
 
 namespace Trivia.Master
 {
-
     public class Game_Master
     {
         public int PointsToWin { get; }
@@ -196,11 +194,9 @@ namespace Trivia.Master
             return true;
         }
 
-
         private bool DidPlayerWin()
         {
             return !(_purses[_currentPlayer] == PointsToWin);
         }
     }
-
 }

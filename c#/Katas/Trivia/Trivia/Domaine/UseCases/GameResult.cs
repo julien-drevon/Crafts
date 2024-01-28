@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using Trivia.Domaine.Entities;
 
 namespace Trivia.Domaine.UseCases
@@ -14,7 +13,7 @@ namespace Trivia.Domaine.UseCases
         }
 
         public Guid GameId { get; internal set; }
+
         public IEnumerable<Player> Players { get; internal set; }
     }
 }
-

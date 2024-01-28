@@ -1,31 +1,14 @@
 ﻿using FluentAssertions;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Xml.Serialization;
-using Trivia;
 using Trivia.Infra;
 using Trivia.Master;
 using Xunit;
-using ElegantCode.Fundamental;
-using Microsoft.Extensions.Hosting;
-using ElegantCode.Fundamental.Core.Presenter;
-using System.Threading.Tasks;
-using ElegantCode.Fundamental.Core.DriverAdapter;
-using ElegantCode.Fundamental.Core.Entities;
-using ElegantCode.Fundamental.Core.UsesCases;
-using System.Runtime.CompilerServices;
-using ElegantCode.Fundamental.Core.Errors;
-using System.Threading;
-using ElegantCode.Fundamental.Core.Utils;
 
 namespace Tests;
 
 public class RunGame_MasterShould
 {
-    const int ROLL_TO_LOOSE = 7;
-    IGameRunner GameRunner = new GameRunner_Master();
-
+    private const int ROLL_TO_LOOSE = 7;
+    private IGameRunner GameRunner = new GameRunner_Master();
 
     [Fact]
     public void RunbGameScenario()
@@ -129,11 +112,8 @@ public class RunGame_MasterShould
                 generator.NumberToRandReturn = 2;
             }
         }
-
     }
-
 
     private static bool DebutDeRound((int Round, int Max) e)
     { return e.Max == MyDeterministeGenerator.MAX_VALUE_FOR_START; }
 }
-

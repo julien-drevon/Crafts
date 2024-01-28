@@ -1,5 +1,4 @@
 ﻿using ElegantCode.Fundamental.Core.UsesCases;
-using System;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -16,4 +15,3 @@ namespace Trivia.Domaine.UseCases
         }
     }
 }
-

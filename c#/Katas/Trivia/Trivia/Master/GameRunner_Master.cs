@@ -1,13 +1,10 @@
-﻿using System;
-using Trivia.Infra;
+﻿using Trivia.Infra;
 
 namespace Trivia.Master;
 
 public class GameRunner_Master : IGameRunner
 {
     private static bool _notAWinner;
-
-
 
     public void Run(IPrint print, IGenerateRand rand, int pointsToWin = 2)
     {

@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using Trivia.Infra;
 
 namespace Tests
@@ -12,10 +10,10 @@ namespace Tests
         public void WriteLine(string text)
         {
             PrintHistory.Add(text);
+
             //Printed(this, text);
         }
 
         public IList<string> PrintHistory { get; } = new List<string>();
     }
 }
-

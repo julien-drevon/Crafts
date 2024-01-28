@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Linq;
 using Trivia.Infra;
 
 namespace Tests
@@ -23,4 +22,3 @@ namespace Tests
         }
     }
 }
-

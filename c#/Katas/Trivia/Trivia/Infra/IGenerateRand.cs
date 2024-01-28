@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Trivia.Infra;
+﻿namespace Trivia.Infra;
 
 public interface IGenerateRand
 {

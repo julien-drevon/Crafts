@@ -1,7 +1,4 @@
-﻿using System;
-using System.Linq;
-
-namespace Trivia.Infra
+﻿namespace Trivia.Infra
 {
     public interface IPrint
     {
