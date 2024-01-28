@@ -13,8 +13,8 @@ public class RunGame_MasterShould
     [Fact]
     public void RunbGameScenario()
     {
-        var printer = new MyDisplaySpy();
-        var generator = new MyDeterministeGenerator();
+        var printer = new MyGameRunnerMasterPrinterSpy();
+        var generator = new MyGameRunnerMasterDeterministeGenerator();
         generator.BeforeRoundStart += (o, e) =>
         {
             ValeuresAttenduePourLeScenario(e, printer, generator);
@@ -26,8 +26,8 @@ public class RunGame_MasterShould
 
     private static void ValeuresAttenduePourLeScenario(
         (int Round, int Max) e,
-        MyDisplaySpy printer,
-        MyDeterministeGenerator generator)
+        MyGameRunnerMasterPrinterSpy printer,
+        MyGameRunnerMasterDeterministeGenerator generator)
     {
         if (generator.Round == 1)
         {
@@ -115,5 +115,5 @@ public class RunGame_MasterShould
     }
 
     private static bool DebutDeRound((int Round, int Max) e)
-    { return e.Max == MyDeterministeGenerator.MAX_VALUE_FOR_START; }
+    { return e.Max == MyGameRunnerMasterDeterministeGenerator.MAX_VALUE_FOR_START; }
 }

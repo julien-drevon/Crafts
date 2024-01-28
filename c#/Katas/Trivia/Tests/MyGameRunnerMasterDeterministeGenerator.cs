@@ -3,7 +3,7 @@ using Trivia.Infra;
 
 namespace Tests
 {
-    public class MyDeterministeGenerator : IGenerateRand
+    public class MyGameRunnerMasterDeterministeGenerator : IGenerateRand
     {
         public const int MAX_VALUE_FOR_START = 5;
 

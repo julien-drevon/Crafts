@@ -3,22 +3,25 @@ using ElegantCode.Fundamental.Core.Errors;
 using ElegantCode.Fundamental.Core.Presenter;
 using System.Threading;
 using System.Threading.Tasks;
+using Trivia.Domaine.Services;
 using Trivia.Domaine.UseCases;
 
-namespace Trivia.Domaine.Drivers
+namespace Trivia.Domaine.Drivers;
+
+public class GameDriverAdapter<TGameResult>
 {
-    public class GameDriverAdapter<TGameResult>
+    public IPresenter<GameResult, TGameResult> GamePresenter { get; private set; }
+
+    public IGameRepository GameRepository { get; private set; }
+
+    public GameDriverAdapter(IPresenter<GameResult, TGameResult> gamePresenter, IGameRepository gameRepository)
     {
-        private IPresenter<GameResult, TGameResult> GamePresenter;
+        GamePresenter = gamePresenter;
+        GameRepository = gameRepository;
+    }
 
-        public GameDriverAdapter(IPresenter<GameResult, TGameResult> gamePresenter)
-        {
-            GamePresenter = gamePresenter;
-        }
-
-        public async Task<(TGameResult GameResult, Error Error)> CreateNew(NewGameRequest newGameRequest, CancellationToken cancellation = default)
-        {
-            return await DriverAdapter.CreateUseCaseWorkflow(newGameRequest, new CreateGameUseCase(), GamePresenter, cancellation);
-        }
+    public async Task<(TGameResult GameResult, Error Error)> CreateNew(NewGameRequest newGameRequest, CancellationToken cancellation = default)
+    {
+        return await DriverAdapter.CreateUseCaseWorkflow(newGameRequest, new CreateGameUseCase(GameRepository), GamePresenter, cancellation);
     }
 }
