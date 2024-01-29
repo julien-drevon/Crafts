@@ -1,8 +1,6 @@
 ﻿using ElegantCode.Fundamental.Core.UsesCases;
-using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using Trivia.Domaine.Entities;
 using Trivia.Domaine.Services;
 
 namespace Trivia.Domaine.UseCases;
