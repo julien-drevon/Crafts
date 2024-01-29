@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using Trivia.Domaine.Entities;
+﻿using Trivia.Domaine.Entities;
 
 namespace Trivia.Domaine.UseCases;
 

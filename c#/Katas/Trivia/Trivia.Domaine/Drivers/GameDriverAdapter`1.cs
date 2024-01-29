@@ -1,8 +1,6 @@
 ﻿using ElegantCode.Fundamental.Core.DriverAdapter;
 using ElegantCode.Fundamental.Core.Errors;
 using ElegantCode.Fundamental.Core.Presenter;
-using System.Threading;
-using System.Threading.Tasks;
 using Trivia.Domaine.Services;
 using Trivia.Domaine.UseCases;
 

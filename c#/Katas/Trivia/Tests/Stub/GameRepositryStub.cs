@@ -5,13 +5,14 @@ using System.Threading.Tasks;
 using Trivia.Domaine.Entities;
 using Trivia.Domaine.Services;
 using Trivia.Domaine.UseCases;
+using Trivia.OriginalCode;
 
 namespace Tests.Stub;
 
 public class GameRepositryStub : IGameRepository
 {
-    public Task<GameResult> Create(CreateGameQuery query, CancellationToken cancellationToken = default)
+    public Task<TriviaGame> Create(TriviaGame game, CancellationToken cancellationToken = default)
     {
-        return Task.FromResult(new GameResult(query.GameId, query.PlayerNames.Select(x => new Player(x))));
+        return Task.FromResult(game);
     }
 }

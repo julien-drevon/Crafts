@@ -1,6 +1,4 @@
 ﻿using ElegantCode.Fundamental.Core.UsesCases;
-using System;
-using System.Collections.Generic;
 
 namespace Trivia.Domaine.UseCases;
 

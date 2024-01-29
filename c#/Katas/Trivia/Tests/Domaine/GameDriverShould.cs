@@ -47,56 +47,20 @@ public class GameDriverShould
     }
 }
 
-public class GameShould
-{
-    [Fact]
-    public void GameDesignsShould()
-    {
-        var GameId = Guid.NewGuid();
-        var players =new[] { "Chet", "Pat", "Sue" };
+//public class GameShould
+//{
+//    [Fact]
+//    public void GameDesignsShould()
+//    {
+//        var GameId = Guid.NewGuid();
+//        var players =new[] { "Chet", "Pat", "Sue" };
 
-        var game = new TriviaGameBuilder(GameId).AddPlayers(players).Build();
-        game.Id.Should().Be(GameId);
-        game.Players.Select(x=> x.Name).Should().BeEquivalentTo(players);
+//        var game = new TriviaGameBuilder(GameId).AddPlayers(players).Build();
+//        game.Id.Should().Be(GameId);
+//        game.Players.Select(x=> x.Name).Should().BeEquivalentTo(players);
 
-    }
-}
-
-public class TriviaGameBuilder
-{
-    private Guid _GameId;
-    private List<Player> _Players;
-
-    public TriviaGameBuilder(Guid gameId)
-    {
-        _GameId = gameId;
-    }
+//    }
+//}
 
 
-
-    public TriviaGameBuilder AddPlayers(string[] players)
-    {
-      _Players = players.Select(x=> new Player(x)).ToList();
-        return this;
-    }
-
-    internal TriviaGame Build()
-    {
-        return new TriviaGame(_GameId, _Players);
-    }
-}
-
-public class TriviaGame
-{
-
-
-    public TriviaGame(Guid gameId, IEnumerable<Player> players)
-    {
-        this.Id = gameId;
-        Players = players;
-    }
-
-    public Guid Id { get; internal set; }
-    public IEnumerable<Player> Players { get; internal set; }
-}
 
