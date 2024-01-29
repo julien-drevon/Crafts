@@ -9,30 +9,27 @@ namespace Trivia.Domaine.Drivers;
 
 public class NewGameRequest : BaseDriverAdapterRequest<CreateGameQuery>
 {
-    const string MINIMUM_PLAYER_REQUIRED = "Minimum player is 2";
-    public NewGameRequest(Guid correlationToken, Guid gameId, string[] playersName)
-        : base(correlationToken)
+    private const string GAME_ID_MUST_BE_DEFINE = "Game Id must be define";
+    private const string MINIMUM_PLAYER_REQUIRED = "Minimum player is 2";
+
+    public NewGameRequest(Guid correlationToken, Guid gameId, string[] playersName) : base(correlationToken)
     {
         Guid = correlationToken;
         GameId = gameId;
         PlayerNames = playersName;
     }
 
-    public Guid Guid { get; }
-
     public Guid GameId { get; }
+
+    public Guid Guid { get; }
 
     public string[] PlayerNames { get; }
 
     public override (CreateGameQuery UseCaseQuery, Error Error) ValidateRequest()
     {
         return this.ValidationWorkflow(
-            valueIfIsGood: new CreateGameQuery(CorrelationToken)
-            {
-                GameId = GameId,
-                PlayerNames = PlayerNames
-            },
-            prediacateErrors: PlayerNames.Where(x=> x.IsNotNullOrEmpty())
-                                         .CreateErrorRule(x => x.Count() < 2, MINIMUM_PLAYER_REQUIRED));
+            valueIfIsGood: new CreateGameQuery(CorrelationToken) { GameId = GameId, PlayerNames = PlayerNames },
+            PlayerNames.Where(x => x.IsNotNullOrEmpty()).CreateErrorRule(x => x.Count() < 2, MINIMUM_PLAYER_REQUIRED),
+            GameId.CreateErrorRule(x => x.IsEmpty(), GAME_ID_MUST_BE_DEFINE));
     }
 }

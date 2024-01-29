@@ -6,21 +6,27 @@ namespace Trivia.Master
 {
     public class Game_Master
     {
-        public int PointsToWin { get; }
-        private readonly List<string> _players = new List<string>();
-
-        private readonly int[] _places = new int[6];
-        private readonly int[] _purses = new int[6];
-        private IPrint _print;
         private readonly bool[] _inPenaltyBox = new bool[6];
 
+        private readonly int[] _places = new int[6];
+
+        private readonly List<string> _players = new List<string>();
+
         private readonly LinkedList<string> _popQuestions = new LinkedList<string>();
-        private readonly LinkedList<string> _scienceQuestions = new LinkedList<string>();
-        private readonly LinkedList<string> _sportsQuestions = new LinkedList<string>();
+
+        private readonly int[] _purses = new int[6];
+
         private readonly LinkedList<string> _rockQuestions = new LinkedList<string>();
 
+        private readonly LinkedList<string> _scienceQuestions = new LinkedList<string>();
+
+        private readonly LinkedList<string> _sportsQuestions = new LinkedList<string>();
+
         private int _currentPlayer;
+
         private bool _isGettingOutOfPenaltyBox;
+
+        private IPrint _print;
 
         public Game_Master(IPrint print, int pointsToWin)
         {
@@ -35,15 +41,7 @@ namespace Trivia.Master
             }
         }
 
-        public string CreateRockQuestion(int index)
-        {
-            return "Rock Question " + index;
-        }
-
-        public bool IsPlayable()
-        {
-            return HowManyPlayers() >= 2;
-        }
+        public int PointsToWin { get; }
 
         public bool Add(string playerName)
         {
@@ -57,9 +55,19 @@ namespace Trivia.Master
             return true;
         }
 
+        public string CreateRockQuestion(int index)
+        {
+            return "Rock Question " + index;
+        }
+
         public int HowManyPlayers()
         {
             return _players.Count;
+        }
+
+        public bool IsPlayable()
+        {
+            return HowManyPlayers() >= 2;
         }
 
         public void Roll(int roll)
@@ -100,44 +108,6 @@ namespace Trivia.Master
                 _print.WriteLine("The category is " + CurrentCategory());
                 AskQuestion();
             }
-        }
-
-        private void AskQuestion()
-        {
-            if (CurrentCategory() == "Pop")
-            {
-                _print.WriteLine(_popQuestions.First());
-                _popQuestions.RemoveFirst();
-            }
-            if (CurrentCategory() == "Science")
-            {
-                _print.WriteLine(_scienceQuestions.First());
-                _scienceQuestions.RemoveFirst();
-            }
-            if (CurrentCategory() == "Sports")
-            {
-                _print.WriteLine(_sportsQuestions.First());
-                _sportsQuestions.RemoveFirst();
-            }
-            if (CurrentCategory() == "Rock")
-            {
-                _print.WriteLine(_rockQuestions.First());
-                _rockQuestions.RemoveFirst();
-            }
-        }
-
-        private string CurrentCategory()
-        {
-            if (_places[_currentPlayer] == 0) return "Pop";
-            if (_places[_currentPlayer] == 4) return "Pop";
-            if (_places[_currentPlayer] == 8) return "Pop";
-            if (_places[_currentPlayer] == 1) return "Science";
-            if (_places[_currentPlayer] == 5) return "Science";
-            if (_places[_currentPlayer] == 9) return "Science";
-            if (_places[_currentPlayer] == 2) return "Sports";
-            if (_places[_currentPlayer] == 6) return "Sports";
-            if (_places[_currentPlayer] == 10) return "Sports";
-            return "Rock";
         }
 
         public bool WasCorrectlyAnswered()
@@ -192,6 +162,44 @@ namespace Trivia.Master
             _currentPlayer++;
             if (_currentPlayer == _players.Count) _currentPlayer = 0;
             return true;
+        }
+
+        private void AskQuestion()
+        {
+            if (CurrentCategory() == "Pop")
+            {
+                _print.WriteLine(_popQuestions.First());
+                _popQuestions.RemoveFirst();
+            }
+            if (CurrentCategory() == "Science")
+            {
+                _print.WriteLine(_scienceQuestions.First());
+                _scienceQuestions.RemoveFirst();
+            }
+            if (CurrentCategory() == "Sports")
+            {
+                _print.WriteLine(_sportsQuestions.First());
+                _sportsQuestions.RemoveFirst();
+            }
+            if (CurrentCategory() == "Rock")
+            {
+                _print.WriteLine(_rockQuestions.First());
+                _rockQuestions.RemoveFirst();
+            }
+        }
+
+        private string CurrentCategory()
+        {
+            if (_places[_currentPlayer] == 0) return "Pop";
+            if (_places[_currentPlayer] == 4) return "Pop";
+            if (_places[_currentPlayer] == 8) return "Pop";
+            if (_places[_currentPlayer] == 1) return "Science";
+            if (_places[_currentPlayer] == 5) return "Science";
+            if (_places[_currentPlayer] == 9) return "Science";
+            if (_places[_currentPlayer] == 2) return "Sports";
+            if (_places[_currentPlayer] == 6) return "Sports";
+            if (_places[_currentPlayer] == 10) return "Sports";
+            return "Rock";
         }
 
         private bool DidPlayerWin()

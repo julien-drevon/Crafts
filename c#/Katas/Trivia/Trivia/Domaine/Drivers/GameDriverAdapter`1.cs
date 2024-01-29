@@ -10,15 +10,15 @@ namespace Trivia.Domaine.Drivers;
 
 public class GameDriverAdapter<TGameResult>
 {
-    public IPresenter<GameResult, TGameResult> GamePresenter { get; private set; }
-
-    public IGameRepository GameRepository { get; private set; }
-
     public GameDriverAdapter(IPresenter<GameResult, TGameResult> gamePresenter, IGameRepository gameRepository)
     {
         GamePresenter = gamePresenter;
         GameRepository = gameRepository;
     }
+
+    public IPresenter<GameResult, TGameResult> GamePresenter { get; private set; }
+
+    public IGameRepository GameRepository { get; private set; }
 
     public async Task<(TGameResult GameResult, Error Error)> CreateNew(NewGameRequest newGameRequest, CancellationToken cancellation = default)
     {

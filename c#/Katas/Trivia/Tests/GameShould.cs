@@ -17,7 +17,7 @@ namespace Tests
         public async Task WhenIStartAPartieIWantToAddAPlayers()
         {
             var gameId = Guid.NewGuid();
-            var playersName = new[] { "Chet", "Pat", "Sue" };
+            var playersName = new[] { "Chet", "Pat"};
             var gameAdapter = new GameDriverAdapter<GameResult>(new SimplePresenter<GameResult>(), new GameRepositryStub());
             var gameResult = await gameAdapter.CreateNew(new NewGameRequest(Guid.NewGuid(), gameId, playersName));
             gameResult.GameResult.GameId.Should().Be(gameId);
@@ -28,7 +28,7 @@ namespace Tests
         public async Task DefineQueryError()
         {
             var gameId = Guid.NewGuid();
-            var playersName = new[] { "Chet" };
+
             var gameAdapter = new GameDriverAdapter<GameResult>(new SimplePresenter<GameResult>(), new GameRepositryStub());
 
 
@@ -40,7 +40,9 @@ namespace Tests
             gameResult.Error.IsOnError().Should().BeTrue();
             gameResult.Error.Message.Should().Be("Minimum player is 2");
 
-
+            gameResult = await gameAdapter.CreateNew(new NewGameRequest(Guid.NewGuid(), Guid.Empty, new[] { "Chet", "Pat" }));
+            gameResult.Error.IsOnError().Should().BeTrue();
+            gameResult.Error.Message.Should().Be("Game Id must be define");
         }
     }
 }
