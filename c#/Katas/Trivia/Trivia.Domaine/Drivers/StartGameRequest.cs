@@ -7,16 +7,18 @@ namespace Trivia.Domaine.Drivers;
 
 public class StartGameRequest : BaseDriverAdapterRequest<StartGameQuery>
 {
-    public StartGameRequest(Guid correlationToken, Guid gameId) : base(correlationToken)
+    public StartGameRequest(Guid correlationToken, Guid gameId, int desValues) : base(correlationToken)
     {
         GameId = gameId;
+        DesValues = desValues;
     }
 
     public Guid GameId { get; }
+    public int DesValues { get; }
 
     public override (StartGameQuery UseCaseQuery, Error Error) ValidateRequest()
     {
-       return this.ValidationWorkflow(
-            valueIfIsGood: new StartGameQuery(CorrelationToken, GameId));
+        return this.ValidationWorkflow(
+             valueIfIsGood: new StartGameQuery(CorrelationToken, GameId, DesValues));
     }
 }

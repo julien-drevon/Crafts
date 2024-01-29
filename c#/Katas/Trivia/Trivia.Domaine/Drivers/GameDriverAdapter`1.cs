@@ -25,7 +25,7 @@ public class GameDriverAdapter<TGameResult>
         return await DriverAdapter.CreateUseCaseWorkflow(newGameRequest, new CreateGameUseCase(GameRepository), GamePresenter, cancellationToken);
     }
 
-    public async Task<(TGameResult GameResult, Error Error)> Start(StartGameRequest startRequest, CancellationToken cancellationToken=default)
+    public async Task<(TGameResult GameResult, Error Error)> LancerDes(StartGameRequest startRequest, CancellationToken cancellationToken=default)
     {
         return await DriverAdapter.CreateUseCaseWorkflow(startRequest, new StartGameUseCase(GameRepository), GamePresenter, cancellationToken);
     }

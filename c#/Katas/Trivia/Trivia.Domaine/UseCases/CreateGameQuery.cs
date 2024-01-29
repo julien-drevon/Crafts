@@ -1,4 +1,5 @@
 ﻿using ElegantCode.Fundamental.Core.UsesCases;
+using Trivia.Domaine.Entities;
 
 namespace Trivia.Domaine.UseCases;
 
@@ -12,4 +13,5 @@ public class CreateGameQuery : UseCaseQueryBase
     public Guid GameId { get; set; }
 
     public IEnumerable<string> PlayerNames { get; set; }
+    public TriviaPlateau Plateau { get; internal set; }
 }

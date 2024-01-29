@@ -15,6 +15,9 @@ public class CreateGameUseCase : IUseCaseAsync<CreateGameQuery, TriviaGame>
     public async Task<TriviaGame> Execute(CreateGameQuery newGameRequest, CancellationToken cancelToken = default)
     {
         return await GameRepository.Create(
-            new TriviaGameBuilder(newGameRequest.CorrelationToken, newGameRequest.GameId).AddPlayers(newGameRequest.PlayerNames).Build());
+            new TriviaGameBuilder(newGameRequest.CorrelationToken, newGameRequest.GameId)
+            .AddPlayers(newGameRequest.PlayerNames)
+            .AddPlateau(newGameRequest.Plateau)
+            .Build()); ;
     }
 }
