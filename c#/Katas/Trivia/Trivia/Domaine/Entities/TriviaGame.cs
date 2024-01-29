@@ -1,0 +1,3 @@
+﻿namespace Trivia.Domaine.Entities
+{
+}
