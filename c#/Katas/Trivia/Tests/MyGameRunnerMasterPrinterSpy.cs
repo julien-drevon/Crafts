@@ -5,7 +5,6 @@ namespace Tests
 {
     public class MyGameRunnerMasterPrinterSpy : IPrint
     {
-
         public void WriteLine(string text)
         {
             PrintHistory.Add(text);

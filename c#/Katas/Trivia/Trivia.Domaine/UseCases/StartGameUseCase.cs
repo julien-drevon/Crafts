@@ -17,7 +17,7 @@ public class StartGameUseCase : IUseCaseAsync<StartGameQuery, TriviaGame>
     {
         var game = await GameRepository.Get(request.CorrelationToken, request.GameId, cancelToken);
 
-        game.Start(request.DesValue);
+        game.SeDeplacer(request.DesValue);
 
         return await GameRepository.Save(game, cancelToken);
     }

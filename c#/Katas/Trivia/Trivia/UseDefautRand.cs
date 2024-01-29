@@ -1,4 +1,5 @@
 ﻿using System;
+using Trivia.Domaine.Services;
 using Trivia.Infra;
 
 namespace Trivia

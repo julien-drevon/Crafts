@@ -1,5 +1,5 @@
 ﻿using System;
-using Trivia.Infra;
+using Trivia.Domaine.Services;
 
 namespace Tests
 {

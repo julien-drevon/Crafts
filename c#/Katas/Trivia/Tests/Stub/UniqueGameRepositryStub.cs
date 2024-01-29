@@ -8,8 +8,7 @@ namespace Tests.Stub;
 
 public class UniqueGameRepositryStub : IGameRepository
 {
-
-    TriviaGame _Game;
+    private TriviaGame _Game;
 
     public Task<TriviaGame> Create(TriviaGame game, CancellationToken cancellationToken = default)
     {

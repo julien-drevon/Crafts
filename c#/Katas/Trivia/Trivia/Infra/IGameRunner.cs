@@ -1,4 +1,6 @@
-﻿namespace Trivia.Infra
+﻿using Trivia.Domaine.Services;
+
+namespace Trivia.Infra
 {
     public interface IGameRunner
     {

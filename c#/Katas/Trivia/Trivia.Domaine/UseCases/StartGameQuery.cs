@@ -15,17 +15,3 @@ public class StartGameQuery : UseCaseQueryBase
 
     public Guid GameId { get; private set; }
 }
-public class RepondreGameQuery : UseCaseQueryBase
-{
-    public RepondreGameQuery(Guid correlationToken, Guid gameId, string reponse)
-        : base(correlationToken)
-    {
-        CorrelationToken = correlationToken;
-        GameId = gameId;
-        Reponse = reponse;
-    }
-
-    public Guid CorrelationToken { get; }
-    public Guid GameId { get; }
-    public string Reponse { get; }
-}

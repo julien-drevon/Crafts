@@ -1,4 +1,5 @@
-﻿using Trivia.Infra;
+﻿using Trivia.Domaine.Services;
+using Trivia.Infra;
 
 namespace Trivia.Master;
 
@@ -28,4 +29,6 @@ public class GameRunner_Master : IGameRunner
             }
         } while (_notAWinner);
     }
+
+
 }

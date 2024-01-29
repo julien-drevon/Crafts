@@ -2,11 +2,11 @@
 {
     public class TriviaCategory
     {
-        private string Name;
-
         public TriviaCategory(string name)
         {
             Name = name;
         }
+
+        public string Name { get; }
     }
 }

@@ -35,4 +35,3 @@ public class GameDriverAdapter<TGameResult>
         return await DriverAdapter.CreateUseCaseWorkflow(repondreRequest, new RepondreGameUseCase(GameRepository), GamePresenter, cancellationToken);
     }
 }
-

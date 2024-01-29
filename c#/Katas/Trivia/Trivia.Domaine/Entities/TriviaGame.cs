@@ -11,7 +11,7 @@ public class TriviaGame : UseCaseResponseBase
     {
         this.Id = gameId;
         _Players = new(players);
-        CurrentRound = new TriviaRound(null, 0, TriviaGameStatus.NotStarted);
+        CurrentRound = new TriviaRound(null, 0, TriviaGameStatus.NotStarted, null);
         NextPlayer = players.First();
         Plateau = plateau;
     }
@@ -28,17 +28,17 @@ public class TriviaGame : UseCaseResponseBase
 
     public IEnumerable<Player> Players { get => _Players; }
 
-    public TriviaRound Start(int desValue)
+    public void Repondre(string reponse)
     {
-        this.Plateau.Move(NextPlayer, desValue);
-        this.CurrentRound = new TriviaRound(this.Players.First(), 1, TriviaGameStatus.InGame);
+        //this.CurrentRound.Player.Reponse = new PlayerReponse()
+    }
+
+    public TriviaRound SeDeplacer(int desValue)
+    {
+        var question = this.Plateau.Move(NextPlayer, desValue);
+        this.CurrentRound = new TriviaRound(this.Players.First(), 1, TriviaGameStatus.InGame, question);
         this.NextPlayer = this._Players[1];
 
         return this.CurrentRound;
-    }
-
-    internal void Repondre(string reponse)
-    {
-        throw new NotImplementedException();
     }
 }
