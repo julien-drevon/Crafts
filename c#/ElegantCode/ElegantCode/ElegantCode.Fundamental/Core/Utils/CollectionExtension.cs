@@ -87,4 +87,36 @@ public static class CollectionExtension
         return paginedResponse.IsAny(predicate)
                               .IsFalse();
     }
+
+    /// <summary>
+    /// converti un collection de données en appliquant le convert definit dans cette classe a chaque items
+    /// </summary>
+    /// <param name="datas"></param>
+    /// <param name="projections"></param>
+    /// <returns></returns>
+    public static IEnumerable<Tout> Convert<Tin, Tout>(this IGenericConverter<Tin, Tout> me, IEnumerable<Tin> datas, Func<Tout, Tout> projections = null)
+    {
+        foreach (var x in datas)
+        {
+            yield return me.Convert(x, projections);
+        }
+    }
+
+    /// <summary>
+    /// Conversion collection de données.
+    /// </summary>
+    /// <typeparam name="Tin">Type d'entrée à convertir</typeparam>
+    /// <typeparam name="Tout">Type de sortie de la conversion</typeparam>
+    /// <param name="me"> Converter utilisé</param>
+    /// <param name="datas">collection de donée en entrée</param>
+    /// <param name="retourFactory">factory de création du type de sortie (une initialisation particulière est peut être requise avant de passer par le converter)</param>
+    /// <param name="projections">méthode à appliquer après passage du converter sur chaque objet en sortie</param>
+    /// <returns></returns>
+    public static IEnumerable<Tout> Convert<Tin, Tout>(this IGenericConverterWithFactory<Tin, Tout> me, IEnumerable<Tin> datas, Func<Tout> retourFactory, Func<Tout, Tout> projections = null)
+    {
+        foreach (var x in datas)
+        {
+            yield return me.Convert(x, retourFactory, projections);
+        }
+    }
 }
