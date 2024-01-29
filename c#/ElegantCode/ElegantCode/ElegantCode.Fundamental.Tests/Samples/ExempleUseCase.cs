@@ -10,6 +10,6 @@ public class ExempleUseCase : IUseCaseAsync<ExampleUseCaseQuery, ExampleUseCaseR
         {
             throw new UseCaseException(request.CorrelationToken, "La reponse Fournie n'est pas LA reponse");
         }
-        return Task.FromResult(new ExampleUseCaseResponse("42"));
+        return Task.FromResult(new ExampleUseCaseResponse(request.CorrelationToken, "42"));
     }
 }

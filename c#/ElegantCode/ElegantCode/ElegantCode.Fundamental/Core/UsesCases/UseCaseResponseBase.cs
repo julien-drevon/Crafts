@@ -2,12 +2,12 @@
 
 namespace ElegantCode.Fundamental.Core.UsesCases;
 
-public class UseCaseQueryBase : IGotCorrelationToken
+public class UseCaseResponseBase : IGotCorrelationToken
 {
-    protected UseCaseQueryBase(Guid correlationToken)
+    public UseCaseResponseBase(Guid correlationToken)
     {
         CorrelationToken = correlationToken;
     }
 
-    public virtual Guid CorrelationToken { get; }
+    public Guid CorrelationToken { get; }
 }

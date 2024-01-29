@@ -20,11 +20,11 @@ public class GameDriverShould
     {
         var gameId = Guid.NewGuid();
         var playersName = new[] { "Chet", "Pat" };
-        var gameAdapter = new GameDriverAdapter<GameResult>(new SimplePresenter<GameResult>(), new GameRepositryStub());
+        var gameAdapter = new GameDriverAdapter<TriviaGame>(new SimplePresenter<TriviaGame>(), new GameRepositryStub());
         var gameResult = await gameAdapter.Create(new NewGameRequest(Guid.NewGuid(), gameId, playersName));
-        gameResult.GameResult.GameId.Should().Be(gameId);
-        gameResult.GameResult.Players.Select(x => x.Name).Should().BeEquivalentTo(playersName);
-        gameResult.GameResult.GameStatus.Should().Be(TriviaGameStatus.NotStarted);
+        gameResult.TriviaGame.Id.Should().Be(gameId);
+        gameResult.TriviaGame.Players.Select(x => x.Name).Should().BeEquivalentTo(playersName);
+        gameResult.TriviaGame.Status.Should().Be(TriviaGameStatus.NotStarted);
     }
 
     [Fact]
@@ -32,7 +32,7 @@ public class GameDriverShould
     {
         var gameId = Guid.NewGuid();
 
-        var gameAdapter = new GameDriverAdapter<GameResult>(new SimplePresenter<GameResult>(), new GameRepositryStub());
+        var gameAdapter = new GameDriverAdapter<TriviaGame>(new SimplePresenter<TriviaGame>(), new GameRepositryStub());
 
         var gameResult = await gameAdapter.Create(new NewGameRequest(Guid.NewGuid(), gameId, new[] { "Chet" }));
         gameResult.Error.IsOnError().Should().BeTrue();
@@ -52,16 +52,11 @@ public class GameDriverShould
     {
         var gameId = Guid.NewGuid();
         var playersName = new[] { "Chet", "Pat", "Sue" };
-        var gameAdapter = new GameDriverAdapter<GameResult>(new SimplePresenter<GameResult>(), new GameRepositryStub());
+        var gameAdapter = new GameDriverAdapter<TriviaGame>(new SimplePresenter<TriviaGame>(), new GameRepositryStub());
         _ = await gameAdapter.Create(new NewGameRequest(Guid.NewGuid(), gameId, playersName));
 
-        var gameResult = await gameAdapter.Start(new(  Guid.NewGuid(),  gameId));
-        gameResult.GameResult.GameStatus.Should().Be(TriviaGameStatus.InGame);
-       // gameResult.GameResult.RoundOf.Name.Should().Be("chet");
-        
-
-
-
+        var gameResult = await gameAdapter.Start(new(Guid.NewGuid(), gameId));
+        gameResult.GameResult.Status.Should().Be(TriviaGameStatus.InGame);
     }
 }
 
