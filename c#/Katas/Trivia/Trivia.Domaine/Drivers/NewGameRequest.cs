@@ -1,6 +1,8 @@
 ﻿using ElegantCode.Fundamental.Core.DriverAdapter;
 using ElegantCode.Fundamental.Core.Errors;
+using ElegantCode.Fundamental.Core.UsesCases;
 using ElegantCode.Fundamental.Core.Utils;
+using System.Runtime.CompilerServices;
 using Trivia.Domaine.Entities;
 using Trivia.Domaine.UseCases;
 
@@ -30,5 +32,25 @@ public class NewGameRequest : BaseDriverAdapterRequest<CreateGameQuery>
             valueIfIsGood: new CreateGameQuery(CorrelationToken) { GameId = GameId, PlayerNames = PlayerNames, Plateau = Plateau },
             PlayerNames.Where(x => x.IsNotNullOrEmpty()).CreateErrorRule(x => x.Count() < 2, MINIMUM_PLAYER_REQUIRED),
             GameId.CreateErrorRule(x => x.IsEmpty(), GAME_ID_MUST_BE_DEFINE));
+    }
+}
+public class RepondreGameRequest: BaseDriverAdapterRequest<RepondreGameQuery>
+{
+    public RepondreGameRequest(Guid correlationToken, Guid gameId, string reponse) : base(correlationToken)
+    {
+        Guid = correlationToken;
+        GameId = gameId;
+        Reponse = reponse;
+    }
+
+    public Guid Guid { get; }
+    public Guid GameId { get; }
+    public string Reponse { get; }
+
+
+    public override (RepondreGameQuery UseCaseQuery, Error Error) ValidateRequest()
+    {
+        return this.ValidationWorkflow(
+            valueIfIsGood: new RepondreGameQuery(CorrelationToken, GameId, Reponse));
     }
 }

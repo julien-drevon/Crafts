@@ -36,4 +36,9 @@ public class TriviaGame : UseCaseResponseBase
 
         return this.CurrentRound;
     }
+
+    internal void Repondre(string reponse)
+    {
+        throw new NotImplementedException();
+    }
 }

@@ -70,12 +70,14 @@ public class GameDriverShould
         _ = await gameAdapter.Create(new NewGameRequest(Guid.NewGuid(), gameId, playersName, Plateau));
 
         int desValue = 1;
-
         var (gameResult, _) = await gameAdapter.LancerDes(new(Guid.NewGuid(), gameId, desValue));
         gameResult.CurrentRound.Status.Should().Be(TriviaGameStatus.InGame);
         gameResult.CurrentRound.Player.Name.Should().Be(Chet_FirstPlayer);
         gameResult.GameHistory.Should().HaveCount(0);
         gameResult.NextPlayer.Name.Should().Be(Pat_SecondPlayer);
         gameResult.Players.First().Position.Should().BeEquivalentTo(Plateau().Cases.First());
+
+         (gameResult, _) = await gameAdapter.Repondre(new(Guid.NewGuid(), gameId, "42"));
+        gameResult.CurrentRound.Player.Reponse.IsGood().Should().BeTrue();
     }
 }

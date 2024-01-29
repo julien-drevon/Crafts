@@ -11,6 +11,8 @@
 
         public IEnumerable<TriviaCase> Cases { get => _Cases; }
 
+        //public IEnumerable<CardQuestion> Question
+
         public void Move(Player nextPlayer, int desValue)
         {
             nextPlayer.Position = _Cases[desValue - 1];

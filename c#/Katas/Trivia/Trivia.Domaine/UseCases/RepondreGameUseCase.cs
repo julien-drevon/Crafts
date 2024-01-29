@@ -4,20 +4,20 @@ using Trivia.Domaine.Services;
 
 namespace Trivia.Domaine.UseCases;
 
-public class StartGameUseCase : IUseCaseAsync<StartGameQuery, TriviaGame>
+public class RepondreGameUseCase : IUseCaseAsync<RepondreGameQuery, TriviaGame>
 {
     private IGameRepository GameRepository;
 
-    public StartGameUseCase(IGameRepository gameRepository)
+    public RepondreGameUseCase(IGameRepository gameRepository)
     {
         GameRepository = gameRepository;
     }
 
-    public async Task<TriviaGame> Execute(StartGameQuery request, CancellationToken cancelToken = default)
+    public async Task<TriviaGame> Execute(RepondreGameQuery request, CancellationToken cancelToken = default)
     {
         var game = await GameRepository.Get(request.CorrelationToken, request.GameId, cancelToken);
 
-        game.Start(request.DesValue);
+        game.Repondre(request.Reponse);
 
         return await GameRepository.Save(game, cancelToken);
     }
