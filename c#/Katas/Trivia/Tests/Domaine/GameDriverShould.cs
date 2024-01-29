@@ -2,9 +2,10 @@
 using ElegantCode.Fundamental.Core.Presenter;
 using FluentAssertions;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Tests.Domaine.Dummy;
+using Tests.Domaine.ServiceFacts;
 using Tests.Stub;
 using Trivia.Domaine.Drivers;
 using Trivia.Domaine.Entities;
@@ -14,31 +15,16 @@ using Xunit;
 
 namespace Tests.Domaine;
 
-public class GenerateNumberForQuestions : IGenerateRand
-{
-    public int GenerateNew(int maxValue) { return 1; }
-}
-
 public class GameDriverShould
 {
-    static IEnumerable<TriviaQuestion> Questions = new[]
-    {
-        new TriviaQuestion(
-        TriviaPlateauFactory.CreateDefaultCategories().ToList()[0],
-        "Quelle est la reponse à la question de toutes les questions?",
-        "42")
-    };
-
     string Chet_FirstPlayer { get; } = "Chet";
-
     string Pat_SecondPlayer { get; } = "Pat";
-
     string Sue_ThirdPlayer { get; } = "Sue";
 
-    Func<TriviaPlateau> Plateau = () => TriviaPlateauFactory.Create(
+    TriviaPlateau Plateau() => TriviaPlateauFactory.Create(
         new GenerateNumberForQuestions(),
-        () => TriviaPlateauFactory.CreateTriviaCases(TriviaPlateauFactory.CreateDefaultCategories(), 4),
-        Questions);
+        TriviaPlateauFactory.CreateTriviaCases(TriviaPlateauFactory.CreateDefaultCategories(), 4),
+        TriviaQuestionsDummyFatory.Questions());
 
     [Fact]
     public async Task WhenIStartAPartieIWantToAddAPlayers()
@@ -87,20 +73,28 @@ public class GameDriverShould
     {
         var gameId = Guid.NewGuid();
         var playersName = new[] { Chet_FirstPlayer, Pat_SecondPlayer, Sue_ThirdPlayer };
-        var gameAdapter = new GameDriverAdapter<TriviaGame>(
-            new SimplePresenter<TriviaGame>(),
-            new UniqueGameRepositryStub());
+        GameDriverAdapter<TriviaGame> gameAdapter = CreateAdapter();
         _ = await gameAdapter.Create(new NewGameRequest(Guid.NewGuid(), gameId, playersName, Plateau));
 
-        int desValue = 1;
-        var (gameResult, _) = await gameAdapter.LancerDes(new(Guid.NewGuid(), gameId, desValue));
-        gameResult.CurrentRound.Status.Should().Be(TriviaGameStatus.InGame);
-        gameResult.CurrentRound.Player.Name.Should().Be(Chet_FirstPlayer);
-        gameResult.GameHistory.Should().HaveCount(0);
-        gameResult.NextPlayer.Name.Should().Be(Pat_SecondPlayer);
-        gameResult.Players.First().Position.Should().BeEquivalentTo(Plateau().Cases.First());
-        gameResult.CurrentRound.Question.QuestionText
+        int desValueForDeplacement = 1;
+        var (gameResultFirstQuestion, _) = await gameAdapter.LancerDes(new(Guid.NewGuid(), gameId, desValueForDeplacement));
+        gameResultFirstQuestion.CurrentRound.Status.Should().Be(TriviaGameStatus.InGame);
+        gameResultFirstQuestion.CurrentRound.Player.Name.Should().Be(Chet_FirstPlayer);
+        gameResultFirstQuestion.GameHistory.Should().HaveCount(0);
+        gameResultFirstQuestion.NextPlayer.Name.Should().Be(Pat_SecondPlayer);
+        gameResultFirstQuestion.Players.First().Position.Should().BeEquivalentTo(Plateau().Cases.First());
+        gameResultFirstQuestion.Players.First().Score.Should().Be(0);
+        gameResultFirstQuestion.CurrentRound.Question.QuestionText
             .Should()
             .Be("Quelle est la reponse à la question de toutes les questions?");
+
+       
+    }
+
+    private static GameDriverAdapter<TriviaGame> CreateAdapter()
+    {
+        return new GameDriverAdapter<TriviaGame>(
+            new SimplePresenter<TriviaGame>(),
+            new UniqueGameRepositryStub());
     }
 }

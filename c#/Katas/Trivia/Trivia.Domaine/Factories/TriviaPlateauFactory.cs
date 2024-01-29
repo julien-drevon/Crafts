@@ -1,16 +1,14 @@
-﻿using System;
-using System.Linq;
-using Trivia.Domaine.Entities;
+﻿using Trivia.Domaine.Entities;
 using Trivia.Domaine.Services;
 
 namespace Trivia.Domaine.Factories;
 
 public class TriviaPlateauFactory
 {
-    public static TriviaPlateau Create(IGenerateRand carSelector, Func<IEnumerable<TriviaCase>> createCases, IEnumerable<TriviaQuestion> questions)
+    public static TriviaPlateau Create(IGenerateRand carSelector, IEnumerable<TriviaCase> createCases, IEnumerable<TriviaQuestion> questions)
     {
         return new TriviaPlateau(
-            createCases(),
+            createCases,
             questions,
             carSelector);
     }

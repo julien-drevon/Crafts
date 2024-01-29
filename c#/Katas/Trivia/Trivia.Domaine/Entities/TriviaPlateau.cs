@@ -22,9 +22,8 @@ namespace Trivia.Domaine.Entities
         public TriviaQuestion Move(Player nextPlayer, int desValue)
         {
             nextPlayer.Position = _Cases[desValue - 1];
-            var questionsCategorie = this.Questions.Where(x => x.Categorie.Name == nextPlayer.Position.TriviaCategory.Name)
-                                                   .ToList();
-            return questionsCategorie[_CarSelector.GenerateNew(questionsCategorie.Count) - 1];
+            var questionsCategorie = this.Questions.Where(x => x.Categorie.Name == nextPlayer.Position.TriviaCategory.Name)                                                   ;
+            return questionsCategorie.Skip(_CarSelector.GenerateNew(questionsCategorie.Count()) - 1).First();
         }
     }
 }
