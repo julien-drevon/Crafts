@@ -11,4 +11,6 @@ public class TriviaGame
     public Guid Id { get; internal set; }
 
     public IEnumerable<Player> Players { get; internal set; }
+    public TriviaGameStatus Status { get; internal set; }
+    public object RoundOf { get; internal set; }
 }

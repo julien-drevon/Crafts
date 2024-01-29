@@ -31,4 +31,9 @@ public static class UtilsExtension
     {
         return me == Guid.Empty;
     }
+
+    public static bool IsNotEmpty(this Guid me)
+    {
+        return me != Guid.Empty;
+    }
 }

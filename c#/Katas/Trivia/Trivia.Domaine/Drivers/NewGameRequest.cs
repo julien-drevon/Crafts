@@ -1,6 +1,7 @@
 ﻿using ElegantCode.Fundamental.Core.DriverAdapter;
 using ElegantCode.Fundamental.Core.Errors;
 using ElegantCode.Fundamental.Core.Utils;
+using System.Runtime.CompilerServices;
 using Trivia.Domaine.UseCases;
 
 namespace Trivia.Domaine.Drivers;
