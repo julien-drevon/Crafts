@@ -1,8 +1,11 @@
-﻿namespace Trivia.Domaine.Entities;
+﻿using ElegantCode.Fundamental.Core.UsesCases;
 
-public class TriviaGame
+namespace Trivia.Domaine.Entities;
+
+public class TriviaGame : UseCaseResponseBase
 {
-    public TriviaGame(Guid gameId, IEnumerable<Player> players)
+    public TriviaGame(Guid correlationToken, Guid gameId, IEnumerable<Player> players)
+        : base(correlationToken)
     {
         this.Id = gameId;
         Players = players;

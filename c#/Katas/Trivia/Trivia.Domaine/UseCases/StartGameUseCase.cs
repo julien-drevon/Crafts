@@ -16,7 +16,7 @@ public class StartGameUseCase : IUseCaseAsync<StartGameQuery, TriviaGame>
     public async Task<TriviaGame> Execute(StartGameQuery request, CancellationToken cancelToken = default)
     {
         var game = await GameRepository.Create(
-                new TriviaGameBuilder(request.GameId).Build());
+                new TriviaGameBuilder(request.CorrelationToken, request.GameId).Build());
 
         game.Status = TriviaGameStatus.InGame;
 
