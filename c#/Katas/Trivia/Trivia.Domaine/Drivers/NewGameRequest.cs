@@ -1,7 +1,6 @@
 ﻿using ElegantCode.Fundamental.Core.DriverAdapter;
 using ElegantCode.Fundamental.Core.Errors;
 using ElegantCode.Fundamental.Core.Utils;
-using System.Runtime.CompilerServices;
 using Trivia.Domaine.Entities;
 using Trivia.Domaine.UseCases;
 
@@ -21,8 +20,9 @@ public class NewGameRequest : BaseDriverAdapterRequest<CreateGameQuery>
 
     public Guid GameId { get; }
 
-    public string[] PlayerNames { get; }
     public TriviaPlateau Plateau { get; set; }
+
+    public string[] PlayerNames { get; }
 
     public override (CreateGameQuery UseCaseQuery, Error Error) ValidateRequest()
     {

@@ -13,8 +13,9 @@ public class StartGameRequest : BaseDriverAdapterRequest<StartGameQuery>
         DesValues = desValues;
     }
 
-    public Guid GameId { get; }
     public int DesValues { get; }
+
+    public Guid GameId { get; }
 
     public override (StartGameQuery UseCaseQuery, Error Error) ValidateRequest()
     {

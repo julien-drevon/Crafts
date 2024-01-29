@@ -9,5 +9,4 @@ public interface IGameRepository
     Task<TriviaGame> Get(Guid correlationToken, Guid idGame, CancellationToken cancellationToken = default);
 
     Task<TriviaGame> Save(TriviaGame query, CancellationToken cancellationToken = default);
-
 }

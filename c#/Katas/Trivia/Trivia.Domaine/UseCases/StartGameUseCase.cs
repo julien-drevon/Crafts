@@ -15,10 +15,10 @@ public class StartGameUseCase : IUseCaseAsync<StartGameQuery, TriviaGame>
 
     public async Task<TriviaGame> Execute(StartGameQuery request, CancellationToken cancelToken = default)
     {
-        var game = await GameRepository.Get(request.CorrelationToken, request.GameId,cancelToken);
+        var game = await GameRepository.Get(request.CorrelationToken, request.GameId, cancelToken);
 
         game.Start(request.DesValue);
 
-        return await GameRepository.Save(game, cancelToken);   
+        return await GameRepository.Save(game, cancelToken);
     }
 }

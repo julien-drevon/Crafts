@@ -1,5 +1,4 @@
 ﻿using ElegantCode.Fundamental.Core.UsesCases;
-using Trivia.Domaine.Drivers;
 using Trivia.Domaine.Entities;
 using Trivia.Domaine.Services;
 

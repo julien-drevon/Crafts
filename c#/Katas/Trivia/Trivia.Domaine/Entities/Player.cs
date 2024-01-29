@@ -9,10 +9,5 @@ public class Player
 
     public string Name { get; internal set; }
 
-    public TriviaCase Position {  get; set; } 
-}
-public enum TriviaGameStatus
-{
-    NotStarted,
-    InGame
+    public TriviaCase Position { get; set; }
 }

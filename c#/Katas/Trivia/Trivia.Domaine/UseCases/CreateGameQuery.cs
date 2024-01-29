@@ -12,6 +12,7 @@ public class CreateGameQuery : UseCaseQueryBase
 
     public Guid GameId { get; set; }
 
-    public IEnumerable<string> PlayerNames { get; set; }
     public TriviaPlateau Plateau { get; internal set; }
+
+    public IEnumerable<string> PlayerNames { get; set; }
 }

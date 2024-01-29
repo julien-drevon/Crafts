@@ -2,10 +2,10 @@
 
 public class TriviaGameBuilder
 {
-    private Guid _GameId;
     private Guid _CorrelationToken;
-    private List<Player> _Players;
+    private Guid _GameId;
     private TriviaPlateau _Plateau;
+    private List<Player> _Players;
 
     public TriviaGameBuilder(Guid correlationToken, Guid gameId)
     {
@@ -13,15 +13,15 @@ public class TriviaGameBuilder
         _CorrelationToken = correlationToken;
     }
 
-    public TriviaGameBuilder AddPlayers(IEnumerable<string> players)
-    {
-        _Players = players.Select(x => new Player(x)).ToList();
-        return this;
-    }
-
     public TriviaGameBuilder AddPlateau(TriviaPlateau plateau)
     {
         _Plateau = plateau;
+        return this;
+    }
+
+    public TriviaGameBuilder AddPlayers(IEnumerable<string> players)
+    {
+        _Players = players.Select(x => new Player(x)).ToList();
         return this;
     }
 

@@ -22,6 +22,7 @@ public class GameDriverShould
     string Chet_FirstPlayer { get; } = "Chet";
     string Pat_SecondPlayer { get; } = "Pat";
     string Sue_ThirdPlayer { get; } = "Sue";
+
     Func<TriviaPlateau> Plateau = TriviaPlateauFactory.Create;
 
     [Fact]
@@ -38,8 +39,6 @@ public class GameDriverShould
         gameResult.CurrentRound.Status.Should().Be(TriviaGameStatus.NotStarted);
         gameResult.NextPlayer.Name.Should().Be(Chet_FirstPlayer);
         gameResult.Plateau.Cases.Should().BeEquivalentTo(TriviaPlateauFactory.Create().Cases);
-
-        //gameResult.History.Should().BeEmpty();
     }
 
     [Fact]
