@@ -1,23 +1,31 @@
-﻿namespace Trivia.Domaine.Entities
+﻿using System.Globalization;
+
+namespace Trivia.Domaine.Entities
 {
     public class TriviaRound
     {
-        public TriviaRound(Player player, int number, TriviaGameStatus status, TriviaQuestion question)
+        public TriviaRound(Player player, int number, TriviaQuestion question)
         {
             Player = player;
             Number = number;
-            Status = status;
             Question = question;
         }
 
-        public int Number { get; internal set; }
+        public int Number { get; }
 
-        public Player Player { get; internal set; }
+        public Player Player { get; }
 
         public TriviaQuestion Question { get; }
 
-        public string Response { get; set; }
+        public string Response { get; private set; } = null;
 
-        public TriviaGameStatus Status { get; internal set; }
+        public bool IsGoodResponse { get; private set; }
+
+        public bool SetReponseAndReturnIsGood(string response)
+        {
+            this.Response = response;
+            IsGoodResponse = this.Response.ToLower(CultureInfo.InvariantCulture) == Question.Response.ToLower(CultureInfo.InvariantCulture);
+            return IsGoodResponse;
+        }
     }
 }

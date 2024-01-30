@@ -10,7 +10,6 @@ using Tests.Stub;
 using Trivia.Domaine.Drivers;
 using Trivia.Domaine.Entities;
 using Trivia.Domaine.Factories;
-using Trivia.Domaine.Services;
 using Xunit;
 
 namespace Tests.Domaine;
@@ -38,7 +37,7 @@ public class GameDriverShould
 
         gameResult.Id.Should().Be(gameId);
         gameResult.Players.Select(x => x.Name).Should().BeEquivalentTo(playersName);
-        gameResult.CurrentRound.Status.Should().Be(TriviaGameStatus.NotStarted);
+        gameResult.Status.Should().Be(TriviaGameStatus.NotStarted);
         gameResult.NextPlayer.Name.Should().Be(Chet_FirstPlayer);
         gameResult.Plateau.Cases.Should().BeEquivalentTo(Plateau().Cases);
     }
@@ -77,18 +76,24 @@ public class GameDriverShould
         _ = await gameAdapter.Create(new NewGameRequest(Guid.NewGuid(), gameId, playersName, Plateau));
 
         int desValueForDeplacement = 1;
-        var (gameResultFirstQuestion, _) = await gameAdapter.LancerDes(new(Guid.NewGuid(), gameId, desValueForDeplacement));
-        gameResultFirstQuestion.CurrentRound.Status.Should().Be(TriviaGameStatus.InGame);
-        gameResultFirstQuestion.CurrentRound.Player.Name.Should().Be(Chet_FirstPlayer);
-        gameResultFirstQuestion.GameHistory.Should().HaveCount(0);
-        gameResultFirstQuestion.NextPlayer.Name.Should().Be(Pat_SecondPlayer);
-        gameResultFirstQuestion.Players.First().Position.Should().BeEquivalentTo(Plateau().Cases.First());
-        gameResultFirstQuestion.Players.First().Score.Should().Be(0);
-        gameResultFirstQuestion.CurrentRound.Question.QuestionText
+        var (firstQuestionToChet, _) = await gameAdapter.LancerDes(new(Guid.NewGuid(), gameId, desValueForDeplacement));
+        firstQuestionToChet.Status.Should().Be(TriviaGameStatus.InGame);
+        firstQuestionToChet.CurrentRound.Player.Name.Should().Be(Chet_FirstPlayer);
+        firstQuestionToChet.GameHistory.Should().HaveCount(0);
+        firstQuestionToChet.NextPlayer.Name.Should().Be(Pat_SecondPlayer);
+        firstQuestionToChet.Players.First().Position.Should().BeEquivalentTo(Plateau().Cases.First());
+        firstQuestionToChet.Players.First().Score.Should().Be(0);
+        firstQuestionToChet.CurrentRound.Question.QuestionText
             .Should()
             .Be("Quelle est la reponse à la question de toutes les questions?");
+        firstQuestionToChet.CurrentRound.Response.Should().BeNull();
 
-       
+        var (firstResponseToChet, _) = await gameAdapter.Repondre(new(Guid.NewGuid(), gameId, "42"));
+        firstQuestionToChet.CurrentRound.IsGoodResponse.Should().BeTrue();
+        firstQuestionToChet.CurrentRound.Player.Score.Should().Be(1);
+
+
+
     }
 
     private static GameDriverAdapter<TriviaGame> CreateAdapter()

@@ -11,9 +11,10 @@ public class TriviaGame : UseCaseResponseBase
     {
         this.Id = gameId;
         _Players = new(players);
-        CurrentRound = new TriviaRound(null, 0, TriviaGameStatus.NotStarted, null);
+        CurrentRound = new TriviaRound(null, 0,  null);
         NextPlayer = players.First();
         Plateau = plateau;
+        Status = TriviaGameStatus.NotStarted;
     }
 
     public TriviaRound CurrentRound { get; internal set; }
@@ -21,6 +22,8 @@ public class TriviaGame : UseCaseResponseBase
     public IEnumerable<TriviaRound> GameHistory { get; set; } = new List<TriviaRound>();
 
     public Guid Id { get; internal set; }
+
+    public TriviaGameStatus Status { get; internal set; }
 
     public Player NextPlayer { get; set; }
 
@@ -30,13 +33,18 @@ public class TriviaGame : UseCaseResponseBase
 
     public void Repondre(string reponse)
     {
-        //this.CurrentRound.Player.Reponse = new PlayerReponse()
+       if( this.CurrentRound.SetReponseAndReturnIsGood( reponse))
+        {
+            this.CurrentRound.Player.Score++;
+        }
+       
     }
 
     public TriviaRound SeDeplacer(int desValue)
     {
+        Status = TriviaGameStatus.InGame;
         var question = this.Plateau.Move(NextPlayer, desValue);
-        this.CurrentRound = new TriviaRound(this.Players.First(), 1, TriviaGameStatus.InGame, question);
+        this.CurrentRound = new TriviaRound(this.Players.First(), 1,  question);
         this.NextPlayer = this._Players[1];
 
         return this.CurrentRound;
