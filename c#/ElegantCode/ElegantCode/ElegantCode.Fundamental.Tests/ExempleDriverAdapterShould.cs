@@ -49,6 +49,6 @@ public class ExampleDriverAdapterShould
 
     private static (ExampleUseCaseResponse Entity, Error Error) CreateMyExpectAssert(Guid token, string response, string error)
     {
-        return new(new(response), error.IsNull() ? null : new Error(token, error));
+        return new(new(token, response), error.IsNull() ? null : new Error(token, error));
     }
 }
