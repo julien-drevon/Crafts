@@ -20,7 +20,6 @@ public class RunGame_MasterShould
             ValeuresAttenduePourLeScenario(e, printer, generator);
         };
 
-        // printer.Printed += (o, e) => whenIPrint(o, e, printer, generator);
         GameRunner.Run(printer, generator, 3);
     }
 

@@ -83,14 +83,14 @@ public class GameDriverShould
         firstQuestionToChet.NextPlayer.Name.Should().Be(Pat_SecondPlayer);
         firstQuestionToChet.Players.First().Position.Should().BeEquivalentTo(Plateau().Cases.First());
         firstQuestionToChet.Players.First().Score.Should().Be(0);
+        firstQuestionToChet.CurrentRound.Response.Should().BeNull();
         firstQuestionToChet.CurrentRound.Question.QuestionText
             .Should()
             .Be("Quelle est la reponse à la question de toutes les questions?");
-        firstQuestionToChet.CurrentRound.Response.Should().BeNull();
 
-        var (firstResponseToChet, _) = await gameAdapter.Repondre(new(Guid.NewGuid(), gameId, "42"));
-        firstQuestionToChet.CurrentRound.IsGoodResponse.Should().BeTrue();
-        firstQuestionToChet.CurrentRound.Player.Score.Should().Be(1);
+        var (firstResponseOfChet, _) = await gameAdapter.Repondre(new(Guid.NewGuid(), gameId, "42"));
+        firstResponseOfChet.CurrentRound.IsGoodResponse.Should().BeTrue();
+        firstResponseOfChet.CurrentRound.Player.Score.Should().Be(1);
     }
 
     private static GameDriverAdapter<TriviaGame> CreateAdapter()
