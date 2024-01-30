@@ -15,6 +15,7 @@ public class TriviaPlateauFactoryShould
         TriviaPlateauFactory.CreateTriviaCases(defaultCategories, 1)
             .Should()
             .BeEquivalentTo(new[] { new TriviaCase(defaultCategories[0], 1) });
+
         TriviaPlateauFactory.CreateTriviaCases(defaultCategories, 2)
             .Should()
             .BeEquivalentTo(new[] { new TriviaCase(defaultCategories[0], 1), new TriviaCase(defaultCategories[1], 2) });

@@ -91,9 +91,6 @@ public class GameDriverShould
         var (firstResponseToChet, _) = await gameAdapter.Repondre(new(Guid.NewGuid(), gameId, "42"));
         firstQuestionToChet.CurrentRound.IsGoodResponse.Should().BeTrue();
         firstQuestionToChet.CurrentRound.Player.Score.Should().Be(1);
-
-
-
     }
 
     private static GameDriverAdapter<TriviaGame> CreateAdapter()
