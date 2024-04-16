@@ -6,6 +6,7 @@ import { SimplePresenter } from "./SimplePresenter";
 import { DriverAdapter } from "./DriverAdapter";
 import { IGotCorrelationToken } from "./IGotCorrelationToken";
 import { IValidateRequest } from "./IValidateRequest";
+import { isNullOrEmpty } from "./StringUtils";
 
 describe("Driver adapter should", () => {
   it("En tant que dev je souhaite exprimer un useCase à travers une fonction simplement et qu'il me retourne un cas valide", async () => {
@@ -67,7 +68,7 @@ export class ExempleDriverRequest
     useCaseQuery: ExempleUseCaseQuery,
     error: CorrelationError | undefined
   ] {
-    if (!this.question || this.question === "") {
+    if (!isNullOrEmpty(this.question)) {
       return [
         undefined,
         new CorrelationError(this.CorrelationToken, [
