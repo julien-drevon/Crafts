@@ -7,7 +7,7 @@ import { DriverAdapter } from "./DriverAdapter";
 import { IGotCorrelationToken } from "./IGotCorrelationToken";
 import { IValidateRequest } from "./IValidateRequest";
 
-describe("Core Error", () => {
+describe("Driver adapter should", () => {
   it("En tant que dev je souhaite exprimer un useCase à travers une fonction simplement et qu'il me retourne un cas valide", async () => {
     const presenter = new SimplePresenter<ExempleUseCaseResult>();
     const correlationtoken = randomUUID();
@@ -52,7 +52,7 @@ describe("Core Error", () => {
     expect(maRequest).toEqual({
       data: undefined,
       error: new CorrelationError(correlationtoken, [
-        "on doit poser LA QUESTION"
+        "on doit poser 'la question'"
       ])
     });
   });
@@ -98,7 +98,7 @@ export class MonExempleUseCase
     presenter: IMInPresenter<ExempleUseCaseResult>
   ): Promise<void> {
     if (query.question !== "la question?") {
-      throw new Error("on doit poser LA QUESTION");
+      throw new Error("on doit poser 'la question'");
     }
 
     presenter.presentData(
