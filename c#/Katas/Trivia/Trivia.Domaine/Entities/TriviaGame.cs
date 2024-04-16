@@ -19,7 +19,7 @@ public class TriviaGame : UseCaseResponseBase
 
     public TriviaRound CurrentRound { get; internal set; }
 
-    public IEnumerable<TriviaRound> GameHistory { get; set; } = new List<TriviaRound>();
+    public IEnumerable<TriviaRound> GameHistory { get; private set; } = new List<TriviaRound>();
 
     public Guid Id { get; internal set; }
 
@@ -30,6 +30,7 @@ public class TriviaGame : UseCaseResponseBase
     public TriviaPlateau Plateau { get; }
 
     public IEnumerable<Player> Players { get => _Players; }
+ 
 
     public void Repondre(string reponse)
     {

@@ -1,4 +1,3 @@
-
 export class TypedError {
   public get message(): string {
     return this._message;
@@ -8,7 +7,5 @@ export class TypedError {
     return this._type;
   }
 
-  constructor(private _type: string, private _message: string) { }
-
-
+  constructor(private _type: string, private _message: string) {}
 }

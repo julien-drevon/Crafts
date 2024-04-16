@@ -1,9 +1,7 @@
 import { CorrelationError } from "./CorrelationError";
 
 export interface IMInPresenter<TIn> {
-  PresentData(data: TIn);
+  presentData(data: TIn);
 
-  PresentError( error:CorrelationError)
+  presentError(error: CorrelationError);
 }
-
-

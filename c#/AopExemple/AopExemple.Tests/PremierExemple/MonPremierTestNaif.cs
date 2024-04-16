@@ -15,4 +15,31 @@ public class MonPremierTestNaif
 
         leLogger.IsLog.Should().BeTrue();
     }
+
+    [Fact]
+    public void UnTest()
+    {
+
+        var converter = new MonConverterInToString();
+
+        converter.Convert(1).Should().Be("1");
+
+    }
+}
+
+internal class MonConverterInToString : IConvert<int, string>
+{
+    public MonConverterInToString()
+    {
+    }
+
+    public string Convert(int v)
+    {
+        return v.ToString();
+    }
+}
+
+internal interface IConvert<Tin, Tout>
+{
+    Tout Convert(Tin v);
 }

@@ -22,11 +22,16 @@ public class TriviaGameBuilder
     public TriviaGameBuilder AddPlayers(IEnumerable<string> players)
     {
         _Players = players.Select(x => new Player(x)).ToList();
+   
+
+
         return this;
     }
 
+    
     public TriviaGame Build()
     {
         return new TriviaGame(_CorrelationToken, _GameId, _Players, _Plateau);
     }
 }
+ 

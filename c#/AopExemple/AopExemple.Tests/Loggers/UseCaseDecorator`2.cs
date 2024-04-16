@@ -26,6 +26,8 @@ public class UseCaseDecorator<TQuery, TReturn> : IMUseCase<TQuery, TReturn>
             Logger.Log($"Execute : {query}");
         }
 
+
         return UseCase.Execute(query);
+
     }
 }

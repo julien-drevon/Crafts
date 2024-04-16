@@ -1,5 +1,5 @@
-import { IMInPresenter } from './IMInPresenter';
-import { IMOutPresenter } from './IMOutPresenter';
+import { IMInPresenter } from "./IMInPresenter";
+import { IMOutPresenter } from "./IMOutPresenter";
 
 export interface IMPresenter<TIn, TOut>
   extends IMInPresenter<TIn>,

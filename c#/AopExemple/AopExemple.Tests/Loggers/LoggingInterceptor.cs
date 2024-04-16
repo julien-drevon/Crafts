@@ -12,7 +12,7 @@ public class LoggingInterceptor : IInterceptor
     public ILog Logger { get; }
 
     public void Intercept(IInvocation invocation)
-    {
+    {       
         Logger.Log($"Execute : {invocation.Arguments.FirstOrDefault()}");
         invocation.Proceed();
 

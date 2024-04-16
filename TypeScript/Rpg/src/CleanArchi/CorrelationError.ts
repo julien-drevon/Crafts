@@ -1,26 +1,32 @@
-import { UUID } from 'crypto';
-import { TypedError } from "./TypedError";
+import { UUID } from "crypto";
 
+export function isOnError(error: CorrelationError | undefined | null): boolean {
+  if (!error) return false;
+
+  return error.isOnError();
+}
 
 export class CorrelationError {
-  getErrors(): TypedError[] {
-    return this._errors.slice();   
+  public isOnError(): boolean {
+    return this._errors.length > 0;
+  }
+  getErrors(): string[] {
+    return this._errors.slice();
   }
 
-  addError(type: string, message: string) {
-    this._errors.push(new TypedError(type, message));   
+  addError(message: string) {
+    this._errors.push(message);
   }
 
-  constructor(correlationToken: UUID, errors:TypedError[]=[]) {
+  constructor(correlationToken: UUID, errors: string[] = []) {
     this._CorrelationToken = correlationToken;
-    this._errors = errors.slice()
+    this._errors = errors.slice();
   }
 
-  private _errors:TypedError[]=[];
+  private _errors: string[] = [];
 
   private _CorrelationToken: UUID;
   public get CorrelationToken(): UUID {
     return this._CorrelationToken;
   }
 }
-

@@ -1,4 +1,4 @@
-import { IMInPresenter } from './IMInPresenter';
+import { IMInPresenter } from "./IMInPresenter";
 
 export interface IMUseCase<TQuery, TUseCaseReturn> {
   Execute(
