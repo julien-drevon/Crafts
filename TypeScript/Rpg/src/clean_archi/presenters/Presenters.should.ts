@@ -30,11 +30,12 @@ describe("SimplePresenter", () => {
 
 describe("FuncPresenter", () => {
   it("I want to present datas and errors", async () => {
+    const monAssertion = new TestDummy("42");
+    const monErreur = new CorrelationError(randomUUID());
+
     const presenter = new FuncPresenter<TestDummy, string>(
       async (toTransform) => (toTransform ? toTransform.test : undefined)
     );
-    const monAssertion = new TestDummy("42");
-    const monErreur = new CorrelationError(randomUUID());
 
     expect(await presenter.view()).toEqual({
       data: undefined,

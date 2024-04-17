@@ -5,6 +5,7 @@ import { PresentData } from "../PresentData";
 export class SimplePresenter<TInOut> implements IMPresenter<TInOut, TInOut> {
   private _Datas: TInOut;
   private _Error: CorrelationError | undefined = undefined;
+
   presentData(data: TInOut) {
     this._Datas = data;
   }

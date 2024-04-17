@@ -12,9 +12,18 @@ export function isNotOnError(
 }
 
 export class CorrelationError {
+  private _errors: string[] = [];
+  private _CorrelationToken: UUID;
+
+  constructor(correlationToken: UUID, errors: string[] = []) {
+    this._CorrelationToken = correlationToken;
+    this._errors = errors.slice();
+  }
+
   public isOnError(): boolean {
     return this._errors.length > 0;
   }
+
   getErrors(): string[] {
     return this._errors.slice();
   }
@@ -23,14 +32,6 @@ export class CorrelationError {
     this._errors.push(message);
   }
 
-  constructor(correlationToken: UUID, errors: string[] = []) {
-    this._CorrelationToken = correlationToken;
-    this._errors = errors.slice();
-  }
-
-  private _errors: string[] = [];
-
-  private _CorrelationToken: UUID;
   public get CorrelationToken(): UUID {
     return this._CorrelationToken;
   }
