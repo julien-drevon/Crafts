@@ -1,9 +1,9 @@
-import { CorrelationError, isOnError } from "./CorrelationError";
-import { IMUseCase } from "./IMUseCase";
-import { IMPresenter } from "./IMPresenter";
-import { PresentData } from "./PresentData";
-import { IValidateRequest } from "./IValidateRequest";
-import { IGotCorrelationToken } from "./IGotCorrelationToken";
+import { CorrelationError, isOnError } from "../errors/CorrelationError";
+import { IMUseCase } from "../IMUseCase";
+import { IMPresenter } from "../IMPresenter";
+import { PresentData } from "../PresentData";
+import { IValidateRequest } from "../IValidateRequest";
+import { IGotCorrelationToken } from "../IGotCorrelationToken";
 
 export class DriverAdapter {
   public static async CreateUseCaseWorkflow<

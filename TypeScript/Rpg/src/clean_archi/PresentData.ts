@@ -1,4 +1,4 @@
-import { CorrelationError } from "./CorrelationError";
+import { CorrelationError } from "./errors/CorrelationError";
 
 export class PresentData<Tout> {
   data: Tout;

@@ -1,12 +1,12 @@
-import { CorrelationError } from "./CorrelationError";
+import { CorrelationError } from "../errors/CorrelationError";
 import { randomUUID, UUID } from "crypto";
-import { IMUseCase } from "./IMUseCase";
-import { IMInPresenter } from "./IMInPresenter";
-import { SimplePresenter } from "./SimplePresenter";
+import { IMUseCase } from "../IMUseCase";
+import { IMInPresenter } from "../IMInPresenter";
+import { SimplePresenter } from "../presenters/SimplePresenter";
 import { DriverAdapter } from "./DriverAdapter";
-import { IGotCorrelationToken } from "./IGotCorrelationToken";
-import { IValidateRequest } from "./IValidateRequest";
-import { isNullOrEmpty } from "./StringUtils";
+import { IGotCorrelationToken } from "../IGotCorrelationToken";
+import { IValidateRequest } from "../IValidateRequest";
+import { isNullOrEmpty } from "../../StringUtils";
 
 describe("Driver adapter should", () => {
   it("En tant que dev je souhaite exprimer un useCase à travers une fonction simplement et qu'il me retourne un cas valide", async () => {
@@ -68,7 +68,7 @@ export class ExempleDriverRequest
     useCaseQuery: ExempleUseCaseQuery,
     error: CorrelationError | undefined
   ] {
-    if (!isNullOrEmpty(this.question)) {
+    if (isNullOrEmpty(this.question)) {
       return [
         undefined,
         new CorrelationError(this.CorrelationToken, [

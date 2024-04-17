@@ -1,4 +1,4 @@
-import { CorrelationError } from "./CorrelationError";
+import { CorrelationError } from "./errors/CorrelationError";
 import { UUID } from "crypto";
 import { IGotCorrelationToken } from "./IGotCorrelationToken";
 

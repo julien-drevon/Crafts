@@ -1,4 +1,4 @@
-import { CorrelationError } from "./CorrelationError";
+import { CorrelationError } from "./errors/CorrelationError";
 
 export interface IMInPresenter<TIn> {
   presentData(data: TIn);

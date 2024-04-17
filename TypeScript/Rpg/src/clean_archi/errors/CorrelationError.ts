@@ -5,6 +5,11 @@ export function isOnError(error: CorrelationError | undefined | null): boolean {
 
   return error.isOnError();
 }
+export function isNotOnError(
+  error: CorrelationError | undefined | null
+): boolean {
+  return !isOnError(error);
+}
 
 export class CorrelationError {
   public isOnError(): boolean {

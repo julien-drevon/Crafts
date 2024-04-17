@@ -1,6 +1,6 @@
-import { IMPresenter } from "./IMPresenter";
-import { CorrelationError } from "./CorrelationError";
-import { PresentData } from "./PresentData";
+import { IMPresenter } from "../IMPresenter";
+import { CorrelationError } from "../errors/CorrelationError";
+import { PresentData } from "../PresentData";
 
 export class SimplePresenter<TInOut> implements IMPresenter<TInOut, TInOut> {
   private _Datas: TInOut;
