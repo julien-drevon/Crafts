@@ -76,7 +76,7 @@ public class SpriteViewModelShould
     }
 }
 
-public class WorldPResenterShould
+public class WorldPresenterShould
 {
     [Fact]
     public void ConvertWorld()

@@ -20,6 +20,7 @@ public class RelayCommandShould
         myCommand.CanExecute(assert);
         myCommand.Execute(assert);
 
+        isCanExecuteRaised.Should().BeTrue();
         assert.ToString().Should().Be("421");
     }
 
