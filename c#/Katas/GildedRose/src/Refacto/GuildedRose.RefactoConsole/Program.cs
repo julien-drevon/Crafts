@@ -16,7 +16,7 @@ var itemems = new[]
     CreateItemFactory.Create(ItemsName.ConjuredManaCake, sellIn: 3, quality: 6),
 };
 
-var guildedRose = new GuildeadRose(itemems);
+var guildedRose = new GuildeadRose(itemems, new UpdateQualityParameters());
 
 guildedRose.UpdateQuality();
 

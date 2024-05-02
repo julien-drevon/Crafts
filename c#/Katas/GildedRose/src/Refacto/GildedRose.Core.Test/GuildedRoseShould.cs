@@ -8,7 +8,7 @@ public class GuildedRoseShould
     [Fact]
     public void GivenAPlayer_WhenIPlacedASulfuras_ThenShouldNoChange()
     {
-        var guildedRose = new GuildeadRose(new[] { CreateItem(ItemsName.Sulfuras, 0, 80) });
+        var guildedRose = new GuildeadRose(new[] { CreateItem(ItemsName.Sulfuras, 0, 80) }, new UpdateQualityParameters());
         guildedRose.UpdateQuality();
 
         guildedRose.Items.Should().BeEquivalentTo(new[] { new ItemToCompare(name: "Sulfuras, Hand of Ragnaros", sellIn: 0, quality: 80) });
@@ -17,7 +17,7 @@ public class GuildedRoseShould
     [Fact]
     public void GivenAPlayer_WhenIPlaceHelmetVest_Shouldloose1PointQuanlitySelling()
     {
-        var guildedRose = new GuildeadRose(new[] { CreateItem(ItemsName.Plus5DexterityVest, 10, 20) });
+        var guildedRose = new GuildeadRose(new[] { CreateItem(ItemsName.Plus5DexterityVest, 10, 20) }, new UpdateQualityParameters());
         guildedRose.UpdateQuality();
 
         guildedRose.Items.Should().BeEquivalentTo(new[] { new ItemToCompare(name: "+5 Dexterity Vest", sellIn: 9, quality: 19) });
@@ -26,7 +26,7 @@ public class GuildedRoseShould
     [Fact]
     public void GivenAPlayer_WhenIPlaceAgedBrie_Shouldloose1PointSellingIncrease1PointQuyality()
     {
-        var guildedRose = new GuildeadRose(new[] { CreateItem(ItemsName.AgedBrie, 2, 0) });
+        var guildedRose = new GuildeadRose(new[] { CreateItem(ItemsName.AgedBrie, 2, 0) }, new UpdateQualityParameters());
         guildedRose.UpdateQuality();
 
         guildedRose.Items.Should().BeEquivalentTo(new[] { new ItemToCompare(name: "Aged Brie", sellIn: 1, quality: 1) });
@@ -35,7 +35,7 @@ public class GuildedRoseShould
     [Fact]
     public void GivenAPlayer_WhenIPlaceAgedBrie_ShouldTheirQualityNeverExceed50()
     {
-        var guildedRose = new GuildeadRose(new[] { CreateItem(ItemsName.AgedBrie, 2, 50) });
+        var guildedRose = new GuildeadRose(new[] { CreateItem(ItemsName.AgedBrie, 2, 50) }, new UpdateQualityParameters());
         guildedRose.UpdateQuality();
 
         guildedRose.Items.Should().BeEquivalentTo(new[] { new ItemToCompare(name: "Aged Brie", sellIn: 1, quality: 50) });
@@ -44,7 +44,7 @@ public class GuildedRoseShould
     [Fact]
     public void GivenAPlayer_WhenIPlaceObjectAt0_ShouldNeverDecreaseUnder0()
     {
-        var guildedRose = new GuildeadRose(new[] { CreateItem(ItemsName.Plus5DexterityVest, 0, 0) });
+        var guildedRose = new GuildeadRose(new[] { CreateItem(ItemsName.Plus5DexterityVest, 0, 0) }, new UpdateQualityParameters());
         guildedRose.UpdateQuality();
 
         guildedRose.Items.Should().BeEquivalentTo(new[] { new ItemToCompare(name: "+5 Dexterity Vest", sellIn: 0, quality: 0) });
@@ -53,7 +53,7 @@ public class GuildedRoseShould
     [Fact]
     public void GivenAPlayer_WhenIPlaceConcerTicket_ShouldBeTakeQualityWhileIsNotUnder10ToSellin()
     {
-        var guildedRose = new GuildeadRose(new[] { CreateItem(ItemsName.BackstagePassesTAFKAL80ETCConcert, 14, 1) });
+        var guildedRose = new GuildeadRose(new[] { CreateItem(ItemsName.BackstagePassesTAFKAL80ETCConcert, 14, 1) }, new UpdateQualityParameters());
         guildedRose.UpdateQuality();
 
         guildedRose.Items.Should().BeEquivalentTo(new[] { new ItemToCompare(name: "Backstage passes to a TAFKAL80ETC concert", sellIn: 13, quality: 2) });
@@ -62,7 +62,7 @@ public class GuildedRoseShould
     [Fact]
     public void GivenAPlayer_WhenIPlaceConcerTicket_ShouldBeTake2MoreQualityWhileIsUnder11ButUpper6DayToSellin()
     {
-        var guildedRose = new GuildeadRose();
+        var guildedRose = new GuildeadRose(null, new UpdateQualityParameters());
         guildedRose.AddItem(CreateItem(ItemsName.BackstagePassesTAFKAL80ETCConcert, 10, 1));
         guildedRose.UpdateQuality();
 
@@ -72,7 +72,7 @@ public class GuildedRoseShould
     [Fact]
     public void GivenAPlayer_WhenIPlaceConcerTicket_ShouldBeTake3MoreQualityWhileIsUnder6DayToSellin()
     {
-        var guildedRose = new GuildeadRose(new[] { CreateItem(ItemsName.BackstagePassesTAFKAL80ETCConcert, 5, 1) });
+        var guildedRose = new GuildeadRose(new[] { CreateItem(ItemsName.BackstagePassesTAFKAL80ETCConcert, 5, 1) }, new UpdateQualityParameters());
         guildedRose.UpdateQuality();
 
         guildedRose.Items.Should().BeEquivalentTo(new[] { new ItemToCompare(name: "Backstage passes to a TAFKAL80ETC concert", sellIn: 4, quality: 4) });
@@ -81,7 +81,7 @@ public class GuildedRoseShould
     [Fact]
     public void GivenAPlayer_WhenIPlaceConcerTicket_ShouldBeHaveQualityAt0WhenSellinIs0()
     {
-        var guildedRose = new GuildeadRose(new[] { CreateItem(ItemsName.BackstagePassesTAFKAL80ETCConcert, 0, 1) });
+        var guildedRose = new GuildeadRose(new[] { CreateItem(ItemsName.BackstagePassesTAFKAL80ETCConcert, 0, 1) }, new UpdateQualityParameters());
         guildedRose.UpdateQuality();
 
         guildedRose.Items.Should().BeEquivalentTo(new[] { new ItemToCompare(name: "Backstage passes to a TAFKAL80ETC concert", sellIn: 0, quality: 0) });
@@ -90,7 +90,7 @@ public class GuildedRoseShould
     [Fact]
     public void GivenAPlayer_WhenIPlaceAgedBrie_ShouldBeHaveQualityIncreaseSellinIs0()
     {
-        var guildedRose = new GuildeadRose(new[] { CreateItem(ItemsName.AgedBrie, 0, 1) });
+        var guildedRose = new GuildeadRose(new[] { CreateItem(ItemsName.AgedBrie, 0, 1) }, new UpdateQualityParameters());
         guildedRose.UpdateQuality();
 
         guildedRose.Items.Should().BeEquivalentTo(new[] { new ItemToCompare(name: "Aged Brie", sellIn: 0, quality: 2) });

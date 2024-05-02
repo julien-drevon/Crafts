@@ -5,11 +5,13 @@ namespace GildedRose.Core;
 public class GuildeadRose
 {
     private List<IUpdateQualityItem> _Items;
-    private UpdateQualityParameters _QualityParameters = new UpdateQualityParameters();
+    private UpdateQualityParameters _QualityParameters ;
 
-    public GuildeadRose(IEnumerable<IUpdateQualityItem> items = null)
+    public GuildeadRose(IEnumerable<IUpdateQualityItem> items, UpdateQualityParameters updataQualityParameters )
     {
-        _Items = items?.ToList() ?? new List<IUpdateQualityItem>();
+        _Items = items?.ToList();
+        _QualityParameters = updataQualityParameters;
+
     }
 
     public IEnumerable<IUpdateQualityItem> Items { get => _Items; }
