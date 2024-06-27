@@ -18,19 +18,20 @@ var itemems = new[]
 };
 
 var guildedRose = new GuildeadRose(itemems, new UpdateQualityParameters());
+
+Console.WriteLine();
 Console.WriteLine("liste des objet en guilde");
 Console.WriteLine();
 guildedRose.Consult(x => DisplayListItems(x));
 Console.WriteLine();
 Console.WriteLine("************************************");
-
 Console.WriteLine("update Quality");
-Console.WriteLine();
 guildedRose.UpdateQuality();
 
 Console.WriteLine("************************************");
 Console.WriteLine();
 Console.WriteLine("Liste apres update");
+Console.WriteLine();
 guildedRose.Consult(x => DisplayListItems(x));
 
 System.Console.ReadKey();
