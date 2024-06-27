@@ -16,8 +16,9 @@ public abstract class Item : IMUpgradableQualityItem
 
     public virtual int Quality
     {
-        get => _Quality; set
+        get => _Quality;
 
+        set
         {
             if (value > -1)
             { _Quality = value; }
@@ -33,6 +34,11 @@ public abstract class Item : IMUpgradableQualityItem
             if (value > -1)
             { _SellIn = value; }
         }
+    }
+
+    public override string ToString()
+    {
+        return $"nom: {Name}     sellIn:{SellIn}    Quality:{Quality}";
     }
 
     public abstract void UpdateQuality(UpdateQualityParameters qualityParameters);
@@ -51,10 +57,5 @@ public abstract class Item : IMUpgradableQualityItem
     {
         if (Quality < 50)
             Quality++;
-    }
-
-    public override string ToString()
-    {
-        return $"nom: {Name}     sellIn:{SellIn}    Quality:{Quality}";
     }
 }
