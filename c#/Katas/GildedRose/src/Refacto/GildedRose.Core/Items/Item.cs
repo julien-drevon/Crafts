@@ -1,6 +1,6 @@
 ﻿namespace GildedRose.Core.Items;
 
-public abstract class Item : IUpdateQualityItem
+public abstract class Item : IMUpgradableQualityItem
 {
     private int _Quality;
     private int _SellIn;
@@ -51,5 +51,10 @@ public abstract class Item : IUpdateQualityItem
     {
         if (Quality < 50)
             Quality++;
+    }
+
+    public override string ToString()
+    {
+        return $"nom: {Name}     sellIn:{SellIn}    Quality:{Quality}";
     }
 }

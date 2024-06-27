@@ -8,12 +8,12 @@
 public interface IPaginatedResponse<T> : IBaseResponse, IGotCorrelationToken
 {
     /// <summary>
-    /// Gets or sets the datas list.
+    /// Gets or sets the datas list. set is required for serialization
     /// </summary>
     /// <value>
     /// The datas.
     /// </value>
-    IList<T> Datas { get; set; }
+    IList<T> Data { get; set; }
 
     /// <summary>
     /// Gets the pagination.

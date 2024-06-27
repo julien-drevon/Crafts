@@ -26,19 +26,19 @@ public class PaginatedResponse<T> : BaseResponse, IPaginatedResponse<T>
         : base(correlationToken, message, isOk)
     {
         if (values.IsAny())
-            Datas = values.ToList();
+            Data = values.ToList();
 
         InitValue(totalEntry, pageIndex, nbElementPerPage);
     }
 
-    public IList<T> Datas { get; set; } = new List<T>();
+    public IList<T> Data { get; set; } = new List<T>();
 
     [DataMember(Name = "Pagination")]
     [JsonPropertyName("pagination")]
     [JsonConverter(typeof(PaginationJsonConverter))]
     public IPagination Pagination { get; set; } = new Pagination();
 
-    protected void InitValue(long totalEntry, int pageNumber, int nbElementPerPage)
+    private void InitValue(long totalEntry, int pageNumber, int nbElementPerPage)
     {
         if (pageNumber < 1)
             throw new ArgumentOutOfRangeException(nameof(pageNumber), pageNumber, PAGE_UNDER_1_ERROR);

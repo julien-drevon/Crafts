@@ -1,6 +1,6 @@
 ﻿namespace GildedRose.Core.Items
 {
-    public interface IUpdateQualityItem
+    public interface IMUpgradableQualityItem
     {
         string Name { get; }
 

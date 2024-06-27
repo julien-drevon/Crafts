@@ -37,7 +37,7 @@ public static class PaginationResponseExtensions
 
         var pageNumberCompute = query.Pagination?.CurrentPage ?? 0;
         var pageSizeCompute = query.Pagination?.PageSize ?? 0;
-        var values = query.Datas;
+        var values = query.Data;
 
         return new PaginatedResponse<TResponse>(
             query.CorrelationToken,
@@ -218,12 +218,12 @@ public static class PaginationResponseExtensions
         this IPaginatedResponse<T> query,
         Func<T, TResponse> convert)
     {
-        if ((query?.Datas).IsNull())
+        if ((query?.Data).IsNull())
             return CreateDefaultPaginationResponse<TResponse>(query.IsNull() ? Guid.Empty : query.CorrelationToken, 0);
 
         var pageNumberCompute = query.Pagination.CurrentPage;
         var pageSizeCompute = query.Pagination.PageSize;
-        var values = query.Datas;
+        var values = query.Data;
         var collect = values.Select(convert).ToList();
 
         return new PaginatedResponse<TResponse>(

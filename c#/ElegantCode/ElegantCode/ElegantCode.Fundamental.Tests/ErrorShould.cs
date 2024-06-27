@@ -31,7 +31,7 @@ public class ErrorShould
         /***************** Validation Workflow ***************************/
         (object UseCaseQuery, Error Error) assert2 = new(null, null);
         assert2.IsNotOnError().Should().BeTrue();
-        assert2 = new(null, new Error(Guid.NewGuid(), "Erreur"));
+        assert2 = new(null, new Error(Guid.NewGuid(), "Error"));
         assert2.IsOnError().Should().BeTrue();
     }
 }

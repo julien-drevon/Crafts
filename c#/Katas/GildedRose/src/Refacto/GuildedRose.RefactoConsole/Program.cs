@@ -1,6 +1,7 @@
 ﻿// See https://aka.ms/new-console-template for more information
 using GildedRose.Core;
 using GildedRose.Core.Items;
+using System.Linq;
 
 Console.WriteLine("OMGHAI!");
 
@@ -17,7 +18,24 @@ var itemems = new[]
 };
 
 var guildedRose = new GuildeadRose(itemems, new UpdateQualityParameters());
+Console.WriteLine("liste des objet en guilde");
+Console.WriteLine();
+guildedRose.Consult(x => DisplayListItems(x));
 
+Console.WriteLine("************************************");
+Console.WriteLine();
+Console.WriteLine("update Quality");
+Console.WriteLine();
 guildedRose.UpdateQuality();
 
+Console.WriteLine("************************************");
+Console.WriteLine();
+Console.WriteLine("Liste apres update");
+guildedRose.Consult(x => DisplayListItems(x));
+
 System.Console.ReadKey();
+
+static void DisplayListItems(IEnumerable<IMUpgradableQualityItem> items)
+{
+    foreach (var item in items) { Console.WriteLine(item); }
+}

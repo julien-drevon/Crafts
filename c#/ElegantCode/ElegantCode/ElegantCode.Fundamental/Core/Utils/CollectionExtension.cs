@@ -60,8 +60,8 @@ public static class CollectionExtension
     {
         return paginedResponse.IsNotNull()
               && (predicate.IsNull()
-                 ? paginedResponse.Datas.IsAny()
-                 : paginedResponse.Datas.IsAny(predicate));
+                 ? paginedResponse.Data.IsAny()
+                 : paginedResponse.Data.IsAny(predicate));
     }
 
     /// <summary>

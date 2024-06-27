@@ -11,7 +11,8 @@ public class GuildedRoseShould
         var guildedRose = new GuildeadRose(new[] { CreateItem(ItemsName.Sulfuras, 0, 80) }, new UpdateQualityParameters());
         guildedRose.UpdateQuality();
 
-        guildedRose.Items.Should().BeEquivalentTo(new[] { new ItemToCompare(name: "Sulfuras, Hand of Ragnaros", sellIn: 0, quality: 80) });
+        //guildedRose.Items.Should().BeEquivalentTo(new[] { new ItemToCompare(name: "Sulfuras, Hand of Ragnaros", sellIn: 0, quality: 80) });
+        guildedRose.Consult(x=> x.Should().BeEquivalentTo(new[] { new ItemToCompare(name: "Sulfuras, Hand of Ragnaros", sellIn: 0, quality: 80) }));
     }
 
     [Fact]
@@ -20,7 +21,7 @@ public class GuildedRoseShould
         var guildedRose = new GuildeadRose(new[] { CreateItem(ItemsName.Plus5DexterityVest, 10, 20) }, new UpdateQualityParameters());
         guildedRose.UpdateQuality();
 
-        guildedRose.Items.Should().BeEquivalentTo(new[] { new ItemToCompare(name: "+5 Dexterity Vest", sellIn: 9, quality: 19) });
+       guildedRose.Consult(x=> x.Should().BeEquivalentTo(new[] { new ItemToCompare(name: "+5 Dexterity Vest", sellIn: 9, quality: 19) }));
     }
 
     [Fact]
@@ -29,7 +30,7 @@ public class GuildedRoseShould
         var guildedRose = new GuildeadRose(new[] { CreateItem(ItemsName.AgedBrie, 2, 0) }, new UpdateQualityParameters());
         guildedRose.UpdateQuality();
 
-        guildedRose.Items.Should().BeEquivalentTo(new[] { new ItemToCompare(name: "Aged Brie", sellIn: 1, quality: 1) });
+       guildedRose.Consult(x=> x.Should().BeEquivalentTo(new[] { new ItemToCompare(name: "Aged Brie", sellIn: 1, quality: 1) }));
     }
 
     [Fact]
@@ -38,7 +39,7 @@ public class GuildedRoseShould
         var guildedRose = new GuildeadRose(new[] { CreateItem(ItemsName.AgedBrie, 2, 50) }, new UpdateQualityParameters());
         guildedRose.UpdateQuality();
 
-        guildedRose.Items.Should().BeEquivalentTo(new[] { new ItemToCompare(name: "Aged Brie", sellIn: 1, quality: 50) });
+       guildedRose.Consult(x=> x.Should().BeEquivalentTo(new[] { new ItemToCompare(name: "Aged Brie", sellIn: 1, quality: 50) }));
     }
 
     [Fact]
@@ -47,7 +48,7 @@ public class GuildedRoseShould
         var guildedRose = new GuildeadRose(new[] { CreateItem(ItemsName.Plus5DexterityVest, 0, 0) }, new UpdateQualityParameters());
         guildedRose.UpdateQuality();
 
-        guildedRose.Items.Should().BeEquivalentTo(new[] { new ItemToCompare(name: "+5 Dexterity Vest", sellIn: 0, quality: 0) });
+       guildedRose.Consult(x=> x.Should().BeEquivalentTo(new[] { new ItemToCompare(name: "+5 Dexterity Vest", sellIn: 0, quality: 0) }));
     }
 
     [Fact]
@@ -56,7 +57,7 @@ public class GuildedRoseShould
         var guildedRose = new GuildeadRose(new[] { CreateItem(ItemsName.BackstagePassesTAFKAL80ETCConcert, 14, 1) }, new UpdateQualityParameters());
         guildedRose.UpdateQuality();
 
-        guildedRose.Items.Should().BeEquivalentTo(new[] { new ItemToCompare(name: "Backstage passes to a TAFKAL80ETC concert", sellIn: 13, quality: 2) });
+       guildedRose.Consult(x=> x.Should().BeEquivalentTo(new[] { new ItemToCompare(name: "Backstage passes to a TAFKAL80ETC concert", sellIn: 13, quality: 2) }));
     }
 
     [Fact]
@@ -66,7 +67,7 @@ public class GuildedRoseShould
         guildedRose.AddItem(CreateItem(ItemsName.BackstagePassesTAFKAL80ETCConcert, 10, 1));
         guildedRose.UpdateQuality();
 
-        guildedRose.Items.Should().BeEquivalentTo(new[] { new ItemToCompare(name: "Backstage passes to a TAFKAL80ETC concert", sellIn: 9, quality: 3) });
+       guildedRose.Consult(x=> x.Should().BeEquivalentTo(new[] { new ItemToCompare(name: "Backstage passes to a TAFKAL80ETC concert", sellIn: 9, quality: 3) }));
     }
 
     [Fact]
@@ -75,7 +76,7 @@ public class GuildedRoseShould
         var guildedRose = new GuildeadRose(new[] { CreateItem(ItemsName.BackstagePassesTAFKAL80ETCConcert, 5, 1) }, new UpdateQualityParameters());
         guildedRose.UpdateQuality();
 
-        guildedRose.Items.Should().BeEquivalentTo(new[] { new ItemToCompare(name: "Backstage passes to a TAFKAL80ETC concert", sellIn: 4, quality: 4) });
+       guildedRose.Consult(x=> x.Should().BeEquivalentTo(new[] { new ItemToCompare(name: "Backstage passes to a TAFKAL80ETC concert", sellIn: 4, quality: 4) }));
     }
 
     [Fact]
@@ -84,7 +85,7 @@ public class GuildedRoseShould
         var guildedRose = new GuildeadRose(new[] { CreateItem(ItemsName.BackstagePassesTAFKAL80ETCConcert, 0, 1) }, new UpdateQualityParameters());
         guildedRose.UpdateQuality();
 
-        guildedRose.Items.Should().BeEquivalentTo(new[] { new ItemToCompare(name: "Backstage passes to a TAFKAL80ETC concert", sellIn: 0, quality: 0) });
+       guildedRose.Consult(x=> x.Should().BeEquivalentTo(new[] { new ItemToCompare(name: "Backstage passes to a TAFKAL80ETC concert", sellIn: 0, quality: 0) }));
     }
 
     [Fact]
@@ -93,7 +94,7 @@ public class GuildedRoseShould
         var guildedRose = new GuildeadRose(new[] { CreateItem(ItemsName.AgedBrie, 0, 1) }, new UpdateQualityParameters());
         guildedRose.UpdateQuality();
 
-        guildedRose.Items.Should().BeEquivalentTo(new[] { new ItemToCompare(name: "Aged Brie", sellIn: 0, quality: 2) });
+       guildedRose.Consult(x=> x.Should().BeEquivalentTo(new[] { new ItemToCompare(name: "Aged Brie", sellIn: 0, quality: 2) }));
     }
 
 
