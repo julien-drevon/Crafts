@@ -11,7 +11,6 @@ public class GuildedRoseShould
         var guildedRose = new GuildeadRose(new[] { CreateItem(ItemsName.Sulfuras, 0, 80) }, new UpdateQualityParameters());
         guildedRose.UpdateQuality();
 
-        //guildedRose.Items.Should().BeEquivalentTo(new[] { new ItemToCompare(name: "Sulfuras, Hand of Ragnaros", sellIn: 0, quality: 80) });
         guildedRose.Consult(x=> x.Should().BeEquivalentTo(new[] { new ItemToCompare(name: "Sulfuras, Hand of Ragnaros", sellIn: 0, quality: 80) }));
     }
 
