@@ -21,9 +21,9 @@ var guildedRose = new GuildeadRose(itemems, new UpdateQualityParameters());
 Console.WriteLine("liste des objet en guilde");
 Console.WriteLine();
 guildedRose.Consult(x => DisplayListItems(x));
-
-Console.WriteLine("************************************");
 Console.WriteLine();
+Console.WriteLine("************************************");
+
 Console.WriteLine("update Quality");
 Console.WriteLine();
 guildedRose.UpdateQuality();
