@@ -1,6 +1,21 @@
+using Rpg.Core.Domain;
 using System.ComponentModel;
 
+
 namespace Rpg.Core.WpfLibrary.Tests.Base;
+
+
+public class WorldPresenterShould
+{
+    [Fact]
+    public void GivenAWorldIWantToPResentAListOfSprite()
+    {
+        var world = new World();
+        world.AddElement()
+
+    }
+
+}
 
 public class SpriteViewModelShould
 {
